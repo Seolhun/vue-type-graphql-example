@@ -4,4 +4,11 @@
 - Date : 2017.10.19
 
 ---
-### To Test TypeScript First
+## To Study TypeScript
+
+1. `npm install`
+2. Checking the index.html script `src` to test ts code. 
+3. `npm start`
+
+
+
