@@ -40,4 +40,3 @@ var countdown = function (start) {
     console.log("Done!", start);
 };
 countdown();
-//# sourceMappingURL=example.js.map

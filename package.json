@@ -1,9 +1,11 @@
 {
     "name": "typescript-example",
     "version": "0.0.1",
-    "dependencies": {},
+    "description": "TypeScript Mastering",
+    "main": "",
     "author": "SeolHun",
     "license": "ISC",
+    "dependencies": {},
     "devDependencies": {
         "lite-server": "^2.3.0"
     },
