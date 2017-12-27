@@ -59,4 +59,3 @@ var complex2 = {
 // union types
 var myRealRealAge = 28;
 myRealRealAge = "27";
-//# sourceMappingURL=example.js.map
