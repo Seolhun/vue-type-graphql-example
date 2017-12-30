@@ -22,7 +22,7 @@ function returnMyName(): string {
     return myName;
 }
 
-//void 
+//void
 function sayHello(): void {
     console.log("Hello");
 }
