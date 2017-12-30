@@ -6,6 +6,7 @@
   "main": "src/main.js",
   "license": "MIT",
   "dependencies": {
+    "@types/jest": "^22.0.0",
     "mithril": "^1.1.6"
   },
   "devDependencies": {
@@ -21,5 +22,19 @@
     "test": "jest",
     "start": "lite-server",
     "build": "webpack"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Seolhun/typescript-example.git"
+  },
+  "keywords": [
+    "typescript-example"
+  ],
+  "bugs": {
+    "url": "https://github.com/Seolhun/typescript-example/issues"
+  },
+  "homepage": "https://github.com/Seolhun/typescript-example#readme"
 }

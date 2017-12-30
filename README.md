@@ -13,7 +13,7 @@
 ## Content List
 1. `Grammar`
 
-2. `Design Pattern`
+<!-- 2. `Design Pattern`
   - Here are the implementations of the following design patterns in TypeScript:
   ### Creational ###
   * [Singleton](https://github.com/Seolhun/typescript-example/tree/master/example/pattern/creational/)
@@ -42,5 +42,5 @@
   * [State](https://github.com/Seolhun/typescript-example/tree/master/example/pattern/behavioral/)
   * [Strategy](https://github.com/Seolhun/typescript-example/tree/master/example/pattern/behavioral/)
   * [Template Method](https://github.com/Seolhun/typescript-example/tree/master/example/pattern/behavioral/)
-  * [Visitor](https://github.com/Seolhun/typescript-example/tree/master/example/pattern/behavioral/)
+  * [Visitor](https://github.com/Seolhun/typescript-example/tree/master/example/pattern/behavioral/) -->
 
