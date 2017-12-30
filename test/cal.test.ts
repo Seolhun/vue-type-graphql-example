@@ -1,4 +1,4 @@
-import { Calculator } from '../src/common/Calculator'
+import { Calculator } from '@seolhun/typescript-example/src/common/Calculator';
 
 describe('#Calculator.ts', function() {
     const calculator = new Calculator();
@@ -10,4 +10,3 @@ describe('#Calculator.ts', function() {
       expect(calculator.multiply(20, 5)).toBe(100);
     });
 });
-
