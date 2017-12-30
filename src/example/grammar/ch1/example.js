@@ -19,7 +19,7 @@ var user = [0, 1, 2];
 function returnMyName() {
     return myName;
 }
-//void 
+//void
 function sayHello() {
     console.log("Hello");
 }
