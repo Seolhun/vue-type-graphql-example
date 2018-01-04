@@ -1,3 +1,4 @@
+// tslint:disable-next-line:no-namespace
 namespace BuilderPattern {
   export class UserBuilder {
     private name: string;

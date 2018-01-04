@@ -15,12 +15,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 function methodA() {
-    console.log("methodA(): evaluated");
+    console.log('methodA(): evaluated');
     return function (target, propertyKey, descriptor) {
-        console.log("methodA(): target", target);
-        console.log("methodA(): propertyKey", propertyKey);
-        console.log("methodA(): descriptor", descriptor.value = 3);
-        console.log("methodA(): called");
+        console.log('methodA(): target', target);
+        console.log('methodA(): propertyKey', propertyKey);
+        console.log('methodA(): descriptor', descriptor.value = 3);
+        console.log('methodA(): called');
     };
 }
 function classDecorator(constructor) {
@@ -28,8 +28,8 @@ function classDecorator(constructor) {
         __extends(class_1, _super);
         function class_1() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.newProperty = "new property";
-            _this.hello = "override";
+            _this.newProperty = 'new property';
+            _this.hello = 'override';
             return _this;
         }
         return class_1;
@@ -37,7 +37,7 @@ function classDecorator(constructor) {
 }
 var Demo = /** @class */ (function () {
     function Demo(m) {
-        this.property = "property";
+        this.property = 'property';
         this.hello = m;
     }
     Demo.prototype.show = function (args) {
@@ -51,4 +51,4 @@ var Demo = /** @class */ (function () {
     ], Demo);
     return Demo;
 }());
-console.log(new Demo("world"));
+console.log(new Demo('world'));
