@@ -1,3 +1,4 @@
+// tslint:disable-next-line:no-namespace
 var BuilderPattern;
 (function (BuilderPattern) {
     var UserBuilder = /** @class */ (function () {

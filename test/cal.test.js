@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Calculator_1 = require("../src/common/Calculator");
+var Calculator_1 = require("@seolhun/typescript-example/src/common/Calculator");
 describe('#Calculator.ts', function () {
     var calculator = new Calculator_1.Calculator();
     test('should return 10 when value (3, 7)', function () {

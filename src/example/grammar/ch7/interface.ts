@@ -7,13 +7,13 @@ function initName(person: NamedParson) {
 }
 
 function changeName(person: NamedParson) {
-  person.firstName = 'Anna'
+  person.firstName = 'Anna';
 }
 
 const person = {
   firstName: 'Seol',
-  age: 27
-}
+  age: 27,
+};
 
 // interface에 age가 존재하지 않아 compile error 발생
 // initName({firstName: 'Seol', age: 27});

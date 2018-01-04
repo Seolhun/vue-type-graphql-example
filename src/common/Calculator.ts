@@ -1,7 +1,7 @@
 interface Math {
-  add(a: number, b:number): number;
+  add(a: number, b: number): number;
 
-  multiply(a: number, b:number): number;
+  multiply(a: number, b: number): number;
 }
 
 export class Calculator implements Math {
@@ -11,8 +11,8 @@ export class Calculator implements Math {
    * @param {string} locale
    * @return {string}
    */
-  add(a: number, b: number) : number{
-    return a+b;
+  add(a: number, b: number): number {
+    return a + b;
   }
   /**
    * Multiply numbers
@@ -21,6 +21,6 @@ export class Calculator implements Math {
    * @return {string}
    */
   multiply(a: number, b: number): number {
-    return a*b;
+    return a * b;
   }
 }

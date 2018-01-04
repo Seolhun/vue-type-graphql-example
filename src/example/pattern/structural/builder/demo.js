@@ -1,13 +1,14 @@
 /// <reference path="BuilderPattern.ts" />
+// tslint:disable-next-line:no-namespace
 var BuilderPattern;
 (function (BuilderPattern) {
     var Demo;
     (function (Demo) {
         function show() {
-            var user = new BuilderPattern.UserBuilder("Jancsi")
+            var user = new BuilderPattern.UserBuilder('Jancsi')
                 .setAge(12)
-                .setPhone("0123456789")
-                .setAddress("asdf")
+                .setPhone('0123456789')
+                .setAddress('asdf')
                 .build();
             console.log('user.$name: ' + user.$name);
             console.log('user.$age: ' + user.$age);
