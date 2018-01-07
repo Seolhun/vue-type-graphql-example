@@ -6,9 +6,9 @@
 ---
 ## To Study TypeScript
 1. `npm install`
-2. Checking the index.html script `src` to test ts code. 
-3. `tsc`
-3. `npm start`
+2. Checking the `main.ts` to test ts code. 
+  - `tsc` : if you want to sea `js`
+3. `npm run dev`
 
 ## Content List
 1. `Grammar`
