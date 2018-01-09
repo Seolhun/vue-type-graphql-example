@@ -1,7 +1,8 @@
-import { Calculator } from '@seolhun/typescript-example/src/common/Calculator';
+import { TestCalculator } from '@seolhun/typescript-example';
+import * as _ from 'lodash';
 
-describe('#Calculator.ts', function () {
-  const calculator = new Calculator();
+describe('#Calculator.ts', () => {
+  const calculator = new TestCalculator();
   test('should return 10 when value (3, 7)', () => {
     expect(calculator.add(3, 7)).toBe(10);
   });

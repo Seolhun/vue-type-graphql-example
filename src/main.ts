@@ -1,4 +1,4 @@
-console.log('main.ts');
+import * as _ from 'lodash';
 
 import CallAndApply from './example/study/call&apply/test';
 const callAndApply = new CallAndApply();
