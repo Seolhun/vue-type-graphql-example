@@ -6,3 +6,4 @@ callAndApply.run();
 var test_2 = require("./example/study/spread/test");
 var spread = new test_2.default();
 spread.run();
+exports.default = seolhun;

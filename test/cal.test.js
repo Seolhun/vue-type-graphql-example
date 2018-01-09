@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var typescript_example_1 = require("@seolhun/typescript-example");
+var TestCalculator = require("@seolhun/typescript-example");
 describe('#Calculator.ts', function () {
-    var calculator = new typescript_example_1.TestCalculator();
+    var calculator = new TestCalculator();
     test('should return 10 when value (3, 7)', function () {
         expect(calculator.add(3, 7)).toBe(10);
     });

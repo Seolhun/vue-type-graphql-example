@@ -1,7 +1,7 @@
 {
   "name": "@seolhun/typescript-example",
   "author": "SeolHun",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "TypeScript Mastering Project",
   "main": "main.js",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "classnames": "^2.2.5"
   },
   "devDependencies": {
-    "@seolhun/typescript-example": "^0.1.1",
+    "@seolhun/typescript-example": "^0.1.2",
     "@types/jest": "^22.0.1",
     "@types/lodash": "^4.14.92",
     "autoprefixer": "^7.2.2",

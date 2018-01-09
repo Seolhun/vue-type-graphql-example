@@ -1,5 +1,4 @@
-import { TestCalculator } from '@seolhun/typescript-example';
-import * as _ from 'lodash';
+import * as TestCalculator from '@seolhun/typescript-example';
 
 describe('#Calculator.ts', () => {
   const calculator = new TestCalculator();

@@ -7,3 +7,12 @@ callAndApply.run();
 import Spread from './example/study/spread/test';
 const spread = new Spread();
 spread.run();
+
+import { Calculator } from './common/Calculator';
+
+declare const seolhun: {
+  Spread: Spread;
+  CallAndApply: CallAndApply
+  Calculator: Calculator
+};
+export default seolhun;
