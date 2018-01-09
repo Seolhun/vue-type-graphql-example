@@ -2,7 +2,6 @@
 
 - Author : [HunSeol](https://github.com/Seolhun)
 - Date : 2017.10.19
-
 ---
 ## To Study TypeScript
 1. `npm install`
