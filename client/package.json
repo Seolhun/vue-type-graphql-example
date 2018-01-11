@@ -1,35 +1,21 @@
 {
   "name": "@seolhun/typescript-example",
   "author": "SeolHun",
-<<<<<<< HEAD:client/package.json
   "version": "0.1.4",
-=======
-  "version": "0.1.1",
->>>>>>> a00aad4899378b4d77bf778f44640812041287aa:package.json
   "description": "TypeScript Mastering Project",
   "main": "main.js",
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.5",
-    "express-graphql": "^0.6.11",
-    "graphql": "^0.12.3",
-    "jest": "^22.0.4",
+    "jest": "^22.0.6",
     "lodash": "^4.17.4",
     "mithril": "^1.1.6"
   },
   "devDependencies": {
-<<<<<<< HEAD:client/package.json
     "@seolhun/typescript-example": "^0.1.4",
     "@types/jest": "^22.0.1",
     "@types/lodash": "^4.14.92",
-    "@types/express": "^4.11.0",
-    "@types/express-graphql": "0.0.35",
-    "@types/graphql": "^0.11.7",
-=======
-    "@seolhun/typescript-example": "^0.1.1",
-    "@types/jest": "^22.0.1",
-    "@types/lodash": "^4.14.92",
->>>>>>> a00aad4899378b4d77bf778f44640812041287aa:package.json
+    "@types/mithril": "^1.1.12",
     "autoprefixer": "^7.2.2",
     "awesome-typescript-loader": "^3.4.1",
     "babel-core": "^6.26.0",
@@ -56,7 +42,6 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "eventsource-polyfill": "^0.9.6",
-    "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
     "friendly-errors-webpack-plugin": "^1.6.1",
@@ -81,13 +66,13 @@
     "shelljs": "^0.7.8",
     "sinon": "^4.1.4",
     "style-loader": "^0.19.0",
-    "tslint": "^5.8.0",
+    "tslint": "^5.9.1",
     "typescript": "^2.6.2",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.9.2",
     "webpack-dev-middleware": "^1.12.2",
-    "webpack-dev-server": "^2.10.0",
+    "webpack-dev-server": "^2.10.1",
     "webpack-hot-middleware": "^2.21.0",
     "webpack-merge": "^4.1.0"
   },
