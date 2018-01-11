@@ -8,6 +8,7 @@
 2. `NodeJS`, `Express`
 3. `Mithril JS`
 4. `GraphQL`
+5. `json-server`
 
 ## To Study TypeScript & NodeJS
 - `Server`

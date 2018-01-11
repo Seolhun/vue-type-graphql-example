@@ -14,7 +14,7 @@
 - `Client`
   1. `npm install`
   2. Checking the `main.ts` to test ts code. 
-    - `tsc` : if you want to sea `js`
+    - `tsc` : if you want to see `js`
   3. `npm run dev`
 
 - `Server`
