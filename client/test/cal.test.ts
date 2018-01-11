@@ -1,4 +1,9 @@
+<<<<<<< HEAD:client/test/cal.test.ts
 import * as TestCalculator from '@seolhun/typescript-example';
+=======
+import { TestCalculator } from '@seolhun/typescript-example';
+import * as _ from 'lodash';
+>>>>>>> a00aad4899378b4d77bf778f44640812041287aa:test/cal.test.ts
 
 describe('#Calculator.ts', () => {
   const calculator = new TestCalculator();
