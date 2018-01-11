@@ -1,10 +1,3 @@
 import { Calculator } from '../src/common/Calculator';
-
-export = seolhun;
-export as namespace seolhun;
-
-declare namespace seolhun {
-  interface Calculator {
-    Calculator
-  }
-}
+declare const TestCalculator: Calculator;
+export default TestCalculator;
