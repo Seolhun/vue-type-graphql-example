@@ -9,11 +9,12 @@
 3. `Mithril JS`
 4. `GraphQL`
 
-## To Study TypeScript
-1. `npm install`
-2. Checking the `main.ts` to test ts code. 
-  - `tsc` : if you want to sea `js`
-3. `npm run dev`
+## To Study TypeScript & NodeJS
+- `Client`
+  1. `npm install`
+  2. Checking the `main.ts` to test ts code. 
+    - `tsc` : if you want to sea `js`
+  3. `npm run dev`
 
 ## Content List
 1. `Grammar`, `Java & TypeScript Method`

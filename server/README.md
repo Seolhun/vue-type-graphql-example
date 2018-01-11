@@ -8,23 +8,12 @@
 2. `NodeJS`, `Express`
 3. `Mithril JS`
 4. `GraphQL`
-5. `json-server`
 
 ## To Study TypeScript & NodeJS
-- `Client`
-  1. `npm install`
-  2. Checking the `main.ts` to test ts code. 
-    - `tsc` : if you want to sea `js`
-  3. `npm run dev`
-
 - `Server`
   1. `npm run server`
   2. [http://localhost:4000/graphql](http://localhost:4000/graphql)
   3. Click the `Docs`
-
-- `DB`
-  1. `npm run json:server`
-  2. [http://localhost:3000/users](http://localhost:3000/users)
 
 ## Content List
 1. `Grammar`, `Java & TypeScript Method`
