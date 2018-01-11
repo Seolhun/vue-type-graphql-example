@@ -3,6 +3,12 @@
 - Author : [HunSeol](https://github.com/Seolhun)
 - Date : 2017.10.19
 ---
+## Pre-Reqirement
+1. `TypeScript`
+2. `NodeJS`, `Express`
+3. `Mithril JS`
+4. `GraphQL`
+
 ## To Study TypeScript
 1. `npm install`
 2. Checking the `main.ts` to test ts code. 
@@ -10,7 +16,9 @@
 3. `npm run dev`
 
 ## Content List
-1. `Grammar`
+1. `Grammar`, `Java & TypeScript Method`
+2. `Design Pattern`
+3. `GraphQL`
 
 <!-- 2. `Design Pattern`
   - Here are the implementations of the following design patterns in TypeScript:
