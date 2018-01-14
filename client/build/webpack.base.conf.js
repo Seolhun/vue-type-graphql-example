@@ -9,84 +9,78 @@ function resolve(dir) {
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: {
-    app: './src/main.js'
-  },
+  entry: './src/index.ts',
   output: {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/dist/',
+    filename: 'build.js'
   },
-  resolve: {
-    extensions: ['.js', '.ts', '.tsx', '.json'],
-    alias: {
-      '@': resolve('src'),
-    },
-  },
-
   module: {
     rules: [
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
-      }, {
-        test: /\.(tsx|ts)?$/,
-        loader: 'awesome-typescript-loader',
-        include: [resolve('src'), resolve('test')],
-        exclude: /node_modules/
-      }, {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract('css-loader')
-      },
-      {
-        test: /\.scss$/,
-        use: [{
-          loader: 'style-loader' // creates style nodes from JS strings
-        }, {
-          loader: 'css-loader', // translates CSS into CommonJS
-          options: {
-            sourceMap: true
-          }
-        }, {
-          loader: 'sass-loader', // compiles Sass to CSS
-          options: {
-            sourceMap: true,
-            // includePaths: ["absolute/path/a", "absolute/path/b"]
-          }
-        }]
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
+        test: /\.vue$/,
+        loader: 'vue-loader',
         options: {
-          limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          loaders: {
+            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
+            // the "scss" and "sass" values for the lang attribute to the right configs here.
+            // other preprocessors should work out of the box, no loader config like this necessary.
+            'scss': 'vue-style-loader!css-loader!sass-loader',
+            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+          }
+          // other vue-loader options go here
         }
       },
       {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader',
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
         options: {
-          limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
+          appendTsSuffixTo: [/\.vue$/],
         }
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
         options: {
-          limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: '[name].[ext]?[hash]'
         }
       }
     ]
   },
-  plugins: [
-    new ExtractTextPlugin({
-      filename: '[name].css'
+  resolve: {
+    extensions: ['.ts', '.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
+  },
+  devServer: {
+    historyApiFallback: true,
+    noInfo: true
+  },
+  performance: {
+    hints: false
+  },
+  devtool: '#eval-source-map'
+}
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.devtool = '#source-map'
+  // http://vue-loader.vuejs.org/en/workflow/production.html
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
     })
-  ]
+  ])
 }
