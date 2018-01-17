@@ -1,4 +1,3 @@
-<!-- src/components/Hello.vue -->
 
 <template>
     <div>
