@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
+    "module": "es6",
+    "moduleResolution": "node",
+    "target": "es6",
     "watch": true,
     "sourceMap": false,
+    "removeComments": false,
     "noImplicitThis": true,
     "strictNullChecks": true,
     "experimentalDecorators": true,
