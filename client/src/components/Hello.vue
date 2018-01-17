@@ -1,5 +1,3 @@
-<!-- src/components/Hello.vue -->
-
 <template>
     <div>
       <h2>
