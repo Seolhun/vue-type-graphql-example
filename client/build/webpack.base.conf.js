@@ -88,17 +88,12 @@ module.exports = {
         }
       },
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
-      },
-      {
-        test: /\.(ts|tsx)?$/,
-        loader: 'ts-loader',
+        test: /\.tsx$/,
         exclude: /node_modules/,
-        options: {
-          appendTsSuffixTo: [/\.vue$/],
-        }
+        use: [
+          'babel-loader',
+          'ts-loader'
+        ]
       }, {
         test: /\.scss$/,
         use: [{
