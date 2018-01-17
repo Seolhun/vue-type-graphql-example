@@ -1,14 +1,23 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "strict": false,
-    "noImplicitReturns": false,
-    "experimentalDecorators": true,
+    "target": "es5",
+    "lib": [
+      "dom",
+      "es2015"
+    ],
     "module": "es2015",
     "moduleResolution": "node",
-    "target": "es5"
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "jsx": "preserve",
+    "jsxFactory": "h"
   },
   "include": [
-    "./src/**/*"
-  ]
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+  ],
+  "compileOnSave": false
 }
