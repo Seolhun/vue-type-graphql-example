@@ -3,22 +3,43 @@
     {
       "id": "1",
       "name": "SeolHun",
-      "age": 20
+      "age": 20,
+      "companyId": "1"
     },
     {
       "id": "2",
       "name": "Jay",
-      "age": 25
+      "age": 25,
+      "companyId": "1"
     },
     {
       "id": "3",
       "name": "Steve",
-      "age": 15
+      "age": 33,
+      "companyId": "2"
     },
     {
       "id": "4",
       "name": "Jobs",
-      "age": 45
+      "age": 45,
+      "companyId": "3"
+    }
+  ],
+  "companies": [
+    {
+      "id": "1",
+      "name": "Apple",
+      "description": "iOS"
+    },
+    {
+      "id": "2",
+      "name": "Google",
+      "description": "Android"
+    },
+    {
+      "id": "3",
+      "name": "Samsung",
+      "description": "Galaxy"
     }
   ]
 }

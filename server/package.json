@@ -4,8 +4,8 @@
   "description": "Graphql example",
   "main": "main.js",
   "scripts": {
-    "server": "node src/main.js",
-    "json:server": "json-server --watch db.json",
+    "dev": "nodemon src/main.js",
+    "json:server": "json-server --watch db.json --port 3100",
     "test": "jest"
   },
   "author": "",
@@ -16,6 +16,7 @@
     "graphql": "^0.12.3",
     "jest": "^22.0.6",
     "lodash": "^4.17.4",
+    "nodemon": "^1.14.11",
     "typescript": "^2.6.2"
   },
   "devDependencies": {
