@@ -1,35 +1,48 @@
-let path = require('path')
-let utils = require('./utils')
-let config = require('../config')
+var path = require('path')
+var utils = require('./utils')
+var config = require('../config')
+var vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 module.exports = {
-  entry: './src/index.ts',
+  entry: {
+    app: './src/index.ts'
+  },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    path: config.build.assetsRoot,
+    filename: '[name].js',
+    publicPath: process.env.NODE_ENV === 'production'
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath
+  },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('src'),
+    }
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+        // options: vueLoaderConfig
         options: {
           loaders: {
-            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-            // the "scss" and "sass" values for the lang attribute to the right configs here.
-            // other preprocessors should work out of the box, no loader config like this necessary.
             'scss': 'vue-style-loader!css-loader!sass-loader',
             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
           }
           // other vue-loader options go here
         }
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [resolve('src'), resolve('test')]
       },
       {
         test: /\.tsx?$/,
@@ -38,49 +51,45 @@ module.exports = {
         options: {
           appendTsSuffixTo: [/\.vue$/],
         }
+      }, {
+        test: /\.scss$/,
+        use: [{
+          loader: 'style-loader' // creates style nodes from JS strings
+        }, {
+          loader: 'css-loader', // translates CSS into CommonJS
+          options: {
+            sourceMap: true
+          }
+        }, {
+          loader: 'sass-loader', // compiles Sass to CSS
+          options: {
+            sourceMap: true,
+          }
+        }]
+      }, {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+        }
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: 'url-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          limit: 10000,
+          name: utils.assetsPath('media/[name].[hash:7].[ext]')
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
     ]
-  },
-  resolve: {
-    extensions: ['.ts', '.js', '.vue', '.json'],
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
-  },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true
-  },
-  performance: {
-    hints: false
-  },
-  devtool: '#eval-source-map'
-}
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  ])
+  }
 }

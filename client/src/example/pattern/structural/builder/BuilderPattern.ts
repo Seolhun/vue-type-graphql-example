@@ -58,25 +58,25 @@ namespace BuilderPattern {
     private address: string;
 
     constructor(builder: UserBuilder) {
-      this.name = builder.$name;
-      this.age = builder.$age;
-      this.phone = builder.$phone;
-      this.address = builder.$address;
+      this.name = builder.Name;
+      this.age = builder.Age;
+      this.phone = builder.Phone;
+      this.address = builder.Address;
     }
 
-    public get $name(): string {
+    public get Name(): string {
       return this.name;
     }
 
-    public get $age(): number {
+    public get Age(): number {
       return this.age;
     }
 
-    public get $phone(): string {
+    public get Phone(): string {
       return this.phone;
     }
 
-    public get $address(): string {
+    public get Address(): string {
       return this.address;
     }
   }

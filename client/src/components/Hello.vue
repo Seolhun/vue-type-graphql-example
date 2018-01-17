@@ -2,42 +2,46 @@
 
 <template>
     <div>
-        <div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
-        <button @click="decrement">-</button>
-        <button @click="increment">+</button>
+      <h2>
+        {{title}}
+      </h2>
+      <div class='greeting'>Hello {{ name }}</div>
+      <div>
+        {{ count }}
+      </div>
+      <button @click='decrement'>-</button>
+      <button @click='increment'>+</button>
     </div>
 </template>
 
-<script lang="ts">
+<script lang='ts'>
 import Vue from "vue";
 
 export default Vue.extend({
-  props: ["name", "initialEnthusiasm"],
+  props: ["name"],
   data() {
     return {
-      enthusiasm: this.initialEnthusiasm
+      title: "Vue + TypeScript + GraphQL Example",
+      count: 0
     };
   },
   methods: {
     increment() {
-      this.enthusiasm++;
+      this.count++;
     },
     decrement() {
-      if (this.enthusiasm > 1) {
-        this.enthusiasm--;
+      if (this.count >= 1) {
+        this.count--;
       }
     }
   },
-  computed: {
-    exclamationMarks(): string {
-      return Array(this.enthusiasm + 1).join("!");
-    }
-  }
+  computed: {}
 });
 </script>
 
-<style>
+<style lang='scss'>
 .greeting {
+  margin: 20px;
   font-size: 20px;
 }
 </style>

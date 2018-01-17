@@ -10,10 +10,10 @@ namespace BuilderPattern {
         .setAddress('asdf')
         .build();
 
-      console.log('user.$name: ' + user.$name);
-      console.log('user.$age: ' + user.$age);
-      console.log('user.$phone: ' + user.$phone);
-      console.log('user.$address: ' + user.$address);
+      console.log('user.$name: ' + user.Name);
+      console.log('user.$age: ' + user.Age);
+      console.log('user.$phone: ' + user.Phone);
+      console.log('user.$address: ' + user.Address);
     }
   }
 }
