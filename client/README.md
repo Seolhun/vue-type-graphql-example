@@ -1,7 +1,7 @@
 # [typescript-example](https://github.com/Seolhun/typescript-example/)
 - Author : [HunSeol](https://github.com/Seolhun)
 - Date : 2017.10.19
----
+
 ## Pre-Reqirement
 1. `TypeScript`
 2. `NodeJS`, `Express`
