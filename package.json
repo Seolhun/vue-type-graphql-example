@@ -1,0 +1,11 @@
+{
+  "name": "typescript-example",
+  "version": "1.0.0",
+  "description": "NodeJS + TypeScript + Vue + GraphQL Example",
+  "scripts": {
+    "install": "cd client && npm install && cd ../server && npm install",
+    "update": "cd client && npm update && cd ../server && npm update"
+  },
+  "author": "",
+  "license": "ISC"
+}

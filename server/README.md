@@ -1,26 +1,28 @@
 # [typescript-example](https://github.com/Seolhun/typescript-example/)
-
 - Author : [HunSeol](https://github.com/Seolhun)
 - Date : 2017.10.19
 ---
 ## Pre-Reqirement
 1. `TypeScript`
 2. `NodeJS`, `Express`
-3. `Mithril JS`
+3. `Vue-Cli`
 4. `GraphQL`
 5. `json-server`
 
-## To Study TypeScript & NodeJS
-- `Server`
-  1. `npm run server`
-  2. [http://localhost:4000/graphql](http://localhost:4000/graphql)
-  3. Click the `Docs`
-
 ## Content List
-1. `Grammar`, `Java & TypeScript Method`
+1. `Grammar`, `TypeScript Method`
 2. `Design Pattern`
 3. `GraphQL`
 
+## How to run
+- `Server`
+  1. `npm run dev`
+  2. [http://localhost:4000/graphql](http://localhost:4000/graphql)
+
+- `DB`
+  1. `npm run json:server`
+  2. [http://localhost:3100/users](http://localhost:3100/users)
+  
 <!-- 2. `Design Pattern`
   - Here are the implementations of the following design patterns in TypeScript:
   ### Creational ###

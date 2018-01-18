@@ -11,4 +11,6 @@ app.use('/graphql', expressGraphQL({
 const port = 4000;
 app.listen(port, () => {
   console.log('Listening the server ' + port);
+}).on('error', err => {
+  console.error(err);
 });
