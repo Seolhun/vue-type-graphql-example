@@ -4,42 +4,110 @@
       "id": "1",
       "name": "SeolHun",
       "age": 20,
-      "companyId": "1"
+      "divisionId": "1",
+      "registered_date": "2017-12-01"
     },
     {
-      "id": "2",
-      "name": "Jay",
-      "age": 25,
-      "companyId": "1"
+      "age": 20,
+      "name": "Stephen",
+      "divisionId": "2",
+      "registered_date": "2017-12-01",
+      "id": "Grw5_Ef"
     },
     {
-      "id": "3",
-      "name": "Steve",
-      "age": 33,
-      "companyId": "2"
+      "age": 20,
+      "name": "Stephen",
+      "divisionId": "2",
+      "registered_date": "2017-12-01",
+      "id": "KGr58xE"
     },
     {
-      "id": "4",
-      "name": "Jobs",
-      "age": 45,
-      "companyId": "3"
+      "age": 20,
+      "name": "Stephen",
+      "divisionId": "2",
+      "registered_date": "2017-12-01",
+      "id": "MUVf2_C"
+    },
+    {
+      "age": 20,
+      "name": "Edituser",
+      "divisionId": "1",
+      "registered_date": "2017-12-01",
+      "id": "rT~BJ45"
+    },
+    {
+      "age": 20,
+      "name": "Stephen",
+      "divisionId": "2",
+      "registered_date": "2017-12-01",
+      "id": "ybf71MK"
+    },
+    {
+      "age": 20,
+      "name": "Stephen",
+      "divisionId": "2",
+      "registered_date": "2017-12-01",
+      "id": "RN9slji"
+    },
+    {
+      "age": 20,
+      "name": "Stephen",
+      "divisionId": "2",
+      "registered_date": "2017-12-01",
+      "id": "BFQZ1u1"
+    },
+    {
+      "age": 20,
+      "name": "Stephen",
+      "divisionId": "2",
+      "registered_date": "2017-12-01",
+      "id": "G~BdngE"
     }
   ],
-  "companies": [
+  "books": [
     {
       "id": "1",
-      "name": "Apple",
-      "description": "iOS"
+      "name": "TypeScript",
+      "writer": "Steve",
+      "status": true,
+      "description": "TypeScript",
+      "registered_date": "2017-12-01"
     },
     {
       "id": "2",
-      "name": "Google",
-      "description": "Android"
+      "name": "JavaScript",
+      "writer": "Jobs",
+      "status": true,
+      "description": "JavaScript",
+      "registered_date": "2017-12-01"
     },
     {
       "id": "3",
-      "name": "Samsung",
-      "description": "Galaxy"
+      "name": "Git",
+      "writer": "Talee",
+      "status": true,
+      "description": "Git",
+      "registered_date": "2017-12-01"
+    }
+  ],
+  "divisions": [
+    {
+      "id": "1",
+      "name": "Develop",
+      "description": "Develop",
+      "registered_date": "2017-12-01"
+    },
+    {
+      "id": "2",
+      "name": "Marketing",
+      "description": "Marketing",
+      "registered_date": "2017-12-01"
+    },
+    {
+      "id": "3",
+      "name": "Alliance",
+      "description": "Alliance",
+      "registered_date": "2017-12-01"
     }
   ]
 }
