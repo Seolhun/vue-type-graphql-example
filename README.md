@@ -3,7 +3,7 @@
 - Date : 2017.10.19
 ---
 ## Pre-Reqirement
-1. `TypeScript`
+1. `TypeScript` , `ts-node`
 2. `NodeJS`, `Express`
 3. `Vue-Cli`
 4. `GraphQL`
@@ -16,6 +16,7 @@
 
 ## How to run
 - `Server`
+  - `npm install -g ts-node vue-cli typescript`
   1. `npm run dev`
   2. [http://localhost:4000/graphql](http://localhost:4000/graphql)
 
