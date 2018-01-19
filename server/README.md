@@ -24,6 +24,7 @@
 
 ## How to run
 - `Server`
+  - `npm install -g ts-node vue-cli typescript`
   1. `npm run dev`
   2. [http://localhost:4000/graphql](http://localhost:4000/graphql)
 
