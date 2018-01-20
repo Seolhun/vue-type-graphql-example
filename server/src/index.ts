@@ -22,7 +22,6 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 }
 
-// GraphQL
 app.use('/graphql', expressGraphQL({
   schema,
   graphiql: true,
