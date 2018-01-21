@@ -6,7 +6,7 @@ import schema from './graphql/schema';
 export const app = express();
 
 const logger = winston.createLogger({
-  level: 'info',
+  level: 'debug',
   format: winston.format.json(),
   transports: [
     new winston.transports.Console(),

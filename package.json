@@ -7,6 +7,5 @@
     "update": "cd client && npm update && cd ../server && npm update"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {}
+  "license": "ISC"
 }
