@@ -1,10 +1,12 @@
+
+import logger from 'common/logger';
 import * as express from 'express';
 import * as expressGraphQL from 'express-graphql';
-import * as winston from 'winston';
 import schema from './graphql/schema';
 
 export const app = express();
 
+<<<<<<< HEAD
 const logger = winston.createLogger({
   level: 'debug',
   format: winston.format.json(),
@@ -22,6 +24,8 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 }
 
+=======
+>>>>>>> [AWS] - Is adding Dynamo client to store test data
 // GraphQL
 app.use('/graphql', expressGraphQL({
   schema,
