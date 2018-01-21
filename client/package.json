@@ -23,14 +23,10 @@
     "jest": "^22.1.4",
     "lodash": "^4.17.4",
     "nodemon": "^1.14.11",
-<<<<<<< HEAD
     "ts-loader": "^3.3.1",
     "typescript": "^2.6.2",
     "vue": "^2.5.13",
     "vue-apollo": "^3.0.0-alpha.3",
-=======
-    "vue": "^2.5.13",
->>>>>>> Completed TpyeScript config, but need search information about config of vue typescript
     "vue-class-component": "^6.1.2",
     "vue-property-decorator": "^6.0.0",
     "vue-router": "^3.0.1",

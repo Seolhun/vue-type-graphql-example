@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class='container'>
     <div class='row'>
       <div class='col-sm-12'>
@@ -10,6 +11,17 @@
         <router-link class="navigation-link" tag="button" :to="'graphql'">GraphQL</router-link>
         <router-link class="navigation-link" tag="button" :to="'vue'">Vue Logo</router-link>
         <router-view/>
+=======
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <input v-model="msg">
+        <p>prop: {{propMessage}}</p>
+        <p>msg: {{msg}}</p>
+        <p>helloMsg: {{helloMsg}}</p>
+        <p>computed msg: {{computedMsg}}</p>
+        <button @click="greet">Greet</button>
+>>>>>>> [graphql] - Arragned config and files
       </div>
     </div>
   </div>
