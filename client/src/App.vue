@@ -1,11 +1,16 @@
 <template>
-  <div>
-    <input v-model="msg">
-    <p>prop: {{propMessage}}</p>
-    <p>msg: {{msg}}</p>
-    <p>helloMsg: {{helloMsg}}</p>
-    <p>computed msg: {{computedMsg}}</p>
-    <button @click="greet">Greet</button>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <h2>Componenets</h2>
+        <hello propMsg='Hello, TypeScript Vue'></hello>
+        <hr>
+        <h2>Router View</h2>
+        <router-link class="navigation-link" tag="button" :to="'/'">Counter</router-link>
+        <router-link class="navigation-link" tag="button" :to="'vue'">Vue Logo</router-link>
+        <router-view/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,35 +18,12 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 
+import Hello from "components/Hello.vue";
+
 @Component({
-  props: {
-    propMessage: String
+  components: {
+    Hello
   }
 })
-export default class App extends Vue {
-  // initial data
-  msg = 123;
-
-  // use prop values for initial data
-  helloMsg = "Hello, " + this.propMessage;
-
-  // // lifecycle hook
-  // mounted() {
-  //   this.greet();
-  // }
-
-  // computed
-  get computedMsg() {
-    return "computed " + this.msg;
-  }
-
-  // method
-  greet() {
-    alert("greeting: " + this.msg);
-  }
-
-  hello() {
-    alert("hello: " + this.msg);
-  }
-}
+export default class App extends Vue {}
 </script>
