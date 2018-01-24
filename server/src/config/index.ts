@@ -1,7 +1,6 @@
 export enum API_SERVER {
   JSON_SERVER = 'http://localhost:3100',
 }
-
 // const config = {
 //   build: {
 //     env: require('./prod.env'),
