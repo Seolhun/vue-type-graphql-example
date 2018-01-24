@@ -27,6 +27,7 @@
     "@types/graphql": "^0.11.8",
     "@types/jest": "^22.0.1",
     "@types/lodash": "^4.14.92",
+    "aws-sdk": "^2.185.0",
     "axios": "^0.17.1"
   }
 }
