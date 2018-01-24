@@ -2,6 +2,7 @@
 import logger from 'common/logger';
 import * as express from 'express';
 import * as expressGraphQL from 'express-graphql';
+import * as winston from 'winston';
 import schema from './graphql/schema';
 
 export const app = express();
