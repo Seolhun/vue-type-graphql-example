@@ -6,7 +6,6 @@ import * as winston from 'winston';
 import schema from './graphql/schema';
 
 export const app = express();
-
 // GraphQL
 app.use('/graphql', expressGraphQL({
   schema,
