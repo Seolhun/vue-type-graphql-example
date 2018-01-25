@@ -23,7 +23,9 @@ module.exports = {
       vue$: 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       components: path.resolve('src/components'),
-      router: path.resolve('src/router')
+      router: path.resolve('src/router'),
+      store: path.resolve('src/store')
+
     },
     extensions: ['.vue', 'ts', 'tsx', '.js', '.json']
   },
