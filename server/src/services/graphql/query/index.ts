@@ -2,7 +2,7 @@ import axios from 'axios';
 import { graphql, GraphQLSchema, printSchema } from 'graphql';
 import { GraphQLList, GraphQLNonNull, GraphQLObjectType } from 'graphql';
 import { GraphQLString } from 'graphql/type/scalars';
-import { API_SERVER } from '../../config';
+import { API_SERVER } from '../../../config';
 import { BookType, DivisionType, UserType } from '../type';
 
 const query = new GraphQLObjectType({

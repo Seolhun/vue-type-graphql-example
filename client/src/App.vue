@@ -7,6 +7,7 @@
         <hr>
         <h2>Router View</h2>
         <router-link class="navigation-link" tag="button" :to="'/'">Counter</router-link>
+        <router-link class="navigation-link" tag="button" :to="'graphql'">GraphQL</router-link>
         <router-link class="navigation-link" tag="button" :to="'vue'">Vue Logo</router-link>
         <router-view/>
       </div>
@@ -14,7 +15,7 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import Vue from "vue";
 import Component from "vue-class-component";
 

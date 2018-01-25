@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Counter from 'components/Counter.vue';
-import VueLogo from 'components/VueLogo.vue';
+import Graphql from 'components/Graphql.vue';
 
 export default new Router({
   routes: [
@@ -11,9 +11,9 @@ export default new Router({
       component: Counter,
     },
     {
-      path: '/vue',
-      name: 'VueLogo',
-      component: VueLogo,
+      path: '/graphql',
+      name: 'Graphql',
+      component: Graphql,
     },
   ],
   mode: 'history',

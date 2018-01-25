@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GraphQLNonNull, GraphQLObjectType } from 'graphql';
 import { GraphQLID, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
-import { API_SERVER } from '../../config';
+import { API_SERVER } from '../../../config';
 import { DivisionType, UserType } from '../type/index';
 
 const mutation = new GraphQLObjectType({
