@@ -25,7 +25,6 @@ module.exports = {
       components: path.resolve('src/components'),
       router: path.resolve('src/router'),
       store: path.resolve('src/store')
-
     },
     extensions: ['.vue', 'ts', 'tsx', '.js', '.json']
   },

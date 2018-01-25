@@ -23,7 +23,6 @@ export default class Counter extends Vue {
   // lifecycle hook
   updated() {}
   beforeUpdate() {}
-
   // computed
   get computedMsg() {
     return this.title;
