@@ -3,7 +3,7 @@
 - Date : 2017.10.19
 
 ## Pre-Reqirement
-1. `TypeScript` , `ts-node`
+1. `TypeScript`
 2. `NodeJS`, `Express`
 3. `Vue-Cli`
 4. `GraphQL`

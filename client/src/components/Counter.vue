@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import Vue from "vue";
 import Component from "vue-class-component";
 
@@ -23,13 +23,10 @@ export default class Counter extends Vue {
   // lifecycle hook
   updated() {}
   beforeUpdate() {}
-  mounted() {
-    this.console();
-  }
 
   // computed
   get computedMsg() {
-    return this.msg;
+    return this.title;
   }
 
   // method
