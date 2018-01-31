@@ -1,9 +1,10 @@
 import Vue from 'vue';
-import Router from 'vue-router';
-import Vuex from 'vuex';
+import Component from 'vue-class-component';
+import Router, { NavigationGuard, Route, RouteConfig } from 'vue-router';
+import Vuex, { ActionTree, MutationTree, Store } from 'vuex';
 
 import router from './router';
-// import store from './store/store';
+import store from './store';
 
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -14,6 +15,12 @@ import { HttpLink } from 'apollo-link-http';
 import VueApollo from 'vue-apollo';
 
 import App from './App.vue';
+
+// Component.registerHooks([
+//   'beforeRouteEnter',
+//   'beforeRouteLeave',
+//   'beforeRouteUpdate',
+// ]);
 
 const link = new HttpLink({
   uri: `http://localhost:5000/graphql`,
@@ -30,12 +37,11 @@ const apolloProvider = new VueApollo({
   defaultClient: apolloClient,
 });
 
-Vue.use(Router);
-Vue.use(Vuex);
 Vue.use(VueApollo);
 Vue.use(BootstrapVue);
 new Vue({
   router,
+  store,
   template: '<App/>',
   components: { App },
   apolloProvider,
