@@ -3,32 +3,35 @@ import logger from 'common/logger';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as express from 'express';
-import * as expressGraphQL from 'express-graphql';
-import schema from './graphql/schema';
+import * as graphqlHTTP from 'express-graphql';
+import * as session from 'express-session';
+import { PORT } from './config';
+import schema from './services/graphql/schema';
 
-export const app = express();
+const app = express();
+// CORS 설정
+app.use(cors());
+// JSON
+app.use(bodyParser.json());
+// Session
+app.set('trust proxy', 1); // trust first proxy
+app.use(session({
+  secret: 'hunseol_typescript_graphql',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true },
+}));
 
-const logger = winston.createLogger({
-  level: 'debug',
-  format: winston.format.json(),
-  transports: [
-    new winston.transports.Console(),
-    new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'logs/debug.log', level: 'debug' }),
-    new winston.transports.File({ filename: 'logs/combined.log' }),
-  ],
-});
-// `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.simple(),
-  }));
-}
-
-// GraphQL
-app.use('/graphql', expressGraphQL({
-  schema,
-  graphiql: true,
+// GraphQLå
+app.use('/graphql', graphqlHTTP(async (request) => {
+  const startTime = Date.now();
+  return {
+    schema,
+    graphiql: process.env.NODE_ENV !== 'production',
+    extensions({ document, variables, operationName, result }) {
+      return { result: bodyParser.json(result), variables, operationName, runTime: Date.now() - startTime };
+    },
+  };
 }));
 
 // Port Setting

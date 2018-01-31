@@ -34,15 +34,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-<<<<<<< HEAD
-      components: path.resolve('src/components'),
-      router: path.resolve('src/router'),
-      store: path.resolve('src/store')
-    },
-    extensions: ['.vue', 'ts', 'tsx', '.js', '.json']
-=======
     }
->>>>>>> TypeScript Vue Setting Completed
   },
   module: {
     rules: [
@@ -84,39 +76,6 @@ module.exports = {
       }, {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
-      }, {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          loaders: {
-            'scss': 'vue-style-loader!css-loader!sass-loader',
-            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
-          }
-          // other vue-loader options go here
-        }
-      },
-      {
-        test: /\.tsx$/,
-        exclude: /node_modules/,
-        use: [
-          'babel-loader',
-          'ts-loader'
-        ]
-      }, {
-        test: /\.scss$/,
-        use: [{
-          loader: 'style-loader' // creates style nodes from JS strings
-        }, {
-          loader: 'css-loader', // translates CSS into CommonJS
-          options: {
-            sourceMap: true
-          }
-        }, {
-          loader: 'sass-loader', // compiles Sass to CSS
-          options: {
-            sourceMap: true,
-          }
-        }]
       }, {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
