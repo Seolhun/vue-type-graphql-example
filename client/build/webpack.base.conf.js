@@ -7,9 +7,20 @@ function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
+const createLintingRule = () => ({
+  test: /\.(js|vue|ts|tsx)$/,
+  loader: 'eslint-loader',
+  enforce: 'pre',
+  include: [resolve('src'), resolve('test')],
+  options: {
+    formatter: require('eslint-friendly-formatter'),
+    emitWarning: !config.dev.showEslintErrorsInOverlay
+  }
+})
+
 module.exports = {
   entry: {
-    app: './src/index.ts'
+    app: './src/main.ts'
   },
   output: {
     path: config.build.assetsRoot,
@@ -19,56 +30,53 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
+    extensions: ['.js', '.vue', '.json', '.ts'],
     alias: {
-      vue$: 'vue/dist/vue.esm.js',
+      'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+<<<<<<< HEAD
       components: path.resolve('src/components'),
       router: path.resolve('src/router'),
       store: path.resolve('src/store')
     },
     extensions: ['.vue', 'ts', 'tsx', '.js', '.json']
+=======
+    }
+>>>>>>> TypeScript Vue Setting Completed
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        // options: vueLoaderConfig
-        options: {
-          loaders: {
-            'scss': 'vue-style-loader!css-loader!sass-loader',
-            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
-          }
-          // other vue-loader options go here
-        }
+        options: vueLoaderConfig,
       }, {
         test: /\.ts$/,
         exclude: /node_modules/,
         use: {
           loader: 'ts-loader',
-          options: {
-            appendTsSuffixTo: [/\.vue$/]
-          }
+          options: { appendTsSuffixTo: [/\.vue$/] }
         }
       },
       {
         test: /\.tsx$/,
         exclude: /node_modules/,
-        use: [
-          'babel-loader',
-          'ts-loader'
-        ]
+        use: ['babel-loader', 'ts-loader']
+      }, {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [resolve('src'), resolve('test')]
       }, {
         test: /\.scss$/,
         use: [{
-          loader: 'style-loader' // creates style nodes from JS strings
+          loader: 'style-loader'
         }, {
-          loader: 'css-loader', // translates CSS into CommonJS
+          loader: 'css-loader',
           options: {
             sourceMap: true
           }
         }, {
-          loader: 'sass-loader', // compiles Sass to CSS
+          loader: 'sass-loader',
           options: {
             sourceMap: true,
           }
@@ -134,5 +142,13 @@ module.exports = {
         }
       }
     ]
+  },
+  node: {
+    setImmediate: false,
+    dgram: 'empty',
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+    child_process: 'empty'
   }
 }

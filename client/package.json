@@ -3,7 +3,7 @@
   "author": "SeolHun",
   "version": "0.1.4",
   "description": "TypeScript Mastering Project",
-  "main": "index.ts",
+  "main": "main.ts",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon build/dev-server.js",
