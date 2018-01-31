@@ -2,13 +2,9 @@
   <div class='container'>
     <div class='row'>
       <div class='col-sm-12'>
-        <h2>Componenets</h2>
-        <hello propMsg='Hello, TypeScript Vue'></hello>
-        <hr>
         <h2>Router View</h2>
-        <router-link class="navigation-link" tag="button" :to="'/'">Counter</router-link>
-        <router-link class="navigation-link" tag="button" :to="'graphql'">GraphQL</router-link>
-        <router-link class="navigation-link" tag="button" :to="'vue'">Vue Logo</router-link>
+        <router-link class="btn btn-success" tag="button" :to="'/'">Home</router-link>
+        <router-link class="btn btn-info" tag="button" :to="'graphql'">GraphQL</router-link>
         <router-view/>
       </div>
     </div>
@@ -19,12 +15,6 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 
-import Hello from "components/Hello.vue";
-
-@Component({
-  components: {
-    Hello
-  }
-})
+@Component
 export default class App extends Vue {}
 </script>

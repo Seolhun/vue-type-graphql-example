@@ -10,7 +10,7 @@
       />
       <hr>
       <h2>Users</h2>
-      <ul v-for='(user, key) in users'>
+      <ul v-for='user in users' v-bind:key='user'>
         <li>
           {{ user.id }}
         </li>
