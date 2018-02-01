@@ -19,14 +19,14 @@
         <!-- Route Link -->
         <b-navbar-nav>
           <b-nav-item href="#">
-            <router-link tag="li" :to="'/content'" activeClass="active">Contents</router-link>
+            <router-link tag="li" activeClass="active" :to="'/users'">Users</router-link>
           </b-nav-item>
         </b-navbar-nav>
 
         <!-- Route Link -->
         <b-navbar-nav>
           <b-nav-item href="#">
-            <router-link tag="li" :to="'/contact'" activeClass="active">Contact</router-link>
+            <router-link tag="li" activeClass="active" :to="'/contact'">Contact</router-link>
           </b-nav-item>
         </b-navbar-nav>
 

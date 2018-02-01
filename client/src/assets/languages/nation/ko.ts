@@ -2,7 +2,10 @@ const ko = {
   common: {
     name: '이름',
     nation: '국가',
-    korea: '대한민국 | 한국',
+    korea: '대한민국',
+    japan: '일본',
+    usa: '미국',
+    china: '중국',
     submit: '확인',
     cancel: '취소',
     fullScreen: '전체화면',
