@@ -1,0 +1,21 @@
+@import "../variable";
+
+.footer {
+  -ms-flex: none;
+  flex: none;
+  background-color: $dark-black;
+}
+
+.footer-div {
+  color: $bg-color;
+}
+
+.footer-list-div > p {
+  list-style-type: none;
+  margin: 3px;
+}
+
+.footer-list-div > p > a {
+  color: $fc-color;
+  word-break: break-all;
+}
