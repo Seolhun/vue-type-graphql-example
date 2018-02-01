@@ -1,11 +1,9 @@
 <template>
   <div>
-    <img src='@/assets/logo.png'>
-    <h1>Hello, I'm SeolHun. Web Developer</h1>
-    <small>This is Node, TypeScript, GraphQL Example To show study hisotry</small>
-    <div>
-      <a :href=url target='_blank'>Git Hub</a>
-    </div>
+    <img src='@/assets/images/logo/logo.png'>
+    <h2>Hello, I'm SeolHun. Web Developer</h2>
+    <div>{{ $tc('common.nation') }} : {{ $tc('common.korea') }}</div>
+    <small>This is built by Node, TypeScript, GraphQL to make a example to test for Company.</small>
   </div>
 </template>
 
@@ -14,7 +12,5 @@ import Vue from "vue";
 import Component from "vue-class-component";
 
 @Component
-export default class Hello extends Vue {
-  url = "https://github.com/seolhun";
-}
+export default class Hello extends Vue {}
 </script>
