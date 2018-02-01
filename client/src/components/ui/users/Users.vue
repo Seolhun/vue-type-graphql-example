@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src='@/assets/logo.png'>
+    <img src='@/assets/images/logo/logo.png'>
     <h1>Graphql with Apollo</h1>
     <div class="apollo">
       <h3>Users</h3>

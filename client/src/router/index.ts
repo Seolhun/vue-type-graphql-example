@@ -1,9 +1,8 @@
 import Vue, { AsyncComponent } from 'vue';
 import Router, { NavigationGuard, Route, RouteConfig } from 'vue-router';
 
-import Hello from '@/components/ui/Hello.vue';
-
-import Graphql from '@/components/Graphql.vue';
+import Home from '@/components/Home.vue';
+import Users from '@/components/ui/users/Users.vue';
 import { loginIn } from '../utils/login';
 
 // const login: AsyncComponent = (): any => import('@/pages/login.vue');
@@ -14,23 +13,22 @@ const routes: RouteConfig[] = [
   {
     path: '/',
     name: 'Home',
-    component: Hello,
+    component: Home,
   },
   {
-    path: '/blog',
-    name: 'Blog',
-    component: Graphql,
-    redirect: '/home',
-    meta: { leaf: false, icon: 'icon-article' },
-    children: [
-      { path: '/article/index', component: Graphql, name: '文章列表', meta: { requiresAuth: true, icon: 'icon-list' } },
-      { path: '/article/release', component: Graphql, name: '发布文章', meta: { requiresAuth: true, icon: 'icon-write' } },
-    ],
-  },
-  {
+    path: '/users',
+    name: 'users',
+    component: Users,
+    // redirect: '/home',
+    // meta: { leaf: false, icon: 'icon-article' },
+    // children: [
+    //   { path: '/article/index', component: Users, name: 'Users', meta: { requiresAuth: true, icon: 'icon-list' } },
+    //   { path: '/article/release', component: Users, name: 'Users', meta: { requiresAuth: true, icon: 'icon-write' } },
+    // ],
+  }, {
     path: '/login',
     name: 'Login',
-    component: Hello,
+    component: Users,
     meta: { requiresAuth: false },
   },
 ];
