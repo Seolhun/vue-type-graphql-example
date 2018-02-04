@@ -81,8 +81,8 @@ import Component from "vue-class-component";
 
 @Component
 export default class HeaderMenu extends Vue {
-  changeLanguage (locale: string) {
-    this.$i18n.locale = locale
+  changeLanguage(locale: string) {
+    this.$i18n.locale = locale;
   }
 }
 </script>
