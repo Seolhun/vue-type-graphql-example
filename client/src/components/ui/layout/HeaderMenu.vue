@@ -16,22 +16,17 @@
         Hi-Cord
       </b-navbar-brand>
       <b-collapse is-nav id="nav_collapse">
-        <!-- Route Link -->
         <b-navbar-nav>
           <b-nav-item href="#">
             <router-link tag="li" activeClass="active" :to="'/users'">Users</router-link>
           </b-nav-item>
         </b-navbar-nav>
-
-        <!-- Route Link -->
         <b-navbar-nav>
           <b-nav-item href="#">
             <router-link tag="li" activeClass="active" :to="'/contact'">Contact</router-link>
           </b-nav-item>
         </b-navbar-nav>
-
         <b-navbar-nav class="ml-auto">
-          <!-- Search Function -->
           <b-nav-form>
             <div
               class="form-inline"
@@ -48,7 +43,6 @@
               </button>
             </div>
           </b-nav-form>
-
           <b-nav-item-dropdown
             text="Lang"
             right
@@ -58,7 +52,6 @@
             <b-dropdown-item @click="changeLanguage('ja')">日本語</b-dropdown-item>
             <b-dropdown-item @click="changeLanguage('ch')">中文</b-dropdown-item>
           </b-nav-item-dropdown>
-
           <b-nav-item-dropdown
             class="header-navigation-link"
             right
