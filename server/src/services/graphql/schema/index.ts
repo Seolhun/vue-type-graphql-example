@@ -17,7 +17,3 @@ export function getSchemaString() {
 export async function execute(request: string, variables?: { [key: string]: any }) {
   return graphql(schema, request, null, {}, variables);
 }
-
-console.log('===== schema =====');
-console.log(getSchemaString());
-console.log('=================');

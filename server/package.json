@@ -20,7 +20,9 @@
     "jest": "^22.1.4",
     "json-server": "^0.12.1",
     "lodash": "^4.17.4",
+    "mysql2": "^1.5.2",
     "nodemon": "^1.14.11",
+    "sequelize": "^4.33.4",
     "typescript": "^2.6.2",
     "winston": "^3.0.0-rc1"
   },
@@ -30,6 +32,7 @@
     "@types/graphql": "^0.11.8",
     "@types/jest": "^22.1.0",
     "@types/lodash": "^4.14.96",
+    "@types/sequelize": "^4.27.6",
     "axios": "^0.17.1"
   }
 }
