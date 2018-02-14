@@ -8,7 +8,8 @@
 3. `Vue-Cli`
 4. `GraphQL`
 6. `Apollo Client`
-7. `json-server`
+7. `Sequelize`
+8. `json-server`
 
 ## How to run
 - `Server`
@@ -19,11 +20,11 @@
 - `DB`
   1. `npm run json:server`
   2. [http://localhost:3100/users](http://localhost:3100/users)
-  
+
 ## Reference
 - `Server`
   - [NodeJS - Express](http://expressjs.com/)
   - [Express Session](https://github.com/expressjs/session#options)
-  - [Express Cors](https://github.com/expressjs/cors)
   - [GraphQL](http://graphql.org/learn/)
   - [Express GraphQL](https://github.com/graphql/express-graphql)
+  - [Sequelize](http://docs.sequelizejs.com/)
