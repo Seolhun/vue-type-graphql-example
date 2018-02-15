@@ -10,7 +10,7 @@
       />
       <hr>
       <h2>Users</h2>
-      <ul v-for='user in users' v-bind:key='user'>
+      <ul v-for='user in users' v-bind:key='user.id'>
         <li>
           {{ user.id }}
         </li>
@@ -19,6 +19,12 @@
         </li>
         <li>
           {{ user.age }}
+        </li>
+        <li>
+          {{ user.registered_date }}
+        </li>
+        <li>
+          {{ user.divisionId }}
         </li>
       </ul>
 
@@ -52,6 +58,7 @@ class User {
               id
               name
               age
+              registered_date
             }
           }
         `,

@@ -20,9 +20,9 @@ const query = new GraphQLObjectType({
     },
     users: {
       type: new GraphQLList(UserType),
-      resolve(parentValue, args, context, info) {
-        return axios.get(`${API_SERVER.JSON_SERVER}/users`)
-          .then((response) => response.data);
+      async resolve(parentValue, args, context, info) {
+        const result = await axios.get(`${API_SERVER.JSON_SERVER}/users`);
+        return result.data;
       },
     },
 

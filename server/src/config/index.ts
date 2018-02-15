@@ -3,5 +3,5 @@ export enum API_SERVER {
 }
 
 export enum PORT {
-  EXPRESS_PORT = 5000,
+  EXPRESS_PORT = 4000,
 }

@@ -8,7 +8,8 @@
 3. `Vue-Cli`
 4. `GraphQL`
 6. `Apollo Client`
-7. `json-server`
+7. `Sequelize`
+8. `json-server`
 
 ## How to run
 - `Server`
@@ -30,6 +31,7 @@
   - [Express Session](https://github.com/expressjs/session#options)
   - [GraphQL](http://graphql.org/learn/)
   - [Express GraphQL](https://github.com/graphql/express-graphql)
+  - [Sequelize](http://docs.sequelizejs.com/)
   
 - `Client`
   - [Vue](https://vuejs.org/)
