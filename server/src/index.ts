@@ -7,7 +7,7 @@ import * as graphqlHTTP from 'express-graphql';
 import * as session from 'express-session';
 
 import { PORT } from './config';
-import { sequelize } from './repositories/database';
+import { sequelize } from './repository/database';
 import schema from './services/graphql/schema';
 
 const app = express();

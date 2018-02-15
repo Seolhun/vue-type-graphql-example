@@ -5,6 +5,10 @@ import { GraphQLString } from 'graphql/type/scalars';
 import { API_SERVER } from '../../../config';
 import { BookType, DivisionType, UserType } from '../type';
 
+import { Book, BookRepository } from '../../../repository/book/BookRepository';
+import { Division, DivisionRepository } from '../../../repository/division/DivisionRepository';
+import { User, UserRepository } from '../../../repository/user/UserRepository';
+
 const query = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {

@@ -4,7 +4,9 @@ import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars'
 import { API_SERVER } from '../../../config';
 import { DivisionType, UserType } from '../type/index';
 
-import { User, UserRepository } from '../../../repositories/user/UserRepository';
+import { Book, BookRepository } from '../../../repository/book/BookRepository';
+import { Division, DivisionRepository } from '../../../repository/division/DivisionRepository';
+import { User, UserRepository } from '../../../repository/user/UserRepository';
 
 const userRepository = new UserRepository();
 const mutation = new GraphQLObjectType({
@@ -28,7 +30,7 @@ const mutation = new GraphQLObjectType({
         id: { type: GraphQLInt },
         email: { type: GraphQLString },
       },
-      resolve(parentValue, { id, email }) {
+      resolve(parentValue, { id, email }: User) {
         return axios.delete(`${API_SERVER.JSON_SERVER}/users/${id}`)
           .then((res) => res.data);
       },
@@ -42,7 +44,7 @@ const mutation = new GraphQLObjectType({
         birth: { type: new GraphQLNonNull(GraphQLString) },
         division: { type: new GraphQLNonNull(GraphQLInt) },
       },
-      resolve(parentValue, args) {
+      resolve(parentValue, args: User) {
         return axios.patch(`${API_SERVER.JSON_SERVER}/users/${args.id}`, args)
           .then((res) => res.data);
       },
