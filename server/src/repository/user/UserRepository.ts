@@ -31,9 +31,19 @@ class UserRepository extends ar.AbstractRepository<User> {
     return dbUuser;
   }
 
-  async findAll(users: User[], offset?: number | 0, limit?: number | 20, order?: ar.Order): Promise<User[]> {
+  async findAll(order?: ar.Order): Promise<User[]> {
     if (!order) {
-      order = ar.Order.DESC;
+      order = 'DESC';
+    }
+    const dbUsers: User[] = await UserModel.findAll({
+      order: [UserModel, 'created_at', order],
+    });
+    return dbUsers;
+  }
+
+  async findAllByPaging(users: User[], offset?: number | 0, limit?: number | 20, order?: ar.Order): Promise<User[]> {
+    if (!order) {
+      order = 'DESC';
     }
     const dbUsers: User[] = await UserModel.findAll({
       offset,
@@ -46,7 +56,7 @@ class UserRepository extends ar.AbstractRepository<User> {
 
   async findAllByIds(ids: number[], order?: ar.Order): Promise<User[]> {
     if (!order) {
-      order = ar.Order.DESC;
+      order = 'DESC';
     }
     const dbUsers: User[] = await UserModel.findAll({
       where: {
