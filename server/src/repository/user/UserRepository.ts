@@ -17,43 +17,16 @@ interface User {
   deleted_at?: string;
 }
 
-class UserRepository implements ar.AbstractRepository<User> {
-  getUniqueCriteria(user: User) {
-    let data;
-    if (user.id) {
-      data = {
-        id: user.id,
-      };
-    } else if (user.email) {
-      data = {
-        email: user.email,
-      };
-    } else {
-      data = {};
-    }
-    return data;
-  }
-
+class UserRepository extends ar.AbstractRepository<User> {
   async create(user: User): Promise<User> {
-    try {
-      await UserModel.create(user);
-    } catch (error) {
-      return new Error('Not found user');
-    }
-    return user;
+    const dbUser = await UserModel.create(user);
+    return dbUser;
   }
 
   async findOne(user: User): Promise<User | null> {
-    let data;
-    try {
-      data = this.getUniqueCriteria(user);
-    } catch (error) {
-      return new Error('Not found user');
-    }
+    const data = this.getUniqueCriteria(user, ['id', 'email']);
     const dbUuser = await UserModel.findOne({
-      where: {
-        data,
-      },
+      where: data,
     });
     return dbUuser;
   }
@@ -84,32 +57,28 @@ class UserRepository implements ar.AbstractRepository<User> {
     return dbUsers;
   }
 
-  async updateById(user: User): Promise<User | void> {
-    let data;
+  async update(user: User): Promise<User | boolean> {
+    const data = this.getUniqueCriteria(user, ['id', 'email']);
     try {
-      data = this.getUniqueCriteria(user);
+      await UserModel.update(user, {
+        where: data,
+      });
     } catch (error) {
-      return new Error('Not found user');
+      return false;
     }
-    await UserModel.update(user, {
-      where: {
-        data,
-      },
-    });
+    return true;
   }
 
-  async deleteById(user: User): Promise<User | void> {
-    let data;
+  async delete(user: User): Promise<User | boolean> {
+    const data = this.getUniqueCriteria(user, ['id', 'email']);
     try {
-      data = this.getUniqueCriteria(user);
+      await UserModel.destroy({
+        where: data,
+      });
     } catch (error) {
-      return new Error('Not found user');
+      return false;
     }
-    await UserModel.destroy({
-      where: {
-        data,
-      },
-    });
+    return true;
   }
 }
 

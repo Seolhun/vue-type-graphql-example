@@ -1,11 +1,10 @@
 import * as winston from 'winston';
 
 const LOG_DIR = 'logs';
-const env = process.env.NODE_ENV || 'development';
 const tsFormat = () => (new Date()).toLocaleTimeString();
 
 const logger = winston.createLogger({
-  level: env !== 'development' ? 'debug' : 'info',
+  level: process.env.NODE_ENV !== 'development' ? 'debug' : 'info',
   format: winston.format.json(),
   timestamp: new Date(),
   transports: [

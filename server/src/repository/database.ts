@@ -1,5 +1,7 @@
 import * as Sequelize from 'sequelize';
 
+import logger from '../common/logger';
+
 const sequelize = new Sequelize('shooney_management', 'root', 'croquis@', {
   host: '127.0.0.1',
   dialect: 'mysql',
@@ -18,6 +20,25 @@ const sequelize = new Sequelize('shooney_management', 'root', 'croquis@', {
     updatedAt: 'updated_at',
     deletedAt: 'deleted_at',
     paranoid: true,
+
+    hooks: {
+      beforeFind: (instance, fn: () => void) => {
+        logger.debug(`beforeFind`);
+        logger.debug(instance);
+      },
+      beforeCreate: (instance, options, fn: () => void) => {
+        logger.debug(`beforeCreate`);
+        logger.debug(instance);
+      },
+      beforeUpdate: (instance, options, fn: () => void) => {
+        logger.debug(`beforeUpdate`);
+        logger.debug(instance);
+      },
+      beforeDestroy: (instance, options, fn: () => void) => {
+        logger.debug(`beforeDestroy`);
+        logger.debug(instance);
+      },
+    },
   },
 });
 

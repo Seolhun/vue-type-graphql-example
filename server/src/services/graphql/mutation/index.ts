@@ -8,7 +8,10 @@ import { Book, BookRepository } from '../../../repository/book/BookRepository';
 import { Division, DivisionRepository } from '../../../repository/division/DivisionRepository';
 import { User, UserRepository } from '../../../repository/user/UserRepository';
 
+const bookRepository = new BookRepository();
+const divisionRepository = new DivisionRepository();
 const userRepository = new UserRepository();
+
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
@@ -20,7 +23,7 @@ const mutation = new GraphQLObjectType({
         birth: { type: new GraphQLNonNull(GraphQLString) },
         division: { type: new GraphQLNonNull(GraphQLInt) },
       },
-      resolve(parentValue, { email, birth, name, division }: User) {
+      resolve(parentValue, { email, birth, name, division }: User, context, info) {
         return userRepository.create({ email, birth, name, division });
       },
     },

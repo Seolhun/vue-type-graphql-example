@@ -1,8 +1,8 @@
 import * as Sequelize from 'sequelize';
 import { sequelize } from '../database';
-import DivisionModel from './BookModel';
+import BookModel from './BookModel';
 
-import AbstractRepository from '../abstract/AbstractRepository';
+import * as ar from '../abstract/AbstractRepository';
 
 interface Book {
   id?: number;
@@ -16,24 +16,68 @@ interface Book {
   deleted_at?: string;
 }
 
-class BookRepository implements AbstractRepository<Book> {
-  async create(book: Book) {
-    const created = await DivisionModel.create(book);
-    return created;
+class BookRepository extends ar.AbstractRepository<Book> {
+  async create(book: Book): Promise<Book> {
+    const dbBook = await BookModel.create(book);
+    return dbBook;
   }
-  async findAllByIds([]: Book[]) {
-    throw new Error('Method not implemented.');
+
+  async findOne(book: Book): Promise<Book | null> {
+    const data = this.getUniqueCriteria(book, ['id']);
+    const dbUbook = await BookModel.findOne({
+      where: data,
+    });
+    return dbUbook;
   }
-  async findOneById({ id }: Book) {
-    const created = await DivisionModel.findById(id);
-    return created;
+
+  async findAll(books: Book[], offset?: number | 0, limit?: number | 20, order?: ar.Order): Promise<Book[]> {
+    if (!order) {
+      order = ar.Order.DESC;
+    }
+    const dbBooks: Book[] = await BookModel.findAll({
+      offset,
+      limit,
+      where: books,
+      order: [BookModel, 'created_at', order],
+    });
+    return dbBooks;
   }
-  async updateById(book: Book) {
-    const created = await DivisionModel.update(book, { where: { book } });
-    return created;
+
+  async findAllByIds(ids: number[], order?: ar.Order): Promise<Book[]> {
+    if (!order) {
+      order = ar.Order.DESC;
+    }
+    const dbBooks: Book[] = await BookModel.findAll({
+      where: {
+        id: [...ids],
+      },
+      order: [BookModel, 'created_at', order],
+    });
+    return dbBooks;
   }
-  async deleteById({ id }: Book) {
-    throw new Error('Method not implemented.');
+
+  async update(book: Book): Promise<Book | boolean> {
+    const data = this.getUniqueCriteria(book, ['id']);
+    try {
+      await BookModel.update(book, {
+        where: data,
+      });
+    } catch (error) {
+      return false;
+    }
+    return true;
+  }
+
+  async delete(book: Book): Promise<Book | boolean> {
+    const data = this.getUniqueCriteria(book, ['id']);
+    try {
+      await BookModel.destroy({
+        where: data,
+      });
+    } catch (error) {
+      return false;
+    }
+    return true;
   }
 }
 
