@@ -5,17 +5,25 @@ import { GraphQLString } from 'graphql/type/scalars';
 import { API_SERVER } from '../../../config';
 import { BookType, DivisionType, UserType } from '../type';
 
+import { Book, BookRepository } from '../../../repository/book/BookRepository';
+import { Division, DivisionRepository } from '../../../repository/division/DivisionRepository';
+import { User, UserRepository } from '../../../repository/user/UserRepository';
+
+const bookRepository = new BookRepository();
+const divisionRepository = new DivisionRepository();
+const userRepository = new UserRepository();
+
 const query = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
     user: {
       type: UserType,
       args: {
-        id: { type: new GraphQLNonNull(GraphQLString) },
+        id: { type: GraphQLString },
+        email: { type: GraphQLString },
       },
-      resolve(parentValue, args, context, info) {
-        return axios.get(`${API_SERVER.JSON_SERVER}/users/${args.id}`)
-          .then((response) => response.data);
+      resolve(parentValue, args: User, context, info) {
+        return userRepository.findOne(args);
       },
     },
     users: {

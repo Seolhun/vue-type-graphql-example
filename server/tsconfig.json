@@ -7,7 +7,6 @@
     "experimentalDecorators": true,
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
     "baseUrl": "src"
   },
   "include": [

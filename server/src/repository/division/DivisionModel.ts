@@ -1,7 +1,7 @@
 import * as Sequelize from 'sequelize';
 import { sequelize } from '../database';
 
-const UserModel = sequelize.define('users', {
+const DivisionModel = sequelize.define('divisions', {
   id: {
     type: Sequelize.BIGINT,
     primaryKey: true,
@@ -10,25 +10,16 @@ const UserModel = sequelize.define('users', {
   name: {
     type: Sequelize.STRING,
     validate: {
-      is: /^[가-힣a-zA-Z]{3,20}/g,
+      is: /^[가-힣a-zA-Z]{2,20}/g,
     },
-  },
-  email: {
-    type: Sequelize.STRING,
     unique: true,
-    validate: {
-      isEmail: true,
-    },
   },
-  birth: {
-    type: Sequelize.DATEONLY,
+  description: {
+    type: Sequelize.STRING,
   },
-  division: {
-    type: Sequelize.BIGINT,
-  },
+
   active: {
     type: Sequelize.BOOLEAN,
-    allowNull: true,
     defaultValue: true,
   },
   created_at: {
@@ -41,13 +32,7 @@ const UserModel = sequelize.define('users', {
     type: Sequelize.DATE,
   },
 }, {
-    indexes: [
-      {
-        unique: true,
-        fields: ['email', 'name'],
-      },
-    ],
-    comment: 'Uesr Table',
+    comment: 'Division Table',
   });
 
-export default UserModel;
+export default DivisionModel;
