@@ -18,8 +18,9 @@
   2. [http://localhost:4000/graphql](http://localhost:4000/graphql)
 
 - `DB`
-  1. `npm run json:server`
-  2. [http://localhost:3100/users](http://localhost:3100/users)
+  1. Changed Sequelize but you can use json-server.
+  - `npm run json:server`
+  - [http://localhost:3100/users](http://localhost:3100/users)
 
 - `Client`
   1. `npm run dev`
