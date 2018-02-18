@@ -5,16 +5,16 @@ import { BookType, DivisionType, UserType } from '../type/index';
 import { Book, BookRepository } from '../../../repository/book/BookRepository';
 import { Division, DivisionRepository } from '../../../repository/division/DivisionRepository';
 
-import bookMutation from './book';
-import divisionMutation from './division';
-import userMutation from './user';
+import BookMutation from './book';
+import DivisionMutation from './division';
+import UserMutation from './user';
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    ...bookMutation,
-    ...divisionMutation,
-    ...userMutation,
+    ...BookMutation,
+    ...DivisionMutation,
+    ...UserMutation,
   },
 });
 

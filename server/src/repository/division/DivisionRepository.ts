@@ -46,7 +46,9 @@ class DivisionRepository extends ar.AbstractRepository<Division> {
       offset,
       limit,
       where: divisions,
-      order: [DivisionModel, 'created_at', order],
+      order: [
+        ['created_at', order],
+      ],
     });
     return dbDivisions;
   }
@@ -59,7 +61,9 @@ class DivisionRepository extends ar.AbstractRepository<Division> {
       where: {
         id: [...ids],
       },
-      order: [DivisionModel, 'created_at', order],
+      order: [
+        ['created_at', order],
+      ],
     });
     return dbDivisions;
   }

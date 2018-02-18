@@ -17,13 +17,11 @@
       </b-navbar-brand>
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
-          <b-nav-item href="#">
+          <b-nav-item>
             <router-link tag="li" activeClass="active" :to="'/users'">Users</router-link>
           </b-nav-item>
-        </b-navbar-nav>
-        <b-navbar-nav>
-          <b-nav-item href="#">
-            <router-link tag="li" activeClass="active" :to="'/contact'">Contact</router-link>
+          <b-nav-item>
+            <router-link tag="li" activeClass="active" :to="'/user'">User</router-link>
           </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
@@ -32,7 +30,6 @@
               class="form-inline"
             >
               <b-form-input size="md" class="mr-sm-2" type="text" placeholder="Search">
-
               </b-form-input>
               <button
                 size="md"
@@ -59,8 +56,12 @@
             <template slot="button-content">
               <em>User</em>
             </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign-In</b-dropdown-item>
+            <b-dropdown-item>
+              <router-link tag="li" activeClass="active" :to="'/profile'">Profile</router-link>
+            </b-dropdown-item>
+            <b-dropdown-item>
+              <router-link tag="li" activeClass="active" :to="'/signin'">Sign-In</router-link>
+            </b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>

@@ -35,8 +35,14 @@ class UserRepository extends ar.AbstractRepository<User> {
     if (!order) {
       order = 'DESC';
     }
+
+    console.log('====');
+    console.log('findAll');
+    console.log('====');
     const dbUsers: User[] = await UserModel.findAll({
-      order: [UserModel, 'created_at', order],
+      order: [
+        ['created_at', order],
+      ],
     });
     return dbUsers;
   }
@@ -49,7 +55,9 @@ class UserRepository extends ar.AbstractRepository<User> {
       offset,
       limit,
       where: users,
-      order: [UserModel, 'created_at', order],
+      order: [
+        ['created_at', order],
+      ],
     });
     return dbUsers;
   }
