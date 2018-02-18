@@ -35,7 +35,9 @@ class BookRepository extends ar.AbstractRepository<Book> {
       order = 'DESC';
     }
     const dbDivisions: Book[] = await BookModel.findAll({
-      order: [BookModel, 'created_at', order],
+      order: [
+        ['created_at', order],
+      ],
     });
     return dbDivisions;
   }
@@ -48,7 +50,9 @@ class BookRepository extends ar.AbstractRepository<Book> {
       offset,
       limit,
       where: books,
-      order: [BookModel, 'created_at', order],
+      order: [
+        ['created_at', order],
+      ],
     });
     return dbBooks;
   }

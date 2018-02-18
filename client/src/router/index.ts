@@ -2,6 +2,10 @@ import Vue, { AsyncComponent } from 'vue';
 import Router, { NavigationGuard, Route, RouteConfig } from 'vue-router';
 
 import Home from '@/components/Home.vue';
+import Login from '@/components/ui/common/Login.vue';
+import Signin from '@/components/ui/common/Signin.vue';
+import Profile from '@/components/ui/profile/Profile.vue';
+import User from '@/components/ui/users/User.vue';
 import Users from '@/components/ui/users/Users.vue';
 import { loginIn } from '../utils/login';
 
@@ -17,7 +21,7 @@ const routes: RouteConfig[] = [
   },
   {
     path: '/users',
-    name: 'users',
+    name: 'Users',
     component: Users,
     // redirect: '/home',
     // meta: { leaf: false, icon: 'icon-article' },
@@ -26,9 +30,23 @@ const routes: RouteConfig[] = [
     //   { path: '/article/release', component: Users, name: 'Users', meta: { requiresAuth: true, icon: 'icon-write' } },
     // ],
   }, {
+    path: '/user',
+    name: 'User',
+    component: User,
+  }, {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+    meta: { requiresAuth: false },
+  }, {
     path: '/login',
     name: 'Login',
-    component: Users,
+    component: Login,
+    meta: { requiresAuth: false },
+  }, {
+    path: '/signin',
+    name: 'Signin',
+    component: Signin,
     meta: { requiresAuth: false },
   },
 ];

@@ -5,7 +5,7 @@ import { BookType } from '../type/index';
 import { Book, BookRepository } from '../../../repository/book/BookRepository';
 const bookRepository = new BookRepository();
 
-const bookQuery: GraphQLFieldConfigMap<any, any> = {
+const BookQuery: GraphQLFieldConfigMap<any, any> = {
   book: {
     type: BookType,
     args: {
@@ -26,4 +26,4 @@ const bookQuery: GraphQLFieldConfigMap<any, any> = {
   },
 };
 
-export default bookQuery;
+export default BookQuery;

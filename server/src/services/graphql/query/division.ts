@@ -5,7 +5,7 @@ import { DivisionType } from '../type/index';
 import { Division, DivisionRepository } from '../../../repository/division/DivisionRepository';
 const divisionRepository = new DivisionRepository();
 
-const divisionQuery: GraphQLFieldConfigMap<any, any> = {
+const DivisionQuery: GraphQLFieldConfigMap<any, any> = {
   division: {
     type: DivisionType,
     args: {
@@ -27,4 +27,4 @@ const divisionQuery: GraphQLFieldConfigMap<any, any> = {
   },
 };
 
-export default divisionQuery;
+export default DivisionQuery;

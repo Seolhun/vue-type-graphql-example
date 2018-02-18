@@ -8,15 +8,16 @@
       "dom"
     ],
     // "strict": true,
-    "noImplicitThis": true,
     // "noImplicitAny": true,
     // "strictNullChecks": true,
+    "noImplicitThis": true,
     "declaration": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "noUnusedParameters": false,
-    "noUnusedLocals": false,
+    "emitDecoratorMetadata": true,
+    // "noUnusedParameters": true,
+    // "noUnusedLocals": true,
   },
   "include": [
     "src/**/*.ts"

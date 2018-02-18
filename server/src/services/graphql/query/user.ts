@@ -5,7 +5,7 @@ import { UserType } from '../type/index';
 import { User, UserRepository } from '../../../repository/user/UserRepository';
 const userRepository = new UserRepository();
 
-const userQuery: GraphQLFieldConfigMap<any, any> = {
+const UserQuery: GraphQLFieldConfigMap<any, any> = {
   user: {
     type: UserType,
     args: {
@@ -21,10 +21,11 @@ const userQuery: GraphQLFieldConfigMap<any, any> = {
   },
   users: {
     type: new GraphQLList(UserType),
+    args: {},
     async resolve(parentValue, args, context, info) {
       return userRepository.findAll('DESC');
     },
   },
 };
 
-export default userQuery;
+export default UserQuery;

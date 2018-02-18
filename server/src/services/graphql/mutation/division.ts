@@ -5,7 +5,7 @@ import { BookType, DivisionType, UserType } from '../type/index';
 import { Division, DivisionRepository } from '../../../repository/division/DivisionRepository';
 const divisionRepository = new DivisionRepository();
 
-const divisionMutation: GraphQLFieldConfigMap<any, any> = {
+const DivisionMutation: GraphQLFieldConfigMap<any, any> = {
   addDivision: {
     type: DivisionType,
     args: {
@@ -53,4 +53,4 @@ const divisionMutation: GraphQLFieldConfigMap<any, any> = {
   },
 };
 
-export default divisionMutation;
+export default DivisionMutation;
