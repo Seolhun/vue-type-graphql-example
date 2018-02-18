@@ -1,13 +1,13 @@
-import { GraphQLNonNull, GraphQLObjectType, GraphQLFieldConfigMap } from 'graphql';
+import { GraphQLFieldConfigMap, GraphQLNonNull, GraphQLObjectType } from 'graphql';
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { BookType, DivisionType, UserType } from '../type/index';
 
 import { Division, DivisionRepository } from '../../../repository/division/DivisionRepository';
 const divisionRepository = new DivisionRepository();
 
-const divisionMutation:GraphQLFieldConfigMap<any, any> = {
-  addUser: {
-    type: UserType,
+const divisionMutation: GraphQLFieldConfigMap<any, any> = {
+  addDivision: {
+    type: DivisionType,
     args: {
       name: { type: new GraphQLNonNull(GraphQLString) },
       description: { type: new GraphQLNonNull(GraphQLString) },
@@ -16,25 +16,41 @@ const divisionMutation:GraphQLFieldConfigMap<any, any> = {
       return divisionRepository.create({ name, description });
     },
   },
-  editUser: {
-    type: UserType,
+  editDivision: {
+    type: DivisionType,
     args: {
+      id: { type: GraphQLInt },
       name: { type: new GraphQLNonNull(GraphQLString) },
       description: { type: new GraphQLNonNull(GraphQLString) },
     },
-    resolve(parentValue, { name, description }: Division, context, info) {
+    resolve(parentValue, { id, name, description }: Division, context, info) {
+      if (!id && !name) {
+        return new Error('id or name is requirement.');
+      }
+      const dbDivision = divisionRepository.findOne({ id, name });
+      if (!dbDivision) {
+        return new Error('The division is not found');
+      }
       return divisionRepository.update({ name, description });
     },
   },
-  deleteUser: {
-    type: UserType,
+  deleteDivision: {
+    type: DivisionType,
     args: {
       id: { type: GraphQLInt },
+      name: { type: GraphQLString },
     },
-    resolve(parentValue, { id }: Division, context, info) {
-      return divisionRepository.delete({id});
+    resolve(parentValue, { id, name }: Division, context, info) {
+      if (!id && !name) {
+        return new Error('id or name is requirement.');
+      }
+      const dbDivision = divisionRepository.findOne({ id, name });
+      if (!dbDivision) {
+        return new Error('The division is not found');
+      }
+      return divisionRepository.delete({ id });
     },
   },
-}
+};
 
 export default divisionMutation;

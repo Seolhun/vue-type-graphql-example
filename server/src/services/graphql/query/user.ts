@@ -1,11 +1,11 @@
-import { GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLFieldConfigMap } from 'graphql';
+import { GraphQLFieldConfigMap, GraphQLList, GraphQLNonNull, GraphQLObjectType } from 'graphql';
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
-import { BookType, DivisionType, UserType } from '../type/index';
+import { UserType } from '../type/index';
 
-import { User, UserRepository} from '../../../repository/user/UserRepository';
+import { User, UserRepository } from '../../../repository/user/UserRepository';
 const userRepository = new UserRepository();
 
-const userQuery:GraphQLFieldConfigMap<any, any> = {
+const userQuery: GraphQLFieldConfigMap<any, any> = {
   user: {
     type: UserType,
     args: {
@@ -13,15 +13,18 @@ const userQuery:GraphQLFieldConfigMap<any, any> = {
       email: { type: GraphQLString },
     },
     resolve(parentValue, { id, email }: User, context, info) {
+      if (!id && !email) {
+        return new Error('id or email is requirement.');
+      }
       return userRepository.findOne({ id, email });
     },
   },
   users: {
     type: new GraphQLList(UserType),
     async resolve(parentValue, args, context, info) {
-      return userRepository.findAll('DESC')
+      return userRepository.findAll('DESC');
     },
   },
-}
+};
 
 export default userQuery;

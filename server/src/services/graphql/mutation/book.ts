@@ -1,13 +1,13 @@
-import { GraphQLNonNull, GraphQLObjectType, GraphQLFieldConfigMap } from 'graphql';
+import { GraphQLFieldConfigMap, GraphQLNonNull, GraphQLObjectType } from 'graphql';
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
-import { BookType, DivisionType, UserType } from '../type/index';
+import { BookType } from '../type/index';
 
 import { Book, BookRepository } from '../../../repository/book/BookRepository';
 const bookRepository = new BookRepository();
 
-const bookkMutation:GraphQLFieldConfigMap<any, any> = {
+const bookkMutation: GraphQLFieldConfigMap<any, any> = {
   addUser: {
-    type: UserType,
+    type: BookType,
     args: {
       name: { type: new GraphQLNonNull(GraphQLString) },
       writer: { type: new GraphQLNonNull(GraphQLString) },
@@ -18,26 +18,41 @@ const bookkMutation:GraphQLFieldConfigMap<any, any> = {
     },
   },
   editUser: {
-    type: UserType,
+    type: BookType,
     args: {
+      id: { type: GraphQLInt },
       name: { type: new GraphQLNonNull(GraphQLString) },
       writer: { type: new GraphQLNonNull(GraphQLString) },
       status: { type: new GraphQLNonNull(GraphQLBoolean) },
       description: { type: new GraphQLNonNull(GraphQLInt) },
     },
-    resolve(parentValue, { name, writer, status, description }: Book, context, info) {
+    resolve(parentValue, { id, name, writer, status, description }: Book, context, info) {
+      if (!id) {
+        return new Error('id is requirement.');
+      }
+      const dbBook = bookRepository.findOne({ id });
+      if (!dbBook) {
+        return new Error('The division is not found');
+      }
       return bookRepository.update({ name, writer, status, description });
     },
   },
   deleteUser: {
-    type: UserType,
+    type: BookType,
     args: {
       id: { type: GraphQLInt },
     },
     resolve(parentValue, { id }: Book, context, info) {
-      return bookRepository.delete({id});
+      if (!id) {
+        return new Error('id is requirement.');
+      }
+      const dbBook = bookRepository.findOne({ id });
+      if (!dbBook) {
+        return new Error('The division is not found');
+      }
+      return bookRepository.delete({ id });
     },
   },
-}
+};
 
 export default bookkMutation;

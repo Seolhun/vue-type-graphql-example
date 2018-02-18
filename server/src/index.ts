@@ -5,24 +5,39 @@ import * as cors from 'cors';
 import * as express from 'express';
 import * as graphqlHTTP from 'express-graphql';
 import * as session from 'express-session';
+import * as helmet from 'helmet';
 
-import { API_SERVER, Config } from './config';
+import { Config } from './config';
 import { sequelize } from './repository/database';
 import schema from './services/graphql/schema';
 
 const env = Config.setConfiguration();
 
 const app = express();
-app.use(cors());
+// Json Parser
 app.use(bodyParser.json());
-app.set('trust proxy', 1);
+// Cors
+app.use(cors());
+// Http Helmet
+app.use(helmet());
+app.disable('x-powered-by');
+// Session
+const expiryDate = new Date(Date.now() + 1000 * 60 * 30); // 30 min
 app.use(session({
   secret: 'hunseol_typescript_graphql',
+  name: 'sessionId',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true },
+  keys: ['key1', 'key2'],
+  cookie: {
+    secure: true,
+    httpOnly: true,
+    expires: expiryDate,
+  },
 }));
+app.set('trust proxy', 1);
 
+// GraphQL
 app.use('/graphql', graphqlHTTP(async (request) => {
   const startTime = Date.now();
   return {
