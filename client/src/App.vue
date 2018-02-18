@@ -9,7 +9,6 @@
         </div>
       </div>
     </div>
-
     <!-- <footer-menu/> -->
   </div>
 </template>
