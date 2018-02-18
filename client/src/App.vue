@@ -2,7 +2,7 @@
   <div>
     <header-menu/>
 
-    <div class='container'>
+    <div class='container margin-top-100'>
       <div class='row'>
         <div class='col-sm-12'>
           <router-view/>
@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <!-- <footer-menu/> -->
+    <footer-menu/>
   </div>
 </template>
 
@@ -22,8 +22,8 @@ import FooterMenu from "@/components/ui/layout/FooterMenu.vue";
 
 @Component({
   components: {
-    HeaderMenu
-    // FooterMenu
+    HeaderMenu,
+    FooterMenu
   }
 })
 export default class App extends Vue {

@@ -10,11 +10,9 @@ export async function execute(request: string, variables?: { [key: string]: any 
   return graphql(schema, request, null, {}, variables);
 }
 
-const schema = new GraphQLSchema(
-  {
-    query,
-    mutation,
-  },
-);
+const schema = new GraphQLSchema({
+  query,
+  mutation,
+});
 
 export default schema;

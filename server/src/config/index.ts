@@ -2,10 +2,6 @@ import DEV from './develop';
 import PROD from './production';
 import TEST from './test';
 
-enum API_SERVER {
-  JSON_SERVER = 'http://localhost:3100',
-}
-
 class Config {
   static setConfiguration() {
     let env;
@@ -26,4 +22,4 @@ class Config {
   }
 }
 
-export { Config, API_SERVER };
+export { Config };

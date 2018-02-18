@@ -1,33 +1,41 @@
 <template>
   <div>
-    <img src='@/assets/images/logo/logo.png'>
-    <h1>Graphql with Apollo</h1>
     <div class="apollo">
       <h3>Users</h3>
-      <input
-        v-model="userId"
-        placeholder="User ID"
-      />
-      <hr>
-      <h2>Users</h2>
-      <ul v-for='user in users' v-bind:key='user.id'>
-        <li>
-          {{ user.id }}
-        </li>
-        <li>
-          {{ user.name }}
-        </li>
-        <li>
-          {{ user.age }}
-        </li>
-        <li>
-          {{ user.registered_date }}
-        </li>
-        <li>
-          {{ user.divisionId }}
-        </li>
-      </ul>
-
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              Id
+            </th>
+            <th>
+              Email
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Birth
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for='user in users' v-bind:key='user.id'>
+            <td>
+              {{ user.id }}
+            </td>
+            <td>
+              {{ user.email }}
+            </td>
+            <td>
+              {{ user.name }}
+            </td>
+            <td>
+              {{ user.birth }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -37,28 +45,19 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import gql from "graphql-tag";
 
-class User {
-  id: string;
-  name: string;
-  age: number;
-  constructor() {
-    this.id = "";
-    this.name = "";
-    this.age = 0;
-  }
-}
+import { UserModel, DivisionModel } from "../../model";
 
 @Component({
   apollo: {
     users() {
       return {
         query: gql`
-          query users {
+          query {
             users {
               id
+              email
               name
-              age
-              registered_date
+              birth
             }
           }
         `,
@@ -68,31 +67,9 @@ class User {
         fetchPolicy: "cache-and-network"
       };
     }
-    // user() {
-    //   return {
-    //     query: gql`
-    //       query user ($id: String!) {
-    //         user (id: $id) {
-    //           id
-    //           name
-    //         }
-    //       }
-    //     }`,
-    //     variables() {
-    //       return {
-    //         id: this.userId
-    //       };
-    //     },
-    //     result(result) {
-    //       this.user = result.data;
-    //     },
-    //     fetchPolicy: "cache-and-network"
-    //   };
-    // }
   }
 })
 export default class Graphql extends Vue {
-  userId: string = "";
-  users = [];
+  users: UserModel[] = [];
 }
 </script>

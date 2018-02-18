@@ -1,12 +1,10 @@
-enum Order {
-  DESC = 'DESC',
-  ASC = 'ASC',
-}
+type Order = 'DESC' | 'ASC';
 
 abstract class AbstractRepository<T> {
   abstract create(T);
   abstract findOne(T);
-  abstract findAll(T, offset?: number, limit?: number, order?: Order);
+  abstract findAll(order?: Order);
+  abstract findAllByPaging(T, offset?: number, limit?: number, order?: Order);
   abstract findAllByIds(ids: number[], order?: Order);
   abstract update(T);
   abstract delete(T);

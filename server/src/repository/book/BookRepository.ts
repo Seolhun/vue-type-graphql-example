@@ -30,22 +30,36 @@ class BookRepository extends ar.AbstractRepository<Book> {
     return dbUbook;
   }
 
-  async findAll(books: Book[], offset?: number | 0, limit?: number | 20, order?: ar.Order): Promise<Book[]> {
+  async findAll(order?: ar.Order): Promise<Book[]> {
     if (!order) {
-      order = ar.Order.DESC;
+      order = 'DESC';
+    }
+    const dbDivisions: Book[] = await BookModel.findAll({
+      order: [
+        ['created_at', order],
+      ],
+    });
+    return dbDivisions;
+  }
+
+  async findAllByPaging(books: Book[], offset?: number | 0, limit?: number | 20, order?: ar.Order): Promise<Book[]> {
+    if (!order) {
+      order = 'DESC';
     }
     const dbBooks: Book[] = await BookModel.findAll({
       offset,
       limit,
       where: books,
-      order: [BookModel, 'created_at', order],
+      order: [
+        ['created_at', order],
+      ],
     });
     return dbBooks;
   }
 
   async findAllByIds(ids: number[], order?: ar.Order): Promise<Book[]> {
     if (!order) {
-      order = ar.Order.DESC;
+      order = 'DESC';
     }
     const dbBooks: Book[] = await BookModel.findAll({
       where: {

@@ -28,28 +28,42 @@ class DivisionRepository extends ar.AbstractRepository<Division> {
     return dbUdivision;
   }
 
-  async findAll(divisions: Division[], offset?: number | 0, limit?: number | 20, order?: ar.Order): Promise<Division[]> {
+  async findAll(order?: ar.Order): Promise<Division[]> {
     if (!order) {
-      order = ar.Order.DESC;
+      order = 'DESC';
+    }
+    const dbDivisions: Division[] = await DivisionModel.findAll({
+      order: [DivisionModel, 'created_at', order],
+    });
+    return dbDivisions;
+  }
+
+  async findAllByPaging(divisions: Division[], offset?: number | 0, limit?: number | 20, order?: ar.Order): Promise<Division[]> {
+    if (!order) {
+      order = 'DESC';
     }
     const dbDivisions: Division[] = await DivisionModel.findAll({
       offset,
       limit,
       where: divisions,
-      order: [DivisionModel, 'created_at', order],
+      order: [
+        ['created_at', order],
+      ],
     });
     return dbDivisions;
   }
 
   async findAllByIds(ids: number[], order?: ar.Order): Promise<Division[]> {
     if (!order) {
-      order = ar.Order.DESC;
+      order = 'DESC';
     }
     const dbDivisions: Division[] = await DivisionModel.findAll({
       where: {
         id: [...ids],
       },
-      order: [DivisionModel, 'created_at', order],
+      order: [
+        ['created_at', order],
+      ],
     });
     return dbDivisions;
   }

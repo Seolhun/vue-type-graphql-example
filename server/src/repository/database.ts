@@ -2,7 +2,7 @@ import * as Sequelize from 'sequelize';
 
 import logger from '../common/logger';
 
-const sequelize = new Sequelize('shooney_management', 'root', 'croquis@', {
+const sequelize = new Sequelize('shooney_management', 'hunseol', 'hunseol', {
   host: '127.0.0.1',
   dialect: 'mysql',
 
