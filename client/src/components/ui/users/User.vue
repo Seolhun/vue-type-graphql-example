@@ -7,7 +7,7 @@
         v-model='inputEmail'
         class="form-control"
       >
-      <p>param : {{ email }}</p>
+      <p>inputEmail : {{ inputEmail }}</p>
     </div>
     <div class="apollo">
       <h2>User</h2>
@@ -30,25 +30,36 @@ import Component from "vue-class-component";
 import gql from "graphql-tag";
 
 import { UserModel } from "../../model";
+
 @Component({
   apollo: {
-    user: {
-      query: gql`
-        query user($email: String!) {
-          user(email: $email)
-        }
-      `,
-      // Static parameters
-      variables() {
-        return {
-            email: this.email,
-        }
-      },
-    },
-  },
+    user() {
+      return {
+        query: gql`
+          query ($email: String!) {
+            user(email: $email) {
+              id
+              email
+              name
+              birth
+            }
+          }
+        `,
+        variables() {
+          return {
+            email: this.inputEmail,
+          }
+        },
+        result(result) {
+          this.user = result.data.user;
+        },
+        // fetchPolicy: "cache-and-network"
+      };
+    }
+  }
 })
 export default class Graphql extends Vue {
   inputEmail = 'shun10114@gmail.com';
-  user = {};
+  user = new UserModel();
 }
 </script>
