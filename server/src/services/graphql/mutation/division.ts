@@ -12,7 +12,7 @@ const DivisionMutation: GraphQLFieldConfigMap<any, any> = {
       name: { type: new GraphQLNonNull(GraphQLString) },
       description: { type: new GraphQLNonNull(GraphQLString) },
     },
-    resolve(parentValue, { name, description }: Division, context, info) {
+    resolve(parent, { name, description }: Division, context, info) {
       return divisionRepository.create({ name, description });
     },
   },
@@ -23,7 +23,7 @@ const DivisionMutation: GraphQLFieldConfigMap<any, any> = {
       name: { type: new GraphQLNonNull(GraphQLString) },
       description: { type: new GraphQLNonNull(GraphQLString) },
     },
-    resolve(parentValue, { id, name, description }: Division, context, info) {
+    resolve(parent, { id, name, description }: Division, context, info) {
       if (!id && !name) {
         return new Error('id or name is requirement.');
       }
@@ -40,7 +40,7 @@ const DivisionMutation: GraphQLFieldConfigMap<any, any> = {
       id: { type: GraphQLInt },
       name: { type: GraphQLString },
     },
-    resolve(parentValue, { id, name }: Division, context, info) {
+    resolve(parent, { id, name }: Division, context, info) {
       if (!id && !name) {
         return new Error('id or name is requirement.');
       }

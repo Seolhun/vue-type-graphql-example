@@ -2,7 +2,8 @@ import { GraphQLFieldConfigMap, GraphQLList, GraphQLNonNull, GraphQLObjectType }
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { DivisionType } from '../type/index';
 
-import { Division, DivisionRepository } from '../../../repository/division/DivisionRepository';
+import { Division } from '../../../model';
+import { DivisionRepository } from '../../../repository/division/DivisionRepository';
 const divisionRepository = new DivisionRepository();
 
 const DivisionQuery: GraphQLFieldConfigMap<any, any> = {
@@ -12,7 +13,7 @@ const DivisionQuery: GraphQLFieldConfigMap<any, any> = {
       id: { type: GraphQLString },
       name: { type: GraphQLString },
     },
-    resolve(parentValue, { id, name }: Division, context, info) {
+    resolve(parent, { id, name }: Division, context, info) {
       if (!id && !name) {
         return new Error('id or name is requirement.');
       }
@@ -21,7 +22,7 @@ const DivisionQuery: GraphQLFieldConfigMap<any, any> = {
   },
   divisions: {
     type: new GraphQLList(DivisionType),
-    resolve(parentValue, args, context, info) {
+    resolve(parent, args, context, info) {
       return divisionRepository.findAll('DESC');
     },
   },

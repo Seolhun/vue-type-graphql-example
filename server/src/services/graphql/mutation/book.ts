@@ -13,7 +13,7 @@ const BookkMutation: GraphQLFieldConfigMap<any, any> = {
       writer: { type: new GraphQLNonNull(GraphQLString) },
       description: { type: new GraphQLNonNull(GraphQLInt) },
     },
-    resolve(parentValue, { name, writer, description }: Book, context, info) {
+    resolve(parent, { name, writer, description }: Book, context, info) {
       return bookRepository.create({ name, writer, description });
     },
   },
@@ -26,7 +26,7 @@ const BookkMutation: GraphQLFieldConfigMap<any, any> = {
       status: { type: new GraphQLNonNull(GraphQLBoolean) },
       description: { type: new GraphQLNonNull(GraphQLInt) },
     },
-    resolve(parentValue, { id, name, writer, status, description }: Book, context, info) {
+    resolve(parent, { id, name, writer, status, description }: Book, context, info) {
       if (!id) {
         return new Error('id is requirement.');
       }
@@ -42,7 +42,7 @@ const BookkMutation: GraphQLFieldConfigMap<any, any> = {
     args: {
       id: { type: GraphQLInt },
     },
-    resolve(parentValue, { id }: Book, context, info) {
+    resolve(parent, { id }: Book, context, info) {
       if (!id) {
         return new Error('id is requirement.');
       }

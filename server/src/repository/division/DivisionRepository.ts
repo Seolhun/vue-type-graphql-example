@@ -2,18 +2,8 @@ import * as Sequelize from 'sequelize';
 import { sequelize } from '../database';
 import DivisionModel from './DivisionModel';
 
+import { Division } from '../../model';
 import * as ar from '../abstract/AbstractRepository';
-
-interface Division {
-  id?: string;
-  name?: string;
-  description?: string;
-
-  created_at?: string;
-  updated_at?: string;
-  deleted_at?: string;
-}
-
 class DivisionRepository extends ar.AbstractRepository<Division> {
   async create(division: Division): Promise<Division> {
     const dbDivision = await DivisionModel.create(division);
@@ -21,11 +11,11 @@ class DivisionRepository extends ar.AbstractRepository<Division> {
   }
 
   async findOne(division: Division): Promise<Division | null> {
-    const data = this.getUniqueCriteria(division, ['id', 'email']);
-    const dbUdivision = await DivisionModel.findOne({
+    const data = this.getUniqueCriteria(division, ['id']);
+    const dbDivision = await DivisionModel.findOne({
       where: data,
     });
-    return dbUdivision;
+    return dbDivision;
   }
 
   async findAll(order?: ar.Order): Promise<Division[]> {
@@ -69,7 +59,7 @@ class DivisionRepository extends ar.AbstractRepository<Division> {
   }
 
   async update(division: Division): Promise<Division | boolean> {
-    const data = this.getUniqueCriteria(division, ['id', 'email']);
+    const data = this.getUniqueCriteria(division, ['id']);
     try {
       await DivisionModel.update(division, {
         where: data,
@@ -81,7 +71,7 @@ class DivisionRepository extends ar.AbstractRepository<Division> {
   }
 
   async delete(division: Division): Promise<Division | boolean> {
-    const data = this.getUniqueCriteria(division, ['id', 'email']);
+    const data = this.getUniqueCriteria(division, ['id']);
     try {
       await DivisionModel.destroy({
         where: data,
@@ -93,4 +83,4 @@ class DivisionRepository extends ar.AbstractRepository<Division> {
   }
 }
 
-export { DivisionRepository, Division };
+export { DivisionRepository };
