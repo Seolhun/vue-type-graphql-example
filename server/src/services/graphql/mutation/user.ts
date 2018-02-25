@@ -15,7 +15,7 @@ const UserMutation: GraphQLFieldConfigMap<any, any> = {
       birth: { type: new GraphQLNonNull(GraphQLString) },
       division: { type: new GraphQLNonNull(GraphQLInt) },
     },
-    resolve(parentValue, { id, email, birth, name, division }: User, context, info) {
+    resolve(parent, { id, email, birth, name, division }: User, context, info) {
       if (!id && !email) {
         return new Error('id or email is requirement.');
       }
@@ -35,7 +35,7 @@ const UserMutation: GraphQLFieldConfigMap<any, any> = {
       birth: { type: new GraphQLNonNull(GraphQLString) },
       division: { type: new GraphQLNonNull(GraphQLInt) },
     },
-    resolve(parentValue, { id, email, birth, name, division }: User) {
+    resolve(parent, { id, email, birth, name, division }: User) {
       if (!id && !email) {
         return new Error('id or email is requirement.');
       }
@@ -52,7 +52,7 @@ const UserMutation: GraphQLFieldConfigMap<any, any> = {
       id: { type: GraphQLInt },
       email: { type: GraphQLString },
     },
-    resolve(parentValue, { id, email }: User) {
+    resolve(parent, { id, email }: User) {
       if (!id && !email) {
         return new Error(`id or email is requirement.`);
       }

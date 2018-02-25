@@ -44,4 +44,28 @@ class DivisionModel {
   }
 }
 
+class BookModel {
+  id: number;
+  name: string;
+  writer: string;
+  description: string;
+  status: boolean;
+
+  created_at: string;
+  deleted_at: string;
+  updated_at: string;
+
+  constructor() {
+    this.id = 0;
+    this.name = '';
+    this.writer = '';
+    this.description = '';
+    this.status = true;
+
+    this.created_at = '';
+    this.deleted_at = '';
+    this.updated_at = '';
+  }
+}
+
 export { UserModel, DivisionModel };

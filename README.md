@@ -1,15 +1,14 @@
-# [typescript-example](https://github.com/Seolhun/typescript-example/)
+# Book Management System.
 - Author : [HunSeol](https://github.com/Seolhun)
 - Date : 2017.10.19
 
-## Pre-Requirement
+## Used Stacks
 1. `TypeScript`
 2. `NodeJS`, `Express`
 3. `Vue-Cli`
 4. `GraphQL`
 6. `Apollo Client`
 7. `Sequelize`
-8. `json-server`
 
 ## How to run
 - `Server`

@@ -2,19 +2,8 @@ import * as Sequelize from 'sequelize';
 import { sequelize } from '../database';
 import BookModel from './BookModel';
 
+import { Book } from '../../model';
 import * as ar from '../abstract/AbstractRepository';
-
-interface Book {
-  id?: number;
-  name?: string;
-  writer?: string;
-  status?: boolean;
-  description?: string;
-
-  created_at?: string;
-  updated_at?: string;
-  deleted_at?: string;
-}
 
 class BookRepository extends ar.AbstractRepository<Book> {
   async create(book: Book): Promise<Book> {
@@ -24,22 +13,22 @@ class BookRepository extends ar.AbstractRepository<Book> {
 
   async findOne(book: Book): Promise<Book | null> {
     const data = this.getUniqueCriteria(book, ['id']);
-    const dbUbook = await BookModel.findOne({
+    const dbBook = await BookModel.findOne({
       where: data,
     });
-    return dbUbook;
+    return dbBook;
   }
 
   async findAll(order?: ar.Order): Promise<Book[]> {
     if (!order) {
       order = 'DESC';
     }
-    const dbDivisions: Book[] = await BookModel.findAll({
+    const dbBooks: Book[] = await BookModel.findAll({
       order: [
         ['created_at', order],
       ],
     });
-    return dbDivisions;
+    return dbBooks;
   }
 
   async findAllByPaging(books: Book[], offset?: number | 0, limit?: number | 20, order?: ar.Order): Promise<Book[]> {
@@ -95,4 +84,4 @@ class BookRepository extends ar.AbstractRepository<Book> {
   }
 }
 
-export { BookRepository, Book };
+export { BookRepository };

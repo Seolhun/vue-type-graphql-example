@@ -64,7 +64,7 @@ import { UserModel, DivisionModel } from "../../model";
         result(result) {
           this.users = result.data.users;
         },
-        fetchPolicy: "cache-and-network"
+        // fetchPolicy: "cache-and-network"
       };
     }
   }

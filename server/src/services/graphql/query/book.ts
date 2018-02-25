@@ -2,7 +2,8 @@ import { GraphQLFieldConfigMap, GraphQLList, GraphQLNonNull, GraphQLObjectType }
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { BookType } from '../type/index';
 
-import { Book, BookRepository } from '../../../repository/book/BookRepository';
+import { Book } from '../../../model';
+import { BookRepository } from '../../../repository/book/BookRepository';
 const bookRepository = new BookRepository();
 
 const BookQuery: GraphQLFieldConfigMap<any, any> = {
@@ -11,7 +12,7 @@ const BookQuery: GraphQLFieldConfigMap<any, any> = {
     args: {
       id: { type: new GraphQLNonNull(GraphQLString) },
     },
-    resolve(parentValue, { id }: Book, context, info) {
+    resolve(parent, { id }: Book, context, info) {
       if (!id) {
         return new Error('id is requirement.');
       }
@@ -20,7 +21,7 @@ const BookQuery: GraphQLFieldConfigMap<any, any> = {
   },
   books: {
     type: new GraphQLList(BookType),
-    resolve(parentValue, args, context, info) {
+    resolve(parent, args, context, info) {
       return bookRepository.findAll('DESC');
     },
   },

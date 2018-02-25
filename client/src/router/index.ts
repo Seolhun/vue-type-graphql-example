@@ -11,7 +11,6 @@ import { loginIn } from '../utils/login';
 
 // const login: AsyncComponent = (): any => import('@/pages/login.vue');
 // const home: AsyncComponent = (): any => import(/* webpackChunkName: "home" */ '@/pages/home/index.vue')
-
 Vue.use(Router);
 const routes: RouteConfig[] = [
   {

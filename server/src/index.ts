@@ -51,6 +51,7 @@ app.use('/graphql', graphqlHTTP(async (request) => {
 
 // sequelize.sync({ force: true });
 sequelize.sync();
+// sequelize.sync({force: true});
 sequelize.authenticate().then(() => {
   console.log('Sequelize Connection has been established successfully.');
 }).catch((err) => {

@@ -2,8 +2,12 @@ import { GraphQLFieldConfigMap, GraphQLList, GraphQLNonNull, GraphQLObjectType }
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { UserType } from '../type/index';
 
-import { User, UserRepository } from '../../../repository/user/UserRepository';
+import { Division, User } from '../../../model';
+import { DivisionRepository } from '../../../repository/division/DivisionRepository';
+import { UserRepository } from '../../../repository/user/UserRepository';
+
 const userRepository = new UserRepository();
+const divisionRepository = new DivisionRepository();
 
 const UserQuery: GraphQLFieldConfigMap<any, any> = {
   user: {
@@ -12,17 +16,27 @@ const UserQuery: GraphQLFieldConfigMap<any, any> = {
       id: { type: GraphQLString },
       email: { type: GraphQLString },
     },
-    resolve(parentValue, { id, email }: User, context, info) {
+    resolve(parent, { id, email }: User, context, info) {
       if (!id && !email) {
         return new Error('id or email is requirement.');
       }
-      return userRepository.findOne({ id, email });
+
+      const user = userRepository.findOne({ id, email });
+      user.then((user: User) => {
+        const division = divisionRepository.findOne({ id: user.division_id });
+        division.then((division: Division) => {
+          if (division) {
+            user.division = division;
+          }
+        });
+      });
+      return user;
     },
   },
   users: {
     type: new GraphQLList(UserType),
     args: {},
-    async resolve(parentValue, args, context, info) {
+    async resolve(parent, args, context, info) {
       return userRepository.findAll('DESC');
     },
   },

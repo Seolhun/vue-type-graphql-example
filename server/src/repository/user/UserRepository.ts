@@ -1,21 +1,10 @@
 import * as Sequelize from 'sequelize';
 import { sequelize } from '../database';
+import DivisionModel from '../division/DivisionModel';
 import UserModel from './UserModel';
 
+import { Division, User } from '../../model';
 import * as ar from '../abstract/AbstractRepository';
-
-interface User {
-  id?: string;
-  name?: string;
-  email?: string;
-  birth?: number;
-  division?: number;
-  active?: boolean;
-
-  created_at?: string;
-  updated_at?: string;
-  deleted_at?: string;
-}
 
 class UserRepository extends ar.AbstractRepository<User> {
   async create(user: User): Promise<User> {
@@ -25,20 +14,16 @@ class UserRepository extends ar.AbstractRepository<User> {
 
   async findOne(user: User): Promise<User | null> {
     const data = this.getUniqueCriteria(user, ['id', 'email']);
-    const dbUuser = await UserModel.findOne({
+    const dbUser = await UserModel.findOne({
       where: data,
     });
-    return dbUuser;
+    return dbUser;
   }
 
   async findAll(order?: ar.Order): Promise<User[]> {
     if (!order) {
       order = 'DESC';
     }
-
-    console.log('====');
-    console.log('findAll');
-    console.log('====');
     const dbUsers: User[] = await UserModel.findAll({
       order: [
         ['created_at', order],
@@ -100,4 +85,4 @@ class UserRepository extends ar.AbstractRepository<User> {
   }
 }
 
-export { UserRepository, User };
+export { UserRepository };

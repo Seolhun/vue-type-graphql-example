@@ -1,15 +1,14 @@
-# [typescript-example](https://github.com/Seolhun/typescript-example/)
+# Book Management System.
 - Author : [HunSeol](https://github.com/Seolhun)
 - Date : 2017.10.19
 
-## Pre-Requirement
+## Used Stacks
 1. `TypeScript`
 2. `NodeJS`, `Express`
 3. `Vue-Cli`
 4. `GraphQL`
 6. `Apollo Client`
 7. `Sequelize`
-8. `json-server`
 
 ## How to run
 - `Server`
@@ -18,8 +17,13 @@
   2. [http://localhost:4000/graphql](http://localhost:4000/graphql)
 
 - `DB`
-  1. `npm run json:server`
-  2. [http://localhost:3100/users](http://localhost:3100/users)
+  1. Create Default database using Raw SQL.
+    - `/server/db/default.sql`
+  2. Set Database configuration.
+    - `/server/src/repository/database.ts`
+  3. Set `Sync` Database config
+    - `sequelize.sync()` - create & update
+    - `sequelize.sync({force: true})` - create & drop
 
 ## Reference
 - `Server`
