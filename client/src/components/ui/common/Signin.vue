@@ -1,30 +1,79 @@
 <template>
-  <div>
-    <img src='@/assets/images/logo/logo.png'>
-    <h2>Sign-In</h2>
+  <div class='row margin-20'>
+    <div class='col-sm-12'>
+      <h2>Sign-In</h2>
+    </div>
+    <div class='col-sm-12'>
+      <div class='form-group'>
+        <div>
+          <label>Email</label>
+          <input type='email' class='form-control' v-model='user.email'>
+          <span> {{ validation.email ? validation.email : '' }} </span>
+        </div>
+        <div>
+          <label>Name</label>
+          <input class='form-control' v-model='user.name'>
+          <span> {{ validation.name ? validation.name : '' }} </span>
+        </div>
+        <div>
+          <label>Password</label>
+          <input type='password' class='form-control' v-model='user.password'>
+          <span> {{ validation.password ? validation.password : '' }} </span>
+        </div>
+        <div>
+          <label for='confirmPassword'>Confirm-Password</label>
+          <input type='password' class='form-control' id='confirmPassword' v-model='user.confirmPassword'>
+          <span> {{ validation.password ? validation.password : '' }} </span>
+        </div>
+      </div>
+      <div>
+        <button class='btn-lg btn-primary' v-on:click="signIn($event)">Sign-In</button>
+        <button class='btn-lg btn-danger'>Cancel</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang='ts'>
-import Vue from "vue";
-import Component from "vue-class-component";
-import gql from "graphql-tag";
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import gql from 'graphql-tag';
 
-@Component({
-  apollo: {
-    ping: {
-      query: gql`
-        query user($message: String!) {
-          ping(message: $message)
-        }
-      `,
-      variables: {
-        message: "Meow"
-      }
+import * as validator from 'validator';
+
+@Component
+export default class Signin extends Vue {
+  validation = {
+    email: '',
+    name: '',
+    password: '',
+    confirmPassword: '',
+  }
+
+  user = {
+    email: '',
+    name: '',
+    password: '',
+    confirmPassword: '',
+  }
+  active: false;
+
+  beforeUpdate() {
+    console.log(this.validation);
+    console.log(this.user);
+  }
+
+  signIn(event: Event) {
+    this.validateUser();
+    event.preventDefault();
+  }
+
+  private validateUser() {
+    if(!validator.isEmail(this.user.email)) {
+      this.validation.email = 'Email is In-valid'
+    } else {
+      this.validation.email = ''
     }
   }
-})
-export default class Signin extends Vue {
-  users = [];
 }
 </script>

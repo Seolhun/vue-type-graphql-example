@@ -4,8 +4,7 @@ import Router, { NavigationGuard, Route, RouteConfig } from 'vue-router';
 import Home from '@/components/Home.vue';
 import Login from '@/components/ui/common/Login.vue';
 import Signin from '@/components/ui/common/Signin.vue';
-import Profile from '@/components/ui/profile/Profile.vue';
-import User from '@/components/ui/users/User.vue';
+import UserDetail from '@/components/ui/users/UserDetail.vue';
 import Users from '@/components/ui/users/Users.vue';
 import { loginIn } from '../utils/login';
 
@@ -29,14 +28,9 @@ const routes: RouteConfig[] = [
     //   { path: '/article/release', component: Users, name: 'Users', meta: { requiresAuth: true, icon: 'icon-write' } },
     // ],
   }, {
-    path: '/user',
+    path: '/user/{name}',
     name: 'User',
-    component: User,
-  }, {
-    path: '/profile',
-    name: 'Profile',
-    component: Profile,
-    meta: { requiresAuth: false },
+    component: UserDetail,
   }, {
     path: '/login',
     name: 'Login',
