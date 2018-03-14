@@ -2,7 +2,8 @@ import { GraphQLFieldConfigMap, GraphQLNonNull, GraphQLObjectType } from 'graphq
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { BookType, DivisionType, UserType } from '../type/index';
 
-import { User, UserRepository } from '../../../repository/user/UserRepository';
+import { User } from '../../../model';
+import { UserRepository } from '../../../repository/user/UserRepository';
 const userRepository = new UserRepository();
 
 const UserMutation: GraphQLFieldConfigMap<any, any> = {

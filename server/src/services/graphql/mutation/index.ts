@@ -2,8 +2,8 @@ import { GraphQLNonNull, GraphQLObjectType } from 'graphql';
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { BookType, DivisionType, UserType } from '../type/index';
 
-import { Book, BookRepository } from '../../../repository/book/BookRepository';
-import { Division, DivisionRepository } from '../../../repository/division/DivisionRepository';
+import { BookRepository } from '../../../repository/book/BookRepository';
+import { DivisionRepository } from '../../../repository/division/DivisionRepository';
 
 import BookMutation from './book';
 import DivisionMutation from './division';

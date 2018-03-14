@@ -2,7 +2,8 @@ import { GraphQLFieldConfigMap, GraphQLNonNull, GraphQLObjectType } from 'graphq
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { BookType } from '../type/index';
 
-import { Book, BookRepository } from '../../../repository/book/BookRepository';
+import { Book } from '../../../model';
+import { BookRepository } from '../../../repository/book/BookRepository';
 const bookRepository = new BookRepository();
 
 const BookkMutation: GraphQLFieldConfigMap<any, any> = {
