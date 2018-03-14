@@ -1,15 +1,16 @@
 <template>
-  <div>
-    <img src='@/assets/images/logo/logo.png'>
-    <h1>Graphql with Apollo</h1>
+  <div class='row'>
+    <div class='col-sm-12'>
     <div>
       <input
         v-model='inputEmail'
-        class="form-control"
+        class='form-control'
       >
       <p>inputEmail : {{ inputEmail }}</p>
     </div>
-    <div class="apollo">
+  </div>
+  <div class='row'>
+    <div class='apollo col-sm-12'>
       <h2>User</h2>
       <div>
         {{ user.id }}
@@ -21,15 +22,16 @@
         {{ user.name }}
       </div>
     </div>
+    </div>
   </div>
 </template>
 
 <script lang='ts'>
-import Vue from "vue";
-import Component from "vue-class-component";
-import gql from "graphql-tag";
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import gql from 'graphql-tag';
 
-import { UserModel } from "../../model";
+import { UserModel } from '../../model';
 
 @Component({
   apollo: {
@@ -53,13 +55,15 @@ import { UserModel } from "../../model";
         result(result) {
           this.user = result.data.user;
         },
-        // fetchPolicy: "cache-and-network"
+        // fetchPolicy: 'cache-and-network'
       };
     }
   }
 })
-export default class Graphql extends Vue {
+class UserDetail extends Vue {
   inputEmail = 'shun10114@gmail.com';
   user = new UserModel();
 }
+
+export default UserDetail;
 </script>

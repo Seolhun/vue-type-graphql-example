@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="apollo">
+    <div class='apollo'>
       <h3>Users</h3>
-      <table class="table">
+      <table class='table'>
         <thead>
           <tr>
             <th>
@@ -41,11 +41,11 @@
 </template>
 
 <script lang='ts'>
-import Vue from "vue";
-import Component from "vue-class-component";
-import gql from "graphql-tag";
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import gql from 'graphql-tag';
 
-import { UserModel, DivisionModel } from "../../model";
+import { UserModel, DivisionModel } from '../../model';
 
 @Component({
   apollo: {
@@ -64,7 +64,7 @@ import { UserModel, DivisionModel } from "../../model";
         result(result) {
           this.users = result.data.users;
         },
-        // fetchPolicy: "cache-and-network"
+        // fetchPolicy: 'cache-and-network'
       };
     }
   }

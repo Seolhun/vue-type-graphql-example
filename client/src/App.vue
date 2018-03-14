@@ -3,11 +3,7 @@
     <header-menu/>
 
     <div class='container margin-top-100'>
-      <div class='row'>
-        <div class='col-sm-12'>
-          <router-view/>
-        </div>
-      </div>
+      <router-view/>
     </div>
 
     <footer-menu/>
