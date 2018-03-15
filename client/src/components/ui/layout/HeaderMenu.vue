@@ -18,10 +18,13 @@
       <b-collapse is-nav id='nav_collapse'>
         <b-navbar-nav>
           <b-nav-item>
+            <router-link tag='li' activeClass='active' :to='"/books"'>Books</router-link>
+          </b-nav-item>
+          <b-nav-item>
             <router-link tag='li' activeClass='active' :to='"/users"'>Users</router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link tag='li' activeClass='active' :to='"/user"'>User</router-link>
+            <router-link tag='li' activeClass='active' :to='"/divisions"'>Divisions</router-link>
           </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class='ml-auto'>
@@ -56,10 +59,13 @@
             <template slot='button-content'>
               <em>Options</em>
             </template>
-            <b-dropdown-item>
+            <b-dropdown-item v-show='this.isLogin'>
               <router-link tag='li' activeClass='active' :to='"/profile"'>Profile</router-link>
             </b-dropdown-item>
-            <b-dropdown-item>
+            <b-dropdown-item v-show='!this.isLogin'>
+              <router-link tag='li' activeClass='active' :to='"/login"'>Log-In</router-link>
+            </b-dropdown-item>
+            <b-dropdown-item v-show='!this.isLogin'>
               <router-link tag='li' activeClass='active' :to='"/signin"'>Sign-In</router-link>
             </b-dropdown-item>
           </b-nav-item-dropdown>
@@ -75,6 +81,8 @@ import Component from 'vue-class-component';
 
 @Component
 export default class HeaderMenu extends Vue {
+  isLogin = false;
+
   changeLanguage(locale: string) {
     this.$i18n.locale = locale;
   }

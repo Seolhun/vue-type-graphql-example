@@ -7,7 +7,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-.DS_Store 
+.DS_Store
 .idea
 
 # Runtime data
@@ -38,6 +38,7 @@ bower_components
 build/Release
 
 # Dependency directories
+dist/
 node_modules/
 jspm_packages/
 
@@ -61,7 +62,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
-
-
-

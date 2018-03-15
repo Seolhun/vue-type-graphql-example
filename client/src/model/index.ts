@@ -68,4 +68,4 @@ class BookModel {
   }
 }
 
-export { UserModel, DivisionModel };
+export { BookModel, DivisionModel, UserModel };

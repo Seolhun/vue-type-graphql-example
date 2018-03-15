@@ -1,11 +1,17 @@
 import Vue, { AsyncComponent } from 'vue';
 import Router, { NavigationGuard, Route, RouteConfig } from 'vue-router';
 
-import Home from '@/components/Home.vue';
-import Login from '@/components/ui/common/Login.vue';
-import Signin from '@/components/ui/common/Signin.vue';
-import UserDetail from '@/components/ui/users/UserDetail.vue';
-import Users from '@/components/ui/users/Users.vue';
+import HomeView from '@/components/HomeView.vue';
+import LoginView from '@/components/ui/common/LoginView.vue';
+import SigninView from '@/components/ui/common/SigninView.vue';
+
+import BookDetailView from '@/components/ui/books/BookDetailView.vue';
+import BooksView from '@/components/ui/books/BooksView.vue';
+import DivisionDetailView from '@/components/ui/divisions/DivisionDetailView.vue';
+import DivisionsView from '@/components/ui/divisions/DivisionsView.vue';
+import UserDetailView from '@/components/ui/users/UserDetailView.vue';
+import UsersView from '@/components/ui/users/UsersView.vue';
+
 import { loginIn } from '../utils/login';
 
 // const login: AsyncComponent = (): any => import('@/pages/login.vue');
@@ -15,31 +21,46 @@ const routes: RouteConfig[] = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: HomeView,
+  },
+  {
+    path: '/books',
+    name: 'Books',
+    component: BooksView,
+    // meta: { requiresAuth: true },
+    children: [
+      { path: '/books/:name', component: BookDetailView, name: 'BookDetail' },
+    ],
   },
   {
     path: '/users',
     name: 'Users',
-    component: Users,
+    component: UsersView,
+    // meta: { requiresAuth: true },
     // redirect: '/home',
     // meta: { leaf: false, icon: 'icon-article' },
-    // children: [
-    //   { path: '/article/index', component: Users, name: 'Users', meta: { requiresAuth: true, icon: 'icon-list' } },
-    //   { path: '/article/release', component: Users, name: 'Users', meta: { requiresAuth: true, icon: 'icon-write' } },
-    // ],
-  }, {
-    path: '/user/{name}',
-    name: 'User',
-    component: UserDetail,
-  }, {
+    children: [
+      { path: '/users/:email', component: UserDetailView, name: 'UserDetail' },
+    ],
+  },
+  {
+    path: '/divisions',
+    name: 'Divisions',
+    component: DivisionsView,
+    children: [
+      { path: '/divisions/:name', component: DivisionDetailView, name: 'DivisionDetail' },
+    ],
+  },
+  {
     path: '/login',
     name: 'Login',
-    component: Login,
+    component: LoginView,
     meta: { requiresAuth: false },
-  }, {
+  },
+  {
     path: '/signin',
     name: 'Signin',
-    component: Signin,
+    component: SigninView,
     meta: { requiresAuth: false },
   },
 ];
@@ -50,6 +71,9 @@ const router: Router = new Router({
 });
 
 router.beforeEach((to: Route, from: Route, next: ({ }?) => void): void => {
+  if (!from) {
+    next();
+  }
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!loginIn()) {
       next({

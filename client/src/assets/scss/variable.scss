@@ -21,10 +21,15 @@ $light-ocean: lighten($ocean, 15%);
 $dark-ocean: darken($ocean, 2%);
 $darker-ocean: darken($dark-ocean, 3%);
 
+$royalBlue: royalblue;
+$light-royalBlue: lighten($royalBlue, 15%);
+$dark-royalBlue: darken($royalBlue, 2%);
+$darker-royalBlue: darken($dark-royalBlue, 3%);
+
 /* ------------------------
   - Dom Css Using Global Color Variable
-  # Background And Function Dom Color Variable using $Color Variable
-  # 'Function Dom' are Input, Button and another elements.
+  # Background And Active Dom Color Variable using $Color Variable
+  # 'Active Dom' are Input, Button and another elements.
 ------------------------ */
 // Background Color
 $bg-color: $white !default;
@@ -32,17 +37,23 @@ $bg-font-color: $light-black;
 $bg-color-hover: $light-white;
 $bg-color-shadow: $dark-white;
 
-// Function Color
-$fc-color: $ocean !default;
-$fc-font-color: $white !default;
-$fc-color-hover: $light-ocean !default;
-$fc-color-shadow: $darker-ocean !default;
+// Active Color
+$active-color: $ocean !default;
+$active-font-color: $white !default;
+$active-color-hover: $light-ocean !default;
+$active-color-shadow: $darker-ocean !default;
+
+// Active2 Color
+$active2-color: $royalBlue !default;
+$active2-font-color: $white !default;
+$active2-color-hover: $light-royalBlue !default;
+$active2-color-shadow: $darker-royalBlue !default;
 
 // Sub-Function Color
-$sub-fc-color: $gray !default;
-$sub-fc-font-color: $black !default;
-$sub-fc-color-hover: $light-gray !default;
-$sub-fc-color-shadow: $darker-gray !default;
+$sub-active-color: $gray !default;
+$sub-active-font-color: $black !default;
+$sub-active-color-hover: $light-gray !default;
+$sub-active-color-shadow: $darker-gray !default;
 
 /* ------------------------
   - Often Used color
@@ -71,37 +82,37 @@ $colors: (
 /* ------------------------
   - Google Font
 ------------------------ */
-//@mixin font-face(
-//  $name,
-//  $font-files,
-//  $eot: false,
-//  $weight: false,
-//  $style: false
-//) {
-//  $iefont: unquote("#{$eot}?#iefix");
-//  @font-face {
-//    font-family: quote($name);
-//    @if $eot {
-//      src: font-url($eot);
-//      $font-files: font-url($iefont) unquote("format('eot')"), $font-files;
-//    }
-//    src: $font-files;
-//    @if $weight {
-//      font-weight: $weight;
-//    }
-//    @if $style {
-//      font-style: $style;
-//    }
-//  }
-//}
+@mixin font-face(
+ $name,
+ $font-files,
+ $eot: false,
+ $weight: false,
+ $style: false
+) {
+ $iefont: unquote("#{$eot}?#iefix");
+ @font-face {
+   font-family: quote($name);
+   @if $eot {
+     src: font-url($eot);
+     $font-files: font-url($iefont) unquote("format('eot')"), $font-files;
+   }
+   src: $font-files;
+   @if $weight {
+     font-weight: $weight;
+   }
+   @if $style {
+     font-style: $style;
+   }
+ }
+}
 
 $font-main-1: 'Lato', sans-serif;
 $font-main-2: 'Open Sans', sans-serif;
 $font-main-3: 'Droid Sans', sans-serif;
 $font-main-4: 'Noto Sans', sans-serif;
-@import url('https://fonts.googleapis.com/css?family=Droid+Sans|Lato|Noto+Sans|Open+Sans');
 @font-face {
   font-family: $font-main-1;
+  src: url('https://fonts.googleapis.com/css?family=Droid+Sans|Lato|Noto+Sans|Open+Sans');
 }
 
 /* ------------------------------------------------------------------------
@@ -119,188 +130,3 @@ $header-height: 80px;
 ------------------------ */
 $media-medium: 1024px;
 $media-small: 640px;
-
-/* ------------------------------------------------------------------------
-  - Global For Function SCSS Start
--------------------------------------------------------------------------- */
-
-/* ----------------------------------------
-  - Tag Variable CSS
-------------------------------------------- */
-/* ------------------------
-  Tag h1 ~ h5 CSS
------------------------- */
-$h-size: h !default;
-@for $i from 1 through 5 {
-  #{$h-size}#{$i} {
-    font-weight: 600;
-    font-size: 15px + (30 / $i);
-    padding: 15px 0px;
-    word-break: break-word;
-  }
-}
-
-/* ----------------------------------------
-  - Class Variable CSS
-------------------------------------------- */
-/* ------------------------
-  Width Coverage
-  # .width-1 ~ width-100 css
------------------------- */
-$width-class: width- !default;
-@for $i from 1 through 20 {
-  .#{$width-class}#{$i * 5} {
-    width: 0% + ($i * 5);
-  }
-}
-
-/* ------------------------
-  Height Coverage
-  # .Height-50 ~ Height-500 css
------------------------- */
-$height: height- !default;
-@for $i from 1 through 20 {
-  .#{$height}#{$i * 50} {
-    height: 0px + ($i * 50);
-    word-break: keep-all;
-
-  }
-}
-
-$max-height: max-height- !default;
-@for $i from 1 through 20 {
-  .#{$max-height}#{$i*50} {
-    max-height: 0px + ($i * 50);
-    word-break: keep-all;
-    min-height: 0px + ($i * 10);;
-    height: auto;
-
-  }
-}
-
-$min-height: min-height- !default;
-@for $i from 1 through 20 {
-  .#{$min-height}#{$i*50} {
-    min-height: 0px + ($i * 50);
-    word-break: keep-all;
-    height: auto;
-    overflow-y: auto;
-  }
-}
-
-/* ------------------------
-  Font Weight & Size
-  # .font-size-1 ~
-  # .font-weight-1 ~
------------------------- */
-$font-size: font-size- !default;
-@for $i from 10 through 100 {
-  .#{$font-size}#{$i} {
-    font-size: 0px + ($i);
-  }
-}
-
-$font-weight: font-weight- !default;
-@for $i from 1 through 10 {
-  .#{$font-weight}#{$i} {
-    font-weight: 100 * ($i);
-  }
-}
-
-/* ------------------------
-  padding-10 ~ padding-60 CSS
------------------------- */
-$padding: padding- !default;
-@for $i from 1 through 6 {
-  .#{$padding}#{$i*10} {
-    padding: (10px * $i);
-  }
-}
-
-$padding-top: padding-top- !default;
-@for $i from 1 through 20 {
-  .#{$padding-top}#{$i*10} {
-    padding-top: (5px * $i) 0px 0px 0px;
-  }
-}
-
-$padding-bottom: padding-bottom- !default;
-@for $i from 1 through 20 {
-  .#{$padding-bottom}#{$i*10} {
-    padding-bottom: 0px 0px (5px * $i) 0px;
-  }
-}
-
-$padding-right: padding-right- !default;
-@for $i from 1 through 20 {
-  .#{$padding-right}#{$i*10} {
-    padding-right: 0px 0px (5px * $i) 0px;
-  }
-}
-
-$padding-left: padding-left- !default;
-@for $i from 1 through 20 {
-  .#{$padding-left}#{$i*10} {
-    padding-left: 0px 0px (5px * $i) 0px;
-  }
-}
-
-/* ------------------------
-  margin-10 ~ margin-60 CSS
------------------------- */
-$margin: margin- !default;
-@for $i from 1 through 20 {
-  .#{$margin}#{$i*10} {
-    margin: (5px * $i);
-  }
-}
-
-$margin-top: margin-top- !default;
-@for $i from 1 through 20 {
-  .#{$margin-top}#{$i * 10} {
-    margin-top: (5px * $i);
-  }
-}
-
-$margin-bottom: margin-bottom- !default;
-@for $i from 1 through 20 {
-  .#{$margin-bottom}#{$i*10} {
-    margin-bottom: (5px * $i)
-  }
-}
-
-$margin-right: margin-right- !default;
-@for $i from 1 through 20 {
-  .#{$margin-right}#{$i*10} {
-    margin-right: (5px * $i);
-  }
-}
-
-$margin-left: margin-left- !default;
-@for $i from 1 through 20 {
-  .#{$margin-left}#{$i*10} {
-    margin-left: (5px * $i);
-  }
-}
-
-/* ------------------------
-  Label Title CSS
------------------------- */
-$label-title: label-title- !default;
-@for $i from 12 through 30 {
-  .#{$label-title}#{$i} {
-    font-size: 1px * $i;
-    font-weight: 600;
-    word-break: break-word;
-  }
-}
-
-/* ------------------------
-  Shadow Box CSS
------------------------- */
-$shadow-box: shadow-box- !default;
-@for $i from 1 through 10 {
-  .#{$shadow-box}#{$i} {
-    box-shadow: (1px * $i), (1px * $i), (1px * $i), (1px * $i) $gray
-  }
-}

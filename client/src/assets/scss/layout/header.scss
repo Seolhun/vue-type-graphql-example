@@ -6,3 +6,7 @@
 .navbar-brand {
   font-weight: 800;
 }
+
+.nav-item > li {
+  color: $active-color !important;
+}
