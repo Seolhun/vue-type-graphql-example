@@ -16,7 +16,7 @@ const state: State = {
 
 const actions: ActionTree<State, any> = {
   async initAuth({ commit }): Promise<void> {
-    console.log('');
+    console.log(commit);
   },
 };
 

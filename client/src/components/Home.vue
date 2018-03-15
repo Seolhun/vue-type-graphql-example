@@ -1,9 +1,12 @@
 <template>
   <div>
-    <img src='@/assets/images/logo/logo.png'>
-    <h2>Hello, I'm SeolHun. Web Developer</h2>
+    <img src='@/assets/images/logo/logo2.png'>
+    <div>
+      <h2>Hello, I'm SeolHun<a href='https://github.com/seolhun' target='_blank'>(Github)</a>. Web Developer</h2>
+
+    </div>
+    <span>This is built by NodeJS, TypeScript, GraphQL, Vue to make a example to share for Company.</span>
     <div>{{ $tc('common.nation') }} : {{ $tc('common.korea') }}</div>
-    <small>This is built by Node, TypeScript, GraphQL to make a example to test for Company.</small>
   </div>
 </template>
 

@@ -5,7 +5,7 @@
 ## Used Stacks
 1. `TypeScript`
 2. `NodeJS`, `Express`
-3. `Vue-Cli`
+3. `Vue`
 4. `GraphQL`
 6. `Apollo Client`
 7. `Sequelize`
@@ -19,3 +19,4 @@
 - `Client`
   - [Vue](https://vuejs.org/)
   - [Vue Apollo Client](https://github.com/akryum/vue-apollo)
+  

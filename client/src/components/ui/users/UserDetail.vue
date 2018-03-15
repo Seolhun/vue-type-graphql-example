@@ -1,15 +1,15 @@
 <template>
   <div class='row'>
     <div class='col-sm-12'>
-    <div>
-      <input
-        v-model='inputEmail'
-        class='form-control'
-      >
-      <p>inputEmail : {{ inputEmail }}</p>
+      <h3>User Detail</h3>
+      <div>
+        <input
+          v-model='inputEmail'
+          class='form-control'
+        >
+        <p>inputEmail : {{ inputEmail }}</p>
+      </div>
     </div>
-  </div>
-  <div class='row'>
     <div class='apollo col-sm-12'>
       <h2>User</h2>
       <div>
@@ -60,10 +60,8 @@ import { UserModel } from '../../model';
     }
   }
 })
-class UserDetail extends Vue {
+export default class UserDetail extends Vue {
   inputEmail = 'shun10114@gmail.com';
   user = new UserModel();
 }
-
-export default UserDetail;
 </script>

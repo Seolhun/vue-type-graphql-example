@@ -41,16 +41,17 @@ import gql from 'graphql-tag';
 
 import * as validator from 'validator';
 
+import Validatos from '../../../utils/Validators';
+
 @Component
 export default class Signin extends Vue {
-  validation = {
+  user = {
     email: '',
     name: '',
     password: '',
     confirmPassword: '',
   }
-
-  user = {
+  validation = {
     email: '',
     name: '',
     password: '',
@@ -71,6 +72,21 @@ export default class Signin extends Vue {
   private validateUser() {
     if(!validator.isEmail(this.user.email)) {
       this.validation.email = 'Email is In-valid'
+    } else {
+      this.validation.email = ''
+    }
+
+    const validatos = new Validatos();
+    const name_validation = validatos.isPassword(this.user.password)
+    if(!name_validation.result) {
+      this.validation.email = name_validation.msg
+    } else {
+      this.validation.email = ''
+    }
+
+    const pwd_validation = validatos.isPassword(this.user.password)
+    if(!pwd_validation.result) {
+      this.validation.email = pwd_validation.msg
     } else {
       this.validation.email = ''
     }
