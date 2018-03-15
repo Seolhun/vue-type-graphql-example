@@ -1,7 +1,7 @@
 <template>
   <div class='row'>
     <div class='col-sm-12'>
-      <h3>Book Detail</h3>
+      <h3>Division Detail</h3>
     </div>
   </div>
 </template>
@@ -11,10 +11,10 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import gql from 'graphql-tag';
 
-import { BookModel } from '../../model';
+import { DivisionModel } from '../../../model';
 
 @Component
-export default class BookDetail extends Vue {
+export default class DivisionDetailView extends Vue {
 
 }
 </script>

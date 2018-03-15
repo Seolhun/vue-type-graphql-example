@@ -2,7 +2,7 @@
   <div>
     <header-menu/>
 
-    <div class='container margin-top-100'>
+    <div class='container margin-top-75 margin-bottom-50'>
       <router-view/>
     </div>
 

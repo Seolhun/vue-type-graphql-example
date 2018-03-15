@@ -2,7 +2,7 @@
   <div class='row'>
     <div class='col-sm-12'>
       <div class='apollo'>
-        <h3>Books</h3>
+        <h3>Users</h3>
         <table class='table'>
           <thead>
             <tr>
@@ -21,18 +21,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for='book in books' v-bind:key='book.id'>
+            <tr v-for='user in users' v-bind:key='user.id'>
               <td>
-                {{ book.id }}
+                {{ user.id }}
               </td>
               <td>
-                {{ book.email }}
+                {{ user.email }}
               </td>
               <td>
-                {{ book.name }}
+                {{ user.name }}
               </td>
               <td>
-                {{ book.birth }}
+                {{ user.birth }}
               </td>
             </tr>
           </tbody>
@@ -47,11 +47,31 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import gql from 'graphql-tag';
 
-import { BookModel } from '../../model';
+import { UserModel } from '../../../model';
 
-@Component
-export default class Books extends Vue {
-  books = [];
-
+@Component({
+  apollo: {
+    users() {
+      return {
+        query: gql`
+          query {
+            users {
+              id
+              email
+              name
+              birth
+            }
+          }
+        `,
+        result(result) {
+          this.users = result.data.users;
+        },
+        // fetchPolicy: 'cache-and-network'
+      };
+    }
+  }
+})
+export default class UsersView extends Vue {
+  users: UserModel[] = [];
 }
 </script>

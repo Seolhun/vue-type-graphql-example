@@ -31,7 +31,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import gql from 'graphql-tag';
 
-import { UserModel } from '../../model';
+import { UserModel } from '../../../model';
 
 @Component({
   apollo: {
@@ -60,7 +60,7 @@ import { UserModel } from '../../model';
     }
   }
 })
-export default class UserDetail extends Vue {
+export default class UserDetailView extends Vue {
   inputEmail = 'shun10114@gmail.com';
   user = new UserModel();
 }

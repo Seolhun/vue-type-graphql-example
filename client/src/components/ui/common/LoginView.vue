@@ -33,7 +33,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 @Component
-class Login extends Vue {
+export default class LoginView extends Vue {
   user = {
     email: '',
     password: '',
@@ -44,6 +44,4 @@ class Login extends Vue {
     password: '',
   }
 }
-
-export default Login;
 </script>

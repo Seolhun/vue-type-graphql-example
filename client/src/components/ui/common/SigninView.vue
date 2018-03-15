@@ -44,7 +44,7 @@ import * as validator from 'validator';
 import Validatos from '../../../utils/Validators';
 
 @Component
-export default class Signin extends Vue {
+export default class SigninView extends Vue {
   user = {
     email: '',
     name: '',

@@ -35,10 +35,10 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import gql from 'graphql-tag';
 
-import { DivisionModel } from '../../model';
+import { DivisionModel } from '../../../model';
 
 @Component
-export default class Divisions extends Vue {
-  divisions = [];
+export default class DivisionsView extends Vue {
+  divisions:DivisionModel[] = [];
 }
 </script>
