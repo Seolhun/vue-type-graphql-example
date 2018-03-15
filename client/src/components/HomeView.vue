@@ -7,7 +7,7 @@
 
       </div>
       <span>This is built by NodeJS, TypeScript, GraphQL, Vue to make a example to share for Company.</span>
-      <div>{{ $tc('common.nation') }} : {{ $tc('common.korea') }}</div>
+      <div>{{ $tc('common.korea') }}</div>
     </div>
   </div>
 </template>

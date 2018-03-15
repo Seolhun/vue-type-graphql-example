@@ -17,8 +17,8 @@
     </div>
     <div class='col-sm-12'>
       <div class='form-group'>
-        <button class='btn-lg btn-primary' v-on:click="signIn($event)">Log-In</button>
-        <button class='btn-lg btn-info'>Sign-In</button>
+        <button class='btn-lg btn-primary' v-on:click="() => login($event)">Log-In</button>
+        <button class='btn-lg btn-danger' v-on:click='() => cancel()' >Cancel</button>
       </div>
     </div>
     <div class='col-sm-12'>
@@ -42,5 +42,15 @@ export default class LoginView extends Vue {
     email: '',
     password: '',
   }
+
+  login(event: Event) {
+    event.preventDefault();
+
+  }
+
+  cancel() {
+    this.$router.go(-1);
+  }
+
 }
 </script>
