@@ -5,31 +5,29 @@
     </div>
     <div class='col-sm-12'>
       <div class='form-group'>
-        <div>
-          <label>Email</label>
-          <input type='email' class='form-control' v-model='user.email'>
-          <span> {{ validation.email ? validation.email : '' }} </span>
-        </div>
-        <div>
-          <label>Name</label>
-          <input class='form-control' v-model='user.name'>
-          <span> {{ validation.name ? validation.name : '' }} </span>
-        </div>
-        <div>
-          <label>Password</label>
-          <input type='password' class='form-control' v-model='user.password'>
-          <span> {{ validation.password ? validation.password : '' }} </span>
-        </div>
-        <div>
-          <label for='confirmPassword'>Confirm-Password</label>
-          <input type='password' class='form-control' id='confirmPassword' v-model='user.confirmPassword'>
-          <span> {{ validation.password ? validation.password : '' }} </span>
-        </div>
+        <label>Email</label>
+        <input type='email' class='form-control' v-model='user.email'>
+        <span class='error-msg'> {{ validation.email ? validation.email : '' }} </span>
       </div>
-      <div>
-        <button class='btn-lg btn-primary' v-on:click="signIn($event)">Sign-In</button>
-        <button class='btn-lg btn-danger'>Cancel</button>
+      <div class='form-group'>
+        <label>Name</label>
+        <input class='form-control' v-model='user.name'>
+        <span class='error-msg'> {{ validation.name ? validation.name : '' }} </span>
       </div>
+      <div class='form-group'>
+        <label>Password</label>
+        <input type='password' class='form-control' v-model='user.password'>
+        <span class='error-msg'> {{ validation.password ? validation.password : '' }} </span>
+      </div>
+      <div class='form-group'>
+        <label for='confirmPassword'>Confirm-Password</label>
+        <input type='password' class='form-control' id='confirmPassword' v-model='user.confirmPassword'>
+        <span class='error-msg'> {{ validation.password ? validation.password : '' }} </span>
+      </div>
+    </div>
+    <div>
+      <button class='btn-lg btn-primary' v-on:click='($event) => signIn($event)'>Sign-In</button>
+      <button class='btn-lg btn-danger' v-on:click='() => cancel()' >Cancel</button>
     </div>
   </div>
 </template>
@@ -69,6 +67,10 @@ export default class SigninView extends Vue {
     event.preventDefault();
   }
 
+  cancel() {
+    this.$router.go(-1);
+  }
+
   private validateUser() {
     if(!validator.isEmail(this.user.email)) {
       this.validation.email = 'Email is In-valid'
@@ -93,3 +95,9 @@ export default class SigninView extends Vue {
   }
 }
 </script>
+
+
+<style lang='sass' scoped>
+  @import 'SigninView'
+</style>
+

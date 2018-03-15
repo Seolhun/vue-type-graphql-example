@@ -25,7 +25,7 @@
                   alt='Responsive image'
                   class='padding-10'
                 />
-                  SeolHun T-Story Blog
+                  SeolHun Blog
                 </span>
               </a>
             </p>
@@ -35,16 +35,20 @@
           <h4>Products</h4>
           <div class='footer-list-div'>
             <p>
-              <router-link :to='"notice"' class='navigation-link'>Notice</router-link>
+              <router-link :to='"/users"' class='navigation-link'>Users</router-link>
             </p>
             <p>
-              <router-link :to='"supporters"' class='navigation-link'>Supporters</router-link>
+              <router-link :to='"/divisions"' class='navigation-link'>Divisions</router-link>
             </p>
             <p>
-              <router-link :to='"content"' class='navigation-link'>Blog</router-link>
+              <router-link :to='"/books"' class='navigation-link'>Books</router-link>
             </p>
             <p>
-              <router-link :to='"aboutme"' class='navigation-link'>About Me</router-link>
+              <a :href='blogUrl' target='_blank'>
+                <span>
+                  Contact
+                </span>
+              </a>
             </p>
           </div>
         </div>
@@ -60,12 +64,13 @@ import Component from 'vue-class-component';
 @Component
 export default class FooterMenu extends Vue {
   githubUrl = 'https://github.com/seolhun';
-  blogUrl = 'http://postitforhooney.tistory.com/';
+  blogUrl = 'http://seolhun.github.io/';
+  // blogUrl = 'http://postitforhooney.tistory.com/';
 }
 </script>
 
-<style lang='sass'>
-  @import '../../../assets/scss/layout/footer'
+<style lang='sass' scoped>
+  @import 'FooterMenu'
 </style>
 
 

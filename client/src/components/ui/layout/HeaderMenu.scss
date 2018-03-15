@@ -1,4 +1,4 @@
-@import "../variable";
+@import "../../../assets/scss/variable";
 
 /* ------------------------
   Header CSS
@@ -9,4 +9,10 @@
 
 .nav-item > li {
   color: $active-color !important;
+}
+
+.dropdown-item {
+  & .active {
+    color: $ocean !important;
+  }
 }
