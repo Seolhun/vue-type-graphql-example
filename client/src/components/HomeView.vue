@@ -7,7 +7,7 @@
 
       </div>
       <span>This is built by NodeJS, TypeScript, GraphQL, Vue to make a example to share for Company.</span>
-      <div>{{ $tc('common.nation') }} : {{ $tc('common.korea') }}</div>
+      <div>{{ $tc('common.korea') }}</div>
     </div>
   </div>
 </template>
@@ -19,3 +19,10 @@ import Component from 'vue-class-component';
 @Component
 export default class HomeView extends Vue {}
 </script>
+
+<style lang='scss' scoped>
+[v-cloak] {
+  display: none;
+}
+</style>
+

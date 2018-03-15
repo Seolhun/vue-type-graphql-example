@@ -66,10 +66,10 @@ textarea.auto-size {
   Tag h1 ~ h5 CSS
 ------------------------ */
 $h-size: h !default;
-@for $i from 1 through 5 {
+@for $i from 1 through 6 {
   #{$h-size}#{$i} {
     font-weight: 600;
-    font-size: 15px + (30 / $i);
+    font-size: 10px + (30 / $i);
     padding: 15px 0px;
     word-break: break-word;
   }

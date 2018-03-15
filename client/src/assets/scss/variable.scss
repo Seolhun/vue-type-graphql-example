@@ -21,10 +21,10 @@ $light-ocean: lighten($ocean, 15%);
 $dark-ocean: darken($ocean, 2%);
 $darker-ocean: darken($dark-ocean, 3%);
 
-$royalBlue: royalblue;
-$light-royalBlue: lighten($royalBlue, 15%);
-$dark-royalBlue: darken($royalBlue, 2%);
-$darker-royalBlue: darken($dark-royalBlue, 3%);
+$royal-blue: royalblue;
+$light-royal-blue: lighten($royal-blue, 15%);
+$dark-royal-blue: darken($royal-blue, 2%);
+$darker-royal-blue: darken($dark-royal-blue, 3%);
 
 /* ------------------------
   - Dom Css Using Global Color Variable
@@ -44,10 +44,10 @@ $active-color-hover: $light-ocean !default;
 $active-color-shadow: $darker-ocean !default;
 
 // Active2 Color
-$active2-color: $royalBlue !default;
+$active2-color: $royal-blue !default;
 $active2-font-color: $white !default;
-$active2-color-hover: $light-royalBlue !default;
-$active2-color-shadow: $darker-royalBlue !default;
+$active2-color-hover: $light-royal-blue !default;
+$active2-color-shadow: $darker-royal-blue !default;
 
 // Sub-Function Color
 $sub-active-color: $gray !default;

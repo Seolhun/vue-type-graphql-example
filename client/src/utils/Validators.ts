@@ -1,48 +1,41 @@
-export interface ValidationResponse {
+interface ValidationResponse {
   result: boolean;
   msg: string;
 }
 
 class Validators {
-  number: RegExp;
-  upper_alphabet: RegExp;
-  lower_alphabet: RegExp;
-  korean: RegExp;
-  special_characters: RegExp;
+  static number: RegExp = /[0-9]+/;
+  static upper_alphabet: RegExp = /[A-Z]+/;
+  static lower_alphabet: RegExp = /[a-z]+/;
+  static korean: RegExp = /[가-힣]+/;
+  static special_characters: RegExp = /[\@\!\#\$\%\^\&\*\(\)\_\+\=\-\.\,\>\<\?\/\`\~\"\:\'\;\\]*/;
+  static special_character: string = '`~!@#$%^&*()_-=+.>,</?;:\'\\\"';
 
-  constructor() {
-    this.number = /[0-9]*/;
-    this.upper_alphabet = /[A-Z]*/;
-    this.lower_alphabet = /[a-z]*/;
-    this.korean = /[가-힣]*/;
-    this.special_characters = /[\@\!\#\$\%\^\&\*\(\)\_\+\=\-\.\,\>\<\?\/\`\~\"\:\'\;\\]*/;
-  }
-
-  isName(name: string) {
-    if (!this.upper_alphabet.test(name)) {
-      return { result: false, msg: 'Requirement upper alphabet'};
-    } else if (!this.lower_alphabet.test(name)) {
-      return { result: false, msg: 'Requirement lower alphabet'};
-    } else if (name.length < 2) {
+  static isName(name: string) {
+    if (name.length < 2) {
       return { result: false, msg: 'Requirement over 2 characters'};
+    } else if (Validators.korean.test(name)) {
+      return { result: false, msg: 'Never use Korean'};
+    } else if (!Validators.special_characters.test(name)) {
+      return { result: false, msg: `Requirement lower special_characters(${Validators.special_character})`};
     }
     return { result: true, msg: ''};
   }
 
-  isPassword(password: string): ValidationResponse {
-    if (!this.number.test(password)) {
-      return { result: false, msg: 'Requirement number'};
-    } else if (!this.upper_alphabet.test(password)) {
-      return { result: false, msg: 'Requirement upper alphabet'};
-    } else if (!this.lower_alphabet.test(password)) {
-      return { result: false, msg: 'Requirement lower alphabet'};
-    } else if (!this.special_characters.test(password)) {
-      return { result: false, msg: 'Requirement lower special_characters'};
-    } else if (password.length < 8) {
+  static isPassword(password: string): ValidationResponse {
+    if (password.length < 8) {
       return { result: false, msg: 'Requirement over 8 characters'};
+    } else if (!Validators.number.test(password)) {
+      return { result: false, msg: 'Requirement number'};
+    } else if (!Validators.upper_alphabet.test(password)) {
+      return { result: false, msg: 'Requirement upper alphabet'};
+    } else if (!Validators.lower_alphabet.test(password)) {
+      return { result: false, msg: 'Requirement lower alphabet'};
+    } else if (!Validators.special_characters.test(password)) {
+      return { result: false, msg: `Requirement lower special_characters(${Validators.special_character})`};
     }
     return { result: true, msg: ''};
   }
 }
 
-export default Validators;
+export { Validators, ValidationResponse };

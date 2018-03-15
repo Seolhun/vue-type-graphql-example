@@ -5,25 +5,24 @@
     </div>
     <div class='col-sm-12'>
       <div class='form-group'>
-        <div>
-          <label>Email</label>
-          <input type='email' class='form-control' v-model='user.email'>
-          <span> {{ validation.email ? validation.email : '' }} </span>
-        </div>
-        <div>
-          <label>Password</label>
-          <input type='password' class='form-control' v-model='user.password'>
-          <span> {{ validation.password ? validation.password : '' }} </span>
-        </div>
+        <label>Email</label>
+        <input type='email' class='form-control' v-model='user.email'>
+        <span> {{ validation.email ? validation.email : '' }} </span>
       </div>
-      <div>
-        <button class='btn-lg btn-primary' v-on:click="signIn($event)">Log-In</button>
-        <button class='btn-lg btn-info'>Sign-In</button>
+      <div class='form-group'>
+        <label>Password</label>
+        <input type='password' class='form-control' v-model='user.password'>
+        <span> {{ validation.password ? validation.password : '' }} </span>
       </div>
     </div>
     <div class='col-sm-12'>
-      <router-link tag='li' activeClass='active' :to='"/signin"'>Sign-In</router-link>
-      <span>회원이 아니신가요? 지금 <router-link :to='"/signin"' tag='a' activeClass='active'>회원가입</router-link>하세요.</span>
+      <div class='form-group'>
+        <button class='btn-lg btn-primary' v-on:click="() => login($event)">Log-In</button>
+        <button class='btn-lg btn-danger' v-on:click='() => cancel()' >Cancel</button>
+      </div>
+    </div>
+    <div class='col-sm-12'>
+      <h5>회원이 아니신가요? 지금 <router-link :to='"/signin"' tag='a' activeClass='active'>회원가입</router-link>하세요.</h5>
     </div>
   </div>
 </template>
@@ -43,5 +42,15 @@ export default class LoginView extends Vue {
     email: '',
     password: '',
   }
+
+  login(event: Event) {
+    event.preventDefault();
+
+  }
+
+  cancel() {
+    this.$router.go(-1);
+  }
+
 }
 </script>

@@ -15,6 +15,9 @@
   1. `npm run dev`
   2. [http://localhost:7000/](http://localhost:7000/)
 
+## Demo 
+[AWS S3 BookManagement Demo Server](https://s3.ap-northeast-2.amazonaws.com/)
+
 ## Reference
 - `Client`
   - [Vue](https://vuejs.org/)
