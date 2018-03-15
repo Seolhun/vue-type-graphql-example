@@ -1,5 +1,5 @@
 # Book Management System.
-- Author : [HunSeol](https://github.com/Seolhun)
+- Author : [Seolhun](https://github.com/Seolhun)
 - Date : 2017.10.19
 
 ## Used Stacks
