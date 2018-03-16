@@ -11,10 +11,22 @@ const DivisionMutation: GraphQLFieldConfigMap<any, any> = {
     type: DivisionType,
     args: {
       name: { type: new GraphQLNonNull(GraphQLString) },
-      description: { type: new GraphQLNonNull(GraphQLString) },
+      description: { type: GraphQLString },
     },
-    resolve(parent, { name, description }: Division, context, info) {
-      return divisionRepository.create({ name, description });
+    async resolve(parent, { name, description }: Division, context, info) {
+      if (!name) {
+        return new Error('The name is requirement.');
+      }
+
+      const dbDivision = await divisionRepository.findOne({ name });
+      if (dbDivision) {
+        if (dbDivision.name === name) {
+          return new Error(`Already '${name}' is existed.`);
+        }
+        return new Error(`Already '${name}' is existed.`);
+      }
+      const created_division = await divisionRepository.create({ name, description });
+      return created_division;
     },
   },
   editDivision: {

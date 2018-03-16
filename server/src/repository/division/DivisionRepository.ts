@@ -1,24 +1,30 @@
 import * as Sequelize from 'sequelize';
 import { sequelize } from '../database';
-import DivisionModel from './DivisionModel';
+import { DivisionModel } from './DivisionModel';
 
 import { Division } from '../../model';
-import * as ar from '../abstract/AbstractRepository';
-class DivisionRepository extends ar.AbstractRepository<Division> {
+import * as abstracts from '../AbstractRepository';
+class DivisionRepository extends abstracts.AbstractRepository<Division> {
   async create(division: Division): Promise<Division> {
     const dbDivision = await DivisionModel.create(division);
     return dbDivision;
   }
 
-  async findOne(division: Division): Promise<Division | null> {
+  async findOne(division: Division): Promise<Division> {
     const data = this.getUniqueCriteria(division, ['id']);
-    const dbDivision = await DivisionModel.findOne({
-      where: data,
+    let dbDivision = await DivisionModel.findOne({
+      where: {
+        [Sequelize.Op.or]: data,
+      },
     });
+
+    if (!dbDivision) {
+      dbDivision = {};
+    }
     return dbDivision;
   }
 
-  async findAll(order?: ar.Order): Promise<Division[]> {
+  async findAll(order?: abstracts.Order): Promise<Division[]> {
     if (!order) {
       order = 'DESC';
     }
@@ -28,7 +34,7 @@ class DivisionRepository extends ar.AbstractRepository<Division> {
     return dbDivisions;
   }
 
-  async findAllByPaging(divisions: Division[], offset?: number | 0, limit?: number | 20, order?: ar.Order): Promise<Division[]> {
+  async findAllByPaging(divisions: Division[], offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Promise<Division[]> {
     if (!order) {
       order = 'DESC';
     }
@@ -43,7 +49,7 @@ class DivisionRepository extends ar.AbstractRepository<Division> {
     return dbDivisions;
   }
 
-  async findAllByIds(ids: number[], order?: ar.Order): Promise<Division[]> {
+  async findAllByIds(ids: number[], order?: abstracts.Order): Promise<Division[]> {
     if (!order) {
       order = 'DESC';
     }
@@ -62,7 +68,9 @@ class DivisionRepository extends ar.AbstractRepository<Division> {
     const data = this.getUniqueCriteria(division, ['id']);
     try {
       await DivisionModel.update(division, {
-        where: data,
+        where: {
+          [Sequelize.Op.or]: data,
+        },
       });
     } catch (error) {
       return false;
@@ -74,7 +82,9 @@ class DivisionRepository extends ar.AbstractRepository<Division> {
     const data = this.getUniqueCriteria(division, ['id']);
     try {
       await DivisionModel.destroy({
-        where: data,
+        where: {
+          [Sequelize.Op.or]: data,
+        },
       });
     } catch (error) {
       return false;

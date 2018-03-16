@@ -1,7 +1,7 @@
 import * as Sequelize from 'sequelize';
 import { sequelize } from '../database';
 
-import DivisionModel from '../division/DivisionModel';
+import { DivisionModel } from '../division/DivisionModel';
 
 const UserModel = sequelize.define('users', {
   id: {
@@ -49,6 +49,4 @@ const UserModel = sequelize.define('users', {
     comment: 'Uesr Table',
   });
 
-UserModel.belongsTo(DivisionModel, { as: 'division' });
-
-export default UserModel;
+export { UserModel };

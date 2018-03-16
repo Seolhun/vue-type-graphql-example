@@ -15,22 +15,15 @@ const UserQuery: GraphQLFieldConfigMap<any, any> = {
     args: {
       id: { type: GraphQLString },
       email: { type: GraphQLString },
+      name: { type: GraphQLString },
     },
-    resolve(parent, { id, email }: User, context, info) {
-      if (!id && !email) {
-        return new Error('id or email is requirement.');
+    async resolve(parent, { id, email, name }: User, context, info) {
+      if (!id && !email && !name) {
+        return new Error('One of id and email, name is requirement.');
       }
 
-      const user = userRepository.findOne({ id, email });
-      user.then((user: User) => {
-        const division = divisionRepository.findOne({ id: user.division_id });
-        division.then((division: Division) => {
-          if (division) {
-            user.division = division;
-          }
-        });
-      });
-      return user;
+      const dbUser = await userRepository.findOne({ id, email, name });
+      return dbUser;
     },
   },
   users: {

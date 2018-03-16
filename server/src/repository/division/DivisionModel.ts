@@ -1,6 +1,8 @@
 import * as Sequelize from 'sequelize';
 import { sequelize } from '../database';
 
+import { UserModel } from '../user/UserModel';
+
 const DivisionModel = sequelize.define('divisions', {
   id: {
     type: Sequelize.BIGINT,
@@ -10,7 +12,7 @@ const DivisionModel = sequelize.define('divisions', {
   name: {
     type: Sequelize.STRING,
     validate: {
-      is: /^[가-힣a-zA-Z]{2,20}/g,
+      is: /^[가-힣a-zA-Z0-9]{2,20}/g,
     },
     unique: true,
   },
@@ -33,6 +35,9 @@ const DivisionModel = sequelize.define('divisions', {
   },
 }, {
     comment: 'Division Table',
-  });
+  },
+);
 
-export default DivisionModel;
+DivisionModel.hasMany(UserModel, { as: 'divisions' });
+
+export { DivisionModel };
