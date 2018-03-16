@@ -3,7 +3,10 @@ import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars'
 import { BookType, DivisionType, UserType } from '../type/index';
 
 import { User } from '../../../model';
+import { DivisionRepository } from '../../../repository/division/DivisionRepository';
 import { UserRepository } from '../../../repository/user/UserRepository';
+
+const divisionRepositroy = new DivisionRepository();
 const userRepository = new UserRepository();
 
 const UserMutation: GraphQLFieldConfigMap<any, any> = {
@@ -11,20 +14,31 @@ const UserMutation: GraphQLFieldConfigMap<any, any> = {
     type: UserType,
     args: {
       id: { type: GraphQLInt },
-      email: { type: GraphQLString },
+      email: { type: new GraphQLNonNull(GraphQLString) },
       name: { type: new GraphQLNonNull(GraphQLString) },
       birth: { type: new GraphQLNonNull(GraphQLString) },
-      division: { type: new GraphQLNonNull(GraphQLInt) },
+      division_id: { type: new GraphQLNonNull(GraphQLInt) },
     },
-    resolve(parent, { id, email, birth, name, division }: User, context, info) {
-      if (!id && !email) {
-        return new Error('id or email is requirement.');
+    async resolve(parent, { email, birth, name, division_id }: User, context, info) {
+      if (!email && !name) {
+        return new Error('One of email, name is requirement.');
       }
-      const dbUser = userRepository.findOne({ id, email });
+
+      const dbUser = await userRepository.findOne({ email, name });
       if (dbUser) {
-        return new Error(`Already '${email}' is existed.`);
+        if (email && dbUser.email === email) {
+          return new Error(`Already '${email}' is existed.`);
+        } else if (name && dbUser.name === name) {
+          return new Error(`Already '${name}' is existed.`);
+        }
+        return new Error(`Already '${email || name}' is existed.`);
       }
-      return userRepository.create({ email, birth, name, division });
+
+      const created_user: User = await userRepository.create({ email, birth, name, division_id });
+      const dbDivision = await divisionRepositroy.findOne({ id: division_id });
+      created_user.division = dbDivision ? dbDivision : {};
+
+      return created_user;
     },
   },
   editUser: {
@@ -32,9 +46,9 @@ const UserMutation: GraphQLFieldConfigMap<any, any> = {
     args: {
       id: { type: GraphQLInt },
       email: { type: GraphQLString },
-      name: { type: new GraphQLNonNull(GraphQLString) },
-      birth: { type: new GraphQLNonNull(GraphQLString) },
-      division: { type: new GraphQLNonNull(GraphQLInt) },
+      name: { type: GraphQLString },
+      birth: { type: GraphQLString },
+      division: { type: GraphQLInt },
     },
     resolve(parent, { id, email, birth, name, division }: User) {
       if (!id && !email) {

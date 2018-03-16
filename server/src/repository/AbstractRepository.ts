@@ -9,14 +9,16 @@ abstract class AbstractRepository<T> {
   abstract update(T);
   abstract delete(T);
 
-  getUniqueCriteria(T, args: string[]) {
-    const data = {};
-    args.forEach((arg) => {
-      if (T[arg]) {
-        return data[arg] = T[arg];
+  getUniqueCriteria(T, colums: string[]): any[] {
+    const params: any[] = [];
+    colums.forEach((colum) => {
+      if (T[colum]) {
+        const data = {};
+        data[colum] = T[colum];
+        params.push(data);
       }
     });
-    return data;
+    return params;
   }
 }
 

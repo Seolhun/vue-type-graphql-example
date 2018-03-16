@@ -1,11 +1,11 @@
 import * as Sequelize from 'sequelize';
 import { sequelize } from '../database';
-import BookModel from './BookModel';
+import { BookModel } from './BookModel';
 
 import { Book } from '../../model';
-import * as ar from '../abstract/AbstractRepository';
+import * as abstracts from '../AbstractRepository';
 
-class BookRepository extends ar.AbstractRepository<Book> {
+class BookRepository extends abstracts.AbstractRepository<Book> {
   async create(book: Book): Promise<Book> {
     const dbBook = await BookModel.create(book);
     return dbBook;
@@ -14,12 +14,14 @@ class BookRepository extends ar.AbstractRepository<Book> {
   async findOne(book: Book): Promise<Book | null> {
     const data = this.getUniqueCriteria(book, ['id']);
     const dbBook = await BookModel.findOne({
-      where: data,
+      where: {
+        [Sequelize.Op.or]: data,
+      },
     });
     return dbBook;
   }
 
-  async findAll(order?: ar.Order): Promise<Book[]> {
+  async findAll(order?: abstracts.Order): Promise<Book[]> {
     if (!order) {
       order = 'DESC';
     }
@@ -31,7 +33,7 @@ class BookRepository extends ar.AbstractRepository<Book> {
     return dbBooks;
   }
 
-  async findAllByPaging(books: Book[], offset?: number | 0, limit?: number | 20, order?: ar.Order): Promise<Book[]> {
+  async findAllByPaging(books: Book[], offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Promise<Book[]> {
     if (!order) {
       order = 'DESC';
     }
@@ -46,7 +48,7 @@ class BookRepository extends ar.AbstractRepository<Book> {
     return dbBooks;
   }
 
-  async findAllByIds(ids: number[], order?: ar.Order): Promise<Book[]> {
+  async findAllByIds(ids: number[], order?: abstracts.Order): Promise<Book[]> {
     if (!order) {
       order = 'DESC';
     }
@@ -63,7 +65,9 @@ class BookRepository extends ar.AbstractRepository<Book> {
     const data = this.getUniqueCriteria(book, ['id']);
     try {
       await BookModel.update(book, {
-        where: data,
+        where: {
+          [Sequelize.Op.or]: data,
+        },
       });
     } catch (error) {
       return false;
@@ -75,7 +79,9 @@ class BookRepository extends ar.AbstractRepository<Book> {
     const data = this.getUniqueCriteria(book, ['id']);
     try {
       await BookModel.destroy({
-        where: data,
+        where: {
+          [Sequelize.Op.or]: data,
+        },
       });
     } catch (error) {
       return false;

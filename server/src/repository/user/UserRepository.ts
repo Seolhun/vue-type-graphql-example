@@ -1,26 +1,33 @@
 import * as Sequelize from 'sequelize';
 import { sequelize } from '../database';
-import DivisionModel from '../division/DivisionModel';
-import UserModel from './UserModel';
+import { DivisionModel } from '../division/DivisionModel';
+import { UserModel } from './UserModel';
 
 import { Division, User } from '../../model';
-import * as ar from '../abstract/AbstractRepository';
+import * as abstracts from '../AbstractRepository';
 
-class UserRepository extends ar.AbstractRepository<User> {
+class UserRepository extends abstracts.AbstractRepository<User> {
   async create(user: User): Promise<User> {
     const dbUser = await UserModel.create(user);
     return dbUser;
   }
 
-  async findOne(user: User): Promise<User | null> {
-    const data = this.getUniqueCriteria(user, ['id', 'email']);
-    const dbUser = await UserModel.findOne({
-      where: data,
+  async findOne(user: User): Promise<User> {
+    const data = this.getUniqueCriteria(user, ['id', 'email', 'name']);
+
+    let db_user = await UserModel.findOne({
+      where: {
+        [Sequelize.Op.or]: data,
+      },
     });
-    return dbUser;
+
+    if (!db_user) {
+      db_user = {};
+    }
+    return db_user;
   }
 
-  async findAll(order?: ar.Order): Promise<User[]> {
+  async findAll(order?: abstracts.Order): Promise<User[]> {
     if (!order) {
       order = 'DESC';
     }
@@ -32,7 +39,7 @@ class UserRepository extends ar.AbstractRepository<User> {
     return dbUsers;
   }
 
-  async findAllByPaging(users: User[], offset?: number | 0, limit?: number | 20, order?: ar.Order): Promise<User[]> {
+  async findAllByPaging(users: User[], offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Promise<User[]> {
     if (!order) {
       order = 'DESC';
     }
@@ -47,7 +54,7 @@ class UserRepository extends ar.AbstractRepository<User> {
     return dbUsers;
   }
 
-  async findAllByIds(ids: number[], order?: ar.Order): Promise<User[]> {
+  async findAllByIds(ids: number[], order?: abstracts.Order): Promise<User[]> {
     if (!order) {
       order = 'DESC';
     }
@@ -64,7 +71,9 @@ class UserRepository extends ar.AbstractRepository<User> {
     const data = this.getUniqueCriteria(user, ['id', 'email']);
     try {
       await UserModel.update(user, {
-        where: data,
+        where: {
+          [Sequelize.Op.or]: data,
+        },
       });
     } catch (error) {
       return false;
@@ -76,7 +85,9 @@ class UserRepository extends ar.AbstractRepository<User> {
     const data = this.getUniqueCriteria(user, ['id', 'email']);
     try {
       await UserModel.destroy({
-        where: data,
+        where: {
+          [Sequelize.Op.or]: data,
+        },
       });
     } catch (error) {
       return false;

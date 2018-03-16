@@ -37,4 +37,4 @@ const BookModel = sequelize.define('books', {
     comment: 'Book Table',
   });
 
-export default BookModel;
+export { BookModel };

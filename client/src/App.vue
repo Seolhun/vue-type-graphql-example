@@ -13,8 +13,8 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import HeaderMenu from '@/components/ui/layout/HeaderMenu.vue';
-import FooterMenu from '@/components/ui/layout/FooterMenu.vue';
+import HeaderMenu from '@/components/layout/HeaderMenu.vue';
+import FooterMenu from '@/components/layout/FooterMenu.vue';
 
 @Component({
   components: {
