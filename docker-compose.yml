@@ -3,7 +3,7 @@ services:
   web:
     build: .
     volumes:
-      - ./:/app
+      - ./server/:index
     ports:
       - "8080:8080"
     links:
