@@ -2,9 +2,9 @@
   "name": "graphql-example",
   "version": "1.0.0",
   "description": "Graphql example",
-  "main": "index.ts",
+  "main": "app.ts",
   "scripts": {
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
     "test": "jest"
   },
   "author": "seolhun",
