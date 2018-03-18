@@ -16,11 +16,9 @@ import { auth_router } from './routes/auth/Authentication';
 const env = Config.setConfiguration();
 
 const app = express();
-// Json Parser
+// Middleware
 app.use(bodyParser.json());
-// Cors
 app.use(cors());
-// Http Helmet
 app.use(helmet());
 app.disable('x-powered-by');
 // Session
