@@ -11,16 +11,14 @@ import { Config } from './config';
 import { sequelize } from './repository/database';
 import schema from './services/graphql/schema';
 
-import Authentication from './endpoints/auth/Authentication';
+import { auth_router } from './routes/auth/Authentication';
 
 const env = Config.setConfiguration();
 
 const app = express();
-// Json Parser
+// Middleware
 app.use(bodyParser.json());
-// Cors
 app.use(cors());
-// Http Helmet
 app.use(helmet());
 app.disable('x-powered-by');
 // Session
@@ -54,7 +52,7 @@ app.use('/graphql', graphqlHTTP(async (request) => {
 app.get('/', (req, res) => {
   res.send('Hello World');
 });
-Authentication(app);
+app.get('/auth', auth_router);
 
 // sequelize.sync({ force: true });
 sequelize.sync();
