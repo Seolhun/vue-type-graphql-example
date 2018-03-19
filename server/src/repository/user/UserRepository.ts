@@ -1,5 +1,4 @@
 import * as Sequelize from 'sequelize';
-import { sequelize } from '../database';
 import { DivisionModel } from '../division/DivisionModel';
 import { UserModel } from './UserModel';
 

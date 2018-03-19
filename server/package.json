@@ -7,6 +7,20 @@
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
     "test": "jest"
   },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
   "author": "seolhun",
   "license": "MIT",
   "dependencies": {
@@ -20,6 +34,7 @@
     "graphql": "^0.12.3",
     "helmet": "^3.12.0",
     "lodash": "^4.17.5",
+    "jest": "^22.4.2",
     "mysql2": "^1.5.2",
     "nodemon": "^1.17.2",
     "passport": "^0.4.0",
@@ -35,8 +50,8 @@
     "@types/jest": "^22.2.0",
     "@types/lodash": "^4.14.104",
     "@types/sequelize": "^4.27.10",
-    "jest": "^22.4.2",
     "sequelize": "^4.36.1",
+    "ts-jest": "^22.4.2",
     "typescript": "^2.7.2"
   }
 }

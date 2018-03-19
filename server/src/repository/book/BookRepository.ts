@@ -1,5 +1,4 @@
 import * as Sequelize from 'sequelize';
-import { sequelize } from '../database';
 import { BookModel } from './BookModel';
 
 import { Book } from '../../model';

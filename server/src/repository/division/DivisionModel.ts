@@ -1,5 +1,5 @@
 import * as Sequelize from 'sequelize';
-import { sequelize } from '../database';
+import { sequelize } from '../../config/database';
 
 import { UserModel } from '../user/UserModel';
 
