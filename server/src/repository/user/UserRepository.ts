@@ -38,14 +38,14 @@ class UserRepository extends abstracts.AbstractRepository<User> {
     return dbUsers;
   }
 
-  async findAllByPaging(users: User[], offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Promise<User[]> {
+  async findAllByPaging(user: User, offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Promise<User[]> {
     if (!order) {
       order = 'DESC';
     }
     const dbUsers: User[] = await UserModel.findAll({
       offset,
       limit,
-      where: users,
+      where: user,
       order: [
         ['created_at', order],
       ],

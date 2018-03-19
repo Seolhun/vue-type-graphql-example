@@ -32,14 +32,14 @@ class BookRepository extends abstracts.AbstractRepository<Book> {
     return dbBooks;
   }
 
-  async findAllByPaging(books: Book[], offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Promise<Book[]> {
+  async findAllByPaging(book: Book, offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Promise<Book[]> {
     if (!order) {
       order = 'DESC';
     }
     const dbBooks: Book[] = await BookModel.findAll({
       offset,
       limit,
-      where: books,
+      where: book,
       order: [
         ['created_at', order],
       ],

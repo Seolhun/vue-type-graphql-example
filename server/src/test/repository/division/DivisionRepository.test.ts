@@ -5,7 +5,45 @@ import { DivisionRepository } from '../../../repository/division/DivisionReposit
 
 const divisionRepository = new DivisionRepository();
 describe('#DivisionRepository', () => {
-  test('Division FindOne By Email', () => {
-    expect(divisionRepository.findOne({name: 'Dev'})).toBe({email: 'shun10114@gmail.com', name: 'Seolhun'});
+  test('User findOne by UK', () => {
+    expect(divisionRepository.findOne({name: 'Dev'}).then((user) => {
+      console.log(user);
+    })).toEqual({name: 'Dev'});
+  });
+
+  test('User findAll', () => {
+    expect(divisionRepository.findAll().then((user) => {
+      console.log(user);
+    })).toEqual({name: 'Dev'});
+  });
+
+  test('User findAllByIds', () => {
+    expect(divisionRepository.findAllByIds([1, 2, 3]).then((user) => {
+      console.log(user);
+    })).toEqual({name: 'Dev'});
+  });
+
+  test('User findAllByPaging', () => {
+    expect(divisionRepository.findAllByPaging({name: 'Dev'}, 0, 20).then((user) => {
+      console.log(user);
+    })).toEqual({name: 'Dev'});
+  });
+
+  test('User create', () => {
+    expect(divisionRepository.create({name: 'Dev'}).then((user) => {
+      console.log(user);
+    })).toEqual({name: 'Dev'});
+  });
+
+  test('User update', () => {
+    expect(divisionRepository.update({name: 'Dev'}).then((user) => {
+      console.log(user);
+    })).toEqual({name: 'Dev'});
+  });
+
+  test('User delete', () => {
+    expect(divisionRepository.delete({name: 'Dev'}).then((user) => {
+      console.log(user);
+    })).toEqual({name: 'Dev'});
   });
 });

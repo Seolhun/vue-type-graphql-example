@@ -33,7 +33,7 @@ class DivisionRepository extends abstracts.AbstractRepository<Division> {
     return dbDivisions;
   }
 
-  async findAllByPaging(divisions: Division[], offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Promise<Division[]> {
+  async findAllByPaging(divisions: Division, offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Promise<Division[]> {
     if (!order) {
       order = 'DESC';
     }
