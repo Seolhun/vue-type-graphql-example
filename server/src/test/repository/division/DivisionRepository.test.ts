@@ -1,3 +1,4 @@
+import { sandbox, stub } from 'sinon';
 import { DivisionRepository } from '../../../repository/division/DivisionRepository';
 
 describe('#DivisionRepository', () => {
@@ -13,52 +14,51 @@ describe('#DivisionRepository', () => {
     sandbox.restore();
   });
 
-  it('should catch', () => {
-    division_repository.returns(Promise.reject(new Error('test-error')));
-    return division_repository.findAll().catch((err) => {
-        err.should.exist(err);
-        err.message.should.equal('test-error');
-      });
+  test('User create', () => {
+    const create = stub(new DivisionRepository(), 'create');
+    expect(create({name: 'Dev'}).then((user) => {
+      console.log(user);
+    })).toEqual({name: 'Dev'});
   });
 
   test('User findOne by UK', () => {
-    expect(division_repository.findOne({name: 'Dev'}).then((user) => {
+    const findOne = stub(new DivisionRepository(), 'findOne');
+    expect(findOne({name: 'Dev'}).then((user) => {
       console.log(user);
     })).toEqual({name: 'Dev'});
   });
 
   test('User findAll', () => {
-    expect(division_repository.findAll().then((user) => {
+    const findAll = stub(new DivisionRepository(), 'findAll');
+    expect(findAll().then((user) => {
       console.log(user);
     })).toEqual({name: 'Dev'});
   });
 
   test('User findAllByIds', () => {
-    expect(division_repository.findAllByIds([1, 2, 3]).then((user) => {
+    const findAllByIds = stub(new DivisionRepository(), 'findAllByIds');
+    expect(findAllByIds([1, 2, 3]).then((user) => {
       console.log(user);
     })).toEqual({name: 'Dev'});
   });
 
   test('User findAllByPaging', () => {
-    expect(division_repository.findAllByPaging({name: 'Dev'}, 0, 20).then((user) => {
-      console.log(user);
-    })).toEqual({name: 'Dev'});
-  });
-
-  test('User create', () => {
-    expect(division_repository.create({name: 'Dev'}).then((user) => {
+    const findAllByPaging = stub(new DivisionRepository(), 'findAllByPaging');
+    expect(findAllByPaging({name: 'Dev'}, 0, 20).then((user) => {
       console.log(user);
     })).toEqual({name: 'Dev'});
   });
 
   test('User update', () => {
-    expect(division_repository.update({name: 'Dev'}).then((user) => {
+    const update = stub(new DivisionRepository(), 'update');
+    expect(update({name: 'Dev'}).then((user) => {
       console.log(user);
     })).toEqual({name: 'Dev'});
   });
 
   test('User delete', () => {
-    expect(division_repository.delete({name: 'Dev'}).then((user) => {
+    const deleteDivision = stub(new DivisionRepository(), 'delete');
+    expect(deleteDivision({name: 'Dev'}).then((user) => {
       console.log(user);
     })).toEqual({name: 'Dev'});
   });

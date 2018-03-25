@@ -1,4 +1,4 @@
-import { sandbox } from 'sinon';
+import { sandbox, stub } from 'sinon';
 import { BookRepository } from '../../../repository/book/BookRepository';
 
 describe('#BookRepository', () => {
@@ -14,52 +14,51 @@ describe('#BookRepository', () => {
     sandbox.restore();
   });
 
-  it('should catch', () => {
-    book_repository.returns(Promise.reject(new Error('test-error')));
-    return book_repository.findAll().catch((err) => {
-        err.should.exist(err);
-        err.message.should.equal('test-error');
-      });
+  it('Book create', () => {
+    const create = stub(new BookRepository(), 'create');
+    expect(create({name: ''}).then((user) => {
+      console.log(user);
+    })).toEqual({name: 'What is the Web'});
   });
 
   it('Book findOne by UK', () => {
-    expect(book_repository.findOne({name: 'Seolhun'}).then((user) => {
+    const findOne = stub(new BookRepository(), 'findOne');
+    expect(findOne({name: 'Seolhun'}).then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
 
   it('Book findAll', () => {
-    expect(book_repository.findAll().then((user) => {
+    const findAll = stub(new BookRepository(), 'findAll');
+    expect(findAll().then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
 
   it('Book findAllByIds', () => {
-    expect(book_repository.findAllByIds([1, 2, 3]).then((user) => {
+    const findAllByIds = stub(new BookRepository(), 'findAllByIds');
+    expect(findAllByIds([1, 2, 3]).then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
 
   it('Book findAllByPaging', () => {
-    expect(book_repository.findAllByPaging({name: 'What is the Web'}, 0, 20).then((user) => {
-      console.log(user);
-    })).toEqual({name: 'What is the Web'});
-  });
-
-  it('Book create', () => {
-    expect(book_repository.create({name: ''}).then((user) => {
+    const findAllByPaging = stub(new BookRepository(), 'findAllByPaging');
+    expect(findAllByPaging({name: 'What is the Web'}, 0, 20).then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
 
   it('Book update', () => {
-    expect(book_repository.update({name: ''}).then((user) => {
+    const update = stub(new BookRepository(), 'update');
+    expect(update({name: ''}).then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
 
   it('Book delete', () => {
-    expect(book_repository.delete({name: ''}).then((user) => {
+    const deleteBook = stub(new BookRepository(), 'delete');
+    expect(deleteBook({name: ''}).then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
