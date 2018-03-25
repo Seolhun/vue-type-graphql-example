@@ -1,92 +1,93 @@
+import Bluebird from 'bluebird';
 import * as Sequelize from 'sequelize';
-import { sequelize } from '../database';
 import { BookModel } from './BookModel';
 
 import { Book } from '../../model';
 import * as abstracts from '../AbstractRepository';
 
 class BookRepository extends abstracts.AbstractRepository<Book> {
-  async create(book: Book): Promise<Book> {
-    const dbBook = await BookModel.create(book);
-    return dbBook;
+  create(book: Book): Bluebird<Book> {
+    const db_book: Bluebird<Book> = BookModel.create(book);
+    return Bluebird.Promise.resolve(db_book);
   }
 
-  async findOne(book: Book): Promise<Book | null> {
+  findOne(book: Book): Bluebird<Book | null> {
     const data = this.getUniqueCriteria(book, ['id']);
-    const dbBook = await BookModel.findOne({
+    const db_book: Bluebird<Book | null> = BookModel.findOne({
       where: {
         [Sequelize.Op.or]: data,
       },
     });
-    return dbBook;
+
+    return Bluebird.Promise.resolve(db_book);
   }
 
-  async findAll(order?: abstracts.Order): Promise<Book[]> {
+  findAll(order?: abstracts.Order): Bluebird<Book[]> {
     if (!order) {
       order = 'DESC';
     }
-    const dbBooks: Book[] = await BookModel.findAll({
+    const db_books: Bluebird<Book[]> = BookModel.findAll({
       order: [
         ['created_at', order],
       ],
     });
-    return dbBooks;
+    return Bluebird.Promise.resolve(db_books);
   }
 
-  async findAllByPaging(books: Book[], offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Promise<Book[]> {
+  findAllByPaging(book: Book, offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Bluebird<Book[]> {
     if (!order) {
       order = 'DESC';
     }
-    const dbBooks: Book[] = await BookModel.findAll({
+    const db_books: Bluebird<Book[]> = BookModel.findAll({
       offset,
       limit,
-      where: books,
+      where: book,
       order: [
         ['created_at', order],
       ],
     });
-    return dbBooks;
+    return Bluebird.Promise.resolve(db_books);
   }
 
-  async findAllByIds(ids: number[], order?: abstracts.Order): Promise<Book[]> {
+  findAllByIds(ids: number[], order?: abstracts.Order): Bluebird<Book[]> {
     if (!order) {
       order = 'DESC';
     }
-    const dbBooks: Book[] = await BookModel.findAll({
+    const db_books: Bluebird<Book[]> = BookModel.findAll({
       where: {
         id: [...ids],
       },
       order: [BookModel, 'created_at', order],
     });
-    return dbBooks;
+    return Bluebird.Promise.resolve(db_books);
   }
 
-  async update(book: Book): Promise<Book | boolean> {
+  update(book: Book): Bluebird<boolean> {
     const data = this.getUniqueCriteria(book, ['id']);
     try {
-      await BookModel.update(book, {
+      BookModel.update(book, {
         where: {
           [Sequelize.Op.or]: data,
         },
       });
     } catch (error) {
-      return false;
+      return Bluebird.Promise.resolve(false);
     }
-    return true;
+    return Bluebird.Promise.resolve(true);
   }
 
-  async delete(book: Book): Promise<Book | boolean> {
+  delete(book: Book): Bluebird<boolean> {
     const data = this.getUniqueCriteria(book, ['id']);
     try {
-      await BookModel.destroy({
+      BookModel.destroy({
         where: {
           [Sequelize.Op.or]: data,
         },
       });
     } catch (error) {
-      return false;
+      return Bluebird.Promise.resolve(false);
     }
-    return true;
+    return Bluebird.Promise.resolve(true);
   }
 }
 

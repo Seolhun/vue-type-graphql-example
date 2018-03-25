@@ -1,5 +1,3 @@
-import logger from 'common/logger';
-
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as express from 'express';
@@ -8,7 +6,7 @@ import * as session from 'express-session';
 import * as helmet from 'helmet';
 
 import { Config } from './config';
-import { sequelize } from './repository/database';
+import { sequelize } from './config/database';
 import schema from './services/graphql/schema';
 
 import { auth_router } from './routes/auth/Authentication';

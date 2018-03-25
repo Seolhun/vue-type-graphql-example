@@ -1,6 +1,6 @@
-import * as Sequelize from 'sequelize';
+import Sequelize from 'sequelize';
 
-import logger from '../common/logger';
+import { logger } from '../logger';
 
 const sequelize = new Sequelize('shooney_management', 'hunseol', 'hunseol', {
   host: '127.0.0.1',

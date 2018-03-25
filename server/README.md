@@ -20,7 +20,7 @@
   1. Create Default database using Raw SQL.
     - `/server/db/default.sql`
   2. Set Database configuration.
-    - `/server/src/repository/database.ts`
+    - `/server/src/config/database/index.ts`
   3. Set `Sync` Database config
     - `sequelize.sync()` - create & update
     - `sequelize.sync({force: true})` - create & drop

@@ -12,8 +12,8 @@ const logger = winston.createLogger({
     new winston.transports.File({ filename: `${LOG_DIR}/error.log`, level: 'error' }),
     new winston.transports.File({ filename: `${LOG_DIR}/debug.log`, level: 'debug' }),
     new winston.transports.File({ filename: `${LOG_DIR}/info.log`, level: 'info' }),
-    new winston.transports.File({ filename: `${LOG_DIR}/combined..log` }),
+    new winston.transports.File({ filename: `${LOG_DIR}/combined.log` }),
   ],
 });
 
-export default logger;
+export { logger };
