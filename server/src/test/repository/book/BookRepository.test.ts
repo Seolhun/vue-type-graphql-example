@@ -1,48 +1,65 @@
-import { sequelize } from '../../../config/database';
-import { logger } from '../../../config/logger';
-
+import { sandbox } from 'sinon';
 import { BookRepository } from '../../../repository/book/BookRepository';
 
-const bookRepository = new BookRepository();
 describe('#BookRepository', () => {
-  test('Book findOne by UK', () => {
-    expect(bookRepository.findOne({name: ''}).then((user) => {
+  let sandbox;
+  let book_repository;
+
+  beforeAll(async () => {
+    sandbox = sandbox.create();
+    book_repository = sandbox.stub(new BookRepository(), 'book_repository');
+  });
+
+  afterAll(async () => {
+    sandbox.restore();
+  });
+
+  it('should catch', () => {
+    book_repository.returns(Promise.reject(new Error('test-error')));
+    return book_repository.findAll().catch((err) => {
+        err.should.exist(err);
+        err.message.should.equal('test-error');
+      });
+  });
+
+  it('Book findOne by UK', () => {
+    expect(book_repository.findOne({name: 'Seolhun'}).then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
 
-  test('Book findAll', () => {
-    expect(bookRepository.findAll().then((user) => {
+  it('Book findAll', () => {
+    expect(book_repository.findAll().then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
 
-  test('Book findAllByIds', () => {
-    expect(bookRepository.findAllByIds([1, 2, 3]).then((user) => {
+  it('Book findAllByIds', () => {
+    expect(book_repository.findAllByIds([1, 2, 3]).then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
 
-  test('Book findAllByPaging', () => {
-    expect(bookRepository.findAllByPaging({name: 'What is the Web'}, 0, 20).then((user) => {
+  it('Book findAllByPaging', () => {
+    expect(book_repository.findAllByPaging({name: 'What is the Web'}, 0, 20).then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
 
-  test('Book create', () => {
-    expect(bookRepository.create({name: ''}).then((user) => {
+  it('Book create', () => {
+    expect(book_repository.create({name: ''}).then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
 
-  test('Book update', () => {
-    expect(bookRepository.update({name: ''}).then((user) => {
+  it('Book update', () => {
+    expect(book_repository.update({name: ''}).then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
 
-  test('Book delete', () => {
-    expect(bookRepository.delete({name: ''}).then((user) => {
+  it('Book delete', () => {
+    expect(book_repository.delete({name: ''}).then((user) => {
       console.log(user);
     })).toEqual({name: 'What is the Web'});
   });
