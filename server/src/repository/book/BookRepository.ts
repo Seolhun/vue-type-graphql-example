@@ -3,42 +3,39 @@ import * as Sequelize from 'sequelize';
 import { BookModel } from './BookModel';
 
 import { Book } from '../../model';
-import * as abstracts from '../AbstractRepository';
+import { AbstractRepository, Order } from '../AbstractRepository';
 
-class BookRepository extends abstracts.AbstractRepository<Book> {
+class BookRepository extends AbstractRepository<Book> {
   create(book: Book): Bluebird<Book> {
-    const db_book: Bluebird<Book> = BookModel.create(book);
-    return Bluebird.Promise.resolve(db_book);
+    return BookModel.create(book);
   }
 
   findOne(book: Book): Bluebird<Book | null> {
     const data = this.getUniqueCriteria(book, ['id']);
-    const db_book: Bluebird<Book | null> = BookModel.findOne({
+    return BookModel.findOne({
       where: {
         [Sequelize.Op.or]: data,
       },
     });
 
-    return Bluebird.Promise.resolve(db_book);
   }
 
-  findAll(order?: abstracts.Order): Bluebird<Book[]> {
+  findAll(order?: Order): Bluebird<Book[]> {
     if (!order) {
       order = 'DESC';
     }
-    const db_books: Bluebird<Book[]> = BookModel.findAll({
+    return BookModel.findAll({
       order: [
         ['created_at', order],
       ],
     });
-    return Bluebird.Promise.resolve(db_books);
   }
 
-  findAllByPaging(book: Book, offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Bluebird<Book[]> {
+  findAllByPaging(book: Book, offset?: number | 0, limit?: number | 20, order?: Order): Bluebird<Book[]> {
     if (!order) {
       order = 'DESC';
     }
-    const db_books: Bluebird<Book[]> = BookModel.findAll({
+    return BookModel.findAll({
       offset,
       limit,
       where: book,
@@ -46,10 +43,9 @@ class BookRepository extends abstracts.AbstractRepository<Book> {
         ['created_at', order],
       ],
     });
-    return Bluebird.Promise.resolve(db_books);
   }
 
-  findAllByIds(ids: number[], order?: abstracts.Order): Bluebird<Book[]> {
+  findAllByIds(ids: number[], order?: Order): Bluebird<Book[]> {
     if (!order) {
       order = 'DESC';
     }
@@ -57,7 +53,9 @@ class BookRepository extends abstracts.AbstractRepository<Book> {
       where: {
         id: [...ids],
       },
-      order: [BookModel, 'created_at', order],
+      order: [
+        ['created_at', order],
+      ],
     });
     return Bluebird.Promise.resolve(db_books);
   }

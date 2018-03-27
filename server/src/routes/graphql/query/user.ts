@@ -3,12 +3,9 @@ import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars'
 import { UserType } from '../type/index';
 
 import { Division, User } from '../../../model';
-import { DivisionRepository } from '../../../repository/division/DivisionRepository';
-import { UserRepository } from '../../../repository/user/UserRepository';
+import { UserService } from '../../../services';
 
-const userRepository = new UserRepository();
-const divisionRepository = new DivisionRepository();
-
+const user_service = new UserService();
 const UserQuery: GraphQLFieldConfigMap<any, any> = {
   user: {
     type: UserType,
@@ -18,19 +15,13 @@ const UserQuery: GraphQLFieldConfigMap<any, any> = {
       name: { type: GraphQLString },
     },
     async resolve(parent, { id, email, name }: User, context, info) {
-      if (!id && !email && !name) {
-        return new Error('One of id and email, name is requirement.');
-      }
-
-      const dbUser = await userRepository.findOne({ id, email, name });
-      return dbUser;
+      return await user_service.findOne({ id, email, name });
     },
   },
   users: {
     type: new GraphQLList(UserType),
-    args: {},
     async resolve(parent, args, context, info) {
-      return userRepository.findAll('DESC');
+      return await user_service.findAll('DESC');
     },
   },
 };

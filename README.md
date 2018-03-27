@@ -11,6 +11,16 @@
 6. `Apollo Client`
 7. `Sequelize`
 
+## Commit Convention
+- Server : [Server] - Contents
+- Client : [Cient] - Contents
+- Android : [Android] - Contents
+- Contents
+  - GraphQL
+  - Vue
+  - Test
+  - ...
+
 ## How to run
 - `Server`
   - `npm install -g ts-node vue-cli typescript`
@@ -18,9 +28,13 @@
   2. [http://localhost:4000/graphql](http://localhost:4000/graphql)
 
 - `DB`
-  1. Changed Sequelize but you can use json-server.
-  - `npm run json:server`
-  - [http://localhost:3100/users](http://localhost:3100/users)
+  1. Create Default database using Raw SQL.
+    - `/server/db/default.sql`
+  2. Set Database configuration.
+    - `/server/src/config/database/index.ts`
+  3. Set `Sync` Database config
+    - `sequelize.sync()` - create & update
+    - `sequelize.sync({force: true})` - create & drop
 
 - `Client`
   1. `npm run dev`

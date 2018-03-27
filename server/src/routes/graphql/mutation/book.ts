@@ -1,11 +1,12 @@
+import Bluebird from 'bluebird';
 import { GraphQLFieldConfigMap, GraphQLNonNull, GraphQLObjectType } from 'graphql';
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { BookType } from '../type/index';
 
 import { Book } from '../../../model';
-import { BookRepository } from '../../../repository/book/BookRepository';
-const bookRepository = new BookRepository();
+import { BookService } from '../../../services/BookService';
 
+const book_service = new BookService();
 const BookkMutation: GraphQLFieldConfigMap<any, any> = {
   addUser: {
     type: BookType,
@@ -14,8 +15,8 @@ const BookkMutation: GraphQLFieldConfigMap<any, any> = {
       writer: { type: new GraphQLNonNull(GraphQLString) },
       description: { type: new GraphQLNonNull(GraphQLInt) },
     },
-    resolve(parent, { name, writer, description }: Book, context, info) {
-      return bookRepository.create({ name, writer, description });
+    resolve(parent, { name, writer, description }: Book, context, info): Bluebird<Book> {
+      return book_service.createdBook({ name, writer, description });
     },
   },
   editUser: {
@@ -27,15 +28,8 @@ const BookkMutation: GraphQLFieldConfigMap<any, any> = {
       status: { type: new GraphQLNonNull(GraphQLBoolean) },
       description: { type: new GraphQLNonNull(GraphQLInt) },
     },
-    resolve(parent, { id, name, writer, status, description }: Book, context, info) {
-      if (!id) {
-        return new Error('id is requirement.');
-      }
-      const dbBook = bookRepository.findOne({ id });
-      if (!dbBook) {
-        return new Error('The division is not found');
-      }
-      return bookRepository.update({ name, writer, status, description });
+    resolve(parent, { id, name, writer, status, description }: Book, context, info): Bluebird<boolean> {
+      return book_service.updatedBook({ id, name, writer, status, description });
     },
   },
   deleteUser: {
@@ -43,15 +37,8 @@ const BookkMutation: GraphQLFieldConfigMap<any, any> = {
     args: {
       id: { type: GraphQLInt },
     },
-    resolve(parent, { id }: Book, context, info) {
-      if (!id) {
-        return new Error('id is requirement.');
-      }
-      const dbBook = bookRepository.findOne({ id });
-      if (!dbBook) {
-        return new Error('The division is not found');
-      }
-      return bookRepository.delete({ id });
+    resolve(parent, { id }: Book, context, info): Bluebird<boolean> {
+      return book_service.deletedBook({id});
     },
   },
 };

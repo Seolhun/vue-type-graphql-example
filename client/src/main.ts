@@ -55,7 +55,7 @@ new Vue({
   router,
   store,
   i18n,
+  provide: apolloProvider.provide(),
   template: '<App/>',
   components: { App },
-  apolloProvider,
 }).$mount('#app');

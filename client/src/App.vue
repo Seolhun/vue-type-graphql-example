@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-cloak>
     <header-menu/>
 
     <div class='container margin-top-75 margin-bottom-50'>
@@ -64,4 +64,5 @@ export default class App extends Vue {
 
 <style lang='sass'>
   @import 'assets/scss/global'
+  @import 'assets/scss/custom'
 </style>

@@ -11,10 +11,10 @@ const DivisionModel = sequelize.define('divisions', {
   },
   name: {
     type: Sequelize.STRING,
+    unique: true,
     validate: {
       is: /^[가-힣a-zA-Z0-9]{2,20}/g,
     },
-    unique: true,
   },
   description: {
     type: Sequelize.STRING,

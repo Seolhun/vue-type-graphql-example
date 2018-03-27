@@ -2,6 +2,7 @@ class UserModel {
   id: number;
   name: string;
   email: string;
+  password: string;
   birth: string;
   // division: DivisionModel;
   active: boolean;

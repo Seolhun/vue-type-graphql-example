@@ -1,16 +1,19 @@
 <template>
-  <div class='row'>
+  <div class='row' v-cloak>
     <div class='col-sm-12'>
       <div class='apollo'>
         <h3>Divisions</h3>
-        <table class='table'>
+        <table class='table table-hover'>
           <thead>
             <tr>
               <th>
                 Id
               </th>
               <th>
-                Email
+                Name
+              </th>
+              <th>
+                Description
               </th>
             </tr>
           </thead>
@@ -20,7 +23,10 @@
                 {{ division.id }}
               </td>
               <td>
-                {{ division.email }}
+                {{ division.name }}
+              </td>
+              <td>
+                {{ division.description }}
               </td>
             </tr>
           </tbody>
@@ -35,9 +41,32 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import gql from 'graphql-tag';
 
-import { DivisionModel } from '../../../model';
+import { DivisionModel } from '../../../models';
+import { ApolloResponse } from '../../../types';
 
-@Component
+@Component({
+  apollo: {
+    divisions() {
+      return {
+        query: gql`
+          query {
+            divisions {
+              id
+              name
+              description
+            }
+          }
+        `,
+        result(result: ApolloResponse) {
+          if(!result.loading) {
+            this.divisions = result.data.divisions;
+          }
+        },
+        fetchPolicy: 'cache-and-network',
+      };
+    }
+  }
+})
 export default class DivisionsView extends Vue {
   divisions:DivisionModel[] = [];
 }

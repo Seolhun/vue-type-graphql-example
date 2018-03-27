@@ -31,7 +31,8 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import gql from 'graphql-tag';
 
-import { UserModel } from '../../../model';
+import { UserModel } from '../../../models';
+import { ApolloResponse } from '../../../types';
 
 @Component({
   apollo: {

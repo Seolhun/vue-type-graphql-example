@@ -7,7 +7,7 @@ import * as helmet from 'helmet';
 
 import { Config } from './config';
 import { sequelize } from './config/database';
-import schema from './services/graphql/schema';
+import schema from './routes/graphql/schema';
 
 import { auth_router } from './routes/auth/Authentication';
 

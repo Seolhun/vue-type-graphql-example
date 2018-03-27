@@ -11,31 +11,30 @@ class DivisionRepository extends abstracts.AbstractRepository<Division> {
   }
 
   findOne(division: Division): Bluebird<Division | null> {
-    const data = this.getUniqueCriteria(division, ['id']);
-    const db_division: Bluebird<Division | null> = DivisionModel.findOne({
+    const data = this.getUniqueCriteria(division, ['id', 'name']);
+    return DivisionModel.findOne({
       where: {
         [Sequelize.Op.or]: data,
       },
     });
-
-    return Bluebird.Promise.resolve(db_division);
   }
 
   findAll(order?: abstracts.Order): Bluebird<Division[]> {
     if (!order) {
       order = 'DESC';
     }
-    const db_divisions: Bluebird<Division[]> = DivisionModel.findAll({
-      order: [DivisionModel, 'created_at', order],
+    return DivisionModel.findAll({
+      order: [
+        ['created_at', order],
+      ],
     });
-    return Bluebird.Promise.resolve(db_divisions);
   }
 
   findAllByPaging(divisions: Division, offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Bluebird<Division[]> {
     if (!order) {
       order = 'DESC';
     }
-    const db_divisions: Bluebird<Division[]> = DivisionModel.findAll({
+    return DivisionModel.findAll({
       offset,
       limit,
       where: divisions,
@@ -43,14 +42,13 @@ class DivisionRepository extends abstracts.AbstractRepository<Division> {
         ['created_at', order],
       ],
     });
-    return Bluebird.Promise.resolve(db_divisions);
   }
 
   findAllByIds(ids: number[], order?: abstracts.Order): Bluebird<Division[]> {
     if (!order) {
       order = 'DESC';
     }
-    const db_divisions: Bluebird<Division[]> = DivisionModel.findAll({
+    return DivisionModel.findAll({
       where: {
         id: [...ids],
       },
@@ -58,11 +56,10 @@ class DivisionRepository extends abstracts.AbstractRepository<Division> {
         ['created_at', order],
       ],
     });
-    return Bluebird.Promise.resolve(db_divisions);
   }
 
   update(division: Division): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(division, ['id']);
+    const data = this.getUniqueCriteria(division, ['id', 'name']);
     try {
       DivisionModel.update(division, {
         where: {
@@ -76,7 +73,7 @@ class DivisionRepository extends abstracts.AbstractRepository<Division> {
   }
 
   delete(division: Division): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(division, ['id']);
+    const data = this.getUniqueCriteria(division, ['id', 'name']);
     try {
       DivisionModel.destroy({
         where: {

@@ -1,3 +1,5 @@
+import * as validator from 'validator';
+
 interface ValidationResponse {
   result: boolean;
   msg: string;
@@ -11,7 +13,16 @@ class Validators {
   static special_characters: RegExp = /[\@\!\#\$\%\^\&\*\(\)\_\+\=\-\.\,\>\<\?\/\`\~\"\:\'\;\\]*/;
   static special_character: string = '`~!@#$%^&*()_-=+.>,</?;:\'\\\"';
 
-  static isName(name: string) {
+  static isEmail(email: string): ValidationResponse {
+    if (email.length < 4) {
+      return { result: false, msg: 'Requirement email'};
+    } else if (!validator.isEmail(email)) {
+      return { result: false, msg: `${email} is not valid. Input the right Email.`};
+    }
+    return { result: true, msg: ''};
+  }
+
+  static isName(name: string): ValidationResponse {
     if (name.length < 2) {
       return { result: false, msg: 'Requirement over 2 characters'};
     } else if (Validators.korean.test(name)) {
