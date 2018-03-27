@@ -3,9 +3,9 @@ import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars'
 import { DivisionType } from '../type/index';
 
 import { Division } from '../../../model';
-import { DivisionRepository } from '../../../repository/division/DivisionRepository';
-const divisionRepository = new DivisionRepository();
+import { DivisionService } from '../../../services';
 
+const division_service = new DivisionService();
 const DivisionQuery: GraphQLFieldConfigMap<any, any> = {
   division: {
     type: DivisionType,
@@ -14,16 +14,13 @@ const DivisionQuery: GraphQLFieldConfigMap<any, any> = {
       name: { type: GraphQLString },
     },
     resolve(parent, { id, name }: Division, context, info) {
-      if (!id && !name) {
-        return new Error('id or name is requirement.');
-      }
-      return divisionRepository.findOne({ id, name });
+      return division_service.findOne({ id, name });
     },
   },
   divisions: {
     type: new GraphQLList(DivisionType),
     resolve(parent, args, context, info) {
-      return divisionRepository.findAll('DESC');
+      return division_service.findAll('DESC');
     },
   },
 };

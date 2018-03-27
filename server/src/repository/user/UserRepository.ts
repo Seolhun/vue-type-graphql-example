@@ -58,13 +58,15 @@ class UserRepository extends AbstractRepository<User> {
       where: {
         id: [...ids],
       },
-      order: [UserModel, 'created_at', order],
+      order: [
+        ['created_at', order],
+      ],
     });
     return Bluebird.Promise.resolve(db_users);
   }
 
   update(user: User): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(user, ['id', 'email']);
+    const data = this.getUniqueCriteria(user, ['id', 'email', 'name']);
     try {
       UserModel.update(user, {
         where: {
@@ -78,7 +80,7 @@ class UserRepository extends AbstractRepository<User> {
   }
 
   delete(user: User): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(user, ['id', 'email']);
+    const data = this.getUniqueCriteria(user, ['id', 'email', 'name']);
     try {
       UserModel.destroy({
         where: {

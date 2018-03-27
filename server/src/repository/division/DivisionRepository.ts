@@ -11,7 +11,7 @@ class DivisionRepository extends abstracts.AbstractRepository<Division> {
   }
 
   findOne(division: Division): Bluebird<Division | null> {
-    const data = this.getUniqueCriteria(division, ['id']);
+    const data = this.getUniqueCriteria(division, ['id', 'name']);
     const db_division: Bluebird<Division | null> = DivisionModel.findOne({
       where: {
         [Sequelize.Op.or]: data,
@@ -26,7 +26,9 @@ class DivisionRepository extends abstracts.AbstractRepository<Division> {
       order = 'DESC';
     }
     const db_divisions: Bluebird<Division[]> = DivisionModel.findAll({
-      order: [DivisionModel, 'created_at', order],
+      order: [
+        ['created_at', order],
+      ],
     });
     return Bluebird.Promise.resolve(db_divisions);
   }
@@ -62,7 +64,7 @@ class DivisionRepository extends abstracts.AbstractRepository<Division> {
   }
 
   update(division: Division): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(division, ['id']);
+    const data = this.getUniqueCriteria(division, ['id', 'name']);
     try {
       DivisionModel.update(division, {
         where: {
@@ -76,7 +78,7 @@ class DivisionRepository extends abstracts.AbstractRepository<Division> {
   }
 
   delete(division: Division): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(division, ['id']);
+    const data = this.getUniqueCriteria(division, ['id', 'name']);
     try {
       DivisionModel.destroy({
         where: {

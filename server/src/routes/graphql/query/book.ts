@@ -3,9 +3,9 @@ import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars'
 import { BookType } from '../type/index';
 
 import { Book } from '../../../model';
-import { BookRepository } from '../../../repository/book/BookRepository';
-const bookRepository = new BookRepository();
+import { BookService } from '../../../services/BookService';
 
+const book_service = new BookService();
 const BookQuery: GraphQLFieldConfigMap<any, any> = {
   book: {
     type: BookType,
@@ -13,16 +13,13 @@ const BookQuery: GraphQLFieldConfigMap<any, any> = {
       id: { type: new GraphQLNonNull(GraphQLString) },
     },
     resolve(parent, { id }: Book, context, info) {
-      if (!id) {
-        return new Error('id is requirement.');
-      }
-      return bookRepository.findOne({ id });
+      return book_service.findOne({id});
     },
   },
   books: {
     type: new GraphQLList(BookType),
     resolve(parent, args, context, info) {
-      return bookRepository.findAll('DESC');
+      return book_service.findAll('DESC');
     },
   },
 };
