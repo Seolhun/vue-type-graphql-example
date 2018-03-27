@@ -11,7 +11,8 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import gql from 'graphql-tag';
 
-import { DivisionModel } from '../../../model';
+import { DivisionModel } from '../../../models';
+import { ApolloResponse } from '../../../types';
 
 @Component
 export default class DivisionDetailView extends Vue {

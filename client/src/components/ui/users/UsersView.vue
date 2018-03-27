@@ -1,9 +1,9 @@
 <template>
-  <div class='row'>
+  <div class='row' v-cloak>
     <div class='col-sm-12'>
       <div class='apollo'>
         <h3>Users</h3>
-        <table class='table'>
+        <table class='table table-hover'>
           <thead>
             <tr>
               <th>
@@ -47,7 +47,8 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import gql from 'graphql-tag';
 
-import { UserModel } from '../../../model';
+import { UserModel } from '../../../models';
+import { ApolloResponse } from '../../../types';
 
 @Component({
   apollo: {
@@ -63,10 +64,12 @@ import { UserModel } from '../../../model';
             }
           }
         `,
-        result(result) {
-          this.users = result.data.users;
+        result(result: ApolloResponse) {
+          if(!result.loading) {
+            this.users = result.data.users;
+          }
         },
-        // fetchPolicy: 'cache-and-network'
+        fetchPolicy: 'cache-and-network',
       };
     }
   }

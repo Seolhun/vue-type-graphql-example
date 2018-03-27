@@ -22,6 +22,9 @@ const UserModel = sequelize.define('users', {
       isEmail: true,
     },
   },
+  password: {
+    type: Sequelize.STRING,
+  },
   birth: {
     type: Sequelize.DATEONLY,
   },

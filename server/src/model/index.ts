@@ -1,6 +1,7 @@
 interface User {
   id?: number;
   name?: string;
+  password?: string;
   email?: string;
   birth?: number;
   division_id?: number;

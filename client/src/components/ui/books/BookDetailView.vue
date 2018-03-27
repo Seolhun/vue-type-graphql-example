@@ -11,7 +11,8 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import gql from 'graphql-tag';
 
-import { BookModel } from '../../../model';
+import { BookModel } from '../../../models';
+import { ApolloResponse } from '../../../types';
 
 @Component
 export default class BookDetailView extends Vue {

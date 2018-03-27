@@ -327,3 +327,11 @@ $shadow-box: shadow-box- !default;
     box-shadow: (1px * $i), (1px * $i), (1px * $i), (1px * $i) $gray
   }
 }
+
+
+/* ------------------------
+  Bootstrap Table
+------------------------ */
+.table-hover tr:hover {
+  cursor: pointer;
+}

@@ -1,9 +1,9 @@
 <template>
-  <div class='row'>
+  <div class='row' v-cloak>
     <div class='col-sm-12'>
       <div class='apollo'>
         <h3>Books</h3>
-        <table class='table'>
+        <table class='table table-hover'>
           <thead>
             <tr>
               <th>
@@ -13,10 +13,7 @@
                 Email
               </th>
               <th>
-                Name
-              </th>
-              <th>
-                Birth
+                Writer
               </th>
             </tr>
           </thead>
@@ -26,13 +23,10 @@
                 {{ book.id }}
               </td>
               <td>
-                {{ book.email }}
-              </td>
-              <td>
                 {{ book.name }}
               </td>
               <td>
-                {{ book.birth }}
+                {{ book.writer }}
               </td>
             </tr>
           </tbody>
@@ -47,9 +41,32 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import gql from 'graphql-tag';
 
-import { BookModel } from '../../../model';
+import { BookModel } from '../../../models';
+import { ApolloResponse } from '../../../types';
 
-@Component
+@Component({
+  apollo: {
+    books() {
+      return {
+        query: gql`
+          query {
+            books {
+              id
+              name
+              writer
+            }
+          }
+        `,
+        result(result: ApolloResponse) {
+          if(!result.loading) {
+            this.books = result.data.books;
+          }
+        },
+        fetchPolicy: 'cache-and-network',
+      };
+    }
+  }
+})
 export default class BooksView extends Vue {
   books:BookModel[] = [];
 
