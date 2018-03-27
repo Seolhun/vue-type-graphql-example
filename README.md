@@ -11,6 +11,16 @@
 6. `Apollo Client`
 7. `Sequelize`
 
+## Commit Convention
+- Server : [Server] - Contents
+- Client : [Cient] - Contents
+- Android : [Android] - Contents
+- Contents
+  - GraphQL
+  - Vue
+  - Test
+  - ...
+
 ## How to run
 - `Server`
   - `npm install -g ts-node vue-cli typescript`
