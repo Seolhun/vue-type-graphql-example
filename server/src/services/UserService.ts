@@ -1,7 +1,7 @@
 import Bluebird from 'bluebird';
 import { User } from '../model';
+import { UserRepository } from '../repository';
 import { Order } from '../repository/AbstractRepository';
-import { UserRepository } from '../repository/user/UserRepository';
 
 const user_repository = new UserRepository();
 class UserService {
@@ -19,7 +19,6 @@ class UserService {
         }
         return Bluebird.reject(new Error(`Already '${email || name}' is existed.`));
       }
-
       return user_repository.create({ email, birth, name, division_id });
     });
   }

@@ -7,38 +7,35 @@ import { AbstractRepository, Order } from '../AbstractRepository';
 
 class BookRepository extends AbstractRepository<Book> {
   create(book: Book): Bluebird<Book> {
-    const db_book: Bluebird<Book> = BookModel.create(book);
-    return Bluebird.Promise.resolve(db_book);
+    return BookModel.create(book);
   }
 
   findOne(book: Book): Bluebird<Book | null> {
     const data = this.getUniqueCriteria(book, ['id']);
-    const db_book: Bluebird<Book | null> = BookModel.findOne({
+    return BookModel.findOne({
       where: {
         [Sequelize.Op.or]: data,
       },
     });
 
-    return Bluebird.Promise.resolve(db_book);
   }
 
   findAll(order?: Order): Bluebird<Book[]> {
     if (!order) {
       order = 'DESC';
     }
-    const db_books: Bluebird<Book[]> = BookModel.findAll({
+    return BookModel.findAll({
       order: [
         ['created_at', order],
       ],
     });
-    return Bluebird.Promise.resolve(db_books);
   }
 
   findAllByPaging(book: Book, offset?: number | 0, limit?: number | 20, order?: Order): Bluebird<Book[]> {
     if (!order) {
       order = 'DESC';
     }
-    const db_books: Bluebird<Book[]> = BookModel.findAll({
+    return BookModel.findAll({
       offset,
       limit,
       where: book,
@@ -46,7 +43,6 @@ class BookRepository extends AbstractRepository<Book> {
         ['created_at', order],
       ],
     });
-    return Bluebird.Promise.resolve(db_books);
   }
 
   findAllByIds(ids: number[], order?: Order): Bluebird<Book[]> {

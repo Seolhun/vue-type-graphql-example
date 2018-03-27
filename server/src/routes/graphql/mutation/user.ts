@@ -20,7 +20,7 @@ const UserMutation: GraphQLFieldConfigMap<any, any> = {
       division_id: { type: new GraphQLNonNull(GraphQLInt) },
     },
     async resolve(parent, { email, birth, name, division_id }: User, context, info) {
-      return user_service.createdUser({ email, birth, name, division_id });
+      return await user_service.createdUser({ email, birth, name, division_id });
     },
   },
   editUser: {
@@ -32,8 +32,8 @@ const UserMutation: GraphQLFieldConfigMap<any, any> = {
       birth: { type: GraphQLString },
       division: { type: GraphQLInt },
     },
-    resolve(parent, { id, email, birth, name, division_id }: User) {
-      return user_service.updatedUser({ id, email, birth, name, division_id });
+    async resolve(parent, { id, email, birth, name, division_id }: User) {
+      return await user_service.updatedUser({ id, email, birth, name, division_id });
     },
   },
   deleteUser: {
@@ -42,8 +42,8 @@ const UserMutation: GraphQLFieldConfigMap<any, any> = {
       id: { type: GraphQLInt },
       email: { type: GraphQLString },
     },
-    resolve(parent, { id, email }: User) {
-      return user_service.deletedUser({ id, email, name });
+    async resolve(parent, { id, email }: User) {
+      return await user_service.deletedUser({ id, email, name });
     },
   },
 };

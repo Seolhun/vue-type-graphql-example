@@ -8,38 +8,34 @@ import { UserModel } from './UserModel';
 
 class UserRepository extends AbstractRepository<User> {
   create(user: User): Bluebird<User> {
-    const dbUser: Bluebird<User> = UserModel.create(user);
-    return Bluebird.Promise.resolve(dbUser);
+    return  UserModel.create(user);
   }
 
   findOne(user: User): Bluebird<User | null> {
     const data = this.getUniqueCriteria(user, ['id', 'email', 'name']);
-    const db_user: Bluebird<User | null> = UserModel.findOne({
+    return UserModel.findOne({
       where: {
         [Sequelize.Op.or]: data,
       },
     });
-
-    return Bluebird.Promise.resolve(db_user);
   }
 
   findAll(order?: Order): Bluebird<User[]> {
     if (!order) {
       order = 'DESC';
     }
-    const db_users: Bluebird<User[]> = UserModel.findAll({
+    return UserModel.findAll({
       order: [
         ['created_at', order],
       ],
     });
-    return Bluebird.Promise.resolve(db_users);
   }
 
   findAllByPaging(user: User, offset?: number | 0, limit?: number | 20, order?: Order): Bluebird<User[]> {
     if (!order) {
       order = 'DESC';
     }
-    const db_users: Bluebird<User[]> = UserModel.findAll({
+    return UserModel.findAll({
       offset,
       limit,
       where: user,
@@ -47,14 +43,13 @@ class UserRepository extends AbstractRepository<User> {
         ['created_at', order],
       ],
     });
-    return Bluebird.Promise.resolve(db_users);
   }
 
   findAllByIds(ids: number[], order?: Order): Bluebird<User[]> {
     if (!order) {
       order = 'DESC';
     }
-    const db_users: Bluebird<User[]> = UserModel.findAll({
+    return UserModel.findAll({
       where: {
         id: [...ids],
       },
@@ -62,7 +57,6 @@ class UserRepository extends AbstractRepository<User> {
         ['created_at', order],
       ],
     });
-    return Bluebird.Promise.resolve(db_users);
   }
 
   update(user: User): Bluebird<boolean> {

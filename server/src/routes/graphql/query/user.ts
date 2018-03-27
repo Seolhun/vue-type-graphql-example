@@ -15,13 +15,13 @@ const UserQuery: GraphQLFieldConfigMap<any, any> = {
       name: { type: GraphQLString },
     },
     async resolve(parent, { id, email, name }: User, context, info) {
-      return user_service.findOne({ id, email, name });
+      return await user_service.findOne({ id, email, name });
     },
   },
   users: {
     type: new GraphQLList(UserType),
     async resolve(parent, args, context, info) {
-      return user_service.findAll('DESC');
+      return await user_service.findAll('DESC');
     },
   },
 };

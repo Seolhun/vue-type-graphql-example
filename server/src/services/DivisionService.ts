@@ -1,7 +1,7 @@
 import Bluebird from 'bluebird';
 import { Division } from '../model';
+import { DivisionRepository } from '../repository';
 import { Order } from '../repository/AbstractRepository';
-import { DivisionRepository } from '../repository/division/DivisionRepository';
 
 const division_repository = new DivisionRepository();
 class DivisionService {

@@ -1,9 +1,11 @@
 import * as passport from 'passport';
 import { Strategy } from 'passport-github2';
 
+import DEV_CONFIG from '../develop';
+
 passport.use(new Strategy({
-  clientID: '05096350eaddf80dbd34',
-  clientSecret: 'a2752bd252c43ef3d93f6ec4ac29533f8ff0a087',
+  clientID: DEV_CONFIG.GITHUB_CLIENT_ID,
+  clientSecret: DEV_CONFIG.GITHUB_CLIENT_SECRET_ID,
   callbackURL: '/auth/github/callback',
 }, (accessToken, refreshToken, profile, done) => {
   console.log('accessToken : ', accessToken);
