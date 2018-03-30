@@ -1,11 +1,8 @@
-interface User {
+interface Authority {
   id?: number;
   name?: string;
-  password?: string;
-  email?: string;
-  birth?: number;
-  division_id?: number;
-  division?: Division;
+  level?: number;
+  description?: string;
 
   active?: boolean;
   created_at?: string;
@@ -37,4 +34,19 @@ interface Book {
   deleted_at?: string;
 }
 
-export { Book, Division, User };
+interface User {
+  id?: number;
+  name?: string;
+  password?: string;
+  email?: string;
+  birth?: number;
+  division_id?: number;
+  division?: Division;
+
+  active?: boolean;
+  created_at?: string;
+  updated_at?: string;
+  deleted_at?: string;
+}
+
+export { Authority, Book, Division, User };

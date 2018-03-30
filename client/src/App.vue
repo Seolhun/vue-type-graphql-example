@@ -62,7 +62,13 @@ export default class App extends Vue {
 }
 </script>
 
-<style lang='sass'>
-  @import 'assets/scss/global'
-  @import 'assets/scss/custom'
+<style lang='scss'>
+@import 'assets/scss/global';
+@import 'assets/scss/custom';
+
+[v-cloak] {
+  display: none;
+}
 </style>
+
+

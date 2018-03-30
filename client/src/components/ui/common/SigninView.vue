@@ -202,7 +202,8 @@ private validateEmail(): void {
 </script>
 
 
-<style lang='sass' scoped>
-  @import 'SigninView'
+<style lang='scss' scoped>
+@import 'SigninView';
+
 </style>
 

@@ -3,27 +3,26 @@ import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars'
 import { UserType } from '../type/index';
 
 import { Division, User } from '../../../model';
-import { UserService } from '../../../services';
+import { AuthorityService } from '../../../services';
 
-const user_service = new UserService();
-const UserQuery: GraphQLFieldConfigMap<any, any> = {
-  user: {
+const authority_service = new AuthorityService();
+const AuthorityQuery: GraphQLFieldConfigMap<any, any> = {
+  authority: {
     type: UserType,
     args: {
       id: { type: GraphQLString },
-      email: { type: GraphQLString },
       name: { type: GraphQLString },
     },
     async resolve(parent, { id, email, name }: User, context, info) {
-      return await user_service.findOne({ id, email, name });
+      return await authority_service.findOne({ id, name });
     },
   },
-  users: {
+  authorities: {
     type: new GraphQLList(UserType),
     async resolve(parent, args, context, info) {
-      return await user_service.findAll('DESC');
+      return await authority_service.findAll('DESC');
     },
   },
 };
 
-export { UserQuery };
+export { AuthorityQuery };

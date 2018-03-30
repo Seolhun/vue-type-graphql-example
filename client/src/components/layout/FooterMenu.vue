@@ -69,8 +69,9 @@ export default class FooterMenu extends Vue {
 }
 </script>
 
-<style lang='sass' scoped>
-  @import 'FooterMenu'
+<style lang='scss' scoped>
+@import 'FooterMenu';
+
 </style>
 
 

@@ -1,8 +1,9 @@
 import * as Sequelize from 'sequelize';
 import { sequelize } from '../../config/database';
-import { AuthorityModel } from '../authority/AuthorityModel';
 
-const UserModel = sequelize.define('users', {
+import { UserModel } from '../user/UserModel';
+
+const AuthorityModel = sequelize.define('authorities', {
   id: {
     type: Sequelize.BIGINT,
     primaryKey: true,
@@ -14,18 +15,8 @@ const UserModel = sequelize.define('users', {
       is: /^[가-힣a-zA-Z]{3,20}/g,
     },
   },
-  email: {
-    type: Sequelize.STRING,
-    unique: true,
-    validate: {
-      isEmail: true,
-    },
-  },
-  password: {
-    type: Sequelize.STRING,
-  },
-  birth: {
-    type: Sequelize.DATEONLY,
+  level: {
+    type: Sequelize.INTEGER,
   },
 
   active: {
@@ -45,6 +36,4 @@ const UserModel = sequelize.define('users', {
   comment: 'Uesr Table',
 });
 
-UserModel.hasMany(AuthorityModel, {as: 'authority'});
-
-export { UserModel };
+export { AuthorityModel };
