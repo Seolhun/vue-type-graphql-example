@@ -89,8 +89,9 @@ export default class HeaderMenu extends Vue {
 }
 </script>
 
-<style lang='sass' scoped>
-  @import 'HeaderMenu'
+<style lang='scss' scoped>
+@import 'HeaderMenu';
+
 </style>
 
 

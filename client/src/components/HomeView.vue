@@ -6,7 +6,7 @@
         <h2>Hello, I'm SeolHun<a href='https://github.com/seolhun' target='_blank'>(Github)</a>. Web Developer</h2>
 
       </div>
-      <span>This is built by NodeJS, TypeScript, GraphQL, Vue to make a example to share for Company.</span>
+      <span>This is built by NodeJS, TypeScript, GraphQL, Vue to make a example to manage books and employees.</span>
       <div>{{ $tc('common.korea') }}</div>
     </div>
   </div>
@@ -20,9 +20,7 @@ import Component from 'vue-class-component';
 export default class HomeView extends Vue {}
 </script>
 
-<style lang='scss' scoped>
-[v-cloak] {
-  display: none;
-}
+<style lang='scss'>
+
 </style>
 
