@@ -3,8 +3,8 @@ import * as Sequelize from 'sequelize';
 import { DivisionModel } from './DivisionModel';
 
 import { Division } from '../../model';
-import * as abstracts from '../AbstractRepository';
-class DivisionRepository extends abstracts.AbstractRepository<Division> {
+import { AbstractRepository, Order } from '../AbstractRepository';
+class DivisionRepository extends AbstractRepository<Division> {
   create(division: Division): Bluebird<Division> {
     const db_division: Bluebird<Division> = DivisionModel.create(division);
     return Bluebird.Promise.resolve(db_division);
@@ -19,7 +19,7 @@ class DivisionRepository extends abstracts.AbstractRepository<Division> {
     });
   }
 
-  findAll(order?: abstracts.Order): Bluebird<Division[]> {
+  findAll(order?: Order): Bluebird<Division[]> {
     if (!order) {
       order = 'DESC';
     }
@@ -30,7 +30,7 @@ class DivisionRepository extends abstracts.AbstractRepository<Division> {
     });
   }
 
-  findAllByPaging(divisions: Division, offset?: number | 0, limit?: number | 20, order?: abstracts.Order): Bluebird<Division[]> {
+  findAllByPaging(divisions: Division, offset?: number | 0, limit?: number | 20, order?: Order): Bluebird<Division[]> {
     if (!order) {
       order = 'DESC';
     }
@@ -44,7 +44,7 @@ class DivisionRepository extends abstracts.AbstractRepository<Division> {
     });
   }
 
-  findAllByIds(ids: number[], order?: abstracts.Order): Bluebird<Division[]> {
+  findAllByIds(ids: number[], order?: Order): Bluebird<Division[]> {
     if (!order) {
       order = 'DESC';
     }

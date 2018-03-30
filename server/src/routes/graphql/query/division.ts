@@ -25,4 +25,4 @@ const DivisionQuery: GraphQLFieldConfigMap<any, any> = {
   },
 };
 
-export default DivisionQuery;
+export { DivisionQuery };

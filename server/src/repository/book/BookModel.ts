@@ -34,7 +34,7 @@ const BookModel = sequelize.define('books', {
     type: Sequelize.DATE,
   },
 }, {
-    comment: 'Book Table',
-  });
+  comment: 'Book Table',
+});
 
 export { BookModel };

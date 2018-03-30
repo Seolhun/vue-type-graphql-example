@@ -1,4 +1,3 @@
-import Bluebird from 'bluebird';
 import { GraphQLFieldConfigMap, GraphQLNonNull, GraphQLObjectType } from 'graphql';
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { BookType } from '../type/index';
@@ -7,7 +6,7 @@ import { Book } from '../../../model';
 import { BookService } from '../../../services/BookService';
 
 const book_service = new BookService();
-const BookkMutation: GraphQLFieldConfigMap<any, any> = {
+const BookMutation: GraphQLFieldConfigMap<any, any> = {
   addUser: {
     type: BookType,
     args: {
@@ -15,8 +14,8 @@ const BookkMutation: GraphQLFieldConfigMap<any, any> = {
       writer: { type: new GraphQLNonNull(GraphQLString) },
       description: { type: new GraphQLNonNull(GraphQLInt) },
     },
-    resolve(parent, { name, writer, description }: Book, context, info): Bluebird<Book> {
-      return book_service.createdBook({ name, writer, description });
+    async resolve(parent, { name, writer, description }: Book, context, info) {
+      return await book_service.createdBook({ name, writer, description });
     },
   },
   editUser: {
@@ -28,8 +27,8 @@ const BookkMutation: GraphQLFieldConfigMap<any, any> = {
       status: { type: new GraphQLNonNull(GraphQLBoolean) },
       description: { type: new GraphQLNonNull(GraphQLInt) },
     },
-    resolve(parent, { id, name, writer, status, description }: Book, context, info): Bluebird<boolean> {
-      return book_service.updatedBook({ id, name, writer, status, description });
+    async resolve(parent, { id, name, writer, status, description }: Book, context, info) {
+      return await book_service.updatedBook({ id, name, writer, status, description });
     },
   },
   deleteUser: {
@@ -37,10 +36,10 @@ const BookkMutation: GraphQLFieldConfigMap<any, any> = {
     args: {
       id: { type: GraphQLInt },
     },
-    resolve(parent, { id }: Book, context, info): Bluebird<boolean> {
-      return book_service.deletedBook({id});
+    async resolve(parent, { id }: Book, context, info) {
+      return await book_service.deletedBook({id});
     },
   },
 };
 
-export default BookkMutation;
+export { BookMutation };

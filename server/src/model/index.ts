@@ -13,6 +13,18 @@ interface User {
   deleted_at?: string;
 }
 
+interface Authority {
+  id?: number;
+  name?: string;
+  level?: number;
+  description?: string;
+
+  active?: boolean;
+  created_at?: string;
+  updated_at?: string;
+  deleted_at?: string;
+}
+
 interface Division {
   id?: number;
   name?: string;
@@ -37,4 +49,4 @@ interface Book {
   deleted_at?: string;
 }
 
-export { Book, Division, User };
+export { Authority, Book, Division, User };

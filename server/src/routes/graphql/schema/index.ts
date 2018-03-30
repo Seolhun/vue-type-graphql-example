@@ -1,6 +1,6 @@
 import { graphql, GraphQLSchema, printSchema } from 'graphql';
-import mutation from '../mutation';
-import query from '../query';
+import { mutation } from '../mutation';
+import { query } from '../query';
 
 export function getSchemaString() {
   return printSchema(schema);
@@ -15,4 +15,4 @@ const schema = new GraphQLSchema({
   mutation,
 });
 
-export default schema;
+export { schema };

@@ -1,7 +1,6 @@
 import * as Sequelize from 'sequelize';
 import { sequelize } from '../../config/database';
-
-import { DivisionModel } from '../division/DivisionModel';
+import { AuthorityModel } from '../authority/AuthorityModel';
 
 const UserModel = sequelize.define('users', {
   id: {
@@ -43,13 +42,9 @@ const UserModel = sequelize.define('users', {
     type: Sequelize.DATE,
   },
 }, {
-    indexes: [
-      {
-        unique: true,
-        fields: ['email', 'name'],
-      },
-    ],
-    comment: 'Uesr Table',
-  });
+  comment: 'Uesr Table',
+});
+
+UserModel.hasMany(AuthorityModel, {as: 'authority'});
 
 export { UserModel };

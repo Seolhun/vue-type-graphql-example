@@ -1,6 +1,6 @@
 import { GraphQLFieldConfigMap, GraphQLNonNull, GraphQLObjectType } from 'graphql';
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
-import { BookType, DivisionType, UserType } from '../type/index';
+import { UserType } from '../type/index';
 
 import { User } from '../../../model';
 import { DivisionService } from '../../../services/DivisionService';
@@ -50,4 +50,4 @@ const UserMutation: GraphQLFieldConfigMap<any, any> = {
   },
 };
 
-export default UserMutation;
+export { UserMutation };

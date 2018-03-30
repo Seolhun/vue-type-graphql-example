@@ -24,4 +24,4 @@ const BookQuery: GraphQLFieldConfigMap<any, any> = {
   },
 };
 
-export default BookQuery;
+export { BookQuery };

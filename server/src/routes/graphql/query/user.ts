@@ -26,4 +26,4 @@ const UserQuery: GraphQLFieldConfigMap<any, any> = {
   },
 };
 
-export default UserQuery;
+export { UserQuery };

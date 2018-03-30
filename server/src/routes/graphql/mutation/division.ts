@@ -40,4 +40,4 @@ const DivisionMutation: GraphQLFieldConfigMap<any, any> = {
   },
 };
 
-export default DivisionMutation;
+export { DivisionMutation };
