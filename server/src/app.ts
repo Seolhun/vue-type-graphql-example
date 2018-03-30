@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
 app.disable('x-powered-by');
+
 // Session
 const expiryDate = new Date(Date.now() + 1000 * 60 * 30); // 30 min
 app.use(session({
@@ -47,13 +48,17 @@ app.use('/graphql', graphqlHTTP(async (request) => {
   };
 }));
 
+// Router
 app.get('/', (req, res) => {
   res.send('Hello World');
 });
 app.get('/auth', auth_router);
 
+// Run Server
 app.listen(env.EXPRESS_PORT, () => {
+  console.log('=========================app.ts===========================');
   console.log(`Listening the server ${env.EXPRESS_PORT}`);
+  console.log('====================================================');
 }).on('error', (err) => {
   console.error(err);
 });

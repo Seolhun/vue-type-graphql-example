@@ -1,7 +1,6 @@
-import * as Sequelize from 'sequelize';
-import { sequelize } from '../../config/database';
+import { sequelize, Sequelize } from '../../config/database';
 
-import { UserModel } from '../user/UserModel';
+import { UserModel } from './UserModel';
 
 const DivisionModel = sequelize.define('divisions', {
   id: {

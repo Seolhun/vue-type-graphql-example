@@ -1,9 +1,7 @@
 import Sequelize from 'sequelize';
-import * as sequelize_fixtures from 'sequelize-fixtures';
 
-import { AuthorityModel } from '../../repository/authority/AuthorityModel';
 import { logger } from '../logger';
-import { fixtures } from './default/init_data';
+import { initDefaultData } from './default';
 
 const sequelize = new Sequelize('shooney_management', 'hunseol', 'hunseol', {
   host: '127.0.0.1',
@@ -45,15 +43,13 @@ const sequelize = new Sequelize('shooney_management', 'hunseol', 'hunseol', {
   },
 });
 
-sequelize_fixtures.loadFixtures(fixtures, AuthorityModel).then(() => {
-  console.log('=======success=======');
+sequelize.sync({ force: true}).then(() => {
+  initDefaultData();
 });
-
-sequelize.sync();
 sequelize.authenticate().then(() => {
   console.log('Sequelize Connection has been established successfully.');
 }).catch((err) => {
   console.error('Unable to connect to the database:', err);
 });
 
-export { sequelize };
+export { sequelize, Sequelize };

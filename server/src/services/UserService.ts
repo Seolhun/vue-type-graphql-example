@@ -1,7 +1,7 @@
 import Bluebird from 'bluebird';
-import { UserRepository } from '../repository';
-import { Order } from '../repository/AbstractRepository';
 import { User } from '../types';
+import { UserRepository } from './repository';
+import { Order } from './repository/AbstractRepository';
 
 const user_repository = new UserRepository();
 class UserService {

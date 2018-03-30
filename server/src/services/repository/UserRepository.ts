@@ -1,10 +1,9 @@
 import Bluebird from 'bluebird';
 import * as Sequelize from 'sequelize';
 
-import { Division, User } from '../../model';
-import { AbstractRepository, Order } from '../AbstractRepository';
-import { DivisionModel } from '../division/DivisionModel';
-import { UserModel } from './UserModel';
+import { Division, User } from '../../types';
+import { DivisionModel, UserModel } from '../model';
+import { AbstractRepository, Order } from './AbstractRepository';
 
 class UserRepository extends AbstractRepository<User> {
   create(user: User): Bluebird<User> {

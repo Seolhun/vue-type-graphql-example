@@ -1,9 +1,6 @@
-import * as Sequelize from 'sequelize';
-import { sequelize } from '../../config/database';
+import { sequelize, Sequelize } from '../../config/database';
 
-import { UserModel } from '../user/UserModel';
-
-const AuthorityModel = sequelize.define('authorities', {
+const BookModel = sequelize.define('books', {
   id: {
     type: Sequelize.BIGINT,
     primaryKey: true,
@@ -11,12 +8,15 @@ const AuthorityModel = sequelize.define('authorities', {
   },
   name: {
     type: Sequelize.STRING,
-    validate: {
-      is: /^[가-힣a-zA-Z]{3,20}/g,
-    },
   },
-  level: {
-    type: Sequelize.INTEGER,
+  writer: {
+    type: Sequelize.STRING,
+  },
+  status: {
+    type: Sequelize.BOOLEAN,
+  },
+  description: {
+    type: Sequelize.STRING,
   },
 
   active: {
@@ -33,7 +33,7 @@ const AuthorityModel = sequelize.define('authorities', {
     type: Sequelize.DATE,
   },
 }, {
-  comment: 'Uesr Table',
+  comment: 'Book Table',
 });
 
-export { AuthorityModel };
+export { BookModel };

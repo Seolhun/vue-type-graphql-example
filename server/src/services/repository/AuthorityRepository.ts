@@ -1,10 +1,9 @@
 import Bluebird from 'bluebird';
 import * as Sequelize from 'sequelize';
 
-import { Authority } from '../../model';
-import { AbstractRepository, Order } from '../AbstractRepository';
-import { DivisionModel } from '../division/DivisionModel';
-import { AuthorityModel } from './AuthorityModel';
+import { Authority } from '../../types';
+import { AuthorityModel, DivisionModel } from '../model';
+import { AbstractRepository, Order } from './AbstractRepository';
 
 class AuthorityRepository extends AbstractRepository<Authority> {
   create(user: Authority): Bluebird<Authority> {

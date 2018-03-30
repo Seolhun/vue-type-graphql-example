@@ -1,9 +1,10 @@
 import Bluebird from 'bluebird';
 import * as Sequelize from 'sequelize';
-import { DivisionModel } from './DivisionModel';
 
-import { Division } from '../../model';
-import { AbstractRepository, Order } from '../AbstractRepository';
+import { Division } from '../../types';
+import { DivisionModel } from '../model';
+import { AbstractRepository, Order } from './AbstractRepository';
+
 class DivisionRepository extends AbstractRepository<Division> {
   create(division: Division): Bluebird<Division> {
     const db_division: Bluebird<Division> = DivisionModel.create(division);

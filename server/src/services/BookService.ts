@@ -1,7 +1,7 @@
 import Bluebird from 'bluebird';
-import { BookRepository } from '../repository';
-import { Order } from '../repository/AbstractRepository';
 import { Book } from '../types';
+import { BookRepository } from './repository';
+import { Order } from './repository/AbstractRepository';
 
 const book_repository = new BookRepository();
 class BookService {

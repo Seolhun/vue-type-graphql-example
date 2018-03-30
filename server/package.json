@@ -40,7 +40,6 @@
     "passport": "^0.4.0",
     "passport-github2": "^0.1.11",
     "sequelize": "^4.36.1",
-    "sequelize-fixtures": "^0.7.0",
     "sinon": "^4.4.8",
     "winston": "^3.0.0-rc2"
   },
@@ -53,7 +52,6 @@
     "@types/jest": "^22.2.0",
     "@types/lodash": "^4.14.104",
     "@types/sequelize": "^4.27.10",
-    "@types/sequelize-fixtures": "^0.6.0",
     "@types/sinon": "^4.3.0",
     "ts-jest": "^22.4.2",
     "typescript": "^2.7.2"

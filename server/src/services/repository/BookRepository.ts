@@ -1,9 +1,9 @@
 import Bluebird from 'bluebird';
 import * as Sequelize from 'sequelize';
-import { BookModel } from './BookModel';
 
-import { Book } from '../../model';
-import { AbstractRepository, Order } from '../AbstractRepository';
+import { Book } from '../../types';
+import { BookModel } from '../model';
+import { AbstractRepository, Order } from './AbstractRepository';
 
 class BookRepository extends AbstractRepository<Book> {
   create(book: Book): Bluebird<Book> {
