@@ -7,7 +7,7 @@ import * as helmet from 'helmet';
 
 import { Config } from './config';
 import { sequelize } from './config/database';
-import schema from './routes/graphql/schema';
+import { schema } from './routes/graphql/schema';
 
 import { auth_router } from './routes/auth/Authentication';
 
@@ -51,14 +51,6 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 app.get('/auth', auth_router);
-
-// sequelize.sync({ force: true });
-sequelize.sync();
-sequelize.authenticate().then(() => {
-  console.log('Sequelize Connection has been established successfully.');
-}).catch((err) => {
-  console.error('Unable to connect to the database:', err);
-});
 
 app.listen(env.EXPRESS_PORT, () => {
   console.log(`Listening the server ${env.EXPRESS_PORT}`);

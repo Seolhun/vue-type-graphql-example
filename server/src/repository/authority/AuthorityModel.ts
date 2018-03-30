@@ -3,7 +3,7 @@ import { sequelize } from '../../config/database';
 
 import { UserModel } from '../user/UserModel';
 
-const AuthorityModel = sequelize.define('users', {
+const AuthorityModel = sequelize.define('authorities', {
   id: {
     type: Sequelize.BIGINT,
     primaryKey: true,
@@ -35,7 +35,5 @@ const AuthorityModel = sequelize.define('users', {
 }, {
   comment: 'Uesr Table',
 });
-
-AuthorityModel.hasMany(UserModel, { as: 'divisions' });
 
 export { AuthorityModel };

@@ -1,7 +1,7 @@
 import Bluebird from 'bluebird';
-import { Authority } from '../model';
 import { AuthorityRepository } from '../repository';
 import { Order } from '../repository/AbstractRepository';
+import { Authority } from '../types';
 
 const authority_repository = new AuthorityRepository();
 class AuthorityService {
