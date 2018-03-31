@@ -35,7 +35,7 @@ export default class App extends Vue {
   // }
 
   // // Lifecycle hook
-  // beforecreate() {
+  // beforeCreate() {
   //   console.log('BeforeCreate In App Vue');
   // }
   // beforeMount() {

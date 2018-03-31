@@ -15,7 +15,7 @@ class Config {
       process.env.NODE_ENV = DEV.NODE_ENV;
       env = DEV;
     }
-    console.log('====================================');
+    console.log('===============config/index.ts=====================');
     console.log(`process.env.NODE_ENV : ${process.env.NODE_ENV}`);
     console.log('====================================');
     return env;

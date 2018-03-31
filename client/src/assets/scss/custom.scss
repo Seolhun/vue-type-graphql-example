@@ -1,6 +1,11 @@
 /* ------------------------
   Bootstrap Table
 ------------------------ */
+
 .table-hover tr:hover {
-  cursor: pointer;
+    cursor: pointer;
+}
+
+.form-group > label {
+  font-weight: bold;
 }

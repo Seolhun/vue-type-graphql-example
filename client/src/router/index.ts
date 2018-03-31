@@ -22,46 +22,44 @@ const routes: RouteConfig[] = [
     path: '/',
     name: 'Home',
     component: HomeView,
-  },
-  {
+  }, {
     path: '/books',
     name: 'Books',
     component: BooksView,
     // meta: { requiresAuth: true },
-    children: [
-      { path: '/books/:name', component: BookDetailView, name: 'BookDetail' },
-    ],
-  },
-  {
+  }, {
+    path: '/books/:id',
+    name: 'BookDetail',
+    component: BookDetailView,
+  }, {
+    path: '/divisions',
+    name: 'Divisions',
+    component: DivisionsView,
+  }, {
+    path: '/divisions/:name',
+    name: 'DivisionDetail',
+    component: DivisionDetailView,
+  }, {
+    path: '/login',
+    name: 'Login',
+    component: LoginView,
+    meta: { requiresAuth: false },
+  }, {
+    path: '/signin',
+    name: 'Signin',
+    component: SigninView,
+    meta: { requiresAuth: false },
+  }, {
     path: '/users',
     name: 'Users',
     component: UsersView,
     // meta: { requiresAuth: true },
     // redirect: '/home',
     // meta: { leaf: false, icon: 'icon-article' },
-    children: [
-      { path: '/users/:email', component: UserDetailView, name: 'UserDetail' },
-    ],
-  },
-  {
-    path: '/divisions',
-    name: 'Divisions',
-    component: DivisionsView,
-    children: [
-      { path: '/divisions/:name', component: DivisionDetailView, name: 'DivisionDetail' },
-    ],
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: LoginView,
-    meta: { requiresAuth: false },
-  },
-  {
-    path: '/signin',
-    name: 'Signin',
-    component: SigninView,
-    meta: { requiresAuth: false },
+  }, {
+    path: '/users/:email',
+    name: 'UserDetail',
+    component: UserDetailView,
   },
 ];
 

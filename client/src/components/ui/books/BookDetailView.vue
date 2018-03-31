@@ -1,7 +1,27 @@
 <template>
-  <div class='row'>
+  <div class='row' v-cloak>
+    <h2>Book Detail</h2>
     <div class='col-sm-12'>
-      <h3>Book Detail</h3>
+      <div class='form-group'>
+        <label>{{ $tc('common.id') }} : </label>
+        {{ book.id }}
+      </div>
+      <div class='form-group'>
+        <label>{{ $tc('common.name') }} : </label>
+        {{ book.name }}
+      </div>
+      <div class='form-group'>
+        <label>{{ $tc('book.writer') }} : </label>
+        {{ book.writer }}
+      </div>
+      <div class='form-group'>
+        <label>{{ $tc('common.status') }} : </label>
+        {{ book.status }}
+      </div>
+      <div class='form-group'>
+        <label>{{ $tc('common.description') }} : </label>
+        {{ book.description }}
+      </div>
     </div>
   </div>
 </template>
@@ -14,8 +34,32 @@ import gql from 'graphql-tag';
 import { BookModel } from '../../../models';
 import { ApolloResponse } from '../../../types';
 
-@Component
+@Component({
+  apollo: {
+    book() {
+      return {
+        query: gql`
+          query {
+            book(id: ${this.$route.params.id}) {
+              id
+              name
+              writer
+              status
+              description
+            }
+          }
+        `,
+        result(result: ApolloResponse) {
+          if(!result.loading) {
+            this.book = result.data.book;
+          }
+        },
+        fetchPolicy: 'cache-and-network',
+      };
+    },
+  }
+})
 export default class BookDetailView extends Vue {
-
+  book:BookModel = new BookModel();
 }
 </script>

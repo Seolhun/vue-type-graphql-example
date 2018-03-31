@@ -29,7 +29,7 @@
 
 - `DB`
   1. Create Default database using Raw SQL.
-    - `/server/db/default.sql`
+    - `/src/config/db/default.sql`
   2. Set Database configuration.
     - `/server/src/config/database/index.ts`
   3. Set `Sync` Database config

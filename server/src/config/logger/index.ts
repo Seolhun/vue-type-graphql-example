@@ -1,6 +1,6 @@
 import * as winston from 'winston';
 
-const LOG_DIR = 'logs';
+const LOG_DIR = './logs';
 const tsFormat = () => (new Date()).toLocaleTimeString();
 
 const logger = winston.createLogger({
