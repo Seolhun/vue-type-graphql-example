@@ -1,15 +1,22 @@
 const ch = {
   common: {
+    birth: 'Birth',
+    cancel: 'Cancel',
+    china: '中國',
+    email: 'E-Mail',
+    id: 'No',
+    japan: '日本',
+    korea: '韓國',
     name: '이름',
     nation: '國家',
-    korea: '韓國',
-    japan: '日本',
     usa: '美國',
-    china: '中國',
     submit: '확인',
-    cancel: '취소',
     fullScreen: '전체화면',
-    search: '검색',
+    search: 'Search',
+    form: {
+      confirm: 'Confirm',
+      submit: 'Submit',
+    },
   },
 };
 export default ch;

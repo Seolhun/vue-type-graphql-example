@@ -1,26 +1,33 @@
+// a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,u,s,t,u,v,w,x,y,z
 const ko = {
   common: {
+    birth: '생년월일',
+    cancel: '취소',
+    china: '중국',
+    email: '이메일',
+    id: '번호',
+    japan: '일본',
+    korea: '대한민국',
     name: '이름',
     nation: '국가',
-    korea: '대한민국',
-    japan: '일본',
     usa: '미국',
-    china: '중국',
-    submit: '확인',
-    cancel: '취소',
-    fullScreen: '전체화면',
     search: '검색',
+    form: {
+      confirm: '확인',
+      submit: '제출',
+    },
   },
-  editor: {
-    label: {
-      rawMarkdown: 'Markdwon',
-      markdownContent: 'GitHub Markdown',
-      writeFullScreen: '글쓰기 전체화면',
-    },
-    placeholder: {
-      rawMarkdown: 'Markdown을 입력해주세요.',
-      markdownContent: 'Markdown에 입력하시면, Git-Markdown으로 볼 수 있습니다.',
-    },
+  authority: {
+    this: '권한',
+    authority_list: '권한 리스트',
+  },
+  book: {
+    this: '책',
+    book_list: '책 리스트',
+  },
+  user: {
+    this: '사용자',
+    user_list: '사용자 리스트',
   },
   content: {
     label: {
