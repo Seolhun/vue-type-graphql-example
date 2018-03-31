@@ -2,7 +2,7 @@ import { GraphQLFieldConfigMap, GraphQLNonNull, GraphQLObjectType } from 'graphq
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { AuthorityType } from '../type/index';
 
-import { AuthorityService } from '../../../services/AuthorityService';
+import { AuthorityService } from '../../../services';
 import { Authority } from '../../../types';
 
 const authority_service = new AuthorityService();

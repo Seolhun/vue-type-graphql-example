@@ -2,9 +2,8 @@ import { GraphQLFieldConfigMap, GraphQLNonNull, GraphQLObjectType } from 'graphq
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { UserType } from '../type/index';
 
-import { User } from '../../../model';
-import { DivisionService } from '../../../services/DivisionService';
-import { UserService } from '../../../services/UserService';
+import { DivisionService, UserService } from '../../../services';
+import { User } from '../../../types';
 
 const division_service = new DivisionService();
 const user_service = new UserService();

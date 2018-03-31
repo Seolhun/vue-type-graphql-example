@@ -2,8 +2,8 @@ import { GraphQLFieldConfigMap, GraphQLList, GraphQLNonNull, GraphQLObjectType }
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { BookType } from '../type/index';
 
-import { Book } from '../../../model';
-import { BookService } from '../../../services/BookService';
+import { BookService } from '../../../services';
+import { Book } from '../../../types';
 
 const book_service = new BookService();
 const BookQuery: GraphQLFieldConfigMap<any, any> = {

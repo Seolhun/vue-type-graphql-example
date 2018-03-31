@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import passport from '../../config/auth/passport';
+import passport from '../../../config/auth/passport';
 
 const auth_router = Router();
 auth_router.get('/github', passport.authenticate('github', { scope: [ 'user:email' ] }));

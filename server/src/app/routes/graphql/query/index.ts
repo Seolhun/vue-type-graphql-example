@@ -2,10 +2,10 @@ import { graphql, GraphQLSchema, printSchema } from 'graphql';
 import { GraphQLList, GraphQLNonNull, GraphQLObjectType } from 'graphql';
 import { GraphQLString } from 'graphql/type/scalars';
 
-import { AuthorityQuery } from './authority';
-import { BookQuery } from './book';
-import { DivisionQuery } from './division';
-import { UserQuery } from './user';
+import { AuthorityQuery } from './AuthorityQuery';
+import { BookQuery } from './BookQuery';
+import { DivisionQuery } from './DivisionQuery';
+import { UserQuery } from './UserQuery';
 
 const query = new GraphQLObjectType({
   name: 'RootQuery',

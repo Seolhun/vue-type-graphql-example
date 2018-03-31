@@ -2,8 +2,8 @@ import { GraphQLFieldConfigMap, GraphQLList, GraphQLNonNull, GraphQLObjectType }
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 import { DivisionType } from '../type/index';
 
-import { Division } from '../../../model';
 import { DivisionService } from '../../../services';
+import { Division } from '../../../types';
 
 const division_service = new DivisionService();
 const DivisionQuery: GraphQLFieldConfigMap<any, any> = {

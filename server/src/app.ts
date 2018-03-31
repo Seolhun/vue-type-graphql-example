@@ -4,16 +4,16 @@ import * as express from 'express';
 import * as graphqlHTTP from 'express-graphql';
 import * as session from 'express-session';
 import * as helmet from 'helmet';
-
-import { Config } from './config';
 import { sequelize } from './config/database';
-import { schema } from './routes/graphql/schema';
 
-import { auth_router } from './routes/auth/Authentication';
+import { schema } from './app/routes/graphql/schema';
+import { Config } from './config';
+
+import { auth_router } from './app/routes/auth/Authentication';
 
 const env = Config.setConfiguration();
-
 const app = express();
+
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());

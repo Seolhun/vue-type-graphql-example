@@ -1,4 +1,4 @@
-import { sequelize, Sequelize } from '../../config/database';
+import { sequelize, Sequelize } from '../../../config/database';
 
 const AuthorityModel = sequelize.define('authorities', {
   id: {

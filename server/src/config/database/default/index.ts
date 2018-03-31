@@ -1,4 +1,4 @@
-import { AuthorityModel, DivisionModel, UserModel } from '../../../services/model';
+import { AuthorityModel, DivisionModel, UserModel } from '../../../app/services/model';
 
 const default_authority_datas = [
   {
