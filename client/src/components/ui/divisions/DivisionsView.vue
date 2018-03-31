@@ -7,18 +7,23 @@
           <thead>
             <tr>
               <th>
-                Id
+                {{ $tc('common.id')}}
               </th>
               <th>
-                Name
+                {{ $tc('common.name')}}
               </th>
               <th>
-                Description
+                {{ $tc('common.description')}}
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for='division in divisions' v-bind:key='division.id'>
+            <router-link
+              tag='tr'
+              activeClass='active'
+              v-for='division in divisions' v-bind:key='division.name'
+              :to='`/divisions/${division.name}`'
+            >
               <td>
                 {{ division.id }}
               </td>
@@ -28,7 +33,7 @@
               <td>
                 {{ division.description }}
               </td>
-            </tr>
+            </router-link>
           </tbody>
         </table>
       </div>
@@ -64,8 +69,8 @@ import { ApolloResponse } from '../../../types';
         },
         fetchPolicy: 'cache-and-network',
       };
-    }
-  }
+    },
+  },
 })
 export default class DivisionsView extends Vue {
   divisions:DivisionModel[] = [];

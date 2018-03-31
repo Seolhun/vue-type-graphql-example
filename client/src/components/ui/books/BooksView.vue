@@ -7,18 +7,29 @@
           <thead>
             <tr>
               <th>
-                Id
+                {{ $tc('common.id')}}
               </th>
               <th>
-                Email
+                {{ $tc('common.name')}}
               </th>
               <th>
-                Writer
+                {{ $tc('book.writer')}}
+              </th>
+              <th>
+                {{ $tc('common.status')}}
+              </th>
+              <th>
+                {{ $tc('common.description')}}
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for='book in books' v-bind:key='book.id'>
+            <router-link
+              tag='tr'
+              activeClass='active'
+              v-for='book in books' v-bind:key='book.id'
+              :to='`/books/${book.id}`'
+            >
               <td>
                 {{ book.id }}
               </td>
@@ -28,7 +39,13 @@
               <td>
                 {{ book.writer }}
               </td>
-            </tr>
+              <td>
+                {{ book.status }}
+              </td>
+              <td>
+                {{ book.description }}
+              </td>
+            </router-link>
           </tbody>
         </table>
       </div>
@@ -54,6 +71,8 @@ import { ApolloResponse } from '../../../types';
               id
               name
               writer
+              status
+              description
             }
           }
         `,
@@ -62,13 +81,13 @@ import { ApolloResponse } from '../../../types';
             this.books = result.data.books;
           }
         },
-        fetchPolicy: 'cache-and-network',
+        // pollInterval: 300, // Continuouse call function ms
+        fetchPolicy: 'cache-and-network'
       };
-    }
+    },
   }
 })
 export default class BooksView extends Vue {
   books:BookModel[] = [];
-
 }
 </script>

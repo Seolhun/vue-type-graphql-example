@@ -18,13 +18,13 @@
       <b-collapse is-nav id='nav_collapse'>
         <b-navbar-nav>
           <b-nav-item>
-            <router-link tag='li' activeClass='active' :to='"/users"'>Users</router-link>
+            <router-link tag='li' activeClass='active' :to='"/books"'>Books</router-link>
           </b-nav-item>
           <b-nav-item>
             <router-link tag='li' activeClass='active' :to='"/divisions"'>Divisions</router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link tag='li' activeClass='active' :to='"/books"'>Books</router-link>
+            <router-link tag='li' activeClass='active' :to='"/users"'>Users</router-link>
           </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class='ml-auto'>

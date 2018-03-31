@@ -1,27 +1,23 @@
 <template>
-  <div class='row'>
+  <div class='row' v-cloak>
+    <h2>User Detail</h2>
     <div class='col-sm-12'>
-      <h3>User Detail</h3>
-      <div>
-        <input
-          v-model='inputEmail'
-          class='form-control'
-        >
-        <p>inputEmail : {{ inputEmail }}</p>
-      </div>
-    </div>
-    <div class='apollo col-sm-12'>
-      <h2>User</h2>
-      <div>
+      <div class='form-group'>
+        <label>{{ $tc('common.id') }} : </label>
         {{ user.id }}
       </div>
-      <div>
+      <div class='form-group'>
+        <label>{{ $tc('common.email') }} : </label>
         {{ user.email }}
       </div>
-      <div>
+      <div class='form-group'>
+        <label>{{ $tc('common.name') }} : </label>
         {{ user.name }}
       </div>
-    </div>
+      <div class='form-group'>
+        <label>{{ $tc('common.birth') }} : </label>
+        {{ user.birth }}
+      </div>
     </div>
   </div>
 </template>
@@ -33,14 +29,17 @@ import gql from 'graphql-tag';
 
 import { UserModel } from '../../../models';
 import { ApolloResponse } from '../../../types';
+import { BookModel } from '../../../../dist/src/model/index';
+import { Book } from '../../../../../server/src/app/types';
+
 
 @Component({
   apollo: {
     user() {
       return {
         query: gql`
-          query ($email: String!) {
-            user(email: $email) {
+          query {
+            user(email: "${this.$route.params.email}") {
               id
               email
               name
@@ -48,21 +47,17 @@ import { ApolloResponse } from '../../../types';
             }
           }
         `,
-        variables() {
-          return {
-            email: this.inputEmail,
+        result(result: ApolloResponse) {
+          if(!result.loading) {
+            this.user = result.data.user;
           }
         },
-        result(result) {
-          this.user = result.data.user;
-        },
-        // fetchPolicy: 'cache-and-network'
+        fetchPolicy: 'cache-and-network',
       };
-    }
+    },
   }
 })
 export default class UserDetailView extends Vue {
-  inputEmail = 'shun10114@gmail.com';
   user = new UserModel();
 }
 </script>

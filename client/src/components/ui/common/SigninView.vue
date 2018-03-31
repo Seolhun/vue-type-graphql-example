@@ -49,9 +49,6 @@
       <button class='btn-lg btn-primary' v-on:click='($event) => signIn($event)'>{{ $tc('common.form.confirm') }}</button>
       <button class='btn-lg btn-danger' v-on:click='() => cancel()' >{{ $tc('common.cancel') }}</button>
     </div>
-    <p>
-      {{ user }}
-    </p>
   </div>
 </template>
 
@@ -65,23 +62,24 @@ import * as _ from 'lodash';
 import { Validators, ValidationResponse } from '../../../utils/Validators';
 
 import { ApolloResponse } from '../../../types';
+import { DivisionModel } from '../../../models';
+import { UserModel } from '../../../models';
 
 @Component({
   apollo: {
     divisions() {
       return {
-        query: gql`
-          query {
-            divisions {
-              id
-              name
-              description
-            }
+        query: gql`query {
+          divisions {
+            id
+            name
+            description
           }
-        `,
+        }`,
+        // pollInterval: 300, // Continuouse call function ms
         result(result: ApolloResponse) {
           if(!result.loading) {
-            this.divisions = result.data.divisions;
+            return result.data.divisions;
           }
         },
         fetchPolicy: 'cache-and-network',
@@ -90,46 +88,48 @@ import { ApolloResponse } from '../../../types';
   }
 })
 export default class SigninView extends Vue {
-  divisions = [];
+  divisions: DivisionModel[] = [];
   user = {
-    email: '',
-    name: '',
-    birth: '',
-    division_id: '',
-    password: '',
-    confirm_password: '',
-  }
+    email: 'shun10114@gmail.com',
+    name: 'Seolhun',
+    birth: '1990-01-26',
+    division_id: 1,
+    password: 'Blue1220@',
+    confirm_password: 'Blue1220@',
+  } as UserModel;
   validation = {
     email: '',
     name: '',
     password: '',
     confirm_password: '',
   }
-  active:boolean = false;
+  is_active:boolean = false;
 
   signIn(event: Event) {
     event.preventDefault();
     this.validateUser();
-
-    if (!this.active) {
+    if (!this.is_active) {
       return;
     }
+    // We save the user input in case of an error
+    const user = this.user;
     this.$apollo.mutate({
-      mutation: gql`mutation ($name: String!, $email: String!, $password: String!, $birth: String!, $division_id: Integer!) {
-        addUser(name: $name, email: $email, password: $password, birth: $birth, division_id: $division_id) {
-          id
-          email
-          name
+      mutation: gql`
+        mutation  {
+          addUser(name: "${user.name}", email: "${user.email}", password: "${user.password}", birth: "${user.birth}", division_id: ${user.division_id}) {
+            id
+            email
+            name
+          }
         }
-      }`,
-      variables: {
-        email: this.user.email,
-        name: this.user.name,
-        password: this.user.password,
-        confirm_password: this.user.confirm_password,
-        birth: this.user.birth,
-        division_id: this.user.division_id,
-      },
+      `,
+    }).then((result: ApolloResponse) => {
+      const db_user: UserModel = result.data.addUser;
+      if(db_user) {
+        this.$router.push(`/user/${db_user.email}`);
+      }
+    }).catch((error) => {
+      console.log(error);
     });
   }
 
@@ -160,45 +160,45 @@ export default class SigninView extends Vue {
     if(!this.user.birth) {
       return;
     }
-    this.active = true;
+    this.is_active = true;
   }
 
-private validateEmail(): void {
-    const email_validation = Validators.isEmail(this.user.password);
-    if (!email_validation.result) {
-      this.validation.email = email_validation.msg;
-    } else {
-      this.validation.email = '';
+  private validateEmail(): void {
+      const email_validation = Validators.isEmail(this.user.email);
+      if (!email_validation.result) {
+        this.validation.email = email_validation.msg;
+      } else {
+        this.validation.email = '';
+      }
     }
-  }
 
-  private validateName(): void {
-    const name_validation = Validators.isName(this.user.name);
-    if (!name_validation.result) {
-      this.validation.name = name_validation.msg;
-    } else {
-      this.validation.name = '';
+    private validateName(): void {
+      const name_validation = Validators.isName(this.user.name);
+      if (!name_validation.result) {
+        this.validation.name = name_validation.msg;
+      } else {
+        this.validation.name = '';
+      }
     }
-  }
 
-  private validatePwd(): void {
-    const pwd_validation = Validators.isPassword(this.user.password);
-    if (!pwd_validation.result) {
-      this.validation.password = pwd_validation.msg;
-    } else {
-      this.validation.password = '';
+    private validatePwd(): void {
+      const pwd_validation = Validators.isPassword(this.user.password);
+      if (!pwd_validation.result) {
+        this.validation.password = pwd_validation.msg;
+      } else {
+        this.validation.password = '';
+      }
     }
-  }
 
-  private validateConfirmPwd(): void {
-    const confirm_pwd_validation = Validators.isPassword(this.user.confirm_password)
-    if (!confirm_pwd_validation.result) {
-      this.validation.confirm_password = confirm_pwd_validation.msg
-    } else {
-      this.validation.confirm_password = ''
+    private validateConfirmPwd(): void {
+      const confirm_pwd_validation = Validators.isPassword(this.user.confirm_password)
+      if (!confirm_pwd_validation.result) {
+        this.validation.confirm_password = confirm_pwd_validation.msg
+      } else {
+        this.validation.confirm_password = ''
+      }
     }
   }
-}
 </script>
 
 

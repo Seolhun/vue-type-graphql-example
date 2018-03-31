@@ -7,21 +7,26 @@
           <thead>
             <tr>
               <th>
-                Id
+                {{ $tc('common.id')}}
               </th>
               <th>
-                Email
+                {{ $tc('common.email')}}
               </th>
               <th>
-                Name
+                {{ $tc('common.name')}}
               </th>
               <th>
-                Birth
+                {{ $tc('common.birth')}}
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for='user in users' v-bind:key='user.id'>
+            <router-link
+              tag='tr'
+              activeClass='active'
+              v-for='user in users' v-bind:key='user.id'
+              :to='`/users/${user.email}`'
+            >
               <td>
                 {{ user.id }}
               </td>
@@ -34,7 +39,7 @@
               <td>
                 {{ user.birth }}
               </td>
-            </tr>
+            </router-link>
           </tbody>
         </table>
       </div>
