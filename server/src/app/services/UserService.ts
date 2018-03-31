@@ -12,9 +12,9 @@ class UserService {
 
     return user_repository.findOne({ email, name }).then((db_user) => {
       if (db_user) {
-        if (email && db_user.email === email) {
+        if (db_user.email === email) {
           return Bluebird.reject(new Error(`Already '${email}' is existed.`));
-        } else if (name && db_user.name === name) {
+        } else if (db_user.name === name) {
           return Bluebird.reject(new Error(`Already '${name}' is existed.`));
         }
         return Bluebird.reject(new Error(`Already '${email || name}' is existed.`));

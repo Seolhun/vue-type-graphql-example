@@ -10,17 +10,17 @@ const DivisionQuery: GraphQLFieldConfigMap<any, any> = {
   division: {
     type: DivisionType,
     args: {
-      id: { type: GraphQLString },
+      id: { type: GraphQLInt },
       name: { type: GraphQLString },
     },
-    resolve(parent, { id, name }: Division, context, info) {
-      return division_service.findOne({ id, name });
+    async resolve(parent, { id, name }: Division, context, info) {
+      return await division_service.findOne({ id, name });
     },
   },
   divisions: {
     type: new GraphQLList(DivisionType),
-    resolve(parent, args, context, info) {
-      return division_service.findAll('DESC');
+    async resolve(parent, args, context, info) {
+      return await division_service.findAll('DESC');
     },
   },
 };

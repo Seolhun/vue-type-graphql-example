@@ -6,8 +6,8 @@ import { Order } from './repository/AbstractRepository';
 const division_repository = new DivisionRepository();
 class DivisionService {
   createdDivision({ name, description }: Division): Bluebird<Division>  {
-    if (!name) {
-      return Bluebird.reject(new Error('The name is requirement.'));
+    if (!name && !description) {
+      return Bluebird.reject(new Error('The name and description are requirement.'));
     }
 
     return division_repository.findOne({ name }).then((division) => {
@@ -21,11 +21,11 @@ class DivisionService {
     });
   }
 
-  findOne({ id }: Division): Bluebird<Division | null> {
-    if (!id) {
-      return Bluebird.reject(new Error('id is requirement.'));
+  findOne({ id, name }: Division): Bluebird<Division | null> {
+    if (!id && !name) {
+      return Bluebird.reject(new Error('One of id and name are requirement.'));
     }
-    return division_repository.findOne({ id });
+    return division_repository.findOne({ id, name });
   }
 
   findAll(order: Order): Bluebird<Division[]> {
@@ -33,24 +33,24 @@ class DivisionService {
   }
 
   updatedDivision({ id, name, description }: Division): Bluebird<boolean> {
-    if (!id) {
-      return Bluebird.reject(new Error('id is requirement.'));
+    if (!id && !name) {
+      return Bluebird.reject(new Error('One of id and name are requirement.'));
     }
 
-    return division_repository.findOne({ id }).then((db_book) => {
-      if (!db_book) {
-        return Bluebird.reject(new Error('The book is not found'));
+    return division_repository.findOne({ id, name }).then((db_division) => {
+      if (!db_division) {
+        return Bluebird.reject(new Error('The division is not found'));
       }
       return division_repository.update({ name, description });
     });
   }
 
-  deletedDivision({ id }: Division): Bluebird<boolean> {
-    if (!id) {
-      return Bluebird.reject(new Error('id is requirement.'));
+  deletedDivision({ id, name }: Division): Bluebird<boolean> {
+    if (!id && !name) {
+      return Bluebird.reject(new Error('One of id and name is requirement.'));
     }
-    const db_book = division_repository.findOne({ id });
-    if (!db_book) {
+    const db_division = division_repository.findOne({ id, name });
+    if (!db_division) {
       return Bluebird.reject(new Error('The division is not found'));
     }
     return division_repository.delete({ id });

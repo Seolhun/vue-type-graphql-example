@@ -10,7 +10,7 @@ const AuthorityQuery: GraphQLFieldConfigMap<any, any> = {
   authority: {
     type: UserType,
     args: {
-      id: { type: GraphQLString },
+      id: { type: GraphQLInt },
       name: { type: GraphQLString },
     },
     async resolve(parent, { id, email, name }: User, context, info) {

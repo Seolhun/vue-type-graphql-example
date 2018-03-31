@@ -12,7 +12,6 @@ const UserMutation: GraphQLFieldConfigMap<any, any> = {
   addUser: {
     type: UserType,
     args: {
-      id: { type: GraphQLInt },
       email: { type: new GraphQLNonNull(GraphQLString) },
       name: { type: new GraphQLNonNull(GraphQLString) },
       password: { type: new GraphQLNonNull(GraphQLString) },

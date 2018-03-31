@@ -43,7 +43,7 @@ const sequelize = new Sequelize('shooney_management', 'hunseol', 'hunseol', {
   },
 });
 
-sequelize.sync({ force: true}).then(() => {
+sequelize.sync({ force: true }).then(() => {
   initDefaultData();
 });
 sequelize.authenticate().then(() => {

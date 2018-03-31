@@ -10,7 +10,7 @@ const UserQuery: GraphQLFieldConfigMap<any, any> = {
   user: {
     type: UserType,
     args: {
-      id: { type: GraphQLString },
+      id: { type: GraphQLInt },
       email: { type: GraphQLString },
       name: { type: GraphQLString },
     },

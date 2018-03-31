@@ -10,16 +10,16 @@ const BookQuery: GraphQLFieldConfigMap<any, any> = {
   book: {
     type: BookType,
     args: {
-      id: { type: new GraphQLNonNull(GraphQLString) },
+      id: { type: new GraphQLNonNull(GraphQLInt) },
     },
-    resolve(parent, { id }: Book, context, info) {
-      return book_service.findOne({id});
+    async resolve(parent, { id }: Book, context, info) {
+      return await book_service.findOne({id});
     },
   },
   books: {
     type: new GraphQLList(BookType),
-    resolve(parent, args, context, info) {
-      return book_service.findAll('DESC');
+    async resolve(parent, args, context, info) {
+      return await book_service.findAll('DESC');
     },
   },
 };
