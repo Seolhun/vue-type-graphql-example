@@ -1,4 +1,4 @@
-class Authority {
+class AuthorityModel {
   id: number;
   name: string;
   level: number;
@@ -99,4 +99,4 @@ class UserModel {
   }
 }
 
-export { BookModel, DivisionModel, UserModel };
+export { AuthorityModel, BookModel, DivisionModel, UserModel };
