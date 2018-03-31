@@ -1,214 +1,213 @@
 @import "variable";
-
 /* ------------------------------------------------
   Global Tag CSS
 ------------------------------------------------ */
+
 // Common Body
 body {
-  background: $bg-color;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    background: $bg-color;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: $active-color;
-
-  &:active {
-    color: $active-color-hover;
-  }
+    color: $active-color;
+    &:active {
+        color: $active-color-hover;
+    }
 }
 
 // Button Css
 button {
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
-  border: 1px solid transparent;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0.25rem;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 textarea.auto-size {
-  width: 100%;
-  height: 100%;
-  overflow: scroll;
-  min-height: 300px;
-  box-sizing: border-box;
-  line-height: 1.5;
-  padding: 15px 15px;
-  border-radius: 3px;
-  transition: box-shadow 0.5s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    min-height: 300px;
+    box-sizing: border-box;
+    line-height: 1.5;
+    padding: 15px 15px;
+    border-radius: 3px;
+    transition: box-shadow 0.5s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* ------------------------
   Global ID CSS
 ------------------------ */
+
 #app {
-  font-family: $font-main-1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: $font-main-1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* ------------------------------------------------------------------------
   - Global For Active SCSS Start
 -------------------------------------------------------------------------- */
+
 /* ------------------------
   Tag h1 ~ h5 CSS
 ------------------------ */
+
 $h-size: h !default;
 @for $i from 1 through 6 {
-  #{$h-size}#{$i} {
-    font-weight: 600;
-    font-size: 10px + (30 / $i);
-    padding: 15px 0px;
-    word-break: break-word;
-  }
+    #{$h-size}#{$i} {
+        font-weight: 600;
+        font-size: 10px + (30 / $i);
+        padding: 15px 0px;
+        word-break: break-word;
+    }
 }
 
 /* ----------------------------------------
   - Class Variable CSS
 ------------------------------------------- */
+
 // Sub Active Btn
 /* ------------------------------------------------
   Colorful Btn - BackGround CSS
 ------------------------------------------------ */
+
 @each $color in $colors {
-  $key: nth($color, 1);
-  $value: nth($color, 2);
-
-  .#{'btn-'}#{$key} {
-    color: $white;
-    background-color: $value;
-
-    &:hover {
-      background: darken($value, 5%);
-      font-weight: bold;
+    $key: nth($color, 1);
+    $value: nth($color, 2);
+    .#{'btn-'}#{$key} {
+        color: $white;
+        background-color: $value;
+        &:hover {
+            background: darken($value, 5%);
+            font-weight: bold;
+        }
+        &:active {
+            background-color: darken($white, 30%);
+        }
+        &:disabled {
+            cursor: not-allowed;
+            background: #dddddd;
+        }
     }
-
-    &:active {
-      background-color: darken($white, 30%);
+    .#{'btn-edge-'}#{$key} {
+        border-color: $value;
+        color: $value;
+        background-color: $white;
+        &:hover {
+            background: darken($value, 5%);
+            color: darken($white, 5%);
+            font-weight: 800;
+        }
+        &:active {
+            background-color: darken($white, 30%);
+        }
+        &:disabled {
+            cursor: not-allowed;
+            background: #dddddd;
+        }
     }
-
-    &:disabled {
-      cursor: not-allowed;
-      background: #dddddd;
+    .#{'background-'}#{$key} {
+        color: $white;
+        background: $value;
     }
-  }
-
-  .#{'btn-edge-'}#{$key} {
-    border-color: $value;
-    color: $value;
-    background-color: $white;
-
-    &:hover {
-      background: darken($value, 5%);
-      color: darken($white, 5%);
-      font-weight: 800;
-    }
-
-    &:active {
-      background-color: darken($white, 30%);
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      background: #dddddd;
-    }
-  }
-
-  .#{'background-'}#{$key} {
-    color: $white;
-    background: $value;
-  }
 }
 
 /* ------------------------------------------------
   Global Class CSS
 ------------------------------------------------ */
+
 /* ----------------
   Vue Router SCSS
 ------------------*/
+
 .router-link-exact-active {
-  font-weight: 700;
-  color: $light-white;
+    font-weight: 700;
+    color: $light-white;
 }
 
 .router-item {
-  cursor: pointer;
-  text-decoration: none;
-  &:hover {
+    cursor: pointer;
     text-decoration: none;
-  }
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 /* ------------------------
   Text-alignment
 ------------------------ */
+
 .text-right {
-  text-align: right;
+    text-align: right;
 }
 
 .text-left {
-  text-align: left;
+    text-align: left;
 }
 
 .text-center {
-  text-align: center;
+    text-align: center;
 }
 
 /* ------------------------
   Width Coverage
   # .width-1 ~ width-100 css
 ------------------------ */
+
 $width-class: width- !default;
 @for $i from 1 through 20 {
-  .#{$width-class}#{$i * 5} {
-    width: 0% + ($i * 5);
-  }
+    .#{$width-class}#{$i * 5} {
+        width: 0% + ($i * 5);
+    }
 }
 
 /* ------------------------
   Height Coverage
   # .Height-50 ~ Height-500 css
 ------------------------ */
+
 $height: height- !default;
 @for $i from 1 through 20 {
-  .#{$height}#{$i * 50} {
-    height: 0px + ($i * 50);
-    word-break: keep-all;
-
-  }
+    .#{$height}#{$i * 50} {
+        height: 0px + ($i * 50);
+        word-break: keep-all;
+    }
 }
 
 $max-height: max-height- !default;
 @for $i from 1 through 20 {
-  .#{$max-height}#{$i*50} {
-    max-height: 0px + ($i * 50);
-    word-break: keep-all;
-    min-height: 0px + ($i * 10);;
-    height: auto;
-
-  }
+    .#{$max-height}#{$i*50} {
+        max-height: 0px + ($i * 50);
+        word-break: keep-all;
+        min-height: 0px + ($i * 10);
+        ;
+        height: auto;
+    }
 }
 
 $min-height: min-height- !default;
 @for $i from 1 through 20 {
-  .#{$min-height}#{$i*50} {
-    min-height: 0px + ($i * 50);
-    word-break: keep-all;
-    height: auto;
-    overflow-y: auto;
-  }
+    .#{$min-height}#{$i*50} {
+        min-height: 0px + ($i * 50);
+        word-break: keep-all;
+        height: auto;
+        overflow-y: auto;
+    }
 }
 
 /* ------------------------
@@ -216,122 +215,130 @@ $min-height: min-height- !default;
   # .font-size-1 ~
   # .font-weight-1 ~
 ------------------------ */
+
 $font-size: font-size- !default;
 @for $i from 10 through 100 {
-  .#{$font-size}#{$i} {
-    font-size: 0px + ($i);
-  }
+    .#{$font-size}#{$i} {
+        font-size: 0px + ($i);
+    }
 }
 
 $font-weight: font-weight- !default;
 @for $i from 1 through 10 {
-  .#{$font-weight}#{$i} {
-    font-weight: 100 * ($i);
-  }
+    .#{$font-weight}#{$i} {
+        font-weight: 100 * ($i);
+    }
 }
 
 /* ------------------------
   padding-10 ~ padding-60 CSS
 ------------------------ */
+
 $padding: padding- !default;
 @for $i from 1 through 6 {
-  .#{$padding}#{$i*10} {
-    padding: (10px * $i);
-  }
+    .#{$padding}#{$i*10} {
+        padding: (10px * $i);
+    }
 }
 
 $padding-top: padding-top- !default;
 @for $i from 1 through 20 {
-  .#{$padding-top}#{$i*10} {
-    padding-top: (5px * $i) 0px 0px 0px;
-  }
+    .#{$padding-top}#{$i*10} {
+        padding-top: (5px * $i) 0px 0px 0px;
+    }
 }
 
 $padding-bottom: padding-bottom- !default;
 @for $i from 1 through 20 {
-  .#{$padding-bottom}#{$i*10} {
-    padding-bottom: 0px 0px (5px * $i) 0px;
-  }
+    .#{$padding-bottom}#{$i*10} {
+        padding-bottom: 0px 0px (5px * $i) 0px;
+    }
 }
 
 $padding-right: padding-right- !default;
 @for $i from 1 through 20 {
-  .#{$padding-right}#{$i*10} {
-    padding-right: 0px 0px (5px * $i) 0px;
-  }
+    .#{$padding-right}#{$i*10} {
+        padding-right: 0px 0px (5px * $i) 0px;
+    }
 }
 
 $padding-left: padding-left- !default;
 @for $i from 1 through 20 {
-  .#{$padding-left}#{$i*10} {
-    padding-left: 0px 0px (5px * $i) 0px;
-  }
+    .#{$padding-left}#{$i*10} {
+        padding-left: 0px 0px (5px * $i) 0px;
+    }
 }
 
 /* ------------------------
   margin-10 ~ margin-60 CSS
 ------------------------ */
+
 $margin: margin- !default;
 @for $i from 1 through 20 {
-  .#{$margin}#{$i * 5} {
-    margin: (5px * $i);
-  }
+    .#{$margin}#{$i * 5} {
+        margin: (5px * $i);
+    }
 }
 
 $margin-top: margin-top- !default;
 @for $i from 1 through 20 {
-  .#{$margin-top}#{$i * 5} {
-    margin-top: (5px * $i);
-  }
+    .#{$margin-top}#{$i * 5} {
+        margin-top: (5px * $i);
+    }
 }
 
 $margin-bottom: margin-bottom- !default;
 @for $i from 1 through 20 {
-  .#{$margin-bottom}#{$i * 5} {
-    margin-bottom: (5px * $i)
-  }
+    .#{$margin-bottom}#{$i * 5} {
+        margin-bottom: (5px * $i)
+    }
 }
 
 $margin-right: margin-right- !default;
 @for $i from 1 through 20 {
-  .#{$margin-right}#{$i * 5} {
-    margin-right: (5px * $i);
-  }
+    .#{$margin-right}#{$i * 5} {
+        margin-right: (5px * $i);
+    }
 }
 
 $margin-left: margin-left- !default;
 @for $i from 1 through 20 {
-  .#{$margin-left}#{$i * 5} {
-    margin-left: (5px * $i);
-  }
+    .#{$margin-left}#{$i * 5} {
+        margin-left: (5px * $i);
+    }
 }
 
 /* ------------------------
   Label Title CSS
 ------------------------ */
+
 $label-title: label-title- !default;
 @for $i from 12 through 30 {
-  .#{$label-title}#{$i} {
-    font-size: 1px * $i;
-    font-weight: 600;
-    word-break: break-word;
-  }
+    .#{$label-title}#{$i} {
+        font-size: 1px * $i;
+        font-weight: 600;
+        word-break: break-word;
+    }
 }
 
 /* ------------------------
   Shadow Box CSS
 ------------------------ */
+
 $shadow-box: shadow-box- !default;
 @for $i from 1 through 10 {
-  .#{$shadow-box}#{$i} {
-    box-shadow: (1px * $i), (1px * $i), (1px * $i), (1px * $i) $gray
-  }
+    .#{$shadow-box}#{$i} {
+      -webkit-box-shadow: 0 (15px + $i) (20px + $i) (-10px - $i) $gray; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+      -moz-box-shadow: 0 (15px + $i) (20px + $i) (-10px - $i) $gray;/* Firefox 3.5 - 3.6 */
+      box-shadow: 0 (15px + $i) (20px + $i) (-10px - $i) $gray; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+      padding: 20px;
+    }
 }
-
 
 /* ------------------------
   Bootstrap Table
 ------------------------ */
+
 .table-hover tr:hover {
-  cursor: pointer;
+    cursor: pointer;
 }

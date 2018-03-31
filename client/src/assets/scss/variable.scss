@@ -5,128 +5,105 @@ $black: #232323;
 $light-black: lighten($black, 15%);
 $dark-black: darken($black, 2%);
 $darker-black: darken($dark-black, 3%);
-
+// ----
 $white: #ffffff;
 $light-white: lighten($white, 15%);
 $dark-white: darken($white, 2%);
 $darker-white: darken($dark-white, 3%);
-
+// ----
 $gray: #868e96;
 $light-gray: lighten($gray, 15%);
 $dark-gray: darken($gray, 2%);
 $darker-gray: darken($dark-gray, 3%);
-
+// ----
 $ocean: #0080ff;
 $light-ocean: lighten($ocean, 15%);
 $dark-ocean: darken($ocean, 2%);
 $darker-ocean: darken($dark-ocean, 3%);
-
+// ----
 $royal-blue: royalblue;
 $light-royal-blue: lighten($royal-blue, 15%);
 $dark-royal-blue: darken($royal-blue, 2%);
 $darker-royal-blue: darken($dark-royal-blue, 3%);
-
 /* ------------------------
   - Dom Css Using Global Color Variable
   # Background And Active Dom Color Variable using $Color Variable
   # 'Active Dom' are Input, Button and another elements.
 ------------------------ */
+
 // Background Color
 $bg-color: $white !default;
 $bg-font-color: $light-black;
 $bg-color-hover: $light-white;
 $bg-color-shadow: $dark-white;
-
 // Active Color
 $active-color: $ocean !default;
 $active-font-color: $white !default;
 $active-color-hover: $light-ocean !default;
 $active-color-shadow: $darker-ocean !default;
-
 // Active2 Color
 $active2-color: $royal-blue !default;
 $active2-font-color: $white !default;
 $active2-color-hover: $light-royal-blue !default;
 $active2-color-shadow: $darker-royal-blue !default;
-
 // Sub-Function Color
 $sub-active-color: $gray !default;
 $sub-active-font-color: $black !default;
 $sub-active-color-hover: $light-gray !default;
 $sub-active-color-shadow: $darker-gray !default;
-
 /* ------------------------
   - Often Used color
 ------------------------ */
-$colors: (
-  'black': #000000,
-  'white': #fff,
-  'gray' : #808080,
-  'darkgray':#A9A9A9,
-  'red':#FF0000,
-  'crimson':#DC143C,
-  'aqua':#00FFFF,
-  'aquamarine':#7FFFD4,
-  'orange':#FFA500,
-  'orangered':#FF4500,
-  'green':#008000,
-  'limegreen':#32CD32,
-  'lightgreen':#90EE90,
-  'yellow':#FFFF00,
-  'blue':#0000FF,
-  'royalblue':#4169E1,
-  'purple':#800080,
-  'ocean':#0080ff
-);
 
+$colors: ( 'black': #000000, 'white': #fff, 'gray': #808080, 'darkgray':#A9A9A9, 'red':#FF0000, 'crimson':#DC143C, 'aqua':#00FFFF, 'aquamarine':#7FFFD4, 'orange':#FFA500, 'orangered':#FF4500, 'green':#008000, 'limegreen':#32CD32, 'lightgreen':#90EE90, 'yellow':#FFFF00, 'blue':#0000FF, 'royalblue':#4169E1, 'purple':#800080, 'ocean':#0080ff);
 /* ------------------------
   - Google Font
 ------------------------ */
-@mixin font-face(
- $name,
- $font-files,
- $eot: false,
- $weight: false,
- $style: false
-) {
- $iefont: unquote("#{$eot}?#iefix");
- @font-face {
-   font-family: quote($name);
-   @if $eot {
-     src: font-url($eot);
-     $font-files: font-url($iefont) unquote("format('eot')"), $font-files;
-   }
-   src: $font-files;
-   @if $weight {
-     font-weight: $weight;
-   }
-   @if $style {
-     font-style: $style;
-   }
- }
+
+@mixin font-face( $name, $font-files, $eot: false, $weight: false, $style: false) {
+    $iefont: unquote("#{$eot}?#iefix");
+    @font-face {
+        font-family: quote($name);
+        @if $eot {
+            src: font-url($eot);
+            $font-files: font-url($iefont) unquote("format('eot')"), $font-files;
+        }
+        src: $font-files;
+        @if $weight {
+            font-weight: $weight;
+        }
+        @if $style {
+            font-style: $style;
+        }
+    }
 }
 
-$font-main-1: 'Lato', sans-serif;
-$font-main-2: 'Open Sans', sans-serif;
-$font-main-3: 'Droid Sans', sans-serif;
-$font-main-4: 'Noto Sans', sans-serif;
+$font-main-1: 'Lato',
+sans-serif;
+$font-main-2: 'Open Sans',
+sans-serif;
+$font-main-3: 'Droid Sans',
+sans-serif;
+$font-main-4: 'Noto Sans',
+sans-serif;
 @font-face {
-  font-family: $font-main-1;
-  src: url('https://fonts.googleapis.com/css?family=Droid+Sans|Lato|Noto+Sans|Open+Sans');
+    font-family: $font-main-1;
+    src: url('https://fonts.googleapis.com/css?family=Droid+Sans|Lato|Noto+Sans|Open+Sans');
 }
 
 /* ------------------------------------------------------------------------
   - Global Boolean Variable
 -------------------------------------------------------------------------- */
-$boolean: true !default;
 
+$boolean: true !default;
 /* ------------------------------------------------------------------------
   - Global Grid Size Variable
 -------------------------------------------------------------------------- */
-$header-height: 80px;
 
+$header-height: 80px;
 /* ------------------------
   - Media Size Variable
 ------------------------ */
+
 $media-medium: 1024px;
 $media-small: 640px;
