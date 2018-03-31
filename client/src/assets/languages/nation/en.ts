@@ -4,6 +4,7 @@ const en = {
     birth: 'Birth',
     cancel: 'Cancel',
     china: 'China',
+    description: '설명',
     email: 'E-Mail',
     form: {
       confirm: 'Confirm',
@@ -34,6 +35,7 @@ const en = {
     },
     placeholder: {
     },
+    writer: '저자',
   },
   content: {
     label: {

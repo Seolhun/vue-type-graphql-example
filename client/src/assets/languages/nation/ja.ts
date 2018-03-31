@@ -4,6 +4,7 @@ const ja = {
     birth: '생년월일',
     cancel: '취소',
     china: '中国',
+    description: '설명',
     email: '이메일',
     form: {
       confirm: '확인',
@@ -34,6 +35,7 @@ const ja = {
     },
     placeholder: {
     },
+    writer: '저자',
   },
   content: {
     label: {

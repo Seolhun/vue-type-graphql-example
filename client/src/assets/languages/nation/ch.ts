@@ -5,6 +5,7 @@ const ch = {
     cancel: 'Cancel',
     china: '中國',
     email: 'E-Mail',
+    description: '설명',
     form: {
       confirm: 'Confirm',
       submit: 'Submit',
@@ -34,6 +35,7 @@ const ch = {
     },
     placeholder: {
     },
+    writer: '저자',
   },
   content: {
     label: {

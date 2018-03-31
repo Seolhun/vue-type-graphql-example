@@ -4,6 +4,7 @@ const ko = {
     birth: '생년월일',
     cancel: '취소',
     china: '중국',
+    description: '설명',
     email: '이메일',
     form: {
       confirm: '확인',
@@ -17,6 +18,7 @@ const ko = {
     password: '비밀번호',
     confirm_password: '비밀번호 확인',
     search: '검색',
+    status: '상태',
     usa: '미국',
   },
   authority: {
@@ -34,6 +36,7 @@ const ko = {
     },
     placeholder: {
     },
+    writer: '저자',
   },
   content: {
     label: {
