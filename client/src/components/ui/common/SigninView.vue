@@ -5,21 +5,21 @@
     </div>
     <div class='col-sm-12'>
       <div class='form-group'>
-        <label>Email</label>
+        <label>{{ $tc('common.email') }}</label>
         <input type='email' class='form-control' v-model='user.email' v-on:input='this.validateEmail'>
         <span class='error-msg'> {{ validation.email ? validation.email : '' }} </span>
       </div>
       <div class='form-group'>
-        <label>Name</label>
+        <label>{{ $tc('common.name') }}</label>
         <input class='form-control' v-model='user.name' v-on:input='this.validateName'>
         <span class='error-msg'> {{ validation.name ? validation.name : '' }} </span>
       </div>
       <div class='form-group'>
-        <label>Birth</label>
+        <label>{{ $tc('common.birth') }}</label>
         <input type='date' class='form-control' v-model='user.birth'>
       </div>
       <div class='form-group'>
-        <label>Division</label>
+        <label>{{ $tc('division.this') }}</label>
         <div>
           <select v-model="user.division_id">
             <optgroup label="Choose">
@@ -35,19 +35,19 @@
         </div>
       </div>
       <div class='form-group'>
-        <label>Password</label>
+        <label>{{ $tc('common.password') }}</label>
         <input type='password' class='form-control' v-model='user.password' v-on:input='this.validatePwd'>
         <span class='error-msg'> {{ validation.password ? validation.password : '' }} </span>
       </div>
       <div class='form-group'>
-        <label for='confirmPassword'>Confirm-Password</label>
+        <label for='confirmPassword'>{{ $tc('common.confirm_password') }}</label>
         <input type='password' class='form-control' id='confirmPassword' v-model='user.confirm_password' v-on:input='this.validateConfirmPwd'>
         <span class='error-msg'> {{ validation.confirm_password ? validation.confirm_password : '' }} </span>
       </div>
     </div>
     <div class='col-sm-12'>
-      <button class='btn-lg btn-primary' v-on:click='($event) => signIn($event)'>Sign-In</button>
-      <button class='btn-lg btn-danger' v-on:click='() => cancel()' >Cancel</button>
+      <button class='btn-lg btn-primary' v-on:click='($event) => signIn($event)'>{{ $tc('common.form.confirm') }}</button>
+      <button class='btn-lg btn-danger' v-on:click='() => cancel()' >{{ $tc('common.cancel') }}</button>
     </div>
     <p>
       {{ user }}

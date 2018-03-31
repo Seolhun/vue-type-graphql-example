@@ -5,24 +5,24 @@
     </div>
     <div class='col-sm-12'>
       <div class='form-group'>
-        <label>Email</label>
+        <label>{{ $tc('common.email') }}</label>
         <input type='email' class='form-control' v-model='user.email'>
         <span> {{ validation.email ? validation.email : '' }} </span>
       </div>
       <div class='form-group'>
-        <label>Password</label>
+        <label>{{ $tc('common.password') }}</label>
         <input type='password' class='form-control' v-model='user.password'>
         <span> {{ validation.password ? validation.password : '' }} </span>
       </div>
     </div>
     <div class='col-sm-12'>
       <div class='form-group'>
-        <button class='btn-lg btn-primary' v-on:click="() => login($event)">Log-In</button>
-        <button class='btn-lg btn-danger' v-on:click='() => cancel()' >Cancel</button>
+        <button class='btn-lg btn-primary' v-on:click='() => login($event)'>{{ $tc('common.form.confirm') }}</button>
+        <button class='btn-lg btn-danger' v-on:click='() => cancel()' >{{ $tc('common.cancel') }}</button>
       </div>
     </div>
     <div class='col-sm-12'>
-      <h5>회원이 아니신가요? 지금 <router-link :to='"/signin"' tag='a' activeClass='active'>회원가입</router-link>하세요.</h5>
+      <h5>{{ $tc('login.message.not_user1') }}<router-link :to='"/signin"' tag='a' activeClass='active'> {{ $tc('signin.this') }} </router-link>{{ $tc('login.message.not_user2') }}</h5>
     </div>
   </div>
 </template>
@@ -45,12 +45,10 @@ export default class LoginView extends Vue {
 
   login(event: Event) {
     event.preventDefault();
-
   }
 
   cancel() {
     this.$router.go(-1);
   }
-
 }
 </script>
