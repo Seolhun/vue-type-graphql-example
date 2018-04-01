@@ -4,7 +4,9 @@
   "description": "Graphql example",
   "main": "app.ts",
   "scripts": {
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
+    "all": "concurrently \"npm run client\" \"npm run server\"",
+    "client": "cd ../client && nodemon build/dev-server.js",
+    "server": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
     "test": "jest"
   },
   "jest": {
@@ -25,6 +27,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
+    "bcrypt": "^1.0.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
@@ -44,6 +47,7 @@
     "winston": "^3.0.0-rc2"
   },
   "devDependencies": {
+    "@types/bcrypt": "^1.0.0",
     "@types/bluebird": "^3.5.20",
     "@types/express": "^4.11.1",
     "@types/express-graphql": "0.0.35",

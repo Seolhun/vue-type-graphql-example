@@ -28,27 +28,27 @@ const default_authority_datas = [
 const default_book_datas = [
   {
     name: '동시성의 원리',
-    writer: '폴 부쳐',
+    author: '폴 부쳐',
     status: '1',
     description : '소프트웨어의 한계를 돌파하는 동시성의 원리',
   }, {
     name: 'ORM Frameowork',
-    writer: 'Orm',
+    author: 'Orm',
     status: '1',
     description : 'SQL 추상화를 위한 객체지향의 방법',
   }, {
     name: '처음 시작하는 파이썬',
-    writer: 'Python',
+    author: 'Python',
     status: '1',
     description : 'Getting started python',
   }, {
     name: 'Hadoop is basic',
-    writer: 'Hadoop',
+    author: 'Hadoop',
     status: '1',
     description : '빅데이터를 위한 하둡',
   }, {
     name: 'You don\'t know JS',
-    writer: 'JS',
+    author: 'JS',
     status: '1',
     description : 'JS 기본을 파헤치는 책',
   },

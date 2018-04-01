@@ -6,12 +6,20 @@ import { DivisionModel, UserModel } from '../model';
 import { AbstractRepository, Order } from './AbstractRepository';
 
 class UserRepository extends AbstractRepository<User> {
+  // ['id', 'email', 'name']);
+  unique_criterias: string[] = [];
+
+  constructor(unique_criterias) {
+    super();
+    this.unique_criterias = unique_criterias;
+  }
+
   create(user: User): Bluebird<User> {
     return  UserModel.create(user);
   }
 
   findOne(user: User): Bluebird<User | null> {
-    const data = this.getUniqueCriteria(user, ['id', 'email', 'name']);
+    const data = this.getUniqueCriteria(user, this.unique_criterias);
     return UserModel.findOne({
       where: {
         [Sequelize.Op.or]: data,
@@ -59,7 +67,7 @@ class UserRepository extends AbstractRepository<User> {
   }
 
   update(user: User): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(user, ['id', 'email', 'name']);
+    const data = this.getUniqueCriteria(user, this.unique_criterias);
     try {
       UserModel.update(user, {
         where: {
@@ -73,7 +81,7 @@ class UserRepository extends AbstractRepository<User> {
   }
 
   delete(user: User): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(user, ['id', 'email', 'name']);
+    const data = this.getUniqueCriteria(user, this.unique_criterias);
     try {
       UserModel.destroy({
         where: {

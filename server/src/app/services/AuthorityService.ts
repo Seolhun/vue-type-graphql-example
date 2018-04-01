@@ -12,7 +12,7 @@ class AuthorityService {
 
     return authority_repository.findOne({ name }).then((db_authority) => {
       if (db_authority) {
-        return Bluebird.reject(new Error(`Already '${name}' is existed.`));
+        return Bluebird.reject(new Error(`Already '${name}' is exists.`));
       }
       return authority_repository.create({ name, level });
     });

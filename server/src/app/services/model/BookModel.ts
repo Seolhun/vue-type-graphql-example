@@ -9,7 +9,7 @@ const BookModel = sequelize.define('books', {
   name: {
     type: Sequelize.STRING,
   },
-  writer: {
+  author: {
     type: Sequelize.STRING,
   },
   status: {

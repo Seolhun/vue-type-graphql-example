@@ -13,9 +13,9 @@ class DivisionService {
     return division_repository.findOne({ name }).then((division) => {
       if (division) {
         if (division.name === name) {
-          return Bluebird.reject(new Error(`Already '${name}' is existed.`));
+          return Bluebird.reject(new Error(`Already '${name}' is exists.`));
         }
-        return Bluebird.reject(new Error(`Already '${name}' is existed.`));
+        return Bluebird.reject(new Error(`Already '${name}' is exists.`));
       }
       return division_repository.create({ name, description });
     });

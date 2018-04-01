@@ -1,25 +1,41 @@
 import Bluebird from 'bluebird';
+
 import { User } from '../types';
+import { PasswordEncoderUtils } from '../utils/PasswordEncoderUtils';
 import { UserRepository } from './repository';
 import { Order } from './repository/AbstractRepository';
 
-const user_repository = new UserRepository();
+const user_repository = new UserRepository(['id', 'email', 'name']);
 class UserService {
-  createdUser({ email, birth, name, division_id }: User): Bluebird<User>  {
-    if (!email && !name) {
-      return Bluebird.reject(new Error('One of email, name is requirement.'));
+  createdUser({ email, name, birth, password, division_id }: User): Bluebird<User>  {
+    if (!email) {
+      return Bluebird.reject(new Error('The email is requirement.'));
+    }
+    if (!name) {
+      return Bluebird.reject(new Error('The name is requirement.'));
+    }
+    if (!birth) {
+      return Bluebird.reject(new Error('The birth is requirement.'));
+    }
+    if (!password) {
+      return Bluebird.reject(new Error('The password is requirement.'));
+    }
+    if (!division_id) {
+      return Bluebird.reject(new Error('The division_id is requirement.'));
     }
 
     return user_repository.findOne({ email, name }).then((db_user) => {
       if (db_user) {
         if (db_user.email === email) {
-          return Bluebird.reject(new Error(`Already '${email}' is existed.`));
-        } else if (db_user.name === name) {
-          return Bluebird.reject(new Error(`Already '${name}' is existed.`));
+          return Bluebird.reject(new Error(`Already the '${email}' is exists.`));
         }
-        return Bluebird.reject(new Error(`Already '${email || name}' is existed.`));
+        if (db_user.name === name) {
+          return Bluebird.reject(new Error(`Already the '${name}' is exists.`));
+        }
       }
-      return user_repository.create({ email, birth, name, division_id });
+
+      password = PasswordEncoderUtils.bcryptedPasswordSync(password);
+      return user_repository.create({ email, name, birth, password, division_id });
     });
   }
 

@@ -24,7 +24,7 @@ interface Division {
 interface Book {
   id?: number;
   name?: string;
-  writer?: string;
+  author?: string;
   status?: boolean;
   description?: string;
 
