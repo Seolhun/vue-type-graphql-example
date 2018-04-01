@@ -52,6 +52,9 @@ import { Book } from '../../../../../server/src/app/types';
             this.user = result.data.user;
           }
         },
+        error(error) {
+          console.log(error);
+        },
         fetchPolicy: 'cache-and-network',
       };
     },

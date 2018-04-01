@@ -1,8 +1,6 @@
 <template>
   <div class='row margin-20'>
-    <div class='col-sm-12'>
-      <h2>Sign-In</h2>
-    </div>
+    <h2>Sign-In</h2>
     <div class='col-sm-12'>
       <div class='form-group'>
         <label>{{ $tc('common.email') }}</label>
@@ -62,8 +60,7 @@ import * as _ from 'lodash';
 import { Validators, ValidationResponse } from '../../../utils/Validators';
 
 import { ApolloResponse } from '../../../types';
-import { DivisionModel } from '../../../models';
-import { UserModel } from '../../../models';
+import { DivisionModel, UserModel } from '../../../models';
 
 @Component({
   apollo: {
@@ -111,7 +108,6 @@ export default class SigninView extends Vue {
     if (!this.is_active) {
       return;
     }
-    // We save the user input in case of an error
     const user = this.user;
     this.$apollo.mutate({
       mutation: gql`
@@ -129,7 +125,7 @@ export default class SigninView extends Vue {
         this.$router.push(`/users/${db_user.name}`);
       }
     }).catch((error) => {
-      console.log(error);
+      console.error(error);
     });
   }
 
