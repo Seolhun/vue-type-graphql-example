@@ -35,7 +35,7 @@ const ch = {
     },
     placeholder: {
     },
-    writer: '저자',
+    author: '저자',
   },
   content: {
     label: {

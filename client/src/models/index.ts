@@ -27,7 +27,7 @@ class AuthorityModel {
 class BookModel {
   id?: number;
   name?: string;
-  writer?: string;
+  author?: string;
   description?: string;
   status?: boolean;
 
@@ -39,7 +39,7 @@ class BookModel {
   constructor() {
     this.id = 0;
     this.name = '';
-    this.writer = '';
+    this.author = '';
     this.description = '';
     this.status = true;
 

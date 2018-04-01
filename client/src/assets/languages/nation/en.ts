@@ -18,6 +18,7 @@ const en = {
     password: 'Password',
     confirm_password: 'Confirm Password',
     search: 'Search',
+    status: 'status',
     usa: 'USA',
   },
   authority: {
@@ -35,7 +36,7 @@ const en = {
     },
     placeholder: {
     },
-    writer: '저자',
+    author: 'Author',
   },
   content: {
     label: {

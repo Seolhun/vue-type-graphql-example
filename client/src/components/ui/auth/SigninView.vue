@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class='col-sm-12'>
-      <button class='btn-lg btn-primary' v-on:click='($event) => signIn($event)'>{{ $tc('common.form.confirm') }}</button>
+      <button type='submit' class='btn-lg btn-primary' v-on:click='($event) => signIn($event)'>{{ $tc('common.form.confirm') }}</button>
       <button class='btn-lg btn-danger' v-on:click='() => cancel()' >{{ $tc('common.cancel') }}</button>
     </div>
   </div>
@@ -126,7 +126,7 @@ export default class SigninView extends Vue {
     }).then((result: ApolloResponse) => {
       const db_user: UserModel = result.data.addUser;
       if(db_user) {
-        this.$router.push(`/user/${db_user.email}`);
+        this.$router.push(`/users/${db_user.name}`);
       }
     }).catch((error) => {
       console.log(error);

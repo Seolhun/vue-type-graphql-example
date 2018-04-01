@@ -39,7 +39,7 @@ import { Book } from '../../../../../server/src/app/types';
       return {
         query: gql`
           query {
-            user(email: "${this.$route.params.email}") {
+            user(name: "${this.$route.params.name}") {
               id
               email
               name

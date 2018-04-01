@@ -6,7 +6,9 @@
   "main": "main.ts",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon build/dev-server.js",
+    "all": "concurrently \"npm run client\" \"npm run server\"",
+    "server": "cd ../server && npm run dev",
+    "client": "nodemon build/dev-server.js",
     "build": "node build/build.js",
     "test": "jest"
   },
@@ -52,6 +54,7 @@
     "babel-preset-env": "^1.3.2",
     "babel-preset-stage-2": "^6.22.0",
     "chalk": "^2.3.2",
+    "concurrently": "^3.5.1",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.10",
     "eventsource-polyfill": "^0.9.6",

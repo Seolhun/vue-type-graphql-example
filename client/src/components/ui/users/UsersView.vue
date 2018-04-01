@@ -1,8 +1,8 @@
 <template>
   <div class='row' v-cloak>
+    <h2>Users</h2>
     <div class='col-sm-12'>
       <div class='apollo'>
-        <h3>Users</h3>
         <table class='table table-hover'>
           <thead>
             <tr>
@@ -25,7 +25,7 @@
               tag='tr'
               activeClass='active'
               v-for='user in users' v-bind:key='user.id'
-              :to='`/users/${user.email}`'
+              :to='`/users/${user.name}`'
             >
               <td>
                 {{ user.id }}
