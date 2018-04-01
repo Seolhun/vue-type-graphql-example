@@ -46,6 +46,17 @@ const UserMutation: GraphQLFieldConfigMap<any, any> = {
       return await user_service.deletedUser({ id, email, name, password });
     },
   },
+  loginUser: {
+    type: UserType,
+    args: {
+      email: { type: GraphQLString },
+      name: { type: GraphQLString },
+      password: { type: new GraphQLNonNull(GraphQLString) },
+    },
+    async resolve(parent, { email, name, password }: User) {
+      return await user_service.loginUser({ email, name, password });
+    },
+  },
 };
 
 export { UserMutation };

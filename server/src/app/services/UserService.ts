@@ -1,4 +1,4 @@
-import Bluebird from 'bluebird';
+import * as Bluebird from 'bluebird';
 
 import { User } from '../types';
 import { PasswordEncoderUtils } from '../utils/PasswordEncoderUtils';
@@ -72,6 +72,24 @@ class UserService {
         return Bluebird.reject(new Error('The user are not found'));
       }
       return user_repository.delete({ id, email });
+    });
+  }
+
+  loginUser({ email, name, password }: User): Bluebird<User> {
+    if (!email && !name) {
+      return Bluebird.reject(new Error('One of email and name are requirement.'));
+    }
+
+    let password_validation = false;
+    return user_repository.findOne({ email, name }).then((db_user: any) => {
+      if (password) {
+        password_validation = PasswordEncoderUtils.compareBcryptedPasswordSync(password, db_user.password);
+        if (!password_validation) {
+          return Bluebird.reject(new Error('The identification or Password is not right'));
+        }
+        return Bluebird.resolve(db_user);
+      }
+      return Bluebird.reject(new Error('The identification or Password is not right'));
     });
   }
 }

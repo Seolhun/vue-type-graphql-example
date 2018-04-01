@@ -1,4 +1,4 @@
-import Bluebird from 'bluebird';
+import * as Bluebird from 'bluebird';
 import * as Sequelize from 'sequelize';
 
 import { Division, User } from '../../types';

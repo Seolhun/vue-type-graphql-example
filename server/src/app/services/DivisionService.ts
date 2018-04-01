@@ -1,4 +1,4 @@
-import Bluebird from 'bluebird';
+import * as Bluebird from 'bluebird';
 import { Division } from '../types';
 import { DivisionRepository } from './repository';
 import { Order } from './repository/AbstractRepository';

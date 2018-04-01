@@ -1,4 +1,4 @@
-import Bluebird from 'bluebird';
+import * as Bluebird from 'bluebird';
 import { Authority } from '../types';
 import { AuthorityRepository } from './repository';
 import { Order } from './repository/AbstractRepository';
