@@ -10,6 +10,8 @@
                 <span>
                 <img
                   src='@/assets/images/logo/github/mark/PNG/GitHub-Mark-Light-32px.png'
+                  width='50'
+                  height='50'
                   alt='Responsive image'
                   class='padding-10'
                 />
@@ -21,7 +23,9 @@
               <a :href='blogUrl' target='_blank'>
                 <span>
                 <img
-                  src='@/assets/images/logo/github/mark/PNG/GitHub-Mark-Light-32px.png'
+                  src='@/assets/images/logo/logo.png'
+                  width='50'
+                  height='50'
                   alt='Responsive image'
                   class='padding-10'
                 />

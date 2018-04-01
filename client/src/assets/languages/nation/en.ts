@@ -4,7 +4,7 @@ const en = {
     birth: 'Birth',
     cancel: 'Cancel',
     china: 'China',
-    description: '설명',
+    description: 'Description',
     email: 'E-Mail',
     form: {
       confirm: 'Confirm',
@@ -18,7 +18,7 @@ const en = {
     password: 'Password',
     confirm_password: 'Confirm Password',
     search: 'Search',
-    status: 'status',
+    status: 'Status',
     usa: 'USA',
   },
   authority: {
