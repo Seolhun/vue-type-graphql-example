@@ -3,7 +3,7 @@ import { Authority } from '../types';
 import { AuthorityRepository } from './repository';
 import { Order } from './repository/AbstractRepository';
 
-const authority_repository = new AuthorityRepository();
+const authority_repository = new AuthorityRepository(['id', 'name']);
 class AuthorityService {
   createdAuthority({ name, level }: Authority): Bluebird<Authority>  {
     if (!name || !level) {

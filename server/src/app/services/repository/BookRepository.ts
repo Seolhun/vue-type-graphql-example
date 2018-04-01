@@ -6,15 +6,23 @@ import { BookModel } from '../model';
 import { AbstractRepository, Order } from './AbstractRepository';
 
 class BookRepository extends AbstractRepository<Book> {
+  // ['id']
+  unique_criterias: string[] = [];
+
+  constructor(unique_criterias) {
+    super();
+    this.unique_criterias = unique_criterias;
+  }
+
   create(book: Book): Bluebird<Book> {
     return BookModel.create(book);
   }
 
   findOne(book: Book): Bluebird<Book | null> {
-    const data = this.getUniqueCriteria(book, ['id']);
+    const params = this.getUniqueCriteria(book, this.unique_criterias);
     return BookModel.findOne({
       where: {
-        [Sequelize.Op.or]: data,
+        [Sequelize.Op.or]: params,
       },
     });
 
@@ -61,11 +69,11 @@ class BookRepository extends AbstractRepository<Book> {
   }
 
   update(book: Book): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(book, ['id']);
+    const params = this.getUniqueCriteria(book, this.unique_criterias);
     try {
       BookModel.update(book, {
         where: {
-          [Sequelize.Op.or]: data,
+          [Sequelize.Op.or]: params,
         },
       });
     } catch (error) {
@@ -75,11 +83,11 @@ class BookRepository extends AbstractRepository<Book> {
   }
 
   delete(book: Book): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(book, ['id']);
+    const params = this.getUniqueCriteria(book, this.unique_criterias);
     try {
       BookModel.destroy({
         where: {
-          [Sequelize.Op.or]: data,
+          [Sequelize.Op.or]: params,
         },
       });
     } catch (error) {

@@ -3,7 +3,7 @@ import { Division } from '../types';
 import { DivisionRepository } from './repository';
 import { Order } from './repository/AbstractRepository';
 
-const division_repository = new DivisionRepository();
+const division_repository = new DivisionRepository(['id', 'name']);
 class DivisionService {
   createdDivision({ name, description }: Division): Bluebird<Division>  {
     if (!name && !description) {

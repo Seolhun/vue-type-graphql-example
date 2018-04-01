@@ -23,22 +23,22 @@ const sequelize = new Sequelize('shooney_management', 'hunseol', 'hunseol', {
     paranoid: true,
 
     hooks: {
-      beforeFind: (instance, fn: () => void) => {
-        logger.debug(`beforeFind`);
-        logger.debug(instance);
-      },
-      beforeCreate: (instance, options, fn: () => void) => {
-        logger.debug(`beforeCreate`);
-        logger.debug(instance);
-      },
-      beforeUpdate: (instance, options, fn: () => void) => {
-        logger.debug(`beforeUpdate`);
-        logger.debug(instance);
-      },
-      beforeDestroy: (instance, options, fn: () => void) => {
-        logger.debug(`beforeDestroy`);
-        logger.debug(instance);
-      },
+      // beforeFind: (instance, fn: () => void) => {
+      //   logger.debug(`beforeFind`);
+      //   logger.debug(instance);
+      // },
+      // beforeCreate: (instance, options, fn: () => void) => {
+      //   logger.debug(`beforeCreate`);
+      //   logger.debug(instance);
+      // },
+      // beforeUpdate: (instance, options, fn: () => void) => {
+      //   logger.debug(`beforeUpdate`);
+      //   logger.debug(instance);
+      // },
+      // beforeDestroy: (instance, options, fn: () => void) => {
+      //   logger.debug(`beforeDestroy`);
+      //   logger.debug(instance);
+      // },
     },
   },
 });
@@ -52,4 +52,4 @@ sequelize.authenticate().then(() => {
   console.error('Unable to connect to the database:', err);
 });
 
-export { sequelize, Sequelize };
+export { sequelize };

@@ -2,7 +2,7 @@ import Bluebird from 'bluebird';
 import * as Sequelize from 'sequelize';
 
 import { Division, User } from '../../types';
-import { DivisionModel, UserModel } from '../model';
+import { DivisionModel, UserAuthorityModel, UserModel } from '../model';
 import { AbstractRepository, Order } from './AbstractRepository';
 
 class UserRepository extends AbstractRepository<User> {
@@ -19,10 +19,10 @@ class UserRepository extends AbstractRepository<User> {
   }
 
   findOne(user: User): Bluebird<User | null> {
-    const data = this.getUniqueCriteria(user, this.unique_criterias);
+    const params = this.getUniqueCriteria(user, this.unique_criterias);
     return UserModel.findOne({
       where: {
-        [Sequelize.Op.or]: data,
+        [Sequelize.Op.or]: params,
       },
     });
   }
@@ -67,11 +67,11 @@ class UserRepository extends AbstractRepository<User> {
   }
 
   update(user: User): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(user, this.unique_criterias);
+    const params = this.getUniqueCriteria(user, this.unique_criterias);
     try {
       UserModel.update(user, {
         where: {
-          [Sequelize.Op.or]: data,
+          [Sequelize.Op.or]: params,
         },
       });
     } catch (error) {
@@ -81,11 +81,11 @@ class UserRepository extends AbstractRepository<User> {
   }
 
   delete(user: User): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(user, this.unique_criterias);
+    const params = this.getUniqueCriteria(user, this.unique_criterias);
     try {
       UserModel.destroy({
         where: {
-          [Sequelize.Op.or]: data,
+          [Sequelize.Op.or]: params,
         },
       });
     } catch (error) {

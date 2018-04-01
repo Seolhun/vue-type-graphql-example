@@ -6,15 +6,23 @@ import { AuthorityModel, DivisionModel } from '../model';
 import { AbstractRepository, Order } from './AbstractRepository';
 
 class AuthorityRepository extends AbstractRepository<Authority> {
+  // ['id', 'name']
+  unique_criterias: string[] = [];
+
+  constructor(unique_criterias) {
+    super();
+    this.unique_criterias = unique_criterias;
+  }
+
   create(user: Authority): Bluebird<Authority> {
     return  AuthorityModel.create(user);
   }
 
   findOne(user: Authority): Bluebird<Authority | null> {
-    const data = this.getUniqueCriteria(user, ['id', 'name']);
+    const params = this.getUniqueCriteria(user, this.unique_criterias);
     return AuthorityModel.findOne({
       where: {
-        [Sequelize.Op.or]: data,
+        [Sequelize.Op.or]: params,
       },
     });
   }
@@ -59,11 +67,11 @@ class AuthorityRepository extends AbstractRepository<Authority> {
   }
 
   update(user: Authority): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(user, ['id', 'name']);
+    const params = this.getUniqueCriteria(user, this.unique_criterias);
     try {
       AuthorityModel.update(user, {
         where: {
-          [Sequelize.Op.or]: data,
+          [Sequelize.Op.or]: params,
         },
       });
     } catch (error) {
@@ -73,11 +81,11 @@ class AuthorityRepository extends AbstractRepository<Authority> {
   }
 
   delete(user: Authority): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(user, ['id', 'name']);
+    const params = this.getUniqueCriteria(user, this.unique_criterias);
     try {
       AuthorityModel.destroy({
         where: {
-          [Sequelize.Op.or]: data,
+          [Sequelize.Op.or]: params,
         },
       });
     } catch (error) {

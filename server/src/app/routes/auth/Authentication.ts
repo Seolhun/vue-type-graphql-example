@@ -10,4 +10,12 @@ auth_router.get('/github/callback', passport.authenticate('github', { failureRed
   res.redirect('/');
 });
 
+auth_router.post('/login', (req, res) => {
+  console.log('login');
+});
+
+auth_router.post('/logout', (req, res) => {
+  console.log('logout');
+});
+
 export { auth_router };

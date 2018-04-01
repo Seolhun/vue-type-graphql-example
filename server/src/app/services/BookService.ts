@@ -3,7 +3,7 @@ import { Book } from '../types';
 import { BookRepository } from './repository';
 import { Order } from './repository/AbstractRepository';
 
-const book_repository = new BookRepository();
+const book_repository = new BookRepository(['id']);
 class BookService {
   createdBook({ name, author, description }: Book): Bluebird<Book>  {
     const book = book_repository.create({ name, author, description });

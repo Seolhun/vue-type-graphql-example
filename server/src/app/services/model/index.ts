@@ -1,5 +1,7 @@
+import { AuthorityModel } from './AuthorityModel';
 import { BookModel } from './BookModel';
 import { DivisionModel } from './DivisionModel';
-import { AuthorityModel, UserModel } from './UserModel';
+import { UserAuthorityModel } from './UserAuthorityModel';
+import { UserModel } from './UserModel';
 
-export { AuthorityModel, BookModel, DivisionModel, UserModel };
+export { AuthorityModel, BookModel, DivisionModel, UserAuthorityModel, UserModel };
