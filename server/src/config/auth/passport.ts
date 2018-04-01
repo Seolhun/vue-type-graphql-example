@@ -1,7 +1,7 @@
 import * as passport from 'passport';
 import { Strategy } from 'passport-github2';
 
-import DEV_CONFIG from '../develop';
+import DEV_CONFIG from '../environments/develop';
 
 passport.use(new Strategy({
   clientID: DEV_CONFIG.GITHUB_CLIENT_ID,

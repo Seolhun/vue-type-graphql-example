@@ -11,8 +11,8 @@
         {{ book.name }}
       </div>
       <div class='form-group'>
-        <label>{{ $tc('book.writer') }} : </label>
-        {{ book.writer }}
+        <label>{{ $tc('book.author') }} : </label>
+        {{ book.author }}
       </div>
       <div class='form-group'>
         <label>{{ $tc('common.status') }} : </label>
@@ -43,7 +43,7 @@ import { ApolloResponse } from '../../../types';
             book(id: ${this.$route.params.id}) {
               id
               name
-              writer
+              author
               status
               description
             }

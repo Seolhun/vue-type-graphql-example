@@ -1,7 +1,7 @@
-import { GraphQLObjectType } from 'graphql';
+import { GraphQLList, GraphQLObjectType } from 'graphql';
 import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
 
-export const AuthorityType = new GraphQLObjectType({
+const AuthorityType = new GraphQLObjectType({
   name: 'Authority',
   fields: {
     id: { type: GraphQLInt },
@@ -15,12 +15,12 @@ export const AuthorityType = new GraphQLObjectType({
   },
 });
 
-export const BookType = new GraphQLObjectType({
+const BookType = new GraphQLObjectType({
   name: 'Book',
   fields: {
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
-    writer: { type: GraphQLString },
+    author: { type: GraphQLString },
     status: { type: GraphQLBoolean },
     description: { type: GraphQLString },
 
@@ -31,28 +31,32 @@ export const BookType = new GraphQLObjectType({
   },
 });
 
-export const DivisionType = new GraphQLObjectType({
+const UserType = new GraphQLObjectType({
+  name: 'User',
+  fields: {
+    id: { type: GraphQLInt },
+    name: { type: GraphQLString },
+    email: { type: GraphQLString },
+    password: { type: GraphQLString },
+    birth: { type: GraphQLString },
+
+    borrowed_books: { type: new GraphQLList(BookType) },
+
+    active: { type: GraphQLBoolean },
+    created_at: { type: GraphQLString },
+    deleted_at: { type: GraphQLString },
+    updated_at: { type: GraphQLString },
+  },
+});
+
+const DivisionType = new GraphQLObjectType({
   name: 'Division',
   fields: {
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
     description: { type: GraphQLString },
 
-    active: { type: GraphQLBoolean },
-    created_at: { type: GraphQLString },
-    deleted_at: { type: GraphQLString },
-    updated_at: { type: GraphQLString },
-  },
-});
-
-export const UserType = new GraphQLObjectType({
-  name: 'User',
-  fields: {
-    id: { type: GraphQLInt },
-    name: { type: GraphQLString },
-    email: { type: GraphQLString },
-    birth: { type: GraphQLString },
-    division: { type: DivisionType },
+    employees: { type : new GraphQLList(UserType) },
 
     active: { type: GraphQLBoolean },
     created_at: { type: GraphQLString },
@@ -60,3 +64,5 @@ export const UserType = new GraphQLObjectType({
     updated_at: { type: GraphQLString },
   },
 });
+
+export { AuthorityType, BookType, DivisionType, UserType };

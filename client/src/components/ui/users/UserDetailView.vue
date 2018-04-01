@@ -39,7 +39,7 @@ import { Book } from '../../../../../server/src/app/types';
       return {
         query: gql`
           query {
-            user(email: "${this.$route.params.email}") {
+            user(name: "${this.$route.params.name}") {
               id
               email
               name
@@ -51,6 +51,9 @@ import { Book } from '../../../../../server/src/app/types';
           if(!result.loading) {
             this.user = result.data.user;
           }
+        },
+        error(error) {
+          console.log(error);
         },
         fetchPolicy: 'cache-and-network',
       };

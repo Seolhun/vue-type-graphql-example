@@ -1,8 +1,6 @@
 <template>
   <div class='row margin-20'>
-    <div class='col-sm-12'>
-      <h2>Sign-In</h2>
-    </div>
+    <h2>Sign-In</h2>
     <div class='col-sm-12'>
       <div class='form-group'>
         <label>{{ $tc('common.email') }}</label>
@@ -46,7 +44,7 @@
       </div>
     </div>
     <div class='col-sm-12'>
-      <button class='btn-lg btn-primary' v-on:click='($event) => signIn($event)'>{{ $tc('common.form.confirm') }}</button>
+      <button type='submit' class='btn-lg btn-primary' v-on:click='($event) => signIn($event)'>{{ $tc('common.form.confirm') }}</button>
       <button class='btn-lg btn-danger' v-on:click='() => cancel()' >{{ $tc('common.cancel') }}</button>
     </div>
   </div>
@@ -62,8 +60,7 @@ import * as _ from 'lodash';
 import { Validators, ValidationResponse } from '../../../utils/Validators';
 
 import { ApolloResponse } from '../../../types';
-import { DivisionModel } from '../../../models';
-import { UserModel } from '../../../models';
+import { DivisionModel, UserModel } from '../../../models';
 
 @Component({
   apollo: {
@@ -111,7 +108,6 @@ export default class SigninView extends Vue {
     if (!this.is_active) {
       return;
     }
-    // We save the user input in case of an error
     const user = this.user;
     this.$apollo.mutate({
       mutation: gql`
@@ -126,10 +122,10 @@ export default class SigninView extends Vue {
     }).then((result: ApolloResponse) => {
       const db_user: UserModel = result.data.addUser;
       if(db_user) {
-        this.$router.push(`/user/${db_user.email}`);
+        this.$router.push(`/users/${db_user.name}`);
       }
     }).catch((error) => {
-      console.log(error);
+      console.error(error);
     });
   }
 

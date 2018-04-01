@@ -1,143 +1,136 @@
-import { AuthorityModel, BookModel, DivisionModel, UserModel } from '../../../app/services/model';
+import { AuthorityModel, BookModel, DivisionModel, UserAuthorityModel, UserModel } from '../../../app/services/model';
+import { Authority, Book, BookStatus, Division, User, UserAuthority } from '../../../app/types';
 
-const default_authority_datas = [
+import { PasswordEncoderUtils } from '../../../app/utils/PasswordEncoderUtils';
+
+const authority_datas: Authority[] = [
   {
     name: 'Admin',
-    level: 1,
+    level: 0,
   }, {
     name: 'Back',
-    level: 2,
+    level: 1,
   }, {
     name: 'Front',
-    level: 3,
+    level: 2,
   }, {
     name: 'Data',
-    level: 4,
+    level: 3,
   }, {
     name: 'Test',
-    level: 5,
+    level: 4,
   }, {
     name: 'Alliance',
-    level: 6,
+    level: 5,
   }, {
     name: 'Etc',
+    level: 6,
+  }, {
+    name: 'Guest',
     level: 7,
   },
 ];
 
-const default_book_datas = [
+const book_datas: Book[] = [
   {
     name: '동시성의 원리',
-    writer: '폴 부쳐',
-    status: '1',
+    author: '폴 부쳐',
+    status: BookStatus.NORMAL,
     description : '소프트웨어의 한계를 돌파하는 동시성의 원리',
   }, {
     name: 'ORM Frameowork',
-    writer: 'Orm',
-    status: '1',
+    author: 'Orm',
+    status: BookStatus.NORMAL,
     description : 'SQL 추상화를 위한 객체지향의 방법',
   }, {
     name: '처음 시작하는 파이썬',
-    writer: 'Python',
-    status: '1',
+    author: 'Python',
+    status: BookStatus.ORDERED,
     description : 'Getting started python',
   }, {
     name: 'Hadoop is basic',
-    writer: 'Hadoop',
-    status: '1',
+    author: 'Hadoop',
+    status: BookStatus.BORROWED,
     description : '빅데이터를 위한 하둡',
   }, {
     name: 'You don\'t know JS',
-    writer: 'JS',
-    status: '1',
+    author: 'JS',
+    status: BookStatus.REQUESTED,
     description : 'JS 기본을 파헤치는 책',
   },
 ];
 
-const default_division_datas = [
+const division_datas: Division[] = [
   {
     name: 'Dev',
     description: 'Development',
-
-    active: true,
-    created_at: new Date(),
-    updated_at: new Date(),
   }, {
     name: 'Finance',
     description: 'Finance',
-
-    active: true,
-    created_at: new Date(),
-    updated_at: new Date(),
   }, {
     name: 'HR',
     description: 'Human Resources',
-
-    active: true,
-    created_at: new Date(),
-    updated_at: new Date(),
   }, {
     name: 'Marketing',
     description: 'Marketing',
-
-    active: true,
-    created_at: new Date(),
-    updated_at: new Date(),
   }, {
     name: 'Alliance',
     description: 'Alliance',
-
-    active: true,
-    created_at: new Date(),
-    updated_at: new Date(),
   },
 ];
 
-const default_user_datas = [
+const user_datas: User[] = [
   {
     name: 'Shun',
     email: 'shun10114@google.com',
     birth: '19900126',
-    division: 1,
-
-    active: true,
-    created_at: new Date(),
-    updated_at: new Date(),
+    division_id: 1,
+    password: PasswordEncoderUtils.bcryptedPasswordSync('1234'),
   }, {
     name: 'Mark',
     email: 'mark@google.com',
     birth: '19940606',
-    division: 1,
-
-    active: true,
-    created_at: new Date(),
-    updated_at: new Date(),
+    division_id: 2,
+    password: PasswordEncoderUtils.bcryptedPasswordSync('1234'),
   }, {
     name: 'Gabriel',
     email: 'gabriel@naver.com',
     birth: '19881212',
-    division: 1,
-
-    active: true,
-    created_at: new Date(),
-    updated_at: new Date(),
+    division_id: 3,
+    password: PasswordEncoderUtils.bcryptedPasswordSync('1234'),
   }, {
     name: 'Chris',
     email: 'chris@hanmail.net',
     birth: '19800322',
-    division: 1,
+    division_id: 4,
+    password: PasswordEncoderUtils.bcryptedPasswordSync('1234'),
+  },
+];
 
-    active: true,
-    created_at: new Date(),
-    updated_at: new Date(),
+const authority_user_datas: UserAuthority[]  = [
+  {
+    user_id: 1,
+    authority_id: 1,
+  }, {
+    user_id: 2,
+    authority_id: 6,
+  }, {
+    user_id: 3,
+    authority_id: 8,
+  }, {
+    user_id: 4,
+    authority_id: 8,
   },
 ];
 
 function initDefaultData() {
-  AuthorityModel.bulkCreate(default_authority_datas);
-  BookModel.bulkCreate(default_book_datas);
-  DivisionModel.bulkCreate(default_division_datas);
-  UserModel.bulkCreate(default_user_datas);
+  DivisionModel.bulkCreate(division_datas);
+  AuthorityModel.bulkCreate(authority_datas).then(() => {
+    UserModel.bulkCreate(user_datas).then((users) => {
+      UserAuthorityModel.bulkCreate(authority_user_datas);
+    });
+  });
+  BookModel.bulkCreate(book_datas);
 }
 
 export { initDefaultData };

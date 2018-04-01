@@ -7,7 +7,7 @@ import * as helmet from 'helmet';
 import { sequelize } from './config/database';
 
 import { schema } from './app/routes/graphql/schema';
-import { Config } from './config';
+import { Config } from './config/environments';
 
 import { auth_router } from './app/routes/auth/Authentication';
 
@@ -23,8 +23,8 @@ app.disable('x-powered-by');
 // Session
 const expiryDate = new Date(Date.now() + 1000 * 60 * 30); // 30 min
 app.use(session({
+  name: 'sid',
   secret: 'hunseol_typescript_graphql',
-  name: 'sessionId',
   resave: false,
   saveUninitialized: true,
   keys: ['key1', 'key2'],

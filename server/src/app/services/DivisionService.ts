@@ -1,9 +1,9 @@
-import Bluebird from 'bluebird';
+import * as Bluebird from 'bluebird';
 import { Division } from '../types';
 import { DivisionRepository } from './repository';
 import { Order } from './repository/AbstractRepository';
 
-const division_repository = new DivisionRepository();
+const division_repository = new DivisionRepository(['id', 'name']);
 class DivisionService {
   createdDivision({ name, description }: Division): Bluebird<Division>  {
     if (!name && !description) {
@@ -13,9 +13,9 @@ class DivisionService {
     return division_repository.findOne({ name }).then((division) => {
       if (division) {
         if (division.name === name) {
-          return Bluebird.reject(new Error(`Already '${name}' is existed.`));
+          return Bluebird.reject(new Error(`Already '${name}' is exists.`));
         }
-        return Bluebird.reject(new Error(`Already '${name}' is existed.`));
+        return Bluebird.reject(new Error(`Already '${name}' is exists.`));
       }
       return division_repository.create({ name, description });
     });

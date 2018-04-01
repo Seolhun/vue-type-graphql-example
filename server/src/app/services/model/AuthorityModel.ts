@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../../../config/database';
 
-const BookModel = sequelize.define('books', {
+const AuthorityModel = sequelize.define('authorities', {
   id: {
     type: Sequelize.BIGINT,
     primaryKey: true,
@@ -9,16 +9,13 @@ const BookModel = sequelize.define('books', {
   },
   name: {
     type: Sequelize.STRING,
+    validate: {
+      is: /^[가-힣a-zA-Z]{3,20}/g,
+    },
+    unique: true,
   },
-  author: {
-    type: Sequelize.STRING,
-  },
-  status: {
-    type: Sequelize.STRING,
-    comment: 'GONE = 0, REQUESTED = 1, ORDERED = 2, NORMAR = 3, BORROWED = 4',
-  },
-  description: {
-    type: Sequelize.STRING,
+  level: {
+    type: Sequelize.INTEGER,
   },
 
   active: {
@@ -35,7 +32,13 @@ const BookModel = sequelize.define('books', {
     type: Sequelize.DATE,
   },
 }, {
-  comment: 'Book Table',
+  comment: 'Authority Table',
+  indexes: [
+    {
+      unique: true,
+      fields: ['name', 'level'],
+    },
+  ],
 });
 
-export { BookModel };
+export { AuthorityModel };

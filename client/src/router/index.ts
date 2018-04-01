@@ -2,8 +2,8 @@ import Vue, { AsyncComponent } from 'vue';
 import Router, { NavigationGuard, Route, RouteConfig } from 'vue-router';
 
 import HomeView from '@/components/HomeView.vue';
-import LoginView from '@/components/ui/common/LoginView.vue';
-import SigninView from '@/components/ui/common/SigninView.vue';
+import LoginView from '@/components/ui/auth/LoginView.vue';
+import SigninView from '@/components/ui/auth/SigninView.vue';
 
 import BookDetailView from '@/components/ui/books/BookDetailView.vue';
 import BooksView from '@/components/ui/books/BooksView.vue';
@@ -57,7 +57,7 @@ const routes: RouteConfig[] = [
     // redirect: '/home',
     // meta: { leaf: false, icon: 'icon-article' },
   }, {
-    path: '/users/:email',
+    path: '/users/:name',
     name: 'UserDetail',
     component: UserDetailView,
   },

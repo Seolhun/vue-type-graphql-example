@@ -1,12 +1,12 @@
-import Bluebird from 'bluebird';
+import * as Bluebird from 'bluebird';
 import { Book } from '../types';
 import { BookRepository } from './repository';
 import { Order } from './repository/AbstractRepository';
 
-const book_repository = new BookRepository();
+const book_repository = new BookRepository(['id']);
 class BookService {
-  createdBook({ name, writer, description }: Book): Bluebird<Book>  {
-    const book = book_repository.create({ name, writer, description });
+  createdBook({ name, author, description }: Book): Bluebird<Book>  {
+    const book = book_repository.create({ name, author, description });
     return book;
   }
 
@@ -21,7 +21,7 @@ class BookService {
     return book_repository.findAll(order);
   }
 
-  updatedBook({ id, name, writer, status, description }: Book): Bluebird<boolean> {
+  updatedBook({ id, name, author, status, description }: Book): Bluebird<boolean> {
     if (!id) {
       return Bluebird.reject(new Error('id is requirement.'));
     }
@@ -29,7 +29,7 @@ class BookService {
     if (!dbBook) {
       return Bluebird.reject(new Error('The book is not found'));
     }
-    return book_repository.update({ name, writer, status, description });
+    return book_repository.update({ name, author, status, description });
   }
 
   deletedBook({ id }: Book): Bluebird<boolean> {

@@ -1,8 +1,8 @@
 <template>
   <div class='row' v-cloak>
+    <h2>Books</h2>
     <div class='col-sm-12'>
       <div class='apollo'>
-        <h3>Books</h3>
         <table class='table table-hover'>
           <thead>
             <tr>
@@ -13,7 +13,7 @@
                 {{ $tc('common.name')}}
               </th>
               <th>
-                {{ $tc('book.writer')}}
+                {{ $tc('book.author')}}
               </th>
               <th>
                 {{ $tc('common.status')}}
@@ -37,7 +37,7 @@
                 {{ book.name }}
               </td>
               <td>
-                {{ book.writer }}
+                {{ book.author }}
               </td>
               <td>
                 {{ book.status }}
@@ -70,7 +70,7 @@ import { ApolloResponse } from '../../../types';
             books {
               id
               name
-              writer
+              author
               status
               description
             }

@@ -1,8 +1,8 @@
 <template>
   <div class='row' v-cloak>
+    <h2>Divisions</h2>
     <div class='col-sm-12'>
       <div class='apollo'>
-        <h3>Divisions</h3>
         <table class='table table-hover'>
           <thead>
             <tr>

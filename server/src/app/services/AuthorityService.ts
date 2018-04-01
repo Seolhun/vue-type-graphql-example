@@ -1,9 +1,9 @@
-import Bluebird from 'bluebird';
+import * as Bluebird from 'bluebird';
 import { Authority } from '../types';
 import { AuthorityRepository } from './repository';
 import { Order } from './repository/AbstractRepository';
 
-const authority_repository = new AuthorityRepository();
+const authority_repository = new AuthorityRepository(['id', 'name']);
 class AuthorityService {
   createdAuthority({ name, level }: Authority): Bluebird<Authority>  {
     if (!name || !level) {
@@ -12,7 +12,7 @@ class AuthorityService {
 
     return authority_repository.findOne({ name }).then((db_authority) => {
       if (db_authority) {
-        return Bluebird.reject(new Error(`Already '${name}' is existed.`));
+        return Bluebird.reject(new Error(`Already '${name}' is exists.`));
       }
       return authority_repository.create({ name, level });
     });

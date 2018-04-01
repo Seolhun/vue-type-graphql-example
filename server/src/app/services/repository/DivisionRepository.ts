@@ -1,4 +1,4 @@
-import Bluebird from 'bluebird';
+import * as Bluebird from 'bluebird';
 import * as Sequelize from 'sequelize';
 
 import { Division } from '../../types';
@@ -6,16 +6,24 @@ import { DivisionModel } from '../model';
 import { AbstractRepository, Order } from './AbstractRepository';
 
 class DivisionRepository extends AbstractRepository<Division> {
+  // ['id', 'name']
+  unique_criterias: string[] = [];
+
+  constructor(unique_criterias) {
+    super();
+    this.unique_criterias = unique_criterias;
+  }
+
   create(division: Division): Bluebird<Division> {
     const db_division: Bluebird<Division> = DivisionModel.create(division);
     return Bluebird.Promise.resolve(db_division);
   }
 
   findOne(division: Division): Bluebird<Division | null> {
-    const data = this.getUniqueCriteria(division, ['id', 'name']);
+    const params = this.getUniqueCriteria(division, this.unique_criterias);
     return DivisionModel.findOne({
       where: {
-        [Sequelize.Op.or]: data,
+        [Sequelize.Op.or]: params,
       },
     });
   }
@@ -60,11 +68,11 @@ class DivisionRepository extends AbstractRepository<Division> {
   }
 
   update(division: Division): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(division, ['id', 'name']);
+    const params = this.getUniqueCriteria(division, this.unique_criterias);
     try {
       DivisionModel.update(division, {
         where: {
-          [Sequelize.Op.or]: data,
+          [Sequelize.Op.or]: params,
         },
       });
     } catch (error) {
@@ -74,11 +82,11 @@ class DivisionRepository extends AbstractRepository<Division> {
   }
 
   delete(division: Division): Bluebird<boolean> {
-    const data = this.getUniqueCriteria(division, ['id', 'name']);
+    const params = this.getUniqueCriteria(division, this.unique_criterias);
     try {
       DivisionModel.destroy({
         where: {
-          [Sequelize.Op.or]: data,
+          [Sequelize.Op.or]: params,
         },
       });
     } catch (error) {
