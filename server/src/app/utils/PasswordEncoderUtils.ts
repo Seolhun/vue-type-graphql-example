@@ -6,9 +6,8 @@ class PasswordEncoderUtils {
     return bcrypt.hashSync(password, salt);
   }
 
-  static compareBcryptedPasswordSync(password: string): boolean {
-    const hash = this.bcryptedPasswordSync(password);
-    return bcrypt.compareSync(password, hash);
+  static compareBcryptedPasswordSync(password: string, db_password: string): boolean {
+    return bcrypt.compareSync(password, db_password);
   }
 }
 
