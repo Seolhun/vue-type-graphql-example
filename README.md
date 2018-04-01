@@ -22,12 +22,16 @@
   - ...
 
 ## How to run
-- `Server`
+- Run All Server
+  - `npm install -g concurrently`
+  1. `npm run all`
+
+- Server
   - `npm install -g ts-node vue-cli typescript`
   1. `npm run dev`
   2. [http://localhost:4000/graphql](http://localhost:4000/graphql)
 
-- `DB`
+- DB
   1. Create Default database using Raw SQL.
     - `/src/config/db/default.sql`
   2. Set Database configuration.
@@ -36,7 +40,7 @@
     - `sequelize.sync()` - create & update
     - `sequelize.sync({force: true})` - create & drop
 
-- `Client`
+- Client
   1. `npm run dev`
   2. [http://localhost:7000/](http://localhost:7000/)
 
