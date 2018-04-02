@@ -1,7 +1,7 @@
 <template>
   <b-navbar
     class='background-ocean shadow-box'
-    toggleable='md'
+    toggleable='lg'
     type='dark'
     fixed='top'
   >
