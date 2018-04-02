@@ -1,22 +1,23 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
+
 import VueI18n from 'vue-i18n';
+import messages from './assets/languages/messages';
+
+import axios from 'axios';
 import Router from 'vue-router';
-import Vuex from 'vuex';
-
 import router from './router';
-import store from './store';
 
-import BootstrapVue from 'bootstrap-vue';
-import 'bootstrap/dist/css/bootstrap.css';
+import Vuex from 'vuex';
+import store from './store';
 
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import VueApollo from 'vue-apollo';
 
-import axios from 'axios';
-import messages from './assets/languages/messages';
+import BootstrapVue from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import App from './App.vue';
 
