@@ -1,4 +1,5 @@
-// a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
+// a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z is alphabetized.
+// `this` is first order.
 const ko = {
   common: {
     birth: '생년월일',
@@ -63,6 +64,7 @@ const ko = {
     },
   },
   login: {
+    this: '로그인',
     message: {
       not_user1: '회원이 아니신가요? 지금 ',
       not_user2: '하세요',
@@ -72,6 +74,9 @@ const ko = {
   },
   signin: {
     this: '회원가입',
+    sns: {
+      message: 'SNS을 이용해서 가입하세요.',
+    },
     message: {
     },
     placeholder: {

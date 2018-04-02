@@ -1,4 +1,5 @@
-// a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
+// a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z is alphabetized.
+// `this` is first order.
 const en = {
   common: {
     birth: 'Birth',
@@ -73,6 +74,9 @@ const en = {
   },
   signin: {
     this: 'Sign-In',
+    sns: {
+      message: 'SNS을 이용해서 가입하세요.',
+    },
     message: {
     },
     placeholder: {
