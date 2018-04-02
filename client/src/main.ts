@@ -18,6 +18,7 @@ import VueApollo from 'vue-apollo';
 
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
+
 import App from './App.vue';
 
 Vue.prototype.$appName = 'Hi-Cord';

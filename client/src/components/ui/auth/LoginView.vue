@@ -23,7 +23,9 @@
         <button class='btn btn-signup btn-github' type='submit'>
           <div>
             <svg id='logo-github' class='ic-white w-74 h-18 vertical-align-middle'>
-              <use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='/assets/svg-defs-566cafd494d5be85c34825cffe847009be965c6a3ba55ed9a7a8b99bbeca0aea.svg#ic-GitHub-56'>
+              <use
+                xmlns:xlink='http://www.w3.org/1999/xlink'
+                xlink:href='/assets/svg-defs-566cafd494d5be85c34825cffe847009be965c6a3ba55ed9a7a8b99bbeca0aea.svg#ic-GitHub-56'>
               </use>
             </svg>
           </div>
