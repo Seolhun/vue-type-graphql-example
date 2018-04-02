@@ -9,6 +9,7 @@ const division_service = new DivisionService();
 const user_service = new UserService();
 
 const UserMutation: GraphQLFieldConfigMap<any, any> = {
+  // Basic
   addUser: {
     type: UserType,
     args: {
@@ -46,6 +47,8 @@ const UserMutation: GraphQLFieldConfigMap<any, any> = {
       return await user_service.deletedUser({ id, email, name, password });
     },
   },
+
+  // Custom
   loginUser: {
     type: UserType,
     args: {

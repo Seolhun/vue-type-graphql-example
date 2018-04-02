@@ -12,6 +12,7 @@ const UserModel = sequelize.define('users', {
   },
   name: {
     type: Sequelize.STRING,
+    unique: true,
     validate: {
       is: /^[가-힣a-zA-Z]{3,20}/g,
     },
@@ -23,11 +24,25 @@ const UserModel = sequelize.define('users', {
       isEmail: true,
     },
   },
+
   password: {
     type: Sequelize.STRING,
   },
   birth: {
     type: Sequelize.DATEONLY,
+  },
+
+  google_id: {
+    type: Sequelize.STRING,
+    unique: true,
+  },
+  github_id: {
+    type: Sequelize.STRING,
+    unique: true,
+  },
+  facebook_id: {
+    type: Sequelize.STRING,
+    unique: true,
   },
 
   active: {
