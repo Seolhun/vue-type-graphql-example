@@ -79,12 +79,28 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
+import axios from 'axios';
+
 @Component
 export default class HeaderMenu extends Vue {
   isLogin = false;
 
+  afterCreated() {
+    this.getCurrentUser();
+  }
+
   changeLanguage(locale: string) {
     this.$i18n.locale = locale;
+  }
+
+  getCurrentUser() {
+    axios.get('http://localhost:4000/user/current', {
+
+    }).then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.error(error)
+    })
   }
 }
 </script>
