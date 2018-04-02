@@ -1,15 +1,18 @@
 import * as bodyParser from 'body-parser';
+import * as cookieSession from 'cookie-session';
 import * as cors from 'cors';
 import * as express from 'express';
 import * as graphqlHTTP from 'express-graphql';
 import * as session from 'express-session';
 import * as helmet from 'helmet';
+
+import { passport } from './config/auth/passport';
 import { sequelize } from './config/database';
 
 import { schema } from './app/routes/graphql/schema';
 import { Config } from './config/environments';
 
-import { auth_router } from './app/routes/auth/Authentication';
+import { auth_router, user_router } from './app/routes/auth';
 
 const env = Config.setConfiguration();
 const app = express();
@@ -22,12 +25,20 @@ app.disable('x-powered-by');
 
 // Session
 const expiryDate = new Date(Date.now() + 1000 * 60 * 30); // 30 min
+app.use(
+  cookieSession({
+    name: 'cookie-session-id',
+    maxAge: env.COOKIE_SESSION_MAX_AGE,
+    keys: env.COOKIE_SESSION_KEYS,
+  }),
+);
 app.use(session({
-  name: 'sid',
+  name: 'session-id',
   secret: 'hunseol_typescript_graphql',
   resave: false,
   saveUninitialized: true,
-  keys: ['key1', 'key2'],
+  maxAge: env.SESSION_MAX_AGE,
+  keys: env.SESSION_KEYS,
   cookie: {
     secure: true,
     httpOnly: true,
@@ -35,6 +46,10 @@ app.use(session({
   },
 }));
 app.set('trust proxy', 1);
+
+// PasportJS
+app.use(passport.initialize());
+app.use(passport.session());
 
 // GraphQL
 app.use('/graphql', graphqlHTTP(async (request) => {
@@ -48,11 +63,14 @@ app.use('/graphql', graphqlHTTP(async (request) => {
   };
 }));
 
-// Router
+// Express Router
 app.get('/', (req, res) => {
-  res.send('Hello World');
+  res.send('Hello World!!, BookManagement System by Seolhun');
 });
-app.get('/auth', auth_router);
+
+// Sub Routes
+app.use('/auth', auth_router);
+app.use('/user', user_router);
 
 // Run Server
 app.listen(env.EXPRESS_PORT, () => {

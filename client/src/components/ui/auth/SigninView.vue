@@ -1,6 +1,6 @@
 <template>
   <div class='row margin-20'>
-    <h2>Sign-In</h2>
+    <h2>{{ $tc('signin.this') }}</h2>
     <div class='col-sm-12'>
       <form>
         <div class='form-group'>

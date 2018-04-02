@@ -48,8 +48,13 @@ interface User {
   email?: string;
   password?: string;
   birth?: string;
+
   division_id?: number;
   division?: Division;
+
+  google_id?: string;
+  github_id?: string;
+  facebook_id?: string;
 
   active?: boolean;
   created_at?: string;

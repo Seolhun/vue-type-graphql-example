@@ -1,13 +1,14 @@
 <template>
   <div class='row' v-cloak>
     <div class='col-sm-12'>
-      <img src='@/assets/images/logo/logo2.png'>
-      <div>
-        <h2>Hello, I'm SeolHun<a href='https://github.com/seolhun' target='_blank'>(Github)</a>. Web Developer</h2>
-
+      <div class='text-center'>
+        <img src='@/assets/images/logo/logo.png'>
+        <div>
+          <h2>Hello, I'm <a href='https://github.com/seolhun' target='_blank'>SeolHun</a>. Web Developer</h2>
+        </div>
+        <p>This is built by NodeJS, TypeScript, GraphQL, Vue.</p>
+        <p>The Admin SPA Project to manage employees and book in company.</p>
       </div>
-      <span>This is built by NodeJS, TypeScript, GraphQL, Vue to make a example to manage books and employees.</span>
-      <div>{{ $tc('common.korea') }}</div>
     </div>
   </div>
 </template>

@@ -5,9 +5,10 @@ import { PasswordEncoderUtils } from '../utils/PasswordEncoderUtils';
 import { UserRepository } from './repository';
 import { Order } from './repository/AbstractRepository';
 
-const user_repository = new UserRepository(['id', 'email', 'name']);
+const user_repository = new UserRepository(['id', 'email', 'name', 'github_id', 'google_id', 'facebook_id']);
 class UserService {
-  createdUser({ email, name, birth, password, division_id }: User): Bluebird<User>  {
+  // Basic
+  createdUser({ email, name, birth, password, division_id, google_id, github_id, facebook_id }: User): Bluebird<User>  {
     if (!email) {
       return Bluebird.reject(new Error('The email is requirement.'));
     }
@@ -35,15 +36,15 @@ class UserService {
       }
 
       password = PasswordEncoderUtils.bcryptedPasswordSync(password);
-      return user_repository.create({ email, name, birth, password, division_id });
+      return user_repository.create({ email, name, birth, password, division_id, google_id, github_id, facebook_id });
     });
   }
 
-  findOne({ id, email, name }: User): Bluebird<User | null> {
-    if (!id && !email && !name) {
+  findOne({ id, email, name, google_id, github_id, facebook_id }: User): Bluebird<User | null> {
+    if (!id && !email && !name && !google_id && !github_id && !facebook_id) {
       return Bluebird.reject(new Error('One of id and email, name are requirement.'));
     }
-    return user_repository.findOne({ id, email, name });
+    return user_repository.findOne({ id, email, name, google_id, github_id, facebook_id });
   }
 
   findAll(order: Order): Bluebird<User[]> {
@@ -72,6 +73,20 @@ class UserService {
         return Bluebird.reject(new Error('The user are not found'));
       }
       return user_repository.delete({ id, email });
+    });
+  }
+
+  // Custom
+  createdUserWithOauth2({ email, name, division_id, google_id, github_id, facebook_id }: User): Bluebird<User>  {
+    if (!name) {
+      return Bluebird.reject(new Error('The name are requirement.'));
+    }
+
+    return user_repository.findOne({ email, name, google_id, github_id, facebook_id }).then((db_user) => {
+      if (db_user) {
+        return Bluebird.resolve(db_user);
+      }
+      return user_repository.create({ email, name, division_id, google_id, github_id, facebook_id });
     });
   }
 
