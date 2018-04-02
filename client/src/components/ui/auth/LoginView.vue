@@ -26,7 +26,6 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { request } from 'graphql-request'
 import gql from 'graphql-tag';
 
 import { ApolloResponse } from '../../../types';
