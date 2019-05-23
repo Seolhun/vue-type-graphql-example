@@ -27,7 +27,7 @@
     "nodemon": "^1.14.11",
     "ts-loader": "^5.3.3",
     "typescript": "^3.3.4000",
-    "validator": "^10.11.0",
+    "validator": "^11.0.0",
     "vue": "^2.5.13",
     "vue-apollo": "^3.0.0-alpha.3",
     "vue-class-component": "^7.0.2",
