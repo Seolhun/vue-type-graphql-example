@@ -55,7 +55,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import gql from 'graphql-tag';
 
-import * as _ from 'lodash';
+import _ from 'lodash';
 
 import { Validators, ValidationResponse } from '../../../utils/Validators';
 

@@ -1,9 +1,8 @@
-import * as Bluebird from 'bluebird';
-import * as Sequelize from 'sequelize';
+import Sequelize from "sequelize";
 
-import { Division, User } from '../../types';
-import { DivisionModel, UserAuthorityModel, UserModel } from '../model';
-import { AbstractRepository, Order } from './AbstractRepository';
+import { Division, User } from "../../types";
+import { DivisionModel, UserAuthorityModel, UserModel } from "../model";
+import { AbstractRepository, Order } from "./AbstractRepository";
 
 class UserRepository extends AbstractRepository<User> {
   // ['id', 'email', 'name']);
@@ -14,85 +13,84 @@ class UserRepository extends AbstractRepository<User> {
     this.unique_criterias = unique_criterias;
   }
 
-  create(user: User): Bluebird<User> {
-    return  UserModel.create(user);
-  }
+  create = async (user: User) => {
+    return UserModel.create(user);
+  };
 
-  findOne(user: User): Bluebird<User | null> {
+  findOne = async (user: User) => {
     const params = this.getUniqueCriteria(user, this.unique_criterias);
     return UserModel.findOne({
       where: {
-        [Sequelize.Op.or]: params,
-      },
+        [Sequelize.Op.or]: params
+      }
     });
-  }
+  };
 
-  findAll(order?: Order): Bluebird<User[]> {
+  findAll = async (order?: Order) => {
     if (!order) {
-      order = 'DESC';
+      order = "DESC";
     }
     return UserModel.findAll({
-      order: [
-        ['created_at', order],
-      ],
+      order: [["created_at", order]]
     });
-  }
+  };
 
-  findAllByPaging(user: User, offset?: number | 0, limit?: number | 20, order?: Order): Bluebird<User[]> {
+  findAllByPaging = async (
+    user: User,
+    offset?: number | 0,
+    limit?: number | 20,
+    order?: Order
+  ) => {
     if (!order) {
-      order = 'DESC';
+      order = "DESC";
     }
     return UserModel.findAll({
       offset,
       limit,
-      where: user,
-      order: [
-        ['created_at', order],
-      ],
+      // where: user,
+      order: [["created_at", order]]
     });
-  }
+  };
 
-  findAllByIds(ids: number[], order?: Order): Bluebird<User[]> {
+  findAllByIds = async (ids: number[], order?: Order) => {
     if (!order) {
-      order = 'DESC';
+      order = "DESC";
     }
     return UserModel.findAll({
       where: {
-        id: [...ids],
+        id: [...ids]
       },
-      order: [
-        ['created_at', order],
-      ],
+      order: [["created_at", order]]
     });
-  }
+  };
 
-  update(user: User): Bluebird<boolean> {
+  update = async (user: User) => {
     const params = this.getUniqueCriteria(user, this.unique_criterias);
     try {
       UserModel.update(user, {
         where: {
-          [Sequelize.Op.or]: params,
-        },
+          [Sequelize.Op.or]: params
+        }
       });
     } catch (error) {
-      return Bluebird.Promise.resolve(false);
+      return false;
     }
-    return Bluebird.Promise.resolve(true);
-  }
+    return true;
+  };
 
-  delete(user: User): Bluebird<boolean> {
+  delete = async (user: User) => {
     const params = this.getUniqueCriteria(user, this.unique_criterias);
     try {
       UserModel.destroy({
         where: {
-          [Sequelize.Op.or]: params,
-        },
+          [Sequelize.Op.or]: params
+        }
       });
     } catch (error) {
-      return Bluebird.Promise.resolve(false);
+      return false;
     }
-    return Bluebird.Promise.resolve(true);
-  }
+    return true;
+  };
 }
 
 export { UserRepository };

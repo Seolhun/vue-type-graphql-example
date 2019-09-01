@@ -1,43 +1,44 @@
-import Sequelize from 'sequelize';
-import { sequelize } from '../../../config/database';
+import Sequelize, { Model } from "sequelize";
+import { sequelize } from "../../../config/database";
 
-import { UserModel } from './UserModel';
+import { UserModel } from "./UserModel";
 
-const DivisionModel = sequelize.define('divisions', {
-  id: {
-    type: Sequelize.BIGINT,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  name: {
-    type: Sequelize.STRING,
-    unique: true,
-    validate: {
-      is: /^[가-힣a-zA-Z0-9]{2,20}/g,
+class DivisionModel extends Model {}
+DivisionModel.init(
+  {
+    id: {
+      type: Sequelize.BIGINT,
+      primaryKey: true,
+      autoIncrement: true
     },
-  },
-  description: {
-    type: Sequelize.STRING,
-  },
+    name: {
+      type: Sequelize.STRING,
+      unique: true,
+      validate: {
+        is: /^[가-힣a-zA-Z0-9]{2,20}/g
+      }
+    },
+    description: {
+      type: Sequelize.STRING
+    },
 
-  active: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: true,
+    active: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: true
+    },
+    created_at: {
+      type: Sequelize.DATE
+    },
+    updated_at: {
+      type: Sequelize.DATE
+    },
+    deleted_at: {
+      type: Sequelize.DATE
+    }
   },
-  created_at: {
-    type: Sequelize.DATE,
-  },
-  updated_at: {
-    type: Sequelize.DATE,
-  },
-  deleted_at: {
-    type: Sequelize.DATE,
-  },
-}, {
-    comment: 'Division Table',
-  },
+  { sequelize, modelName: "divisions", comment: "Division Table" }
 );
 
-DivisionModel.hasMany(UserModel, { as: 'divisions' });
+DivisionModel.hasMany(UserModel, { as: "divisions" });
 
 export { DivisionModel };

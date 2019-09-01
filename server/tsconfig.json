@@ -3,13 +3,12 @@
     "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src"
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

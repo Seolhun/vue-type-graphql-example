@@ -4,9 +4,7 @@
   "description": "Graphql example",
   "main": "app.ts",
   "scripts": {
-    "all": "concurrently \"npm run client\" \"npm run server\"",
-    "client": "cd ../client && nodemon build/dev-server.js",
-    "server": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
     "test": "jest"
   },
   "jest": {
@@ -59,9 +57,10 @@
     "@types/jest": "^24.0.11",
     "@types/lodash": "^4.14.104",
     "@types/passport": "^1.0.0",
-    "@types/sequelize": "^4.27.10",
+    "@types/sequelize": "^4.28.4",
     "@types/sinon": "^7.0.10",
     "ts-jest": "^24.0.0",
-    "typescript": "^3.3.4000"
+    "ts-node": "^8.3.0",
+    "typescript": "^3.6.2"
   }
 }

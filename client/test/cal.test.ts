@@ -1,5 +1,5 @@
 // import { TestCalculator } from '@seolhun/typescript-example';
-// import * as _ from 'lodash';
+// import _ from 'lodash';
 
 // describe('#Calculator.ts', () => {
 //   const calculator = new TestCalculator();

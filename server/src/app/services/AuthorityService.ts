@@ -1,58 +1,55 @@
-import * as Bluebird from 'bluebird';
-import { Authority } from '../types';
-import { AuthorityRepository } from './repository';
-import { Order } from './repository/AbstractRepository';
+import { Authority } from "../types";
+import { AuthorityRepository } from "./repository";
+import { Order } from "./repository/AbstractRepository";
 
-const authority_repository = new AuthorityRepository(['id', 'name']);
+const authority_repository = new AuthorityRepository(["id", "name"]);
 class AuthorityService {
-  createdAuthority({ name, level }: Authority): Bluebird<Authority>  {
+  createdAuthority = async ({ name, level }: Authority) => {
     if (!name || !level) {
-      return Bluebird.reject(new Error('The name and level is requirement.'));
+      return Promise.reject(new Error("The name and level is requirement."));
     }
 
-    return authority_repository.findOne({ name }).then((db_authority) => {
-      if (db_authority) {
-        return Bluebird.reject(new Error(`Already '${name}' is exists.`));
-      }
-      return authority_repository.create({ name, level });
-    });
-  }
+    const dbAuthority = await authority_repository.findOne({ name });
+    if (dbAuthority) {
+      return Promise.reject(new Error(`Already '${name}' is exists.`));
+    }
+    return authority_repository.create({ name, level });
+  };
 
-  findOne({ id, name }: Authority): Bluebird<Authority | null> {
+  findOne = async ({ id, name }: Authority) => {
     if (!id && !name) {
-      return Bluebird.reject(new Error('One of id and name is requirement.'));
+      return Promise.reject(new Error("One of id and name is requirement."));
     }
     return authority_repository.findOne({ id, name });
-  }
+  };
 
-  findAll(order: Order): Bluebird<Authority[]> {
-    return authority_repository.findAll('DESC');
-  }
+  findAll = async (order: Order) => {
+    return authority_repository.findAll("DESC");
+  };
 
-  updatedAuthority({ name, level, description }: Authority): Bluebird<boolean> {
+  updatedAuthority = async ({ name, level, description }: Authority) => {
     if (!name) {
-      return Bluebird.reject(new Error('id or name is requirement.'));
+      return Promise.reject(new Error("id or name is requirement."));
     }
 
-    return authority_repository.findOne({ name }).then((db_authority) => {
-      if (!db_authority) {
-        return Bluebird.reject(new Error('The authority is not found'));
-      }
-      return authority_repository.update({ name, level, description });
-    });
-  }
+    const dbAuthority = await authority_repository.findOne({ name });
+    if (!dbAuthority) {
+      return Promise.reject(new Error("The authority is not found"));
+    }
+    return authority_repository.update({ name, level, description });
+  };
 
-  deletedAuthority({ id, name }: Authority): Bluebird<boolean> {
+  deletedAuthority = async ({ id, name }: Authority) => {
     if (!id && !name) {
-      return Bluebird.reject(new Error(`id or name is requirement.`));
+      return Promise.reject(new Error(`id or name is requirement.`));
     }
-    return authority_repository.findOne({ id, name }).then((db_authority) => {
-      if (!db_authority) {
-        return Bluebird.reject(new Error('The authority is not found'));
-      }
-      return authority_repository.delete({ id, name });
-    });
-  }
+    const dbAuthority = await authority_repository.findOne({ id, name });
+
+    if (!dbAuthority) {
+      return Promise.reject(new Error("The authority is not found"));
+    }
+    return authority_repository.delete({ id, name });
+  };
 }
 
 export { AuthorityService };

@@ -1,9 +1,8 @@
-import * as Bluebird from 'bluebird';
-import * as Sequelize from 'sequelize';
+import Sequelize from "sequelize";
 
-import { Division } from '../../types';
-import { DivisionModel } from '../model';
-import { AbstractRepository, Order } from './AbstractRepository';
+import { Division } from "../../types";
+import { DivisionModel } from "../model";
+import { AbstractRepository, Order } from "./AbstractRepository";
 
 class DivisionRepository extends AbstractRepository<Division> {
   // ['id', 'name']
@@ -14,86 +13,85 @@ class DivisionRepository extends AbstractRepository<Division> {
     this.unique_criterias = unique_criterias;
   }
 
-  create(division: Division): Bluebird<Division> {
-    const db_division: Bluebird<Division> = DivisionModel.create(division);
-    return Bluebird.Promise.resolve(db_division);
-  }
+  create = async (division: Division) => {
+    const db_division = DivisionModel.create(division);
+    return db_division;
+  };
 
-  findOne(division: Division): Bluebird<Division | null> {
+  findOne = async (division: Division) => {
     const params = this.getUniqueCriteria(division, this.unique_criterias);
     return DivisionModel.findOne({
       where: {
-        [Sequelize.Op.or]: params,
-      },
+        [Sequelize.Op.or]: params
+      }
     });
-  }
+  };
 
-  findAll(order?: Order): Bluebird<Division[]> {
+  findAll = async (order?: Order) => {
     if (!order) {
-      order = 'DESC';
+      order = "DESC";
     }
     return DivisionModel.findAll({
-      order: [
-        ['created_at', order],
-      ],
+      order: [["created_at", order]]
     });
-  }
+  };
 
-  findAllByPaging(divisions: Division, offset?: number | 0, limit?: number | 20, order?: Order): Bluebird<Division[]> {
+  findAllByPaging = async (
+    divisions: Division,
+    offset?: number | 0,
+    limit?: number | 20,
+    order?: Order
+  ) => {
     if (!order) {
-      order = 'DESC';
+      order = "DESC";
     }
     return DivisionModel.findAll({
       offset,
       limit,
-      where: divisions,
-      order: [
-        ['created_at', order],
-      ],
+      // where: divisions,
+      order: [["created_at", order]]
     });
-  }
+  };
 
-  findAllByIds(ids: number[], order?: Order): Bluebird<Division[]> {
+  findAllByIds = async (ids: number[], order?: Order) => {
     if (!order) {
-      order = 'DESC';
+      order = "DESC";
     }
     return DivisionModel.findAll({
       where: {
-        id: [...ids],
+        id: [...ids]
       },
-      order: [
-        ['created_at', order],
-      ],
+      order: [["created_at", order]]
     });
-  }
+  };
 
-  update(division: Division): Bluebird<boolean> {
+  update = async (division: Division) => {
     const params = this.getUniqueCriteria(division, this.unique_criterias);
     try {
       DivisionModel.update(division, {
         where: {
-          [Sequelize.Op.or]: params,
-        },
+          [Sequelize.Op.or]: params
+        }
       });
     } catch (error) {
-      return Bluebird.Promise.resolve(false);
+      return false;
     }
-    return Bluebird.Promise.resolve(true);
-  }
+    return true;
+  };
 
-  delete(division: Division): Bluebird<boolean> {
+  delete = async (division: Division) => {
     const params = this.getUniqueCriteria(division, this.unique_criterias);
     try {
       DivisionModel.destroy({
         where: {
-          [Sequelize.Op.or]: params,
-        },
+          [Sequelize.Op.or]: params
+        }
       });
     } catch (error) {
-      return Bluebird.Promise.resolve(false);
+      return false;
     }
-    return Bluebird.Promise.resolve(true);
-  }
+    return true;
+  };
 }
 
 export { DivisionRepository };

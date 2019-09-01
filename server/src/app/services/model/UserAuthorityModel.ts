@@ -1,57 +1,62 @@
-import Sequelize from 'sequelize';
-import { sequelize } from '../../../config/database';
+import Sequelize, { Model } from "sequelize";
+import { sequelize } from "../../../config/database";
 
-import { AuthorityModel } from './AuthorityModel';
-import { UserModel } from './UserModel';
+import { AuthorityModel } from "./AuthorityModel";
+import { UserModel } from "./UserModel";
 
-const UserAuthorityModel = sequelize.define('user_authorities', {
-  id: {
-    type: Sequelize.BIGINT,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-  user_id: {
-    type: Sequelize.BIGINT,
-    unique: 'uk_user_authorities',
-  },
-  authority_id: {
-    type: Sequelize.BIGINT,
-    unique: 'uk_user_authorities',
-  },
+class UserAuthorityModel extends Model {}
 
-  active: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: true,
+UserAuthorityModel.init(
+  {
+    id: {
+      type: Sequelize.BIGINT,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    user_id: {
+      type: Sequelize.BIGINT,
+      unique: "uk_user_authorities"
+    },
+    authority_id: {
+      type: Sequelize.BIGINT,
+      unique: "uk_user_authorities"
+    },
+
+    active: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: true
+    },
+    created_at: {
+      type: Sequelize.DATE
+    },
+    updated_at: {
+      type: Sequelize.DATE
+    },
+    deleted_at: {
+      type: Sequelize.DATE
+    }
   },
-  created_at: {
-    type: Sequelize.DATE,
-  },
-  updated_at: {
-    type: Sequelize.DATE,
-  },
-  deleted_at: {
-    type: Sequelize.DATE,
-  },
-}, {
-  comment: 'Uesr Authorities Table',
-});
+  {
+    sequelize,
+    modelName: "user_authorities",
+    comment: "Uesr Authorities Table"
+  }
+);
 
 AuthorityModel.belongsToMany(UserModel, {
-  as: 'user',
+  as: "user",
   through: {
-    name: 'user_authorities',
-    model: UserAuthorityModel,
+    model: UserAuthorityModel
   },
-  foreignKey: 'authority_id',
+  foreignKey: "authority_id"
 });
 
 UserModel.belongsToMany(AuthorityModel, {
-  as: 'authority',
+  as: "authority",
   through: {
-    name: 'user_authorities',
-    model: UserAuthorityModel,
+    model: UserAuthorityModel
   },
-  foreignKey: 'user_id',
+  foreignKey: "user_id"
 });
 
 export { UserAuthorityModel };
