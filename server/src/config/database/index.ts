@@ -9,8 +9,8 @@ import {
 import { logger } from "../logger";
 import { initDefaultData } from "./default";
 
-const sequelize = new Sequelize("shooney_management", "hunseol", "hunseol", {
-  host: "127.0.0.1",
+const sequelize = new Sequelize("shooney_management", "dev", "dev", {
+  host: "localhost",
   dialect: "mysql",
 
   pool: {
