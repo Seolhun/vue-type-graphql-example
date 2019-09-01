@@ -8,7 +8,8 @@
     "experimentalDecorators": true,
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "outDir": "dist"
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/test"]
 }
