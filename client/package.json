@@ -70,7 +70,7 @@
     "ora": "^3.2.0",
     "portfinder": "^1.0.13",
     "rimraf": "^2.6.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^8.0.0",
     "semver": "^6.0.0",
     "shelljs": "^0.8.3",
     "style-loader": "^0.23.1",
