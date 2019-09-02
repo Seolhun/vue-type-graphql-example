@@ -11,9 +11,9 @@ import { initDefaultData } from "./default";
 
 const sequelize = new Sequelize("shooney_management", "dev", "dev", {
   host: "localhost",
-  dialect: "mysql",
+  dialect: "mariadb",
   port: 3306,
-
+  timezone: "Etc/GMT0",
   pool: {
     max: 10,
     min: 0,
