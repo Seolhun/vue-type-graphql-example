@@ -60,9 +60,10 @@ const sequelize = new Sequelize(
   },
 );
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync().then(() => {
   initDefaultData();
 });
+
 sequelize
   .authenticate()
   .then(() => {

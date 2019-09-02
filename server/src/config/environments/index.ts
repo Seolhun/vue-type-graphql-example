@@ -25,14 +25,14 @@ class Config {
   static setConfiguration(): SettingEnvironments {
     let env;
     if (process.env.NODE_ENV === "producton") {
-      process.env.NODE_ENV = DEV.NODE_ENV;
-      env = DEV;
+      process.env.NODE_ENV = PROD.NODE_ENV;
+      env = PROD;
     } else if (process.env.NODE_ENV === "test") {
-      process.env.NODE_ENV = DEV.NODE_ENV;
+      process.env.NODE_ENV = TEST.NODE_ENV;
       env = TEST;
     } else {
       process.env.NODE_ENV = DEV.NODE_ENV;
-      env = PROD;
+      env = DEV;
     }
     console.log("===============config/index.ts=====================");
     console.log(`process.env.NODE_ENV : ${process.env.NODE_ENV}`);

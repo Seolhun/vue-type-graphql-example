@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 services:
   server:
     build: ./
@@ -9,7 +9,7 @@ services:
     depends_on:
       - "${DB_HOST}"
     links:
-      - mariadb:app_db
+      - mariadb:server_db
   mariadb:
     build: ./db
     ports:
