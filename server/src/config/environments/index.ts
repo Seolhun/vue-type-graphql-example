@@ -1,6 +1,6 @@
-import DEV from './develop';
-import PROD from './production';
-import TEST from './test';
+import DEV from "./develop";
+import PROD from "./production";
+import TEST from "./test";
 
 interface SettingEnvironments {
   NODE_ENV: string;
@@ -22,21 +22,21 @@ interface SettingEnvironments {
 }
 
 class Config {
-  static setConfiguration(): SettingEnvironments  {
+  static setConfiguration(): SettingEnvironments {
     let env;
-    if (process.env.NODE_ENV === 'producton') {
+    if (process.env.NODE_ENV === "producton") {
       process.env.NODE_ENV = DEV.NODE_ENV;
       env = DEV;
-    } else if (process.env.NODE_ENV === 'test') {
+    } else if (process.env.NODE_ENV === "test") {
       process.env.NODE_ENV = DEV.NODE_ENV;
-      env = DEV;
+      env = TEST;
     } else {
       process.env.NODE_ENV = DEV.NODE_ENV;
-      env = DEV;
+      env = PROD;
     }
-    console.log('===============config/index.ts=====================');
+    console.log("===============config/index.ts=====================");
     console.log(`process.env.NODE_ENV : ${process.env.NODE_ENV}`);
-    console.log('====================================');
+    console.log("====================================");
     return env;
   }
 }
