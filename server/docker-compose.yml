@@ -1,19 +1,9 @@
 version: "3.7"
 services:
-  server:
-    build: ./
-    env_file:
-      - ./.env
-    ports:
-      - "${SERVER_PORT}:${SERVER_PORT}"
-    depends_on:
-      - "${DB_HOST}"
-    links:
-      - mariadb:server_db
   mariadb:
     build: ./db
     ports:
-      - "${DB_PORT}"
+      - ${DB_PORT}
     environment:
       - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
       - MARIADB_USER=${DB_USER}
@@ -21,3 +11,23 @@ services:
       - MARIADB_DATABASE=${DB_DATABASE}
     env_file:
       - ./.env
+
+  cache:
+    image: redis:latest
+    ports:
+      - ${CACHE_PORT}
+    env_file:
+      - ./.env
+
+  server:
+    build: ./
+    env_file:
+      - ./.env
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    depends_on:
+      - ${DB_HOST}
+      - ${CACHE_HOST}
+    links:
+      - mariadb
+      - cache

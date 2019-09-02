@@ -60,10 +60,6 @@ const sequelize = new Sequelize(
   },
 );
 
-sequelize.sync().then(() => {
-  initDefaultData();
-});
-
 sequelize
   .authenticate()
   .then(() => {
@@ -72,6 +68,10 @@ sequelize
   .catch(err => {
     console.error("Unable to connect to the database:", err);
   });
+
+sequelize.sync({ force: true }).then(() => {
+  initDefaultData();
+});
 
 export { sequelize };
 
