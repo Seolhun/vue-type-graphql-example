@@ -110,7 +110,7 @@ const division_datas: Division[] = [
 const user_datas: User[] = [
   {
     name: "Shun",
-    email: "shun10114@google.com",
+    email: "shun@google.com",
     birth: "19900126",
     division_id: 1,
     password: PasswordEncoderUtils.bcryptedPasswordSync("1234"),

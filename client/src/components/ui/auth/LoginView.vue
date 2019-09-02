@@ -60,7 +60,7 @@ import { UserModel } from "../../../models";
 @Component
 export default class LoginView extends Vue {
   user = {
-    email: "shun10114@google.com",
+    email: "shun@google.com",
     password: "1234"
   };
 
