@@ -13,7 +13,7 @@ services:
     ports:
       - "6379:6379"
 
-# https://github.com/deviantony/docker-elk
+  # https://github.com/deviantony/docker-elk
   elasticsearch:
     build:
       context: elasticsearch/

@@ -1,0 +1,23 @@
+version: "3"
+services:
+  server:
+    build: ./
+    env_file:
+      - ./.env
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    depends_on:
+      - "${DB_HOST}"
+    links:
+      - mariadb:app_db
+  mariadb:
+    build: ./db
+    ports:
+      - "${DB_PORT}"
+    environment:
+      - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MARIADB_USER=${DB_USER}
+      - MARIADB_PASSWORD=${DB_ROOT_PASSWORD}
+      - MARIADB_DATABASE=${DB_DATABASE}
+    env_file:
+      - ./.env

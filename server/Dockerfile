@@ -10,7 +10,6 @@ FROM mhart/alpine-node:slim-10 AS runner
 WORKDIR /app
 COPY --from=builder ./app/dist .
 COPY --from=builder ./app/node_modules ./node_modules
-RUN ls -al
 
 EXPOSE 4000
 CMD ["node", "app.js"]
