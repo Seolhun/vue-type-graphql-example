@@ -7,8 +7,6 @@ import session from "express-session";
 import helmet from "helmet";
 
 import { passport } from "./config/auth/passport";
-import { sequelize } from "./config/database";
-
 import { schema } from "./app/routes/graphql/schema";
 import { Config } from "./config/environments";
 
@@ -29,8 +27,8 @@ app.use(
   cookieSession({
     name: "cookie-session-id",
     maxAge: env.COOKIE_SESSION_MAX_AGE,
-    keys: env.COOKIE_SESSION_KEYS
-  })
+    keys: env.COOKIE_SESSION_KEYS,
+  }),
 );
 app.use(
   session({
@@ -43,9 +41,9 @@ app.use(
     cookie: {
       secure: true,
       httpOnly: true,
-      expires: expiryDate
-    }
-  })
+      expires: expiryDate,
+    },
+  }),
 );
 app.set("trust proxy", 1);
 
@@ -66,11 +64,11 @@ app.use(
           result: bodyParser.json(result),
           variables,
           operationName,
-          runTime: Date.now() - startTime
+          runTime: Date.now() - startTime,
         };
-      }
+      },
     };
-  })
+  }),
 );
 
 // Express Router

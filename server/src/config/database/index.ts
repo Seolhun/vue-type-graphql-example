@@ -3,21 +3,22 @@ import {
   FindOptions,
   CreateOptions,
   UpdateOptions,
-  DestroyOptions
+  DestroyOptions,
 } from "sequelize";
 
 import { logger } from "../logger";
 import { initDefaultData } from "./default";
 
 const sequelize = new Sequelize("shooney_management", "dev", "dev", {
-  host: "localhost",
+  host: "127.0.0.1",
   dialect: "mysql",
+  port: 3306,
 
   pool: {
     max: 10,
     min: 0,
     acquire: 30000,
-    idle: 20000
+    idle: 20000,
   },
   define: {
     charset: "utf8",
@@ -26,7 +27,7 @@ const sequelize = new Sequelize("shooney_management", "dev", "dev", {
     createdAt: "created_at",
     updatedAt: "updated_at",
     deletedAt: "deleted_at",
-    paranoid: true
+    paranoid: true,
   },
   hooks: {
     beforeFind: (options: FindOptions) => {
@@ -44,8 +45,8 @@ const sequelize = new Sequelize("shooney_management", "dev", "dev", {
     beforeDestroy: (instance: any, options: DestroyOptions) => {
       logger.debug(`beforeDestroy`);
       logger.debug(instance);
-    }
-  }
+    },
+  },
 });
 
 sequelize.sync({ force: true }).then(() => {
