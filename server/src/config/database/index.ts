@@ -10,7 +10,7 @@ import { logger } from "../logger";
 import { initDefaultData } from "./default";
 
 const sequelize = new Sequelize("shooney_management", "dev", "dev", {
-  host: "127.0.0.1",
+  host: "localhost",
   dialect: "mysql",
   port: 3306,
 
