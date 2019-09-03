@@ -20,7 +20,5 @@ services:
       - ${SERVER_PORT}:${SERVER_PORT}
     depends_on:
       - ${DB_HOST}
-      - ${CACHE_HOST}
     links:
       - mariadb
-      - cache
