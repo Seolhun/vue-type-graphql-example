@@ -12,13 +12,6 @@ services:
     env_file:
       - ./.env
 
-  cache:
-    image: redis:latest
-    ports:
-      - ${CACHE_PORT}
-    env_file:
-      - ./.env
-
   server:
     build: ./
     env_file:
