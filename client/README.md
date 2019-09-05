@@ -15,12 +15,12 @@
 ## How to run
 
 - `Client`
-  1. `npm run dev`
+  1. `yarn run dev`
   2. [http://localhost:8080/](http://localhost:8080/)
 
 ## Demo
 
-[AWS S3 BookManagement Demo Server](https://s3.ap-northeast-2.amazonaws.com/)
+[vue-type-graphql-example.surge.sh](vue-type-graphql-example.surge.sh)
 
 ## Reference
 
