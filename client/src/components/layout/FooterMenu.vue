@@ -59,7 +59,7 @@
   </footer>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
 
@@ -71,8 +71,6 @@ export default class FooterMenu extends Vue {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @import "FooterMenu";
 </style>
-
-

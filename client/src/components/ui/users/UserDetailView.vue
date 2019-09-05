@@ -3,26 +3,26 @@
     <h2>User Detail</h2>
     <div class="col-sm-12">
       <div class="form-group">
-        <label>{{ $tc('common.id') }} :</label>
+        <label>{{ $tc("common.id") }} :</label>
         {{ user.id }}
       </div>
       <div class="form-group">
-        <label>{{ $tc('common.email') }} :</label>
+        <label>{{ $tc("common.email") }} :</label>
         {{ user.email }}
       </div>
       <div class="form-group">
-        <label>{{ $tc('common.name') }} :</label>
+        <label>{{ $tc("common.name") }} :</label>
         {{ user.name }}
       </div>
       <div class="form-group">
-        <label>{{ $tc('common.birth') }} :</label>
+        <label>{{ $tc("common.birth") }} :</label>
         {{ user.birth }}
       </div>
     </div>
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
 import gql from "graphql-tag";

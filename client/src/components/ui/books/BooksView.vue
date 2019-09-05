@@ -6,11 +6,11 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>{{ $tc('common.id')}}</th>
-              <th>{{ $tc('common.name')}}</th>
-              <th>{{ $tc('book.author')}}</th>
-              <th>{{ $tc('common.status')}}</th>
-              <th>{{ $tc('common.description')}}</th>
+              <th>{{ $tc("common.id") }}</th>
+              <th>{{ $tc("common.name") }}</th>
+              <th>{{ $tc("book.author") }}</th>
+              <th>{{ $tc("common.status") }}</th>
+              <th>{{ $tc("common.description") }}</th>
             </tr>
           </thead>
           <tbody>
@@ -34,7 +34,7 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
 import gql from "graphql-tag";

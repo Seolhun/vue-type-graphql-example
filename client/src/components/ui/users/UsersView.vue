@@ -6,10 +6,10 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>{{ $tc('common.id')}}</th>
-              <th>{{ $tc('common.email')}}</th>
-              <th>{{ $tc('common.name')}}</th>
-              <th>{{ $tc('common.birth')}}</th>
+              <th>{{ $tc("common.id") }}</th>
+              <th>{{ $tc("common.email") }}</th>
+              <th>{{ $tc("common.name") }}</th>
+              <th>{{ $tc("common.birth") }}</th>
             </tr>
           </thead>
           <tbody>
@@ -32,7 +32,7 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
 import gql from "graphql-tag";

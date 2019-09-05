@@ -21,45 +21,45 @@ const routes: RouteConfig[] = [
   {
     path: "/",
     name: "Home",
-    component: HomeView,
+    component: HomeView
   },
   {
     path: "/books",
     name: "Books",
-    component: BooksView,
+    component: BooksView
     // meta: { requiresAuth: true },
   },
   {
     path: "/books/:id",
     name: "BookDetail",
-    component: BookDetailView,
+    component: BookDetailView
   },
   {
     path: "/divisions",
     name: "Divisions",
-    component: DivisionsView,
+    component: DivisionsView
   },
   {
     path: "/divisions/:name",
     name: "DivisionDetail",
-    component: DivisionDetailView,
+    component: DivisionDetailView
   },
   {
     path: "/login",
     name: "Login",
     component: LoginView,
-    meta: { requiresAuth: false },
+    meta: { requiresAuth: false }
   },
   {
     path: "/signin",
     name: "Signin",
     component: SigninView,
-    meta: { requiresAuth: false },
+    meta: { requiresAuth: false }
   },
   {
     path: "/users",
     name: "Users",
-    component: UsersView,
+    component: UsersView
     // meta: { requiresAuth: true },
     // redirect: '/home',
     // meta: { leaf: false, icon: 'icon-article' },
@@ -67,13 +67,13 @@ const routes: RouteConfig[] = [
   {
     path: "/users/:name",
     name: "UserDetail",
-    component: UserDetailView,
-  },
+    component: UserDetailView
+  }
 ];
 
 const router: Router = new Router({
   mode: "history",
-  routes,
+  routes
 });
 
 router.beforeEach((to: Route, from: Route, next: ({}) => void): void => {
@@ -84,7 +84,7 @@ router.beforeEach((to: Route, from: Route, next: ({}) => void): void => {
     if (!loginIn()) {
       next({
         path: "/login",
-        query: { redirect: to.fullPath },
+        query: { redirect: to.fullPath }
       });
     } else {
       next();

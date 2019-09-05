@@ -19,7 +19,7 @@ class Validators {
     } else if (!validator.isEmail(email)) {
       return {
         result: false,
-        msg: `${email} is not valid. Input the right Email.`,
+        msg: `${email} is not valid. Input the right Email.`
       };
     }
     return { result: true, msg: "" };
@@ -33,7 +33,7 @@ class Validators {
     } else if (!Validators.special_characters.test(name)) {
       return {
         result: false,
-        msg: `Requirement lower special_characters(${Validators.special_character})`,
+        msg: `Requirement lower special_characters(${Validators.special_character})`
       };
     }
     return { result: true, msg: "" };
@@ -51,7 +51,7 @@ class Validators {
     } else if (!Validators.special_characters.test(password)) {
       return {
         result: false,
-        msg: `Requirement lower special_characters(${Validators.special_character})`,
+        msg: `Requirement lower special_characters(${Validators.special_character})`
       };
     }
     return { result: true, msg: "" };

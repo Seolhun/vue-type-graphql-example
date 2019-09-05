@@ -6,7 +6,8 @@
         <div>
           <h2>
             Hello, I'm
-            <a href="https://github.com/seolhun" target="_blank">SeolHun</a>. Web Developer
+            <a href="https://github.com/seolhun" target="_blank">SeolHun</a>.
+            Web Developer
           </h2>
         </div>
         <p>This is built by NodeJS, TypeScript, GraphQL, Vue.</p>
@@ -16,7 +17,7 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
 
@@ -24,6 +25,4 @@ import Component from "vue-class-component";
 export default class HomeView extends Vue {}
 </script>
 
-<style lang='scss'>
-</style>
-
+<style lang="scss"></style>

@@ -3,22 +3,22 @@
     <h2>Division Detail</h2>
     <div class="col-sm-12">
       <div class="form-group">
-        <label>{{ $tc('common.id') }} :</label>
+        <label>{{ $tc("common.id") }} :</label>
         {{ division.id }}
       </div>
       <div class="form-group">
-        <label>{{ $tc('common.name') }} :</label>
+        <label>{{ $tc("common.name") }} :</label>
         {{ division.name }}
       </div>
       <div class="form-group">
-        <label>{{ $tc('common.description') }} :</label>
+        <label>{{ $tc("common.description") }} :</label>
         {{ division.description }}
       </div>
     </div>
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
 import gql from "graphql-tag";
