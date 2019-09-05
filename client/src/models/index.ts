@@ -1,5 +1,3 @@
-import { Validators } from "../utils/Validators";
-
 class AuthorityModel {
   id?: number;
   name?: string;

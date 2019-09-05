@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import Vuex, { ActionTree, MutationTree, Store } from 'vuex';
+import Vue from "vue";
+import Vuex, { ActionTree, MutationTree, Store } from "vuex";
 
 Vue.use(Vuex);
 interface State {
@@ -46,7 +46,7 @@ const mutations: MutationTree<State> = {
   },
 };
 
-export default new Vuex.Store({
+export default new Store({
   state,
   actions,
   mutations,

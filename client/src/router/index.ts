@@ -1,5 +1,5 @@
-import Vue, { AsyncComponent } from "vue";
-import Router, { NavigationGuard, Route, RouteConfig } from "vue-router";
+import Vue from "vue";
+import Router, { Route, RouteConfig } from "vue-router";
 
 import HomeView from "@/components/HomeView.vue";
 import LoginView from "@/components/ui/auth/LoginView.vue";

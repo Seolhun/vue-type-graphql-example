@@ -1,8 +1,7 @@
 <template>
   <b-navbar class="background-ocean shadow-box" toggleable="lg" type="dark" fixed="top">
     <div class="container">
-      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-
+      <b-navbar-toggle target="nav_collapse"/>
       <b-navbar-brand tag="route-link" :to=""/"">Hi-Cord</b-navbar-brand>
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
@@ -16,6 +15,7 @@
             <router-link tag="li" activeClass="active" :to="'/users'">Users</router-link>
           </b-nav-item>
         </b-navbar-nav>
+
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
             <div class="form-inline">
@@ -40,7 +40,7 @@
               <router-link tag="li" activeClass="active" :to="'/login'">Log-In</router-link>
             </b-dropdown-item>
             <b-dropdown-item v-show="!this.isLogin">
-              <router-link tag="li" activeClass="active" :to='/signin"">Sign-In</router-link>
+              <router-link tag="li" activeClass="active" :to="'/signin'">Sign-In</router-link>
             </b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
@@ -82,7 +82,6 @@ export default class HeaderMenu extends Vue {
 
 <style lang='scss' scoped>
 @import "HeaderMenu";
-
 </style>
 
 

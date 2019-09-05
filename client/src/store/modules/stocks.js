@@ -1,13 +1,13 @@
 import stocks from "../../data/stocks";
 
 const state = {
-  stocks: [],
+  stocks: []
 };
 
 const getters = {
   stocks: state => {
     return state.stocks;
-  },
+  }
 };
 
 // Can't Async
@@ -19,7 +19,7 @@ const mutations = {
     state.stocks.forEach(stock => {
       stock.price = Math.round(stock.price * (1 + Math.random() - 0.5));
     });
-  },
+  }
 };
 
 // Can Async
@@ -32,12 +32,12 @@ const actions = {
   },
   randomizeStocks: ({ commit }) => {
     commit("RND_STOCKS");
-  },
+  }
 };
 
 export default {
   state,
   getters,
   mutations,
-  actions,
+  actions
 };
