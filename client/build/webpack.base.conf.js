@@ -1,7 +1,8 @@
-var path = require("path");
-var utils = require("./utils");
-var config = require("../config");
-var vueLoaderConfig = require("./vue-loader.conf");
+const path = require("path");
+const utils = require("./utils");
+const config = require("../config");
+const vueLoaderConfig = require("./vue-loader.conf");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 function resolve(dir) {
   return path.join(__dirname, "..", dir);
@@ -9,7 +10,7 @@ function resolve(dir) {
 
 module.exports = {
   entry: {
-    app: "./src/main.ts"
+    app: "./src/main.ts",
   },
   output: {
     path: config.build.assetsRoot,
@@ -17,7 +18,7 @@ module.exports = {
     publicPath:
       process.env.NODE_ENV === "production"
         ? config.build.assetsPublicPath
-        : config.dev.assetsPublicPath
+        : config.dev.assetsPublicPath,
   },
   resolve: {
     extensions: [".js", ".vue", ".json", ".ts"],
@@ -25,82 +26,86 @@ module.exports = {
       vue$: "vue/dist/vue.esm.js",
       "@": resolve("src"),
       assets: resolve("src/assets"),
-      images: resolve("src/assets/images")
-    }
+      images: resolve("src/assets/images"),
+    },
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
         loader: "vue-loader",
-        options: vueLoaderConfig
+        options: vueLoaderConfig,
       },
       {
         test: /\.ts$/,
         exclude: /node_modules/,
         use: {
           loader: "ts-loader",
-          options: { appendTsSuffixTo: [/\.vue$/] }
-        }
+          options: { appendTsSuffixTo: [/\.vue$/] },
+        },
       },
       {
         test: /\.tsx$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "ts-loader"]
+        use: ["babel-loader", "ts-loader"],
       },
       {
         test: /\.js$/,
         loader: "babel-loader",
-        include: [resolve("src"), resolve("test")]
+        include: [resolve("src"), resolve("test")],
       },
       {
         test: /\.scss$/,
         use: [
           {
-            loader: "style-loader"
+            loader: "style-loader",
           },
           {
             loader: "css-loader",
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
             loader: "sass-loader",
             options: {
-              sourceMap: true
-            }
-          }
-        ]
+              sourceMap: true,
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: "url-loader",
         options: {
           limit: 10000,
-          name: utils.assetsPath("images/[name].[hash:7].[ext]")
-        }
+          name: utils.assetsPath("images/[name].[hash:7].[ext]"),
+        },
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: "url-loader",
         options: {
           limit: 10000,
-          name: utils.assetsPath("media/[name].[hash:7].[ext]")
-        }
+          name: utils.assetsPath("media/[name].[hash:7].[ext]"),
+        },
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: "url-loader",
         options: {
           limit: 10000,
-          name: utils.assetsPath("fonts/[name].[hash:7].[ext]")
-        }
-      }
-    ]
-  }
+          name: utils.assetsPath("fonts/[name].[hash:7].[ext]"),
+        },
+      },
+    ],
+  },
+  plugins: [
+    // make sure to include the plugin!
+    new VueLoaderPlugin(),
+  ],
 };

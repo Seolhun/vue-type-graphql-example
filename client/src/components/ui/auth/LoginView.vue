@@ -29,7 +29,7 @@
       <div class="col-sm-12">
         <h5>
           {{ $tc('login.message.not_user1') }}
-          <router-link :to=""/signin"" tag="a" activeClass="active">{{ $tc('signin.this') }}</router-link>
+          <router-link :to="'/signin'" tag="a" activeClass="active">{{ $tc('signin.this') }}</router-link>
           {{ $tc('login.message.not_user2') }}
         </h5>
       </div>

@@ -1,25 +1,25 @@
 <template>
-  <div class='row' v-cloak>
+  <div class="row" v-cloak>
     <h2>Book Detail</h2>
-    <div class='col-sm-12'>
-      <div class='form-group'>
-        <label>{{ $tc('common.id') }} : </label>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label>{{ $tc('common.id') }} :</label>
         {{ book.id }}
       </div>
-      <div class='form-group'>
-        <label>{{ $tc('common.name') }} : </label>
+      <div class="form-group">
+        <label>{{ $tc('common.name') }} :</label>
         {{ book.name }}
       </div>
-      <div class='form-group'>
-        <label>{{ $tc('book.author') }} : </label>
+      <div class="form-group">
+        <label>{{ $tc('book.author') }} :</label>
         {{ book.author }}
       </div>
-      <div class='form-group'>
-        <label>{{ $tc('common.status') }} : </label>
+      <div class="form-group">
+        <label>{{ $tc('common.status') }} :</label>
         {{ book.status }}
       </div>
-      <div class='form-group'>
-        <label>{{ $tc('common.description') }} : </label>
+      <div class="form-group">
+        <label>{{ $tc('common.description') }} :</label>
         {{ book.description }}
       </div>
     </div>
@@ -27,12 +27,12 @@
 </template>
 
 <script lang='ts'>
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import gql from 'graphql-tag';
+import Vue from "vue";
+import Component from "vue-class-component";
+import gql from "graphql-tag";
 
-import { BookModel } from '../../../models';
-import { ApolloResponse } from '../../../types';
+import { BookModel } from "../../../models";
+import { ApolloResponse } from "../../../types";
 
 @Component({
   apollo: {
@@ -50,16 +50,16 @@ import { ApolloResponse } from '../../../types';
           }
         `,
         result(result: ApolloResponse) {
-          if(!result.loading) {
+          if (!result.loading) {
             this.book = result.data.book;
           }
         },
-        fetchPolicy: 'cache-and-network',
+        fetchPolicy: "cache-and-network"
       };
-    },
+    }
   }
 })
 export default class BookDetailView extends Vue {
-  book:BookModel = new BookModel();
+  book: BookModel = new BookModel();
 }
 </script>

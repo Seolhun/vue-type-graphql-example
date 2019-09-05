@@ -1,4 +1,4 @@
-import { Validators } from '../utils/Validators';
+import { Validators } from "../utils/Validators";
 
 class AuthorityModel {
   id?: number;
@@ -13,14 +13,14 @@ class AuthorityModel {
 
   constructor() {
     this.id = 0;
-    this.name = '';
+    this.name = "";
     this.level = 0;
-    this.description = '';
+    this.description = "";
 
     this.active = true;
-    this.created_at = '';
-    this.deleted_at = '';
-    this.updated_at = '';
+    this.created_at = "";
+    this.deleted_at = "";
+    this.updated_at = "";
   }
 }
 
@@ -38,15 +38,15 @@ class BookModel {
 
   constructor() {
     this.id = 0;
-    this.name = '';
-    this.author = '';
-    this.description = '';
+    this.name = "";
+    this.author = "";
+    this.description = "";
     this.status = true;
 
     this.active = true;
-    this.created_at = '';
-    this.deleted_at = '';
-    this.updated_at = '';
+    this.created_at = "";
+    this.deleted_at = "";
+    this.updated_at = "";
   }
 }
 
@@ -62,13 +62,13 @@ class DivisionModel {
 
   constructor() {
     this.id = 0;
-    this.name = '';
-    this.description = '';
+    this.name = "";
+    this.description = "";
 
     this.active = true;
-    this.created_at = '';
-    this.deleted_at = '';
-    this.updated_at = '';
+    this.created_at = "";
+    this.deleted_at = "";
+    this.updated_at = "";
   }
 }
 
@@ -89,29 +89,29 @@ class UserModel {
   updated_at?: string;
 
   validation?: {
-    email: string,
-    name: string,
-    password: string,
-    confirm_password: string,
+    email: string;
+    name: string;
+    password: string;
+    confirm_password: string;
   };
   is_active?: boolean;
   is_submit?: boolean;
 
   constructor() {
     this.id = 0;
-    this.name = '';
-    this.email = '';
-    this.password = '';
-    this.confirm_password = '';
+    this.name = "";
+    this.email = "";
+    this.password = "";
+    this.confirm_password = "";
 
-    this.birth = '';
+    this.birth = "";
     this.division_id = 0;
     this.division = new DivisionModel();
 
     this.active = true;
-    this.created_at = '';
-    this.deleted_at = '';
-    this.updated_at = '';
+    this.created_at = "";
+    this.deleted_at = "";
+    this.updated_at = "";
   }
 }
 
