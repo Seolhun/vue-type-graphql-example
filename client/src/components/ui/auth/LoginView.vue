@@ -71,7 +71,7 @@ export default class LoginView extends Vue {
       .mutate({
         mutation: gql`
         mutation  {
-          loginUser(name: '${user.email}', email: '${user.email}', password: '${user.password}') {
+          loginUser(name: "${user.email}", email: "${user.email}", password: "${user.password}") {
             id
             email
             name

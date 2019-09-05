@@ -44,10 +44,10 @@ const apolloProvider = new VueApollo({
 Vue.use(VueApollo);
 Vue.use(BootstrapVue);
 new Vue({
+  el: "#app",
   router,
   store,
   i18n,
-  provide: apolloProvider.provide(),
-  template: "<App/>",
-  components: { App },
-}).$mount("#app");
+  apolloProvider,
+  render: h => h(App),
+});

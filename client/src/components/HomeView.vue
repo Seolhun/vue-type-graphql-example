@@ -7,7 +7,7 @@
           <h2>
             Hello, I'm
             <a href="https://github.com/seolhun" target="_blank">SeolHun</a>.
-            Web Developer
+            <label>{{ $tc("common.webDev") }}</label>
           </h2>
         </div>
         <p>This is built by NodeJS, TypeScript, GraphQL, Vue.</p>
