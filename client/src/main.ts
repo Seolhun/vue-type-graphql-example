@@ -1,33 +1,30 @@
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import Vue from "vue";
 
-import VueI18n from 'vue-i18n';
-import messages from './assets/languages/messages';
+import VueI18n from "vue-i18n";
+import messages from "./assets/languages/messages";
 
-import axios from 'axios';
-import Router from 'vue-router';
-import router from './router';
+import axios from "axios";
+import router from "./router";
 
-import Vuex from 'vuex';
-import store from './store';
+import store from "./store";
 
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
-import VueApollo from 'vue-apollo';
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { ApolloClient } from "apollo-client";
+import { HttpLink } from "apollo-link-http";
+import VueApollo from "vue-apollo";
 
-import BootstrapVue from 'bootstrap-vue';
-import 'bootstrap/dist/css/bootstrap.css';
+import BootstrapVue from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
 
-import App from './App.vue';
+import App from "./App.vue";
 
-Vue.prototype.$appName = 'Hi-Cord';
+Vue.prototype.$appName = "Hi-Cord";
 Vue.prototype.$http = axios;
 
 Vue.use(VueI18n);
 const i18n = new VueI18n({
-  locale: 'ko',
-  fallbackLocale: 'en',
+  locale: "ko",
+  fallbackLocale: "en",
   messages,
   silentTranslationWarn: true,
 });
@@ -47,10 +44,10 @@ const apolloProvider = new VueApollo({
 Vue.use(VueApollo);
 Vue.use(BootstrapVue);
 new Vue({
+  el: "#app",
   router,
   store,
   i18n,
-  provide: apolloProvider.provide(),
-  template: '<App/>',
-  components: { App },
-}).$mount('#app');
+  apolloProvider,
+  render: h => h(App),
+});

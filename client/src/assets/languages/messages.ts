@@ -1,15 +1,15 @@
-import VueI18n from 'vue-i18n';
+import VueI18n from "vue-i18n";
 
-import ch from './nation/ch';
-import en from './nation/en';
-import ja from './nation/ja';
-import ko from './nation/ko';
+import ch from "./nation/ch";
+import en from "./nation/en";
+import ja from "./nation/ja";
+import ko from "./nation/ko";
 
 const messages = {
   ko,
   en,
   ja,
-  ch,
+  ch
 };
 
 export default messages;

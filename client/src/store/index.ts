@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import Vuex, { ActionTree, MutationTree, Store } from 'vuex';
+import Vue from "vue";
+import Vuex, { ActionTree, MutationTree, Store } from "vuex";
 
 Vue.use(Vuex);
 interface State {
@@ -11,13 +11,13 @@ interface State {
 const state: State = {
   login: false,
   postUser: false,
-  postOption: false,
+  postOption: false
 };
 
 const actions: ActionTree<State, any> = {
   async initAuth({ commit }): Promise<void> {
     console.log(commit);
-  },
+  }
 };
 
 const mutations: MutationTree<State> = {
@@ -43,11 +43,11 @@ const mutations: MutationTree<State> = {
 
   POST_OPTION_FINAL(state: State): void {
     state.postOption = false;
-  },
+  }
 };
 
-export default new Vuex.Store({
+export default new Store({
   state,
   actions,
-  mutations,
+  mutations
 });
