@@ -39,13 +39,19 @@
           <h4>Products</h4>
           <div class="footer-list-div">
             <p>
-              <router-link :to="'/users'" class="navigation-link">Users</router-link>
+              <router-link :to="'/users'" class="navigation-link"
+                >Users</router-link
+              >
             </p>
             <p>
-              <router-link :to="'/divisions'" class="navigation-link">Divisions</router-link>
+              <router-link :to="'/divisions'" class="navigation-link"
+                >Divisions</router-link
+              >
             </p>
             <p>
-              <router-link :to="'/books'" class="navigation-link">Books</router-link>
+              <router-link :to="'/books'" class="navigation-link"
+                >Books</router-link
+              >
             </p>
             <p>
               <a :href="blogUrl" target="_blank">

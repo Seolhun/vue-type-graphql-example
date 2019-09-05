@@ -39,8 +39,8 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import gql from "graphql-tag";
 
-import { BookModel } from "../../../models";
-import { ApolloResponse } from "../../../types";
+import { BookModel } from "@/models";
+import { ApolloResponse } from "@/types";
 
 @Component({
   apollo: {

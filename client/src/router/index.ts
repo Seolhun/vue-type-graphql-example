@@ -14,8 +14,6 @@ import UsersView from "@/components/ui/users/UsersView.vue";
 
 import { loginIn } from "../utils/login";
 
-// const login: AsyncComponent = (): any => import('@/pages/login.vue');
-// const home: AsyncComponent = (): any => import(/* webpackChunkName: "home" */ '@/pages/home/index.vue')
 Vue.use(Router);
 const routes: RouteConfig[] = [
   {
@@ -76,22 +74,24 @@ const router: Router = new Router({
   routes
 });
 
-router.beforeEach((to: Route, from: Route, next: ({}) => void): void => {
-  if (!from) {
-    next();
-  }
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!loginIn()) {
-      next({
-        path: "/login",
-        query: { redirect: to.fullPath }
-      });
+router.beforeEach(
+  (to: Route, from: Route, next: (prams?: any) => void): void => {
+    if (!from) {
+      next();
+    }
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+      if (!loginIn()) {
+        next({
+          path: "/login",
+          query: { redirect: to.fullPath }
+        });
+      } else {
+        next();
+      }
     } else {
       next();
     }
-  } else {
-    next();
   }
-});
+);
 
 export default router;

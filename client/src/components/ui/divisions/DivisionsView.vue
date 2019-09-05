@@ -35,8 +35,8 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import gql from "graphql-tag";
 
-import { DivisionModel } from "../../../models";
-import { ApolloResponse } from "../../../types";
+import { DivisionModel } from "@/models";
+import { ApolloResponse } from "@/types";
 
 @Component({
   apollo: {

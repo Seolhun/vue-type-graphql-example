@@ -27,8 +27,8 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import gql from "graphql-tag";
 
-import { UserModel, BookModel } from "../../../models";
-import { ApolloResponse } from "../../../types";
+import { UserModel, BookModel } from "@/models";
+import { ApolloResponse } from "@/types";
 import { Book } from "../../../../../server/src/app/types";
 
 @Component({

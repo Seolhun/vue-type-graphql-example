@@ -12,11 +12,7 @@
             v-model="user.email"
             v-on:input="this.validateEmail"
           />
-          <span class="error-msg">
-            {{
-            validation.email ? validation.email : ""
-            }}
-          </span>
+          <span class="error-msg">{{ validation.email ? validation.email : "" }}</span>
         </div>
         <div class="form-group">
           <label>{{ $tc("common.name") }}</label>
@@ -26,11 +22,7 @@
             v-model="user.name"
             v-on:input="this.validateName"
           />
-          <span class="error-msg">
-            {{
-            validation.name ? validation.name : ""
-            }}
-          </span>
+          <span class="error-msg">{{ validation.name ? validation.name : "" }}</span>
         </div>
         <div class="form-group">
           <label>{{ $tc("common.birth") }}</label>
@@ -59,18 +51,10 @@
             v-model="user.password"
             v-on:input="this.validatePwd"
           />
-          <span class="error-msg">
-            {{
-            validation.password ? validation.password : ""
-            }}
-          </span>
+          <span class="error-msg">{{ validation.password ? validation.password : "" }}</span>
         </div>
         <div class="form-group">
-          <label for="confirmPassword">
-            {{
-            $tc("common.confirm_password")
-            }}
-          </label>
+          <label for="confirmPassword">{{ $tc("common.confirm_password") }}</label>
           <input
             type="password"
             autocomplete="new-password"
@@ -79,11 +63,9 @@
             v-model="user.confirm_password"
             v-on:input="this.validateConfirmPwd"
           />
-          <span class="error-msg">
-            {{
-            validation.confirm_password ? validation.confirm_password : ""
-            }}
-          </span>
+          <span
+            class="error-msg"
+          >{{ validation.confirm_password ? validation.confirm_password : "" }}</span>
         </div>
         <button
           type="submit"
@@ -103,10 +85,9 @@ import gql from "graphql-tag";
 
 import _ from "lodash";
 
-import { Validators, ValidationResponse } from "../../../utils/Validators";
-
-import { ApolloResponse } from "../../../types";
-import { DivisionModel, UserModel } from "../../../models";
+import { Validators, ValidationResponse } from "@/utils/Validators";
+import { ApolloResponse } from "@/types";
+import { DivisionModel, UserModel } from "@/models";
 
 @Component({
   apollo: {
@@ -169,7 +150,7 @@ export default class SigninView extends Vue {
         }
       `
       })
-      .then((result: ApolloResponse) => {
+      .then(result => {
         const db_user: UserModel = result.data.addUser;
         if (db_user) {
           this.$router.push(`/users/${db_user.name}`);

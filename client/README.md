@@ -16,7 +16,7 @@
 
 - `Client`
   1. `npm run dev`
-  2. [http://localhost:7000/](http://localhost:7000/)
+  2. [http://localhost:8080/](http://localhost:8080/)
 
 ## Demo
 

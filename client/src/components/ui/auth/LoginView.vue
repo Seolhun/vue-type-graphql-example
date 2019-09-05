@@ -29,11 +29,7 @@
       <div class="col-sm-12">
         <h5>
           {{ $tc("login.message.not_user1") }}
-          <router-link :to="'/signin'" tag="a" activeClass="active">
-            {{
-            $tc("signin.this")
-            }}
-          </router-link>
+          <router-link :to="'/signin'" tag="a" activeClass="active">{{ $tc("signin.this") }}</router-link>
           {{ $tc("login.message.not_user2") }}
         </h5>
       </div>
@@ -58,8 +54,8 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import gql from "graphql-tag";
 
-import { ApolloResponse } from "../../../types";
-import { UserModel } from "../../../models";
+import { ApolloResponse } from "@/types";
+import { UserModel } from "@/models";
 
 @Component
 export default class LoginView extends Vue {
@@ -83,7 +79,7 @@ export default class LoginView extends Vue {
         }
       `
       })
-      .then((result: ApolloResponse) => {
+      .then(result => {
         const db_user: UserModel = result.data.loginUser;
         if (db_user) {
           console.log("Lgoin Success");

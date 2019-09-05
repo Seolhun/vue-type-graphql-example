@@ -26,19 +26,19 @@ const i18n = new VueI18n({
   locale: "ko",
   fallbackLocale: "en",
   messages,
-  silentTranslationWarn: true
+  silentTranslationWarn: true,
 });
 
 const link = new HttpLink({
-  uri: `http://localhost:4000/graphql`
+  uri: `http://localhost:4000/graphql`,
 });
 const apolloClient = new ApolloClient({
   link,
   cache: new InMemoryCache(),
-  connectToDevTools: true
+  connectToDevTools: true,
 });
 const apolloProvider = new VueApollo({
-  defaultClient: apolloClient
+  defaultClient: apolloClient,
 });
 
 Vue.use(VueApollo);
@@ -49,5 +49,5 @@ new Vue({
   i18n,
   provide: apolloProvider.provide(),
   template: "<App/>",
-  components: { App }
+  components: { App },
 }).$mount("#app");

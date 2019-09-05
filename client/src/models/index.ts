@@ -71,11 +71,11 @@ class DivisionModel {
 }
 
 class UserModel {
-  id?: number;
-  name?: string;
-  email?: string;
-  password?: string;
-  confirm_password?: string;
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  confirm_password: string;
 
   birth?: string;
   division_id?: number;

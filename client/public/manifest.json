@@ -1,6 +1,6 @@
 {
-  "name": "client2",
-  "short_name": "client2",
+  "name": "vue-type-graphql-example",
+  "short_name": "vue-type-graphql-example",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
