@@ -1,23 +1,29 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "es6",
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
     "moduleResolution": "node",
-    "lib": ["es5", "es6", "dom"],
-    // "strict": true,
-    // "noImplicitAny": true,
-    // "strictNullChecks": true,
-    "esModuleInterop": true,
-    "noImplicitThis": true,
-    "declaration": true,
-    "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "noUnusedParameters": true
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": ["webpack-env", "jest"],
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "include": ["src/**/*.ts"],
-  "typeAcquisition": {
-    "enable": true
-  }
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "src/store/modules/portfolio.js"
+  ],
+  "exclude": ["node_modules"]
 }

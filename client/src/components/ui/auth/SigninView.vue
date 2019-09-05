@@ -1,10 +1,10 @@
 <template>
   <div class="row margin-20">
-    <h2>{{ $tc('signin.this') }}</h2>
+    <h2>{{ $tc("signin.this") }}</h2>
     <div class="col-sm-12">
       <form>
         <div class="form-group">
-          <label>{{ $tc('common.email') }}</label>
+          <label>{{ $tc("common.email") }}</label>
           <input
             type="email"
             autocomplete="email"
@@ -12,24 +12,24 @@
             v-model="user.email"
             v-on:input="this.validateEmail"
           />
-          <span class="error-msg">{{ validation.email ? validation.email : '' }}</span>
+          <span class="error-msg">{{ validation.email ? validation.email : "" }}</span>
         </div>
         <div class="form-group">
-          <label>{{ $tc('common.name') }}</label>
+          <label>{{ $tc("common.name") }}</label>
           <input
             autocomplete="nickname"
             class="form-control"
             v-model="user.name"
             v-on:input="this.validateName"
           />
-          <span class="error-msg">{{ validation.name ? validation.name : '' }}</span>
+          <span class="error-msg">{{ validation.name ? validation.name : "" }}</span>
         </div>
         <div class="form-group">
-          <label>{{ $tc('common.birth') }}</label>
+          <label>{{ $tc("common.birth") }}</label>
           <input type="date" class="form-control" v-model="user.birth" />
         </div>
         <div class="form-group">
-          <label>{{ $tc('division.this') }}</label>
+          <label>{{ $tc("division.this") }}</label>
           <div>
             <select v-model="user.division_id">
               <optgroup label="Choose">
@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label>{{ $tc('common.password') }}</label>
+          <label>{{ $tc("common.password") }}</label>
           <input
             type="password"
             autocomplete="new-password"
@@ -51,10 +51,10 @@
             v-model="user.password"
             v-on:input="this.validatePwd"
           />
-          <span class="error-msg">{{ validation.password ? validation.password : '' }}</span>
+          <span class="error-msg">{{ validation.password ? validation.password : "" }}</span>
         </div>
         <div class="form-group">
-          <label for="confirmPassword">{{ $tc('common.confirm_password') }}</label>
+          <label for="confirmPassword">{{ $tc("common.confirm_password") }}</label>
           <input
             type="password"
             autocomplete="new-password"
@@ -65,30 +65,29 @@
           />
           <span
             class="error-msg"
-          >{{ validation.confirm_password ? validation.confirm_password : '' }}</span>
+          >{{ validation.confirm_password ? validation.confirm_password : "" }}</span>
         </div>
         <button
           type="submit"
           class="btn-lg btn-primary"
-          v-on:click="($event) => signIn($event)"
-        >{{ $tc('common.form.confirm') }}</button>
-        <button class="btn-lg btn-danger" v-on:click="() => cancel()">{{ $tc('common.cancel') }}</button>
+          v-on:click="$event => signIn($event)"
+        >{{ $tc("common.form.confirm") }}</button>
+        <button class="btn-lg btn-danger" v-on:click="() => cancel()">{{ $tc("common.cancel") }}</button>
       </form>
     </div>
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
 import gql from "graphql-tag";
 
 import _ from "lodash";
 
-import { Validators, ValidationResponse } from "../../../utils/Validators";
-
-import { ApolloResponse } from "../../../types";
-import { DivisionModel, UserModel } from "../../../models";
+import { Validators, ValidationResponse } from "@/utils/Validators";
+import { ApolloResponse } from "@/types";
+import { DivisionModel, UserModel } from "@/models";
 
 @Component({
   apollo: {
@@ -151,7 +150,7 @@ export default class SigninView extends Vue {
         }
       `
       })
-      .then((result: ApolloResponse) => {
+      .then(result => {
         const db_user: UserModel = result.data.addUser;
         if (db_user) {
           this.$router.push(`/users/${db_user.name}`);
@@ -232,8 +231,6 @@ export default class SigninView extends Vue {
 }
 </script>
 
-
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 @import "SigninView";
 </style>
-

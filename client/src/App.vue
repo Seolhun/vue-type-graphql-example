@@ -1,20 +1,20 @@
 <template>
   <div v-cloak>
-    <header-menu/>
+    <header-menu />
 
-    <div class='container margin-top-75 margin-bottom-50'>
-      <router-view/>
+    <div class="container margin-top-75 margin-bottom-50">
+      <router-view />
     </div>
 
-    <footer-menu/>
+    <footer-menu />
   </div>
 </template>
 
-<script lang='ts'>
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import HeaderMenu from '@/components/layout/HeaderMenu.vue';
-import FooterMenu from '@/components/layout/FooterMenu.vue';
+<script lang="ts">
+import Vue from "vue";
+import Component from "vue-class-component";
+import HeaderMenu from "@/components/layout/HeaderMenu.vue";
+import FooterMenu from "@/components/layout/FooterMenu.vue";
 
 @Component({
   components: {
@@ -27,13 +27,11 @@ export default class App extends Vue {
   // get computedMsg () {
   //   return 'computed ' + this.msg
   // }
-
   // // method
   // greet () {
   //   alert('greeting: ' + this.msg)
   //   this.$refs.helloComponent.sayHello()
   // }
-
   // // Lifecycle hook
   // beforeCreate() {
   //   console.log('BeforeCreate In App Vue');
@@ -62,13 +60,11 @@ export default class App extends Vue {
 }
 </script>
 
-<style lang='scss'>
-@import 'assets/scss/global';
-@import 'assets/scss/custom';
+<style lang="scss">
+@import "assets/scss/global";
+@import "assets/scss/custom";
 
 [v-cloak] {
   display: none;
 }
 </style>
-
-

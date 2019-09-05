@@ -1,44 +1,29 @@
 <template>
-  <div class='row' v-cloak>
+  <div class="row" v-cloak>
     <h2>Users</h2>
-    <div class='col-sm-12'>
-      <div class='apollo'>
-        <table class='table table-hover'>
+    <div class="col-sm-12">
+      <div class="apollo">
+        <table class="table table-hover">
           <thead>
             <tr>
-              <th>
-                {{ $tc('common.id')}}
-              </th>
-              <th>
-                {{ $tc('common.email')}}
-              </th>
-              <th>
-                {{ $tc('common.name')}}
-              </th>
-              <th>
-                {{ $tc('common.birth')}}
-              </th>
+              <th>{{ $tc("common.id") }}</th>
+              <th>{{ $tc("common.email") }}</th>
+              <th>{{ $tc("common.name") }}</th>
+              <th>{{ $tc("common.birth") }}</th>
             </tr>
           </thead>
           <tbody>
             <router-link
-              tag='tr'
-              activeClass='active'
-              v-for='user in users' v-bind:key='user.id'
-              :to='`/users/${user.name}`'
+              tag="tr"
+              activeClass="active"
+              v-for="user in users"
+              v-bind:key="user.id"
+              :to="`/users/${user.name}`"
             >
-              <td>
-                {{ user.id }}
-              </td>
-              <td>
-                {{ user.email }}
-              </td>
-              <td>
-                {{ user.name }}
-              </td>
-              <td>
-                {{ user.birth }}
-              </td>
+              <td>{{ user.id }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.birth }}</td>
             </router-link>
           </tbody>
         </table>
@@ -47,13 +32,13 @@
   </div>
 </template>
 
-<script lang='ts'>
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import gql from 'graphql-tag';
+<script lang="ts">
+import Vue from "vue";
+import Component from "vue-class-component";
+import gql from "graphql-tag";
 
-import { UserModel } from '../../../models';
-import { ApolloResponse } from '../../../types';
+import { UserModel } from "@/models";
+import { ApolloResponse } from "@/types";
 
 @Component({
   apollo: {
@@ -70,11 +55,11 @@ import { ApolloResponse } from '../../../types';
           }
         `,
         result(result: ApolloResponse) {
-          if(!result.loading) {
+          if (!result.loading) {
             this.users = result.data.users;
           }
         },
-        fetchPolicy: 'cache-and-network',
+        fetchPolicy: "cache-and-network"
       };
     }
   }

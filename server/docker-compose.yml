@@ -10,17 +10,15 @@ services:
       - MARIADB_PASSWORD=${DB_ROOT_PASSWORD}
       - MARIADB_DATABASE=${DB_DATABASE}
     env_file:
-      - ./.env
+      - .env
 
   server:
     build: ./
     env_file:
-      - ./.env
+      - .env
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     depends_on:
       - ${DB_HOST}
-      - ${CACHE_HOST}
     links:
       - mariadb
-      - cache
