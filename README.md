@@ -50,7 +50,7 @@ docker-compose up -d
 - NPM scripts
 
 ```bash
-$ yarn adev
+$ yarn dev
 ```
 
 > [http://localhost:4000/graphql](http://localhost:4000/graphql)
@@ -73,7 +73,7 @@ $ yarn adev
 #### Client
 
 ```bash
-$ yarn adev
+$ yarn dev
 ```
 
 > [http://localhost:7000/](http://localhost:7000/)
