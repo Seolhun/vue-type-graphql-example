@@ -16,9 +16,8 @@
 
 ## Commit Convention
 
-- Server : [Server] - Contents
-- Client : [Cient] - Contents
-- Android : [Android] - Contents
+- Server : [Server]
+- Client : [Cient]
 - Contents
   - GraphQL
   - Vue
@@ -27,24 +26,19 @@
 
 ## How to run
 
-#### Install
-
-```bash
-$ yarn install
-```
-
 #### Server
 
-- Run all packages
-
 ```bash
-$ yarn all
+$ cd server
+$ yarn install
+$ yarn dev
 ```
 
 - Docker
 
 ```bash
-docker-compose up -d
+$ yarn install
+$ docker-compose up -d
 ```
 
 - NPM scripts
@@ -61,7 +55,7 @@ $ yarn dev
 
 - `/src/config/db/default.sql`
 
-2. Set Database configuration.
+1. Set Database configuration.
 
 - `/server/src/config/database/index.ts`
 
@@ -70,9 +64,13 @@ $ yarn dev
 - `sequelize.sync()` - create & update
 - `sequelize.sync({force: true})` - create & drop
 
+---
+
 #### Client
 
 ```bash
+$ cd client
+$ yarn install
 $ yarn dev
 ```
 
