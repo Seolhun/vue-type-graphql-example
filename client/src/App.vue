@@ -2,9 +2,9 @@
   <div v-cloak>
     <header-menu />
 
-    <div class="container margin-top-75 margin-bottom-50">
+    <main id="hunseol" class="container margin-top-75 margin-bottom-50">
       <router-view />
-    </div>
+    </main>
 
     <footer-menu />
   </div>

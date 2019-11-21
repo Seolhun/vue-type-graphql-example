@@ -55,40 +55,61 @@ $sub-active-color-shadow: $darker-gray !default;
   - Often Used color
 ------------------------ */
 
-$colors: ( 'black': #000000, 'white': #fff, 'gray': #808080, 'darkgray':#A9A9A9, 'red':#FF0000, 'crimson':#DC143C, 'aqua':#00FFFF, 'aquamarine':#7FFFD4, 'orange':#FFA500, 'orangered':#FF4500, 'green':#008000, 'limegreen':#32CD32, 'lightgreen':#90EE90, 'yellow':#FFFF00, 'blue':#0000FF, 'royalblue':#4169E1, 'purple':#800080, 'ocean':#0080ff);
+$colors: (
+  "black": #000000,
+  "white": #fff,
+  "gray": #808080,
+  "darkgray": #a9a9a9,
+  "red": #ff0000,
+  "crimson": #dc143c,
+  "aqua": #00ffff,
+  "aquamarine": #7fffd4,
+  "orange": #ffa500,
+  "orangered": #ff4500,
+  "green": #008000,
+  "limegreen": #32cd32,
+  "lightgreen": #90ee90,
+  "yellow": #ffff00,
+  "blue": #0000ff,
+  "royalblue": #4169e1,
+  "purple": #800080,
+  "ocean": #0080ff
+);
 /* ------------------------
   - Google Font
 ------------------------ */
 
-@mixin font-face( $name, $font-files, $eot: false, $weight: false, $style: false) {
-    $iefont: unquote("#{$eot}?#iefix");
-    @font-face {
-        font-family: quote($name);
-        @if $eot {
-            src: font-url($eot);
-            $font-files: font-url($iefont) unquote("format('eot')"), $font-files;
-        }
-        src: $font-files;
-        @if $weight {
-            font-weight: $weight;
-        }
-        @if $style {
-            font-style: $style;
-        }
+@mixin font-face(
+  $name,
+  $font-files,
+  $eot: false,
+  $weight: false,
+  $style: false
+) {
+  $iefont: unquote("#{$eot}?#iefix");
+  @font-face {
+    font-family: quote($name);
+    @if $eot {
+      src: font-url($eot);
+      $font-files: font-url($iefont) unquote("format('eot')"), $font-files;
     }
+    src: $font-files;
+    @if $weight {
+      font-weight: $weight;
+    }
+    @if $style {
+      font-style: $style;
+    }
+  }
 }
 
-$font-main-1: 'Lato',
-sans-serif;
-$font-main-2: 'Open Sans',
-sans-serif;
-$font-main-3: 'Droid Sans',
-sans-serif;
-$font-main-4: 'Noto Sans',
-sans-serif;
+$font-main-1: "Lato", sans-serif;
+$font-main-2: "Open Sans", sans-serif;
+$font-main-3: "Droid Sans", sans-serif;
+$font-main-4: "Noto Sans", sans-serif;
 @font-face {
-    font-family: $font-main-1;
-    src: url('https://fonts.googleapis.com/css?family=Droid+Sans|Lato|Noto+Sans|Open+Sans');
+  font-family: $font-main-1;
+  src: url("https://fonts.googleapis.com/css?family=Droid+Sans|Lato|Noto+Sans|Open+Sans");
 }
 
 /* ------------------------------------------------------------------------
