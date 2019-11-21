@@ -1,20 +1,18 @@
-import { graphql, GraphQLSchema, printSchema } from 'graphql';
-import { GraphQLList, GraphQLNonNull, GraphQLObjectType } from 'graphql';
-import { GraphQLString } from 'graphql/type/scalars';
+import { GraphQLObjectType } from "graphql";
 
-import { AuthorityQuery } from './AuthorityQuery';
-import { BookQuery } from './BookQuery';
-import { DivisionQuery } from './DivisionQuery';
-import { UserQuery } from './UserQuery';
+import { AuthorityQuery } from "./AuthorityQuery";
+import { BookQuery } from "./BookQuery";
+import { DivisionQuery } from "./DivisionQuery";
+import { UserQuery } from "./UserQuery";
 
 const query = new GraphQLObjectType({
-  name: 'RootQuery',
+  name: "RootQuery",
   fields: {
     ...AuthorityQuery,
     ...BookQuery,
     ...DivisionQuery,
-    ...UserQuery,
-  },
+    ...UserQuery
+  }
 });
 
 export { query };

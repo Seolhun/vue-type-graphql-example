@@ -27,8 +27,8 @@ app.use(
   cookieSession({
     name: "cookie-session-id",
     maxAge: env.COOKIE_SESSION_MAX_AGE,
-    keys: env.COOKIE_SESSION_KEYS,
-  }),
+    keys: env.COOKIE_SESSION_KEYS
+  })
 );
 app.use(
   session({
@@ -41,9 +41,9 @@ app.use(
     cookie: {
       secure: true,
       httpOnly: true,
-      expires: expiryDate,
-    },
-  }),
+      expires: expiryDate
+    }
+  })
 );
 app.set("trust proxy", 1);
 
@@ -64,11 +64,11 @@ app.use(
           result: bodyParser.json(result),
           variables,
           operationName,
-          runTime: Date.now() - startTime,
+          runTime: Date.now() - startTime
         };
-      },
+      }
     };
-  }),
+  })
 );
 
 // Express Router

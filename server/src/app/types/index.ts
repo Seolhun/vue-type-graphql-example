@@ -39,7 +39,7 @@ enum BookStatus {
   REQUESTED = 1,
   ORDERED = 2,
   NORMAL = 3,
-  BORROWED = 4,
+  BORROWED = 4
 }
 
 interface User {

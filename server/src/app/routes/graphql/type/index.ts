@@ -1,8 +1,12 @@
-import { GraphQLList, GraphQLObjectType } from 'graphql';
-import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
+import { GraphQLList, GraphQLObjectType } from "graphql";
+import {
+  GraphQLBoolean,
+  GraphQLInt,
+  GraphQLString
+} from "graphql/type/scalars";
 
 const AuthorityType = new GraphQLObjectType({
-  name: 'Authority',
+  name: "Authority",
   fields: {
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
@@ -11,12 +15,12 @@ const AuthorityType = new GraphQLObjectType({
     active: { type: GraphQLBoolean },
     created_at: { type: GraphQLString },
     deleted_at: { type: GraphQLString },
-    updated_at: { type: GraphQLString },
-  },
+    updated_at: { type: GraphQLString }
+  }
 });
 
 const BookType = new GraphQLObjectType({
-  name: 'Book',
+  name: "Book",
   fields: {
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
@@ -27,12 +31,12 @@ const BookType = new GraphQLObjectType({
     active: { type: GraphQLBoolean },
     created_at: { type: GraphQLString },
     deleted_at: { type: GraphQLString },
-    updated_at: { type: GraphQLString },
-  },
+    updated_at: { type: GraphQLString }
+  }
 });
 
 const UserType = new GraphQLObjectType({
-  name: 'User',
+  name: "User",
   fields: {
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
@@ -45,24 +49,24 @@ const UserType = new GraphQLObjectType({
     active: { type: GraphQLBoolean },
     created_at: { type: GraphQLString },
     deleted_at: { type: GraphQLString },
-    updated_at: { type: GraphQLString },
-  },
+    updated_at: { type: GraphQLString }
+  }
 });
 
 const DivisionType = new GraphQLObjectType({
-  name: 'Division',
+  name: "Division",
   fields: {
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
     description: { type: GraphQLString },
 
-    employees: { type : new GraphQLList(UserType) },
+    employees: { type: new GraphQLList(UserType) },
 
     active: { type: GraphQLBoolean },
     created_at: { type: GraphQLString },
     deleted_at: { type: GraphQLString },
-    updated_at: { type: GraphQLString },
-  },
+    updated_at: { type: GraphQLString }
+  }
 });
 
 export { AuthorityType, BookType, DivisionType, UserType };

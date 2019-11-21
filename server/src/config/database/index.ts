@@ -3,7 +3,7 @@ import {
   FindOptions,
   CreateOptions,
   UpdateOptions,
-  DestroyOptions,
+  DestroyOptions
 } from "sequelize";
 require("dotenv").config();
 
@@ -20,13 +20,13 @@ const sequelize = new Sequelize(
     dialect: "mariadb",
     dialectOptions: {
       connectTimeout: 1000,
-      timezone: "Etc/GMT0",
+      timezone: "Etc/GMT0"
     },
     pool: {
       max: 10,
       min: 1,
       acquire: 30000,
-      idle: 20000,
+      idle: 20000
     },
     define: {
       charset: "utf8",
@@ -35,7 +35,7 @@ const sequelize = new Sequelize(
       createdAt: "created_at",
       updatedAt: "updated_at",
       deletedAt: "deleted_at",
-      paranoid: true,
+      paranoid: true
     },
     logging: false,
     benchmark: false,
@@ -55,9 +55,9 @@ const sequelize = new Sequelize(
       beforeDestroy: (instance: any, options: DestroyOptions) => {
         logger.debug(`beforeDestroy`);
         logger.debug(instance);
-      },
-    },
-  },
+      }
+    }
+  }
 );
 
 sequelize
