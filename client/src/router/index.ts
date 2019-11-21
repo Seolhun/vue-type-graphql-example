@@ -12,7 +12,7 @@ import DivisionsView from "@/components/ui/divisions/DivisionsView.vue";
 import UserDetailView from "@/components/ui/users/UserDetailView.vue";
 import UsersView from "@/components/ui/users/UsersView.vue";
 
-import { loginIn } from "../utils/login";
+import { isAuthorized } from "../utils/Authorize";
 
 Vue.use(Router);
 const routes: RouteConfig[] = [
@@ -80,7 +80,7 @@ router.beforeEach(
       next();
     }
     if (to.matched.some(record => record.meta.requiresAuth)) {
-      if (!loginIn()) {
+      if (!isAuthorized()) {
         next({
           path: "/login",
           query: { redirect: to.fullPath }
