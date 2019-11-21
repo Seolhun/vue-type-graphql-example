@@ -85,7 +85,7 @@ import gql from "graphql-tag";
 
 import _ from "lodash";
 
-import { Validators, ValidationResponse } from "@/utils/Validators";
+import { ValidationResponse, isEmail, isName, isPassword } from "@/utils/Validators";
 import { ApolloResponse } from "@/types";
 import { DivisionModel, UserModel } from "@/models";
 
@@ -192,7 +192,7 @@ export default class SigninView extends Vue {
   }
 
   private validateEmail(): void {
-    const email_validation = Validators.isEmail(this.user.email);
+    const email_validation = isEmail(this.user.email);
     if (!email_validation.result) {
       this.validation.email = email_validation.msg;
     } else {
@@ -201,7 +201,7 @@ export default class SigninView extends Vue {
   }
 
   private validateName(): void {
-    const name_validation = Validators.isName(this.user.name);
+    const name_validation = isName(this.user.name);
     if (!name_validation.result) {
       this.validation.name = name_validation.msg;
     } else {
@@ -210,7 +210,7 @@ export default class SigninView extends Vue {
   }
 
   private validatePwd(): void {
-    const pwd_validation = Validators.isPassword(this.user.password);
+    const pwd_validation = isPassword(this.user.password);
     if (!pwd_validation.result) {
       this.validation.password = pwd_validation.msg;
     } else {
@@ -219,7 +219,7 @@ export default class SigninView extends Vue {
   }
 
   private validateConfirmPwd(): void {
-    const confirm_pwd_validation = Validators.isPassword(
+    const confirm_pwd_validation = isPassword(
       this.user.confirm_password
     );
     if (!confirm_pwd_validation.result) {
