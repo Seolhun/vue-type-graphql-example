@@ -1,9 +1,9 @@
-import { GraphQLFieldConfigMap, GraphQLNonNull, GraphQLObjectType } from 'graphql';
-import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
-import { BookType, DivisionType, UserType } from '../type/index';
+import { GraphQLFieldConfigMap, GraphQLNonNull } from "graphql";
+import { GraphQLInt, GraphQLString } from "graphql/type/scalars";
+import { BookType, DivisionType, UserType } from "../type/index";
 
-import { DivisionService } from '../../../services';
-import { Division } from '../../../types';
+import { DivisionService } from "../../../services";
+import { Division } from "../../../types";
 
 const division_service = new DivisionService();
 const DivisionMutation: GraphQLFieldConfigMap<any, any> = {
@@ -11,33 +11,33 @@ const DivisionMutation: GraphQLFieldConfigMap<any, any> = {
     type: DivisionType,
     args: {
       name: { type: new GraphQLNonNull(GraphQLString) },
-      description: { type: GraphQLString },
+      description: { type: GraphQLString }
     },
     async resolve(parent, { name, description }: Division, context, info) {
       return await division_service.createdDivision({ name, description });
-    },
+    }
   },
   editDivision: {
     type: DivisionType,
     args: {
       id: { type: GraphQLInt },
       name: { type: new GraphQLNonNull(GraphQLString) },
-      description: { type: new GraphQLNonNull(GraphQLString) },
+      description: { type: new GraphQLNonNull(GraphQLString) }
     },
     async resolve(parent, { id, name, description }: Division, context, info) {
       return await division_service.updatedDivision({ name, description });
-    },
+    }
   },
   deleteDivision: {
     type: DivisionType,
     args: {
       id: { type: GraphQLInt },
-      name: { type: GraphQLString },
+      name: { type: GraphQLString }
     },
     async resolve(parent, { id, name }: Division, context, info) {
       return await division_service.deletedDivision({ id });
-    },
-  },
+    }
+  }
 };
 
 export { DivisionMutation };

@@ -10,7 +10,7 @@ const en = {
     email: "E-Mail",
     form: {
       confirm: "Confirm",
-      submit: "Submit",
+      submit: "Submit"
     },
     id: "No",
     japan: "Japan",
@@ -21,64 +21,64 @@ const en = {
     confirm_password: "Confirm Password",
     search: "Search",
     status: "Status",
-    usa: "USA",
+    usa: "USA"
   },
   authority: {
     this: "Authority",
     authority_list: "Authority list",
     message: {},
-    placeholder: {},
+    placeholder: {}
   },
   book: {
     this: "Book",
     book_list: "Book list",
     message: {},
     placeholder: {},
-    author: "Author",
+    author: "Author"
   },
   content: {
     label: {
       title: "제 목",
       contentType: "컨텐츠 종류",
       tags: "태 그",
-      content: "내 용",
+      content: "내 용"
     },
     message: {
-      insertSuccess: "컨텐츠를 성공적으로 등록하였습니다.",
+      insertSuccess: "컨텐츠를 성공적으로 등록하였습니다."
     },
     placeholder: {
       title: "컨텐츠의 제목을 입력해주세요.",
       tags: "블로그와 관련된 태그를 입력해주세요.",
-      search: "검색어를 입력해주세요.",
-    },
+      search: "검색어를 입력해주세요."
+    }
   },
   division: {
     this: "Division",
     division_list: "Division list",
     message: {},
-    placeholder: {},
+    placeholder: {}
   },
   login: {
     this: "Log-In",
     message: {
       not_user1: "Not yet a member?",
-      not_user2: "now",
+      not_user2: "now"
     },
-    placeholder: {},
+    placeholder: {}
   },
   signin: {
     this: "Sign-In",
     sns: {
-      message: "SNS을 이용해서 가입하세요.",
+      message: "SNS을 이용해서 가입하세요."
     },
     message: {},
-    placeholder: {},
+    placeholder: {}
   },
   user: {
     this: "User",
     user_list: "User list",
     message: {},
-    placeholder: {},
-  },
+    placeholder: {}
+  }
 };
 export default en;

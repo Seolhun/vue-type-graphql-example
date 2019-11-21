@@ -1,9 +1,9 @@
-import { GraphQLFieldConfigMap, GraphQLList, GraphQLNonNull, GraphQLObjectType } from 'graphql';
-import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
-import { DivisionType } from '../type/index';
+import { GraphQLFieldConfigMap, GraphQLList } from "graphql";
+import { GraphQLInt, GraphQLString } from "graphql/type/scalars";
+import { DivisionType } from "../type/index";
 
-import { DivisionService } from '../../../services';
-import { Division } from '../../../types';
+import { DivisionService } from "../../../services";
+import { Division } from "../../../types";
 
 const division_service = new DivisionService();
 const DivisionQuery: GraphQLFieldConfigMap<any, any> = {
@@ -11,18 +11,18 @@ const DivisionQuery: GraphQLFieldConfigMap<any, any> = {
     type: DivisionType,
     args: {
       id: { type: GraphQLInt },
-      name: { type: GraphQLString },
+      name: { type: GraphQLString }
     },
     async resolve(parent, { id, name }: Division, context, info) {
       return await division_service.findOne({ id, name });
-    },
+    }
   },
   divisions: {
     type: new GraphQLList(DivisionType),
     async resolve(parent, args, context, info) {
-      return await division_service.findAll('DESC');
-    },
-  },
+      return await division_service.findAll("DESC");
+    }
+  }
 };
 
 export { DivisionQuery };

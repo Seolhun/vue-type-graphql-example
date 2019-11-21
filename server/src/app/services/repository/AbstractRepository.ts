@@ -1,4 +1,4 @@
-type Order = 'DESC' | 'ASC';
+type Order = "DESC" | "ASC";
 
 abstract class AbstractRepository<T> {
   abstract create(T);
@@ -11,7 +11,7 @@ abstract class AbstractRepository<T> {
 
   getUniqueCriteria(T, colums: string[]): any[] {
     const params: any[] = [];
-    colums.forEach((colum) => {
+    colums.forEach(colum => {
       if (T[colum]) {
         const data = {};
         data[colum] = T[colum];

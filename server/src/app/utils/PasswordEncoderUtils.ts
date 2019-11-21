@@ -8,7 +8,7 @@ class PasswordEncoderUtils {
 
   static compareBcryptedPasswordSync(
     password: string,
-    db_password: string,
+    db_password: string
   ): boolean {
     return bcrypt.compareSync(password, db_password);
   }

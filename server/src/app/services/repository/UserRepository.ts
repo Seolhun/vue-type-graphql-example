@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
 
-import { Division, User } from "../../types";
-import { DivisionModel, UserAuthorityModel, UserModel } from "../model";
+import { User } from "../../types";
+import { UserModel } from "../model";
 import { AbstractRepository, Order } from "./AbstractRepository";
 
 class UserRepository extends AbstractRepository<User> {

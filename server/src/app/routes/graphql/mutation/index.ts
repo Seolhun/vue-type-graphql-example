@@ -1,20 +1,18 @@
-import { GraphQLNonNull, GraphQLObjectType } from 'graphql';
-import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type/scalars';
-import { BookType, DivisionType, UserType } from '../type/index';
+import { GraphQLObjectType } from "graphql";
 
-import { AuthorityMutation } from './AuthorityMutation';
-import { BookMutation } from './BookMutation';
-import { DivisionMutation } from './DivisionMutation';
-import { UserMutation } from './UserMutation';
+import { AuthorityMutation } from "./AuthorityMutation";
+import { BookMutation } from "./BookMutation";
+import { DivisionMutation } from "./DivisionMutation";
+import { UserMutation } from "./UserMutation";
 
 const mutation = new GraphQLObjectType({
-  name: 'Mutation',
+  name: "Mutation",
   fields: {
     ...AuthorityMutation,
     ...BookMutation,
     ...DivisionMutation,
-    ...UserMutation,
-  },
+    ...UserMutation
+  }
 });
 
 export { mutation };

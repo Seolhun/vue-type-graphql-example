@@ -2,7 +2,7 @@
  * @export
  * @returns { boolean }
  */
-export function loginIn(): boolean {
+export function isAuthorized(): boolean {
   if (!window.localStorage.getItem("TOKEN")) {
     return false;
   }
