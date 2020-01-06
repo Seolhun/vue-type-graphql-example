@@ -12,7 +12,9 @@
             v-model="user.email"
             v-on:input="this.validateEmail"
           />
-          <span class="error-msg">{{ validation.email ? validation.email : "" }}</span>
+          <span class="error-msg">{{
+            validation.email ? validation.email : ""
+          }}</span>
         </div>
         <div class="form-group">
           <label>{{ $tc("common.name") }}</label>
@@ -22,7 +24,9 @@
             v-model="user.name"
             v-on:input="this.validateName"
           />
-          <span class="error-msg">{{ validation.name ? validation.name : "" }}</span>
+          <span class="error-msg">{{
+            validation.name ? validation.name : ""
+          }}</span>
         </div>
         <div class="form-group">
           <label>{{ $tc("common.birth") }}</label>
@@ -37,7 +41,8 @@
                   v-for="division in divisions"
                   v-bind:key="division.id"
                   v-bind:value="division.id"
-                >{{ division.name }}</option>
+                  >{{ division.name }}</option
+                >
               </optgroup>
             </select>
           </div>
@@ -51,10 +56,14 @@
             v-model="user.password"
             v-on:input="this.validatePwd"
           />
-          <span class="error-msg">{{ validation.password ? validation.password : "" }}</span>
+          <span class="error-msg">{{
+            validation.password ? validation.password : ""
+          }}</span>
         </div>
         <div class="form-group">
-          <label for="confirmPassword">{{ $tc("common.confirm_password") }}</label>
+          <label for="confirmPassword">{{
+            $tc("common.confirm_password")
+          }}</label>
           <input
             type="password"
             autocomplete="new-password"
@@ -63,16 +72,20 @@
             v-model="user.confirm_password"
             v-on:input="this.validateConfirmPwd"
           />
-          <span
-            class="error-msg"
-          >{{ validation.confirm_password ? validation.confirm_password : "" }}</span>
+          <span class="error-msg">{{
+            validation.confirm_password ? validation.confirm_password : ""
+          }}</span>
         </div>
         <button
           type="submit"
           class="btn-lg btn-primary"
           v-on:click="$event => signIn($event)"
-        >{{ $tc("common.form.confirm") }}</button>
-        <button class="btn-lg btn-danger" v-on:click="() => cancel()">{{ $tc("common.cancel") }}</button>
+        >
+          {{ $tc("common.form.confirm") }}
+        </button>
+        <button class="btn-lg btn-danger" v-on:click="() => cancel()">
+          {{ $tc("common.cancel") }}
+        </button>
       </form>
     </div>
   </div>
@@ -85,7 +98,12 @@ import gql from "graphql-tag";
 
 import _ from "lodash";
 
-import { ValidationResponse, isEmail, isName, isPassword } from "@/utils/Validators";
+import {
+  ValidationResponse,
+  isEmail,
+  isName,
+  isPassword
+} from "@/utils/Validators";
 import { ApolloResponse } from "@/types";
 import { DivisionModel, UserModel } from "@/models";
 
@@ -156,9 +174,7 @@ export default class SigninView extends Vue {
           this.$router.push(`/users/${db_user.name}`);
         }
       })
-      .catch(error => {
-        console.error(error);
-      });
+      .catch(error => {});
   }
 
   cancel() {
@@ -219,9 +235,7 @@ export default class SigninView extends Vue {
   }
 
   private validateConfirmPwd(): void {
-    const confirm_pwd_validation = isPassword(
-      this.user.confirm_password
-    );
+    const confirm_pwd_validation = isPassword(this.user.confirm_password);
     if (!confirm_pwd_validation.result) {
       this.validation.confirm_password = confirm_pwd_validation.msg;
     } else {

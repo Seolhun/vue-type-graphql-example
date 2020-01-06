@@ -13,11 +13,22 @@ services:
       - .env
 
   server:
-    build: ./
+    build: ./server
     env_file:
       - .env
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
+    depends_on:
+      - ${DB_HOST}
+    links:
+      - mariadb
+
+  client:
+    build: ./client
+    env_file:
+      - .env
+    ports:
+      - ${CLIENT_PORT}:${CLIENT_PORT}
     depends_on:
       - ${DB_HOST}
     links:

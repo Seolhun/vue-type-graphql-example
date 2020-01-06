@@ -6,7 +6,12 @@
         <form>
           <div class="form-group">
             <label>{{ $tc("common.email") }}</label>
-            <input type="email" autocomplete="email" class="form-control" v-model="user.email" />
+            <input
+              type="email"
+              autocomplete="email"
+              class="form-control"
+              v-model="user.email"
+            />
           </div>
           <div class="form-group">
             <label>{{ $tc("common.password") }}</label>
@@ -21,15 +26,21 @@
             <button
               class="btn-lg btn-primary"
               v-on:click="$event => login($event)"
-            >{{ $tc("common.form.confirm") }}</button>
-            <button class="btn-lg btn-danger" v-on:click="() => cancel()">{{ $tc("common.cancel") }}</button>
+            >
+              {{ $tc("common.form.confirm") }}
+            </button>
+            <button class="btn-lg btn-danger" v-on:click="() => cancel()">
+              {{ $tc("common.cancel") }}
+            </button>
           </div>
         </form>
       </div>
       <div class="col-sm-12">
         <h5>
           {{ $tc("login.message.not_user1") }}
-          <router-link :to="'/signin'" tag="a" activeClass="active">{{ $tc("signin.this") }}</router-link>
+          <router-link :to="'/signin'" tag="a" activeClass="active">{{
+            $tc("signin.this")
+          }}</router-link>
           {{ $tc("login.message.not_user2") }}
         </h5>
       </div>
@@ -41,7 +52,11 @@
       <div class="col-sm-3">
         <button class="btn btn-edge-black" type="submit">
           <a href="http://localhost:4000/auth/github">
-            <img src="@/assets/images/github/logo/GitHub_Logo.png" width="130" height="50" />
+            <img
+              src="@/assets/images/github/logo/GitHub_Logo.png"
+              width="130"
+              height="50"
+            />
           </a>
         </button>
       </div>
@@ -81,13 +96,8 @@ export default class LoginView extends Vue {
       })
       .then(result => {
         const db_user: UserModel = result.data.loginUser;
-        if (db_user) {
-          console.log("Lgoin Success");
-        }
       })
-      .catch(error => {
-        console.error(error);
-      });
+      .catch(error => {});
   }
 
   cancel() {

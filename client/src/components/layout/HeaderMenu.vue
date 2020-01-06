@@ -100,12 +100,8 @@ export default class HeaderMenu extends Vue {
   getCurrentUser() {
     axios
       .get("http://localhost:4000/user/current", {})
-      .then(result => {
-        console.log(result);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+      .then(result => {})
+      .catch(error => {});
   }
 }
 </script>

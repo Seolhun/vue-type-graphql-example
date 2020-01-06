@@ -1,24 +1,16 @@
 {
   "defaultSeverity": "error",
-  "extends": [
-    "tslint:recommended"
-  ],
+  "extends": ["tslint:recommended"],
   "jsRules": {},
   "rules": {
     "interface-name": {
-      "options": [
-        "never-prefix"
-      ]
+      "options": ["never-prefix"]
     },
     "max-classes-per-file": {
-      "options": [
-        10
-      ]
+      "options": [10]
     },
     "max-line-length": {
-      "options": [
-        400
-      ]
+      "options": [400]
     },
     "member-access": false,
     "member-ordering": false,
@@ -39,11 +31,7 @@
       }
     ],
     "quotemark": {
-      "options": [
-        "single",
-        "jsx-single",
-        "avoid-escape"
-      ]
+      "options": ["single", "jsx-single", "avoid-escape"]
     },
     "variable-name": {
       "options": [
