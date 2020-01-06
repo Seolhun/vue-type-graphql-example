@@ -1,0 +1,34 @@
+# @See
+## https://docs.travis-ci.com/user/encrypting-files/
+sudo: required
+
+language: node_js
+
+node_js:
+  - "10"
+
+services:
+  - docker
+
+jobs:
+  include:
+    #############################
+    # Install and Test
+    #############################
+    - stage: Tests
+      name: Server Unit Test
+      script:
+        - cd server
+        - yarn install
+        - yarn test
+
+    - stage: Tests
+      name: Client Unit Test
+      script:
+        - cd client
+        - yarn install
+        - yarn test
+
+notifications:
+  email:
+    - shun10116@gmail.com
