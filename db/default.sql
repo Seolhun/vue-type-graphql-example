@@ -1,2 +1,2 @@
-create user 'hunseol'@'localhost' identified by 'hunseol';
-grant all privileges on shooney_management.* to 'hunseol'@'localhost';
+CREATE USER test@test IDENTIFIED by 'test';
+GRANT ALL PRIVILEGES ON shooney_management.* to test@test;

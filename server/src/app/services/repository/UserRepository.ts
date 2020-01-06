@@ -8,7 +8,7 @@ class UserRepository extends AbstractRepository<User> {
   // ['id', 'email', 'name']);
   unique_criterias: string[] = [];
 
-  constructor(unique_criterias) {
+  constructor(unique_criterias = []) {
     super();
     this.unique_criterias = unique_criterias;
   }

@@ -8,7 +8,7 @@ class DivisionRepository extends AbstractRepository<Division> {
   // ['id', 'name']
   unique_criterias: string[] = [];
 
-  constructor(unique_criterias) {
+  constructor(unique_criterias = []) {
     super();
     this.unique_criterias = unique_criterias;
   }

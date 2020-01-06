@@ -8,7 +8,7 @@ class BookRepository extends AbstractRepository<Book> {
   // ['id']
   unique_criterias: string[] = [];
 
-  constructor(unique_criterias) {
+  constructor(unique_criterias = []) {
     super();
     this.unique_criterias = unique_criterias;
   }
