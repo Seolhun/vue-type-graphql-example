@@ -4,7 +4,6 @@ import Router, { Route, RouteConfig } from "vue-router";
 import HomeView from "@/components/HomeView.vue";
 import LoginView from "@/components/ui/auth/LoginView.vue";
 import SigninView from "@/components/ui/auth/SigninView.vue";
-
 import BookDetailView from "@/components/ui/books/BookDetailView.vue";
 import BooksView from "@/components/ui/books/BooksView.vue";
 import DivisionDetailView from "@/components/ui/divisions/DivisionDetailView.vue";
