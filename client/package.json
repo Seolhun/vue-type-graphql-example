@@ -22,7 +22,7 @@
     "classnames": "^2.2.6",
     "core-js": "^3.3.0",
     "graphql": "^14.2.0",
-    "graphql-tag": "^2.6.1",
+    "graphql-tag": "^2.10.3",
     "lodash": "^4.17.4",
     "register-service-worker": "^1.6.2",
     "validator": "^12.0.0",
